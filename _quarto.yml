@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Egzaminy"
+  navbar:
+    left:
+      - text: "Losowanie"
+        href: index.qmd
+      - text: "Eksploracja danych"
+        href: Pytania_eksploracja.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+editor: visual
+
