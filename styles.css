@@ -1,16 +1,11 @@
-/* Custom layout widths for Quarto website */
 :root {
   --quarto-body-width: 1600px;
-  /* Standard body column width (default ~800px) */
-  /* --quarto-max-width: 1400px; */
-  /* Max grid layout width (default ~1150px) */
+  --quarto-max-width: 1400px;
 }
 
-/* Ustawienia dla urządzeń mobilnych (smartfony) */
 @media (max-width: 576px) {
   :root {
     --quarto-body-width: 100%;
-    /* Pełna szerokość na smartfonach */
     --quarto-max-width: 100%;
   }
 }

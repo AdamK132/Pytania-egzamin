@@ -1,8 +1,2 @@
 /.quarto/
-/.Rproj.user/
-/_site/
-.Rhistory
-.RData
-.Ruserdata
-
 **/*.quarto_ipynb
