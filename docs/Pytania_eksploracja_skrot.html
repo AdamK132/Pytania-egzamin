@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adam Kołodziejczak">
+<meta name="dcterms.date" content="2026-06-22">
+
+<title>Eksploracja danych - abstrakt – Egzaminy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e442beeda8854585f2117682f91a714a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Egzaminy</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Losowanie</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Pytania_eksploracja.html"> 
+<span class="menu-text">Eksploracja danych</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Pytania_eksploracja_skrot.html" aria-current="page"> 
+<span class="menu-text">Eksploracja danych - abstrakt</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Pytania</h2>
+   
+  <ul>
+  <li><a href="#egzamin-ustny-z-eksploracji-danych" id="toc-egzamin-ustny-z-eksploracji-danych" class="nav-link active" data-scroll-target="#egzamin-ustny-z-eksploracji-danych">Egzamin ustny z Eksploracji danych</a>
+  <ul class="collapse">
+  <li><a href="#omów-rolę-przygotowania-danych-w-procesie-eksploracji-danych-i-uczenia-maszynowego.-przedstaw-jakie-decyzje-podejmuje-się-na-etapie-importu-walidacji-typów-i-wstępnego-czyszczenia-danych-oraz-dlaczego-wpływają-one-na-dalsze-modelowanie." id="toc-omów-rolę-przygotowania-danych-w-procesie-eksploracji-danych-i-uczenia-maszynowego.-przedstaw-jakie-decyzje-podejmuje-się-na-etapie-importu-walidacji-typów-i-wstępnego-czyszczenia-danych-oraz-dlaczego-wpływają-one-na-dalsze-modelowanie." class="nav-link" data-scroll-target="#omów-rolę-przygotowania-danych-w-procesie-eksploracji-danych-i-uczenia-maszynowego.-przedstaw-jakie-decyzje-podejmuje-się-na-etapie-importu-walidacji-typów-i-wstępnego-czyszczenia-danych-oraz-dlaczego-wpływają-one-na-dalsze-modelowanie.">1. Omów rolę przygotowania danych w procesie eksploracji danych i uczenia maszynowego. Przedstaw, jakie decyzje podejmuje się na etapie importu, walidacji typów i wstępnego czyszczenia danych oraz dlaczego wpływają one na dalsze modelowanie.</a></li>
+  <li><a href="#jak-rozpoznaje-się-i-interpretuje-obserwacje-odstające-oraz-braki-danych-omów-najważniejsze-strategie-postępowania-z-takimi-przypadkami-i-ich-konsekwencje-dla-analizy-oraz-jakości-modelu." id="toc-jak-rozpoznaje-się-i-interpretuje-obserwacje-odstające-oraz-braki-danych-omów-najważniejsze-strategie-postępowania-z-takimi-przypadkami-i-ich-konsekwencje-dla-analizy-oraz-jakości-modelu." class="nav-link" data-scroll-target="#jak-rozpoznaje-się-i-interpretuje-obserwacje-odstające-oraz-braki-danych-omów-najważniejsze-strategie-postępowania-z-takimi-przypadkami-i-ich-konsekwencje-dla-analizy-oraz-jakości-modelu.">2. Jak rozpoznaje się i interpretuje obserwacje odstające oraz braki danych? Omów najważniejsze strategie postępowania z takimi przypadkami i ich konsekwencje dla analizy oraz jakości modelu.</a></li>
+  <li><a href="#na-czym-polegają-eda-preprocessing-i-inżynieria-cech-w-danych-tabelarycznych-omów-rolę-kodowania-zmiennych-kategorycznych-skalowania-transformacji-oraz-konstrukcji-nowych-cech." id="toc-na-czym-polegają-eda-preprocessing-i-inżynieria-cech-w-danych-tabelarycznych-omów-rolę-kodowania-zmiennych-kategorycznych-skalowania-transformacji-oraz-konstrukcji-nowych-cech." class="nav-link" data-scroll-target="#na-czym-polegają-eda-preprocessing-i-inżynieria-cech-w-danych-tabelarycznych-omów-rolę-kodowania-zmiennych-kategorycznych-skalowania-transformacji-oraz-konstrukcji-nowych-cech.">3. Na czym polegają EDA, preprocessing i inżynieria cech w danych tabelarycznych? Omów rolę kodowania zmiennych kategorycznych, skalowania, transformacji oraz konstrukcji nowych cech.</a></li>
+  <li><a href="#przedstaw-regresję-liniową-wieloraką-jako-metodę-uczenia-nadzorowanego.-omów-składniki-modelu-znaczenie-parametrów-oraz-sens-minimalizacji-błędu-w-procesie-estymacji." id="toc-przedstaw-regresję-liniową-wieloraką-jako-metodę-uczenia-nadzorowanego.-omów-składniki-modelu-znaczenie-parametrów-oraz-sens-minimalizacji-błędu-w-procesie-estymacji." class="nav-link" data-scroll-target="#przedstaw-regresję-liniową-wieloraką-jako-metodę-uczenia-nadzorowanego.-omów-składniki-modelu-znaczenie-parametrów-oraz-sens-minimalizacji-błędu-w-procesie-estymacji.">4. Przedstaw regresję liniową wieloraką jako metodę uczenia nadzorowanego. Omów składniki modelu, znaczenie parametrów oraz sens minimalizacji błędu w procesie estymacji.</a></li>
+  <li><a href="#omów-interpretację-modeli-liniowych-oraz-ich-ograniczenia.-wyjaśnij-kiedy-współczynniki-modelu-są-informatywne-a-kiedy-interpretacja-staje-się-problematyczna." id="toc-omów-interpretację-modeli-liniowych-oraz-ich-ograniczenia.-wyjaśnij-kiedy-współczynniki-modelu-są-informatywne-a-kiedy-interpretacja-staje-się-problematyczna." class="nav-link" data-scroll-target="#omów-interpretację-modeli-liniowych-oraz-ich-ograniczenia.-wyjaśnij-kiedy-współczynniki-modelu-są-informatywne-a-kiedy-interpretacja-staje-się-problematyczna.">5. Omów interpretację modeli liniowych oraz ich ograniczenia. Wyjaśnij, kiedy współczynniki modelu są informatywne, a kiedy interpretacja staje się problematyczna.</a></li>
+  <li><a href="#omów-interpretację-modeli-liniowych-oraz-ich-ograniczenia.-wyjaśnij-kiedy-współczynniki-modelu-są-informatywne-a-kiedy-interpretacja-staje-się-problematyczna.-1" id="toc-omów-interpretację-modeli-liniowych-oraz-ich-ograniczenia.-wyjaśnij-kiedy-współczynniki-modelu-są-informatywne-a-kiedy-interpretacja-staje-się-problematyczna.-1" class="nav-link" data-scroll-target="#omów-interpretację-modeli-liniowych-oraz-ich-ograniczenia.-wyjaśnij-kiedy-współczynniki-modelu-są-informatywne-a-kiedy-interpretacja-staje-się-problematyczna.-1">5. Omów interpretację modeli liniowych oraz ich ograniczenia. Wyjaśnij, kiedy współczynniki modelu są informatywne, a kiedy interpretacja staje się problematyczna.</a></li>
+  <li><a href="#na-czym-polega-regularyzacja-modeli-liniowych-porównaj-ridge-lasso-i-elastic-net-z-punktu-widzenia-celu-stosowania-wpływu-na-współczynniki-oraz-praktycznych-zastosowań." id="toc-na-czym-polega-regularyzacja-modeli-liniowych-porównaj-ridge-lasso-i-elastic-net-z-punktu-widzenia-celu-stosowania-wpływu-na-współczynniki-oraz-praktycznych-zastosowań." class="nav-link" data-scroll-target="#na-czym-polega-regularyzacja-modeli-liniowych-porównaj-ridge-lasso-i-elastic-net-z-punktu-widzenia-celu-stosowania-wpływu-na-współczynniki-oraz-praktycznych-zastosowań.">6. Na czym polega regularyzacja modeli liniowych? Porównaj Ridge, LASSO i Elastic Net z punktu widzenia celu stosowania, wpływu na współczynniki oraz praktycznych zastosowań.</a></li>
+  <li><a href="#omów-regresję-logistyczną-jako-model-klasyfikacyjny.-wyjaśnij-związek-między-liniowym-predyktorem-prawdopodobieństwem-przynależności-do-klasy-i-granicą-decyzyjną." id="toc-omów-regresję-logistyczną-jako-model-klasyfikacyjny.-wyjaśnij-związek-między-liniowym-predyktorem-prawdopodobieństwem-przynależności-do-klasy-i-granicą-decyzyjną." class="nav-link" data-scroll-target="#omów-regresję-logistyczną-jako-model-klasyfikacyjny.-wyjaśnij-związek-między-liniowym-predyktorem-prawdopodobieństwem-przynależności-do-klasy-i-granicą-decyzyjną.">7. Omów regresję logistyczną jako model klasyfikacyjny. Wyjaśnij związek między liniowym predyktorem, prawdopodobieństwem przynależności do klasy i granicą decyzyjną.</a></li>
+  <li><a href="#porównaj-lda-qda-i-regresję-logistyczną-jako-metody-klasyfikacji.-zwróć-uwagę-na-różnice-w-założeniach-sposobie-modelowania-oraz-typowych-sytuacjach-w-których-każda-z-tych-metod-może-być-uzasadniona." id="toc-porównaj-lda-qda-i-regresję-logistyczną-jako-metody-klasyfikacji.-zwróć-uwagę-na-różnice-w-założeniach-sposobie-modelowania-oraz-typowych-sytuacjach-w-których-każda-z-tych-metod-może-być-uzasadniona." class="nav-link" data-scroll-target="#porównaj-lda-qda-i-regresję-logistyczną-jako-metody-klasyfikacji.-zwróć-uwagę-na-różnice-w-założeniach-sposobie-modelowania-oraz-typowych-sytuacjach-w-których-każda-z-tych-metod-może-być-uzasadniona.">8. Porównaj LDA, QDA i regresję logistyczną jako metody klasyfikacji. Zwróć uwagę na różnice w założeniach, sposobie modelowania oraz typowych sytuacjach, w których każda z tych metod może być uzasadniona.</a></li>
+  <li><a href="#z-czego-składa-się-drzewo-decyzyjne-opisz-funkcje-poszczególnych-elementów-konstrukcji-drzewa-oraz-sposób-w-jaki-prowadzą-one-do-decyzji-klasyfikacyjnej-lub-regresyjnej." id="toc-z-czego-składa-się-drzewo-decyzyjne-opisz-funkcje-poszczególnych-elementów-konstrukcji-drzewa-oraz-sposób-w-jaki-prowadzą-one-do-decyzji-klasyfikacyjnej-lub-regresyjnej." class="nav-link" data-scroll-target="#z-czego-składa-się-drzewo-decyzyjne-opisz-funkcje-poszczególnych-elementów-konstrukcji-drzewa-oraz-sposób-w-jaki-prowadzą-one-do-decyzji-klasyfikacyjnej-lub-regresyjnej.">9. Z czego składa się drzewo decyzyjne? Opisz funkcje poszczególnych elementów konstrukcji drzewa oraz sposób, w jaki prowadzą one do decyzji klasyfikacyjnej lub regresyjnej.</a></li>
+  <li><a href="#jak-wyznacza-się-podziały-w-drzewach-decyzyjnych-dla-klasyfikacji-i-regresji-omów-kryteria-podziału-oraz-różnice-między-pracą-na-cechach-ciągłych-i-kategorycznych." id="toc-jak-wyznacza-się-podziały-w-drzewach-decyzyjnych-dla-klasyfikacji-i-regresji-omów-kryteria-podziału-oraz-różnice-między-pracą-na-cechach-ciągłych-i-kategorycznych." class="nav-link" data-scroll-target="#jak-wyznacza-się-podziały-w-drzewach-decyzyjnych-dla-klasyfikacji-i-regresji-omów-kryteria-podziału-oraz-różnice-między-pracą-na-cechach-ciągłych-i-kategorycznych.">10. Jak wyznacza się podziały w drzewach decyzyjnych dla klasyfikacji i regresji? Omów kryteria podziału oraz różnice między pracą na cechach ciągłych i kategorycznych.</a></li>
+  <li><a href="#w-jaki-sposób-kontroluje-się-złożoność-drzewa-decyzyjnego-omów-sens-reguł-stopu-pre-pruningu-i-post-pruningu-oraz-ich-wpływ-na-przeuczenie-i-uogólnianie-modelu." id="toc-w-jaki-sposób-kontroluje-się-złożoność-drzewa-decyzyjnego-omów-sens-reguł-stopu-pre-pruningu-i-post-pruningu-oraz-ich-wpływ-na-przeuczenie-i-uogólnianie-modelu." class="nav-link" data-scroll-target="#w-jaki-sposób-kontroluje-się-złożoność-drzewa-decyzyjnego-omów-sens-reguł-stopu-pre-pruningu-i-post-pruningu-oraz-ich-wpływ-na-przeuczenie-i-uogólnianie-modelu.">11. W jaki sposób kontroluje się złożoność drzewa decyzyjnego? Omów sens reguł stopu, pre-pruningu i post-pruningu oraz ich wpływ na przeuczenie i uogólnianie modelu.</a></li>
+  <li><a href="#omów-zalety-i-ograniczenia-pojedynczych-drzew-decyzyjnych.-w-jakich-sytuacjach-drzewa-są-szczególnie-użyteczne-a-kiedy-ich-własności-stają-się-problemem" id="toc-omów-zalety-i-ograniczenia-pojedynczych-drzew-decyzyjnych.-w-jakich-sytuacjach-drzewa-są-szczególnie-użyteczne-a-kiedy-ich-własności-stają-się-problemem" class="nav-link" data-scroll-target="#omów-zalety-i-ograniczenia-pojedynczych-drzew-decyzyjnych.-w-jakich-sytuacjach-drzewa-są-szczególnie-użyteczne-a-kiedy-ich-własności-stają-się-problemem">12. Omów zalety i ograniczenia pojedynczych drzew decyzyjnych. W jakich sytuacjach drzewa są szczególnie użyteczne, a kiedy ich własności stają się problemem?</a></li>
+  <li><a href="#na-czym-polega-bagging-i-dlaczego-bootstrap-jest-w-nim-tak-istotny-wyjaśnij-jak-zespołowanie-wielu-drzew-wpływa-na-stabilność-i-wariancję-predykcji." id="toc-na-czym-polega-bagging-i-dlaczego-bootstrap-jest-w-nim-tak-istotny-wyjaśnij-jak-zespołowanie-wielu-drzew-wpływa-na-stabilność-i-wariancję-predykcji." class="nav-link" data-scroll-target="#na-czym-polega-bagging-i-dlaczego-bootstrap-jest-w-nim-tak-istotny-wyjaśnij-jak-zespołowanie-wielu-drzew-wpływa-na-stabilność-i-wariancję-predykcji.">13. Na czym polega bagging i dlaczego bootstrap jest w nim tak istotny? Wyjaśnij, jak zespołowanie wielu drzew wpływa na stabilność i wariancję predykcji.</a></li>
+  <li><a href="#czym-las-losowy-różni-się-od-zwykłego-baggingu-drzew-omów-rolę-losowania-cech-mechanizm-budowy-modelu-oraz-skutki-tego-podejścia-dla-jakości-i-różnorodności-drzew-w-zespole." id="toc-czym-las-losowy-różni-się-od-zwykłego-baggingu-drzew-omów-rolę-losowania-cech-mechanizm-budowy-modelu-oraz-skutki-tego-podejścia-dla-jakości-i-różnorodności-drzew-w-zespole." class="nav-link" data-scroll-target="#czym-las-losowy-różni-się-od-zwykłego-baggingu-drzew-omów-rolę-losowania-cech-mechanizm-budowy-modelu-oraz-skutki-tego-podejścia-dla-jakości-i-różnorodności-drzew-w-zespole.">14. Czym las losowy różni się od zwykłego baggingu drzew? Omów rolę losowania cech, mechanizm budowy modelu oraz skutki tego podejścia dla jakości i różnorodności drzew w zespole.</a></li>
+  <li><a href="#omów-najważniejsze-hiperparametry-lasów-losowych-i-innych-zespołów-drzewiastych.-wyjaśnij-jak-wpływają-one-na-złożoność-modelu-przeuczenie-i-koszt-obliczeniowy." id="toc-omów-najważniejsze-hiperparametry-lasów-losowych-i-innych-zespołów-drzewiastych.-wyjaśnij-jak-wpływają-one-na-złożoność-modelu-przeuczenie-i-koszt-obliczeniowy." class="nav-link" data-scroll-target="#omów-najważniejsze-hiperparametry-lasów-losowych-i-innych-zespołów-drzewiastych.-wyjaśnij-jak-wpływają-one-na-złożoność-modelu-przeuczenie-i-koszt-obliczeniowy.">15. Omów najważniejsze hiperparametry lasów losowych i innych zespołów drzewiastych. Wyjaśnij, jak wpływają one na złożoność modelu, przeuczenie i koszt obliczeniowy.</a></li>
+  <li><a href="#na-czym-polega-boosting-jako-model-addytywny-uczący-się-na-błędach-poprzednich-modeli-porównaj-ogólną-ideę-adaboost-i-gradient-boostingu." id="toc-na-czym-polega-boosting-jako-model-addytywny-uczący-się-na-błędach-poprzednich-modeli-porównaj-ogólną-ideę-adaboost-i-gradient-boostingu." class="nav-link" data-scroll-target="#na-czym-polega-boosting-jako-model-addytywny-uczący-się-na-błędach-poprzednich-modeli-porównaj-ogólną-ideę-adaboost-i-gradient-boostingu.">16. Na czym polega boosting jako model addytywny uczący się na błędach poprzednich modeli? Porównaj ogólną ideę AdaBoost i gradient boostingu.</a></li>
+  <li><a href="#porównaj-xgboost-lightgbm-i-catboost-jako-nowoczesne-odmiany-boostingu-drzew.-omów-ich-najważniejsze-pomysły-algorytmiczne-sposób-pracy-z-danymi-oraz-typowe-przewagi-praktyczne." id="toc-porównaj-xgboost-lightgbm-i-catboost-jako-nowoczesne-odmiany-boostingu-drzew.-omów-ich-najważniejsze-pomysły-algorytmiczne-sposób-pracy-z-danymi-oraz-typowe-przewagi-praktyczne." class="nav-link" data-scroll-target="#porównaj-xgboost-lightgbm-i-catboost-jako-nowoczesne-odmiany-boostingu-drzew.-omów-ich-najważniejsze-pomysły-algorytmiczne-sposób-pracy-z-danymi-oraz-typowe-przewagi-praktyczne.">17. Porównaj XGBoost, LightGBM i CatBoost jako nowoczesne odmiany boostingu drzew. Omów ich najważniejsze pomysły algorytmiczne, sposób pracy z danymi oraz typowe przewagi praktyczne.</a></li>
+  <li><a href="#wyjaśnij-związek-między-twierdzeniem-bayesa-estymacją-metodą-największej-wiarygodności-i-estymacją-map.-omów-rolę-informacji-a-priori-w-uczeniu-modeli-probabilistycznych." id="toc-wyjaśnij-związek-między-twierdzeniem-bayesa-estymacją-metodą-największej-wiarygodności-i-estymacją-map.-omów-rolę-informacji-a-priori-w-uczeniu-modeli-probabilistycznych." class="nav-link" data-scroll-target="#wyjaśnij-związek-między-twierdzeniem-bayesa-estymacją-metodą-największej-wiarygodności-i-estymacją-map.-omów-rolę-informacji-a-priori-w-uczeniu-modeli-probabilistycznych.">18. Wyjaśnij związek między twierdzeniem Bayesa, estymacją metodą największej wiarygodności i estymacją MAP. Omów rolę informacji a priori w uczeniu modeli probabilistycznych.</a></li>
+  <li><a href="#omów-założenia-i-odmiany-naiwnego-bayesa.-porównaj-warianty-multinomial-bernoulli-i-gaussian-z-punktu-widzenia-typu-danych-modelowanych-rozkładów-i-obszarów-zastosowań." id="toc-omów-założenia-i-odmiany-naiwnego-bayesa.-porównaj-warianty-multinomial-bernoulli-i-gaussian-z-punktu-widzenia-typu-danych-modelowanych-rozkładów-i-obszarów-zastosowań." class="nav-link" data-scroll-target="#omów-założenia-i-odmiany-naiwnego-bayesa.-porównaj-warianty-multinomial-bernoulli-i-gaussian-z-punktu-widzenia-typu-danych-modelowanych-rozkładów-i-obszarów-zastosowań.">19. Omów założenia i odmiany naiwnego Bayesa. Porównaj warianty Multinomial, Bernoulli i Gaussian z punktu widzenia typu danych, modelowanych rozkładów i obszarów zastosowań.</a></li>
+  <li><a href="#przedstaw-metodę-k-nn-jako-podejście-oparte-na-podobieństwie.-omów-rolę-metryki-odległości-parametru-k-kompromisu-bias-variance-oraz-główne-zalety-i-wady-tej-metody." id="toc-przedstaw-metodę-k-nn-jako-podejście-oparte-na-podobieństwie.-omów-rolę-metryki-odległości-parametru-k-kompromisu-bias-variance-oraz-główne-zalety-i-wady-tej-metody." class="nav-link" data-scroll-target="#przedstaw-metodę-k-nn-jako-podejście-oparte-na-podobieństwie.-omów-rolę-metryki-odległości-parametru-k-kompromisu-bias-variance-oraz-główne-zalety-i-wady-tej-metody.">20. Przedstaw metodę k-NN jako podejście oparte na podobieństwie. Omów rolę metryki odległości, parametru (k), kompromisu bias-variance oraz główne zalety i wady tej metody.</a></li>
+  <li><a href="#na-czym-polega-regresja-sklejona-i-czym-splajn-różni-się-od-zwykłej-regresji-wielomianowej-omów-ideę-aproksymacji-kawałkami-oraz-znaczenie-gładkiego-łączenia-funkcji." id="toc-na-czym-polega-regresja-sklejona-i-czym-splajn-różni-się-od-zwykłej-regresji-wielomianowej-omów-ideę-aproksymacji-kawałkami-oraz-znaczenie-gładkiego-łączenia-funkcji." class="nav-link" data-scroll-target="#na-czym-polega-regresja-sklejona-i-czym-splajn-różni-się-od-zwykłej-regresji-wielomianowej-omów-ideę-aproksymacji-kawałkami-oraz-znaczenie-gładkiego-łączenia-funkcji.">21. Na czym polega regresja sklejona i czym splajn różni się od zwykłej regresji wielomianowej? Omów ideę aproksymacji kawałkami oraz znaczenie gładkiego łączenia funkcji.</a></li>
+  <li><a href="#wyjaśnij-rolę-węzłów-warunków-gładkości-i-elastyczności-modelu-w-metodach-splajnowych.-jak-dobór-tych-elementów-wpływa-na-niedouczenie-przeuczenie-i-interpretację-modelu" id="toc-wyjaśnij-rolę-węzłów-warunków-gładkości-i-elastyczności-modelu-w-metodach-splajnowych.-jak-dobór-tych-elementów-wpływa-na-niedouczenie-przeuczenie-i-interpretację-modelu" class="nav-link" data-scroll-target="#wyjaśnij-rolę-węzłów-warunków-gładkości-i-elastyczności-modelu-w-metodach-splajnowych.-jak-dobór-tych-elementów-wpływa-na-niedouczenie-przeuczenie-i-interpretację-modelu">22. Wyjaśnij rolę węzłów, warunków gładkości i elastyczności modelu w metodach splajnowych. Jak dobór tych elementów wpływa na niedouczenie, przeuczenie i interpretację modelu?</a></li>
+  <li><a href="#przedstaw-ideę-modeli-gam.-omów-ich-strukturę-addytywną-interpretację-efektów-cząstkowych-oraz-najważniejsze-zalety-i-ograniczenia-względem-prostszych-i-bardziej-sztywnych-modeli." id="toc-przedstaw-ideę-modeli-gam.-omów-ich-strukturę-addytywną-interpretację-efektów-cząstkowych-oraz-najważniejsze-zalety-i-ograniczenia-względem-prostszych-i-bardziej-sztywnych-modeli." class="nav-link" data-scroll-target="#przedstaw-ideę-modeli-gam.-omów-ich-strukturę-addytywną-interpretację-efektów-cząstkowych-oraz-najważniejsze-zalety-i-ograniczenia-względem-prostszych-i-bardziej-sztywnych-modeli.">23. Przedstaw ideę modeli GAM. Omów ich strukturę addytywną, interpretację efektów cząstkowych oraz najważniejsze zalety i ograniczenia względem prostszych i bardziej sztywnych modeli.</a></li>
+  <li><a href="#wyjaśnij-ideę-maksymalnego-marginesu-w-liniowo-separowalnym-svm.-omów-znaczenie-hiperpłaszczyzny-decyzyjnej-marginesu-oraz-wektorów-nośnych." id="toc-wyjaśnij-ideę-maksymalnego-marginesu-w-liniowo-separowalnym-svm.-omów-znaczenie-hiperpłaszczyzny-decyzyjnej-marginesu-oraz-wektorów-nośnych." class="nav-link" data-scroll-target="#wyjaśnij-ideę-maksymalnego-marginesu-w-liniowo-separowalnym-svm.-omów-znaczenie-hiperpłaszczyzny-decyzyjnej-marginesu-oraz-wektorów-nośnych.">24. Wyjaśnij ideę maksymalnego marginesu w liniowo separowalnym SVM. Omów znaczenie hiperpłaszczyzny decyzyjnej, marginesu oraz wektorów nośnych.</a></li>
+  <li><a href="#na-czym-polega-miękki-margines-w-svm-omów-rolę-parametru-c-i-wyjaśnij-jak-wpływa-on-na-kompromis-między-regularizacją-a-dopasowaniem-do-danych-treningowych." id="toc-na-czym-polega-miękki-margines-w-svm-omów-rolę-parametru-c-i-wyjaśnij-jak-wpływa-on-na-kompromis-między-regularizacją-a-dopasowaniem-do-danych-treningowych." class="nav-link" data-scroll-target="#na-czym-polega-miękki-margines-w-svm-omów-rolę-parametru-c-i-wyjaśnij-jak-wpływa-on-na-kompromis-między-regularizacją-a-dopasowaniem-do-danych-treningowych.">25. Na czym polega miękki margines w SVM? Omów rolę parametru (C) i wyjaśnij, jak wpływa on na kompromis między regularizacją a dopasowaniem do danych treningowych.</a></li>
+  <li><a href="#na-czym-polega-sztuczka-jądrowa-w-svm-porównaj-intuicję-i-zastosowania-jąder-liniowego-wielomianowego-i-rbf-a-następnie-odnieś-się-do-idei-regresyjnego-wariantu-svr." id="toc-na-czym-polega-sztuczka-jądrowa-w-svm-porównaj-intuicję-i-zastosowania-jąder-liniowego-wielomianowego-i-rbf-a-następnie-odnieś-się-do-idei-regresyjnego-wariantu-svr." class="nav-link" data-scroll-target="#na-czym-polega-sztuczka-jądrowa-w-svm-porównaj-intuicję-i-zastosowania-jąder-liniowego-wielomianowego-i-rbf-a-następnie-odnieś-się-do-idei-regresyjnego-wariantu-svr.">26. Na czym polega sztuczka jądrowa w SVM? Porównaj intuicję i zastosowania jąder liniowego, wielomianowego i RBF, a następnie odnieś się do idei regresyjnego wariantu SVR.</a></li>
+  <li><a href="#przedstaw-uczenie-ze-wzmocnieniem-jako-odmienny-paradygmat-uczenia-maszynowego.-omów-elementy-procesu-decyzyjnego-markowa-oraz-różnice-między-tym-podejściem-a-klasycznym-uczeniem-nadzorowanym." id="toc-przedstaw-uczenie-ze-wzmocnieniem-jako-odmienny-paradygmat-uczenia-maszynowego.-omów-elementy-procesu-decyzyjnego-markowa-oraz-różnice-między-tym-podejściem-a-klasycznym-uczeniem-nadzorowanym." class="nav-link" data-scroll-target="#przedstaw-uczenie-ze-wzmocnieniem-jako-odmienny-paradygmat-uczenia-maszynowego.-omów-elementy-procesu-decyzyjnego-markowa-oraz-różnice-między-tym-podejściem-a-klasycznym-uczeniem-nadzorowanym.">27. Przedstaw uczenie ze wzmocnieniem jako odmienny paradygmat uczenia maszynowego. Omów elementy procesu decyzyjnego Markowa oraz różnice między tym podejściem a klasycznym uczeniem nadzorowanym.</a></li>
+  <li><a href="#omów-rolę-funkcji-wartości-równań-bellmana-i-aktualizacji-w-q-learningu.-wyjaśnij-dlaczego-problem-eksploracji-i-eksploatacji-jest-w-uczeniu-ze-wzmocnieniem-kluczowy." id="toc-omów-rolę-funkcji-wartości-równań-bellmana-i-aktualizacji-w-q-learningu.-wyjaśnij-dlaczego-problem-eksploracji-i-eksploatacji-jest-w-uczeniu-ze-wzmocnieniem-kluczowy." class="nav-link" data-scroll-target="#omów-rolę-funkcji-wartości-równań-bellmana-i-aktualizacji-w-q-learningu.-wyjaśnij-dlaczego-problem-eksploracji-i-eksploatacji-jest-w-uczeniu-ze-wzmocnieniem-kluczowy.">28. Omów rolę funkcji wartości, równań Bellmana i aktualizacji w Q-learningu. Wyjaśnij, dlaczego problem eksploracji i eksploatacji jest w uczeniu ze wzmocnieniem kluczowy.</a></li>
+  <li><a href="#omów-analizę-koszykową-i-reguły-asocjacyjne.-przedstaw-sposób-formalizacji-danych-transakcyjnych-oraz-ideę-wyszukiwania-częstych-zbiorów-i-reguł-metodami-apriori-oraz-fp-growth." id="toc-omów-analizę-koszykową-i-reguły-asocjacyjne.-przedstaw-sposób-formalizacji-danych-transakcyjnych-oraz-ideę-wyszukiwania-częstych-zbiorów-i-reguł-metodami-apriori-oraz-fp-growth." class="nav-link" data-scroll-target="#omów-analizę-koszykową-i-reguły-asocjacyjne.-przedstaw-sposób-formalizacji-danych-transakcyjnych-oraz-ideę-wyszukiwania-częstych-zbiorów-i-reguł-metodami-apriori-oraz-fp-growth.">29. Omów analizę koszykową i reguły asocjacyjne. Przedstaw sposób formalizacji danych transakcyjnych oraz ideę wyszukiwania częstych zbiorów i reguł metodami Apriori oraz FP-Growth.</a></li>
+  <li><a href="#omów-problem-wykrywania-anomalii.-przedstaw-typy-anomalii-trudności-ich-formalizacji-oraz-porównaj-intuicję-działania-metod-lof-i-isolation-forest." id="toc-omów-problem-wykrywania-anomalii.-przedstaw-typy-anomalii-trudności-ich-formalizacji-oraz-porównaj-intuicję-działania-metod-lof-i-isolation-forest." class="nav-link" data-scroll-target="#omów-problem-wykrywania-anomalii.-przedstaw-typy-anomalii-trudności-ich-formalizacji-oraz-porównaj-intuicję-działania-metod-lof-i-isolation-forest.">30. Omów problem wykrywania anomalii. Przedstaw typy anomalii, trudności ich formalizacji oraz porównaj intuicję działania metod LOF i Isolation Forest.</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Eksploracja danych - abstrakt</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Adam Kołodziejczak </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 22, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="egzamin-ustny-z-eksploracji-danych" class="level1">
+<h1>Egzamin ustny z Eksploracji danych</h1>
+<section id="omów-rolę-przygotowania-danych-w-procesie-eksploracji-danych-i-uczenia-maszynowego.-przedstaw-jakie-decyzje-podejmuje-się-na-etapie-importu-walidacji-typów-i-wstępnego-czyszczenia-danych-oraz-dlaczego-wpływają-one-na-dalsze-modelowanie." class="level2">
+<h2 class="anchored" data-anchor-id="omów-rolę-przygotowania-danych-w-procesie-eksploracji-danych-i-uczenia-maszynowego.-przedstaw-jakie-decyzje-podejmuje-się-na-etapie-importu-walidacji-typów-i-wstępnego-czyszczenia-danych-oraz-dlaczego-wpływają-one-na-dalsze-modelowanie.">1. Omów rolę przygotowania danych w procesie eksploracji danych i uczenia maszynowego. Przedstaw, jakie decyzje podejmuje się na etapie importu, walidacji typów i wstępnego czyszczenia danych oraz dlaczego wpływają one na dalsze modelowanie.</h2>
+<ul>
+<li><strong>Rola przygotowania danych:</strong> Jakość wejściowych informacji bezpośrednio determinuje jakość predykcji; nawet najlepszy algorytm zrujnuje wnioski, jeśli otrzyma błędne dane.</li>
+<li><strong>Decyzje przy imporcie:</strong> Świadome, ręczne definiowanie kodowania znaków, separatorów i niestandardowych tagów braków (np. “NA”, “null”) skutecznie blokuje nieświadome gubienie lub psucie rekordów.</li>
+<li><strong>Walidacja typów:</strong> Zablokowanie automatycznego zgadywania formatów ratuje krytyczne dane, np. rzutowanie identyfikatorów na tekst zachowuje wiodące zera, a jawne parsowanie dat otwiera drogę do inżynierii cech czasowych.</li>
+<li><strong>Wstępne czyszczenie:</strong> Normalizacja nazw kolumn do formatu <code>snake_case</code> (małe litery, brak spacji) to nie tylko kosmetyka, ale mechanizm uodparniający kod produkcyjny na błędy składniowe i awarie w potokach przetwarzania.</li>
+</ul>
+</section>
+<section id="jak-rozpoznaje-się-i-interpretuje-obserwacje-odstające-oraz-braki-danych-omów-najważniejsze-strategie-postępowania-z-takimi-przypadkami-i-ich-konsekwencje-dla-analizy-oraz-jakości-modelu." class="level2">
+<h2 class="anchored" data-anchor-id="jak-rozpoznaje-się-i-interpretuje-obserwacje-odstające-oraz-braki-danych-omów-najważniejsze-strategie-postępowania-z-takimi-przypadkami-i-ich-konsekwencje-dla-analizy-oraz-jakości-modelu.">2. Jak rozpoznaje się i interpretuje obserwacje odstające oraz braki danych? Omów najważniejsze strategie postępowania z takimi przypadkami i ich konsekwencje dla analizy oraz jakości modelu.</h2>
+<ul>
+<li><strong>Rozpoznawanie:</strong> Skrajności jednowymiarowe wyłapuje się regułą IQR lub z-score uodpornionym na odchylenia (opartym o MAD). Anomalie wielowymiarowe bada się m.in. odległością Mahalanobisa lub izoluje drzewami (Isolation Forest).</li>
+<li><strong>Interpretacja:</strong> Braki oraz outliery to rzadko zwykłe luki – często niosą cenną merytoryczną informację o procesie, np. opisują zamożnego klienta VIP lub sygnalizują etap, w którym użytkownik porzucił ankietę.</li>
+<li><strong>Strategie (outliery):</strong> Błędy naruszające logikę domeny (np. wiek 120) usuwamy; naturalne ekstrema biznesowe systematycznie “gasimy” logarytmem, przycinamy percentylami (winsoryzacja) lub dodajemy obok binarną flagę nietypowości.</li>
+<li><strong>Strategie (braki):</strong> Wartości liczbowe łata się medianą lub iteracyjnymi modelami np. MICE. Najpotężniejszą strategią jest jednoczesne doklejenie binarnej flagi braku (missing indicator), dzięki której model aktywnie uczy się wzorców z faktu ukrycia informacji.</li>
+<li><strong>Konsekwencje:</strong> Modele oparte na dystansach (k-NN) oraz marginesach (SVM) gwałtownie psują się pod wpływem outlierów, podczas gdy algorytmy drzewiaste wykazują na nie naturalną obojętność.</li>
+</ul>
+</section>
+<section id="na-czym-polegają-eda-preprocessing-i-inżynieria-cech-w-danych-tabelarycznych-omów-rolę-kodowania-zmiennych-kategorycznych-skalowania-transformacji-oraz-konstrukcji-nowych-cech." class="level2">
+<h2 class="anchored" data-anchor-id="na-czym-polegają-eda-preprocessing-i-inżynieria-cech-w-danych-tabelarycznych-omów-rolę-kodowania-zmiennych-kategorycznych-skalowania-transformacji-oraz-konstrukcji-nowych-cech.">3. Na czym polegają EDA, preprocessing i inżynieria cech w danych tabelarycznych? Omów rolę kodowania zmiennych kategorycznych, skalowania, transformacji oraz konstrukcji nowych cech.</h2>
+<ul>
+<li><strong>Rozdział ról:</strong> EDA służy bezinwazyjnej diagnozie i wizualizacji problemów z danymi. Preprocessing to techniczne przygotowanie macierzy (w zamkniętych potokach) pod sztywne wymogi algorytmów. Inżynieria cech to z kolei aktywna budowa nowych, silniejszych sygnałów predykcyjnych.</li>
+<li><strong>Kodowanie kategorii:</strong> Konwertuje grupy tekstowe w zrozumiałe dla matematyki wektory, np. One-Hot Encoding rozbija jedną kolumnę na zestaw niezależnych kolumn binarnych.</li>
+<li><strong>Skalowanie zmiennych:</strong> Wymusza jednakowy rozmiar osi liczbowych; jest to bezwzględny wymóg dla metod odległościowych (k-NN, SVM) i regularyzacji, gwarantujący, że ogromny nominał jednej cechy nie pochłonie decyzji całego modelu.</li>
+<li><strong>Transformacje rozkładu:</strong> Logarytmowanie rozkładów silnie prawoskośnych sprowadza ekstremalne odchylenia do relacji względnych, co ułatwia modelom liniowym wyłapanie logicznego trendu.</li>
+<li><strong>Konstrukcja nowych cech:</strong> Łączenie danych kalendarzowych w cechy upływu czasu (recency) czy wyliczanie wskaźników intensywności uwypukla przed modelem surowe reguły behawioralne.</li>
+</ul>
+</section>
+<section id="przedstaw-regresję-liniową-wieloraką-jako-metodę-uczenia-nadzorowanego.-omów-składniki-modelu-znaczenie-parametrów-oraz-sens-minimalizacji-błędu-w-procesie-estymacji." class="level2">
+<h2 class="anchored" data-anchor-id="przedstaw-regresję-liniową-wieloraką-jako-metodę-uczenia-nadzorowanego.-omów-składniki-modelu-znaczenie-parametrów-oraz-sens-minimalizacji-błędu-w-procesie-estymacji.">4. Przedstaw regresję liniową wieloraką jako metodę uczenia nadzorowanego. Omów składniki modelu, znaczenie parametrów oraz sens minimalizacji błędu w procesie estymacji.</h2>
+<ul>
+<li><strong>Podejście nadzorowane:</strong> System uczy się na dostarczonych, prawidłowo oetykietowanych parach danych, kompresując wiedzę do pojedynczego, liniowego równania, które odtwarza ciągłą zmienną docelową.</li>
+<li><strong>Składniki modelu:</strong> Kombinacja wyrazu wolnego (punktu startowego/odcięcia), zestawu wektorów wyestymowanych wag dopasowanych do każdej cechy oraz marginesu na nieunikniony szum losowy.</li>
+<li><strong>Znaczenie parametrów:</strong> Każda wyliczona waga precyzyjnie ustala kierunek oraz fizyczną siłę, z jaką jednostkowa zmiana konkretnej cechy “pcha” w górę lub w dół wynik predykcji.</li>
+<li><strong>Sens minimalizacji błędu:</strong> Proces estymacji szuka i ustala wagi w taki sposób, aby zagwarantować najniższą sumę kwadratów odchyleń predykcji od rzeczywistych wartości na zbiorze treningowym (MSE), co zapewnia najlepszy kompromis dopasowania.</li>
+</ul>
+</section>
+<section id="omów-interpretację-modeli-liniowych-oraz-ich-ograniczenia.-wyjaśnij-kiedy-współczynniki-modelu-są-informatywne-a-kiedy-interpretacja-staje-się-problematyczna." class="level2">
+<h2 class="anchored" data-anchor-id="omów-interpretację-modeli-liniowych-oraz-ich-ograniczenia.-wyjaśnij-kiedy-współczynniki-modelu-są-informatywne-a-kiedy-interpretacja-staje-się-problematyczna.">5. Omów interpretację modeli liniowych oraz ich ograniczenia. Wyjaśnij, kiedy współczynniki modelu są informatywne, a kiedy interpretacja staje się problematyczna.</h2>
+<ul>
+<li><strong>Kiedy są informatywne:</strong> Działają jak “biała skrzynka” dająca natychmiastowe wnioski o sile badanych zjawisk, ale ich czytelność jest zagwarantowana wyłącznie po uprzednim, rygorystycznym ustandaryzowaniu cech.</li>
+<li><strong>Zaburzenia skali:</strong> Jeśli nie użyto standaryzacji, zderzenie zmiennych ułamkowych z gigantycznymi nominałami nienaturalnie wywinduje mniejsze liczby, całkowicie fałszując rzetelną wielkość parametru analitycznego.</li>
+<li><strong>Współliniowość (utrata stabilności):</strong> Kiedy zjawiska użyte w modelu dublują w tle ten sam sygnał, algorytm wpada w matematyczną panikę – estymator drastycznie traci stabilność numeryczną, silnie uzależniając wagę od losowego ułożenia konkretnej próby treningowej.</li>
+<li><strong>Sztywność strukturalna:</strong> Model bezwzględnie wciska wszystkie relacje w ramy prostej addytywnej linii, programowo ignorując wszelkie naturalne nieliniowości oraz interakcje pomiędzy predyktorami.</li>
+</ul>
+</section>
+<section id="omów-interpretację-modeli-liniowych-oraz-ich-ograniczenia.-wyjaśnij-kiedy-współczynniki-modelu-są-informatywne-a-kiedy-interpretacja-staje-się-problematyczna.-1" class="level2">
+<h2 class="anchored" data-anchor-id="omów-interpretację-modeli-liniowych-oraz-ich-ograniczenia.-wyjaśnij-kiedy-współczynniki-modelu-są-informatywne-a-kiedy-interpretacja-staje-się-problematyczna.-1">5. Omów interpretację modeli liniowych oraz ich ograniczenia. Wyjaśnij, kiedy współczynniki modelu są informatywne, a kiedy interpretacja staje się problematyczna.</h2>
+<ul>
+<li><strong>Kiedy wagi są informatywne:</strong> Modele liniowe zachowują się jak “biała skrzynka”. Jeśli rygorystycznie ustandaryzujemy cechy przed treningiem, przypisane im współczynniki bezpośrednio wskażą nam kierunek (wzrost/spadek) oraz realną wagę zjawiska.</li>
+<li><strong>Destrukcyjny problem skali:</strong> Jeśli zestawimy zmienne w różnych jednostkach (np. ułamkowe odsetki z ogromnymi wartościami finansowymi), model wymusi nienaturalnie potężne wagi dla najmniejszych nominałów, co sztucznie zafałszuje analityczny sens takiego predyktora.</li>
+<li><strong>Współliniowość i utrata stabilności:</strong> Kiedy zasilimy model zmiennymi, które mocno dublują swoją informację, algorytm “głupieje”. Estymator ulega destabilizacji numerycznej, przez co wagi stają się chaotyczne i tracą zdolność wiarygodnego uchwycenia relacji.</li>
+<li><strong>Sztywne ograniczenia założeń:</strong> Model liniowy wpycha całą matematykę świata w ramy “prostej rury” (addytwność funkcji). Całkowicie omija wygięcia, nieliniowe efekty progowe czy też naturalnie występujące interakcje pomiędzy badanymi predyktorami.</li>
+</ul>
+</section>
+<section id="na-czym-polega-regularyzacja-modeli-liniowych-porównaj-ridge-lasso-i-elastic-net-z-punktu-widzenia-celu-stosowania-wpływu-na-współczynniki-oraz-praktycznych-zastosowań." class="level2">
+<h2 class="anchored" data-anchor-id="na-czym-polega-regularyzacja-modeli-liniowych-porównaj-ridge-lasso-i-elastic-net-z-punktu-widzenia-celu-stosowania-wpływu-na-współczynniki-oraz-praktycznych-zastosowań.">6. Na czym polega regularyzacja modeli liniowych? Porównaj Ridge, LASSO i Elastic Net z punktu widzenia celu stosowania, wpływu na współczynniki oraz praktycznych zastosowań.</h2>
+<ul>
+<li><strong>Cel stosowania:</strong> To mechanizm ratunkowy dla modelu. Wymierza w funkcji straty matematyczną karę za nadmiernie rozdmuchane wagi współczynników. Zmusza model do ostrożności, mitygując przeuczenie (zmniejsza wariancję, lekko zwiększając obciążenie estymacji).</li>
+<li><strong>Ridge (kara <span class="math inline">\(L_2\)</span>):</strong> Systematycznie i płynnie “dusi” duże współczynniki w kierunku zera, ale nigdy ich fizycznie nie eliminuje. Idealnie neutralizuje wybuchowe wagi wynikające z silnie skorelowanych cech.</li>
+<li><strong>LASSO (kara <span class="math inline">\(L_1\)</span>):</strong> Potrafi bezpowrotnie zredukować wagę do absolutnego zera. Działa zatem jak wbudowany autokorektor i agresywny filtr (feature selection), samodzielnie usuwając śmieciowe zmienne z układu predykcyjnego.</li>
+<li><strong>Elastic Net:</strong> Kombinacja sił obu kar. Czyści model z informacyjnych “chwastów” jak LASSO, ale w odniesieniu do gęsto skorelowanych koalicji cech potrafi zachować je razem przy życiu z płynnością Ridge’a.</li>
+</ul>
+</section>
+<section id="omów-regresję-logistyczną-jako-model-klasyfikacyjny.-wyjaśnij-związek-między-liniowym-predyktorem-prawdopodobieństwem-przynależności-do-klasy-i-granicą-decyzyjną." class="level2">
+<h2 class="anchored" data-anchor-id="omów-regresję-logistyczną-jako-model-klasyfikacyjny.-wyjaśnij-związek-między-liniowym-predyktorem-prawdopodobieństwem-przynależności-do-klasy-i-granicą-decyzyjną.">7. Omów regresję logistyczną jako model klasyfikacyjny. Wyjaśnij związek między liniowym predyktorem, prawdopodobieństwem przynależności do klasy i granicą decyzyjną.</h2>
+<ul>
+<li><strong>Predyktor a prawdopodobieństwo:</strong> Pierwotne, klasyczne równanie regresji (wagi i wartości cech) zostaje brutalnie przepchnięte przez funkcję logistyczną (sigmoidalną). Kompresuje to surowy wynik do użytecznego, czytelnego ułamka prawdopodobieństwa z przedziału $$.</li>
+<li><strong>Granica decyzyjna:</strong> Zwróconemu prawdopodobieństwu narzuca się sztywny, fizyczny próg ucięcia (najczęściej na poziomie 0.5). Zamienia to ułamki bezpowrotnie w “twardą” wytyczną o przynależności obserwacji do badanej klasy docelowej.</li>
+<li><strong>Związek decyzyjny (Log-loss):</strong> Optymalizacja takiego modelu realizowana jest przez rygorystyczne karanie ujemną log-wiarygodnością. Strata zmusza maszynę do bolesnego płacenia za dużą pewność siebie, jeżeli jej decyzyjny strzał obarczony był błędem.</li>
+</ul>
+</section>
+<section id="porównaj-lda-qda-i-regresję-logistyczną-jako-metody-klasyfikacji.-zwróć-uwagę-na-różnice-w-założeniach-sposobie-modelowania-oraz-typowych-sytuacjach-w-których-każda-z-tych-metod-może-być-uzasadniona." class="level2">
+<h2 class="anchored" data-anchor-id="porównaj-lda-qda-i-regresję-logistyczną-jako-metody-klasyfikacji.-zwróć-uwagę-na-różnice-w-założeniach-sposobie-modelowania-oraz-typowych-sytuacjach-w-których-każda-z-tych-metod-może-być-uzasadniona.">8. Porównaj LDA, QDA i regresję logistyczną jako metody klasyfikacji. Zwróć uwagę na różnice w założeniach, sposobie modelowania oraz typowych sytuacjach, w których każda z tych metod może być uzasadniona.</h2>
+<ul>
+<li><strong>Różnica w filozofii modelowania:</strong> Logistyczna precyzuje <span class="math inline">\(P(y|x)\)</span> na wprost z matematycznej kombinacji. Metody dyskryminacyjne (LDA, QDA) są modelami generatywnymi – uczą się parametrów opisujących wielowymiarowe wnętrze samej klasy (<span class="math inline">\(P(x|y)\)</span>), a dopiero z twierdzenia Bayesa konwertują to do prawdopodobieństwa powrotnego.</li>
+<li><strong>Założenia i kształt (LDA):</strong> Zakłada brutalnie, że każda badana klasa ma jednakową, uogólnioną kowariancję. Oddziela klastry w przestrzeni za pomocą najsztywniejszej, twardej płaskiej linii brzegowej. Stanowi wybitny, bardzo rzadko przeuczający się “baseline” dla małych próbek danych.</li>
+<li><strong>Założenia i kształt (QDA):</strong> Udostępnia każdej wyłonionej klasie jej swobodny profil kowariancji. Formuje granice za pomocą nieliniowych kwadratów przestrzennych (np. elips czy hiperbol). Błyszczy przy potężnych wolumenach danych z natury układających się we własne zawiłe chmury statystyczne.</li>
+</ul>
+</section>
+<section id="z-czego-składa-się-drzewo-decyzyjne-opisz-funkcje-poszczególnych-elementów-konstrukcji-drzewa-oraz-sposób-w-jaki-prowadzą-one-do-decyzji-klasyfikacyjnej-lub-regresyjnej." class="level2">
+<h2 class="anchored" data-anchor-id="z-czego-składa-się-drzewo-decyzyjne-opisz-funkcje-poszczególnych-elementów-konstrukcji-drzewa-oraz-sposób-w-jaki-prowadzą-one-do-decyzji-klasyfikacyjnej-lub-regresyjnej.">9. Z czego składa się drzewo decyzyjne? Opisz funkcje poszczególnych elementów konstrukcji drzewa oraz sposób, w jaki prowadzą one do decyzji klasyfikacyjnej lub regresyjnej.</h2>
+<ul>
+<li><strong>Korzeń (Root node):</strong> Najwyższy punkt startowy i główny magazyn. Zbiera na samym starcie absolutnie cały, nienaruszony zasób danych informacyjnych przed zleceniem pierwszego testu.</li>
+<li><strong>Węzły wewnętrzne (Internal nodes):</strong> Punkty operacyjne (komory z regułami matematycznymi). Testują na sztywno podział ucinający dla pojedynczych cech (np. staż &gt; 30 dni), po czym permanentnie rozbijają populację na mniejsze bryły.</li>
+<li><strong>Gałęzie (Branches):</strong> Pasy przesyłowe “TAK/NIE”. Transportują konkretne podzbiory we wskazanych kierunkach pod kolejne operacje węzłowe.</li>
+<li><strong>Liście (Terminal nodes):</strong> Końcowe obszary spoczynku węzłów. Odpowiadają za finalny wyrok modelu: wystawiają najczęstszą klasę ze znaleziska/rozkładu (dla klasyfikacji), bądź uśredniają liczby wszystkich zablokowanych w sobie obiektów na jednorodną wartość ciągłą (dla regresji).</li>
+</ul>
+</section>
+<section id="jak-wyznacza-się-podziały-w-drzewach-decyzyjnych-dla-klasyfikacji-i-regresji-omów-kryteria-podziału-oraz-różnice-między-pracą-na-cechach-ciągłych-i-kategorycznych." class="level2">
+<h2 class="anchored" data-anchor-id="jak-wyznacza-się-podziały-w-drzewach-decyzyjnych-dla-klasyfikacji-i-regresji-omów-kryteria-podziału-oraz-różnice-między-pracą-na-cechach-ciągłych-i-kategorycznych.">10. Jak wyznacza się podziały w drzewach decyzyjnych dla klasyfikacji i regresji? Omów kryteria podziału oraz różnice między pracą na cechach ciągłych i kategorycznych.</h2>
+<ul>
+<li><strong>Mechanika wyboru:</strong> Algorytm postępuje “zachłannie” – w konkretnym kroku przeczesuje całą dostępną logikę tak, by natychmiast zmaksymalizować ucieczkę (zysk) ze startowego zanieczyszczenia/chaosu grup potomnych.</li>
+<li><strong>Kryteria cięcia w klasyfikacji:</strong> Model opiera podziały o Entropię lub Indeks Giniego. Uderza tak, by zmusić grupy wynikowe do ekstremalnej, jednorodnej izolacji konkretnych klas docelowych.</li>
+<li><strong>Kryteria cięcia w regresji:</strong> Poszukuje limitów w ten sposób, by w uciętych grupach drastycznie ograniczyć wariancję (minimalizacja sumy kwadratów odchyleń reszt od zaoferowanej w punkcie średniej).</li>
+<li><strong>Praca z wymiarami ciągłymi:</strong> Model zestraja zmienną liczbowo w osi, rzucając punkty testowe w uśrednionych dystansach dokładnie w pół drogi między unikalnymi pomiarami.</li>
+<li><strong>Praca z kategoriami:</strong> System pozwala rozerwać grupy na osobne ścieżki dla każdego nominału tekstowego (drzewa wielogałęziowe) lub wrzuca logikę wszystkich kategorii sztucznie w dwa obozy binarnych przeciwieństw, np. w standardzie budowy CART.</li>
+</ul>
+</section>
+<section id="w-jaki-sposób-kontroluje-się-złożoność-drzewa-decyzyjnego-omów-sens-reguł-stopu-pre-pruningu-i-post-pruningu-oraz-ich-wpływ-na-przeuczenie-i-uogólnianie-modelu." class="level2">
+<h2 class="anchored" data-anchor-id="w-jaki-sposób-kontroluje-się-złożoność-drzewa-decyzyjnego-omów-sens-reguł-stopu-pre-pruningu-i-post-pruningu-oraz-ich-wpływ-na-przeuczenie-i-uogólnianie-modelu.">11. W jaki sposób kontroluje się złożoność drzewa decyzyjnego? Omów sens reguł stopu, pre-pruningu i post-pruningu oraz ich wpływ na przeuczenie i uogólnianie modelu.</h2>
+<ul>
+<li><strong>Reguły stopu (Stopping rules):</strong> Przerywają rekurencyjny rozwój drzewa w danym węźle. Stosuje się je, gdy węzeł osiągnie całkowitą czystość (jednorodność klas), nie da się go technicznie podzielić lub gdy najlepszy podział nie daje satysfakcjonującego, minimalnego przyrostu jakości (spadku nieczystości).</li>
+<li><strong>Pre-pruning (Wczesne zatrzymywanie):</strong> Narzucanie twardych limitów strukturalnych jeszcze podczas budowy drzewa. Kontroluje się maksymalną głębokość (<code>max_depth</code>), limit liści (<code>max_leaf_nodes</code>) oraz minimalną liczbę obserwacji w węźle (<code>min_samples_split</code> i <code>min_samples_leaf</code>). Znacząco obniża to wariancję i ryzyko przeuczenia, lecz może zbyt wcześnie usztywnić model (wzrost biasu).</li>
+<li><strong>Post-pruning (Przycinanie po fakcie):</strong> Pozwala drzewu urosnąć całkowicie (maksymalnie dopasowując się do treningu), a następnie ocenia i usuwa od dołu najsłabsze gałęzie. Wykorzystuje funkcje kary za złożoność (<em>cost-complexity pruning</em>), co pozwala optymalnie wyważyć kompromis między trafnością predykcji a prostotą algorytmu, co często lepiej poprawia uogólnianie niż sztuczne limity pre-pruningu.</li>
+</ul>
+</section>
+<section id="omów-zalety-i-ograniczenia-pojedynczych-drzew-decyzyjnych.-w-jakich-sytuacjach-drzewa-są-szczególnie-użyteczne-a-kiedy-ich-własności-stają-się-problemem" class="level2">
+<h2 class="anchored" data-anchor-id="omów-zalety-i-ograniczenia-pojedynczych-drzew-decyzyjnych.-w-jakich-sytuacjach-drzewa-są-szczególnie-użyteczne-a-kiedy-ich-własności-stają-się-problemem">12. Omów zalety i ograniczenia pojedynczych drzew decyzyjnych. W jakich sytuacjach drzewa są szczególnie użyteczne, a kiedy ich własności stają się problemem?</h2>
+<ul>
+<li><strong>Zalety (użyteczność):</strong> Drzewa wykazują naturalną tolerancję i odporność na obserwacje odstające (outliery). Skutecznie uwalniają analityka od obowiązku standaryzacji czy skalowania cech, ponieważ ich podziały bazują na zwykłych liczbowych punktach odcięcia. Ponadto automatycznie wyłapują silne nieliniowości i interakcje między danymi, oferując wybitnie interpretowalny “ludzki” zbiór reguł decyzyjnych.</li>
+<li><strong>Ograniczenia (problemy):</strong> Ich kluczową i fundamentalną wadą jest potworna niestabilność (wysoka wariancja) i skrajna podatność na przeuczenie. Pojedyncze drzewo drastycznie potrafi przebudować całą swoją logikę na skutek minimalnej zmiany, zaszumienia lub rotacji w zbiorze treningowym. Sprawia to, że jako samodzielne algorytmy często ulegają porażce pod kątem mocy uogólniania i najczęściej zamyka się je w formacjach zespołowych.</li>
+</ul>
+</section>
+<section id="na-czym-polega-bagging-i-dlaczego-bootstrap-jest-w-nim-tak-istotny-wyjaśnij-jak-zespołowanie-wielu-drzew-wpływa-na-stabilność-i-wariancję-predykcji." class="level2">
+<h2 class="anchored" data-anchor-id="na-czym-polega-bagging-i-dlaczego-bootstrap-jest-w-nim-tak-istotny-wyjaśnij-jak-zespołowanie-wielu-drzew-wpływa-na-stabilność-i-wariancję-predykcji.">13. Na czym polega bagging i dlaczego bootstrap jest w nim tak istotny? Wyjaśnij, jak zespołowanie wielu drzew wpływa na stabilność i wariancję predykcji.</h2>
+<ul>
+<li><strong>Idea Baggingu (Bootstrap Aggregating):</strong> To strategia “zespołowa”, która polega na wytrenowaniu dużej liczby osobnych, słabych algorytmów (np. drzew), a potem wygenerowaniu z nich wspólnego, zagregowanego werdyktu poprzez uśrednienie (w regresji) lub demokratyczne głosowanie (w klasyfikacji).</li>
+<li><strong>Rola Bootstrapu:</strong> Pojedynczy zestaw danych ogranicza pole manewru. Bootstrap omija to, losując z oryginalnego zbioru obserwacje <em>ze zwracaniem</em>. W efekcie każde budowane w zespole drzewo uczy się na lekko unikalnej, zniekształconej perspektywie tego samego zbioru.</li>
+<li><strong>Wpływ na stabilność:</strong> Mimo że poszczególne drzewa mają naturalnie wysoką i “poszarpaną” wariancję, to ich zagregowanie uśrednia błędy i niweluje drastyczne odchylenia. Zespołowanie zachowuje niskie obciążenie, natychmiastowo ubijając i uodparniając wariancję predykcji na szum.</li>
+</ul>
+</section>
+<section id="czym-las-losowy-różni-się-od-zwykłego-baggingu-drzew-omów-rolę-losowania-cech-mechanizm-budowy-modelu-oraz-skutki-tego-podejścia-dla-jakości-i-różnorodności-drzew-w-zespole." class="level2">
+<h2 class="anchored" data-anchor-id="czym-las-losowy-różni-się-od-zwykłego-baggingu-drzew-omów-rolę-losowania-cech-mechanizm-budowy-modelu-oraz-skutki-tego-podejścia-dla-jakości-i-różnorodności-drzew-w-zespole.">14. Czym las losowy różni się od zwykłego baggingu drzew? Omów rolę losowania cech, mechanizm budowy modelu oraz skutki tego podejścia dla jakości i różnorodności drzew w zespole.</h2>
+<ul>
+<li><strong>Kluczowa różnica:</strong> Klasyczny bagging uczy na losowych wierszach, ale mając mocno dominującą cechę decyzyjną (np. zarobki), prawie każde drzewo i tak użyłoby jej na samym starcie jako głównego filaru, co produkowałoby mocno powielone modele.</li>
+<li><strong>Rola losowania cech (mechanizm):</strong> Las Losowy, będąc rozszerzeniem baggingu, wymusza, by w <em>każdym węźle</em> struktury podczas tworzenia podziału, algorytm miał do wyboru tylko losowo wydzielony i ucięty, mały podzbiór wszystkich dostępnych cech (<span class="math inline">\(m\)</span>).</li>
+<li><strong>Skutki (jakość i różnorodność):</strong> Tak agresywne nałożenie pęt narzuca tzw. <strong>dekorelację (uniezależnienie) drzew</strong>. Zmusza to poszczególne modele w zespole do omijania głównych filarów predykcji i odkrywania zupełnie innych, niszowych relacji predykcyjnych. Ostatecznie czyni to każdy element lasu słabszym jednostkowo, ale sam sumaryczny Las staje się znacznie potężniejszy i radykalnie mocniej redukuje wariancję niż tradycyjny Bagging.</li>
+</ul>
+</section>
+<section id="omów-najważniejsze-hiperparametry-lasów-losowych-i-innych-zespołów-drzewiastych.-wyjaśnij-jak-wpływają-one-na-złożoność-modelu-przeuczenie-i-koszt-obliczeniowy." class="level2">
+<h2 class="anchored" data-anchor-id="omów-najważniejsze-hiperparametry-lasów-losowych-i-innych-zespołów-drzewiastych.-wyjaśnij-jak-wpływają-one-na-złożoność-modelu-przeuczenie-i-koszt-obliczeniowy.">15. Omów najważniejsze hiperparametry lasów losowych i innych zespołów drzewiastych. Wyjaśnij, jak wpływają one na złożoność modelu, przeuczenie i koszt obliczeniowy.</h2>
+<ul>
+<li><strong><code>n_estimators</code> (liczba drzew):</strong> Im więcej modeli wygenerujemy, tym skuteczniej uśrednimy odchylenia stabilizując wynik. Powyżej konkretnego progu redukcja wariancji zwalnia i nie ulepsza już wyniku na teście, za to brutalnie oraz liniowo podnosi obciążenie czasowe i pamięciowe serwera.</li>
+<li><strong><code>max_features</code> (liczba losowanych cech):</strong> Parametr całkowicie krytyczny dla Lasu Losowego – określa, jak mała pula informacji wymusza na drzewie dywersyfikację. Zbyt niska wartość drastycznie dekoreluje drzewa, ale może doprowadzić do poważnego niedouczenia struktury (zbyt wysoki bias).</li>
+<li><strong><code>max_depth</code> (limit głębokości):</strong> Podczas gdy w Lasach Losowych drzewom najczęściej pozwala się budować na pełną głębokość, niwelując narzut przeuczenia siłą uśredniającego tłumu, w Boostingach (jak XGBoost), płytkie głębokości (np. 2-6) są całkowicie bezwzględnym ogranicznikiem chroniącym sekwencyjny zespół przed utopieniem się w losowym szumie.</li>
+<li><strong><code>min_samples_leaf</code> i <code>min_samples_split</code> (limity objętości podziałów):</strong> Pilnują, by w komorze modelu po rozłamie ocalała konkretna minimalna liczba pacjentów. Działa jak tarcza stabilizująca. Ucięcie możliwości formowania węzłów dla np. dwóch klientów pozbawia zespół zachłannego przeuczenia na szumie w danych, czyniąc podziały bardziej uogólnionymi.</li>
+</ul>
+</section>
+<section id="na-czym-polega-boosting-jako-model-addytywny-uczący-się-na-błędach-poprzednich-modeli-porównaj-ogólną-ideę-adaboost-i-gradient-boostingu." class="level2">
+<h2 class="anchored" data-anchor-id="na-czym-polega-boosting-jako-model-addytywny-uczący-się-na-błędach-poprzednich-modeli-porównaj-ogólną-ideę-adaboost-i-gradient-boostingu.">16. Na czym polega boosting jako model addytywny uczący się na błędach poprzednich modeli? Porównaj ogólną ideę AdaBoost i gradient boostingu.</h2>
+<ul>
+<li><strong>Modele Addytywne (Boosting):</strong> Proces ten buduje silny model sekwencyjnie krok po kroku. Ostateczna predykcja jest tu dosłowną matematyczną sumą wyników wszystkich składowych (najczęściej płytkich drzew), gdzie każda z nowo dokładanych jednostek ma za zadanie skorygować błędy popełnione przez swoich poprzedników w szeregu,.</li>
+<li><strong>AdaBoost (Działanie na wagach obserwacji):</strong> Aktualizuje w pamięci wagę każdej badanej obserwacji w zależności od tego, czy poprzedni model miał z nią problem. Jeśli wiersz został źle sklasyfikowany, jego waga rośnie, zmuszając następny w kolejce algorytm do rygorystycznego skupienia się właśnie na tym potknięciu,. Finalny wynik to głosowanie ważone jakością (siłą) całego szeregu dodanych modeli.</li>
+<li><strong>Gradient Boosting (Minimalizacja straty):</strong> Traktuje korygowanie jako proces zejścia gradientowego w przestrzeni funkcji – zamiast podbijać wagi próbek, algorytm wylicza “pseudo-reszty”, czyli ujemny kierunek błędu zadanej matematycznej funkcji straty,. Nowe drzewo tnie dane dopasowując się dokładnie do kształtu tych reszt, domykając stopniowo luki błędu całego zespołu,.</li>
+</ul>
+</section>
+<section id="porównaj-xgboost-lightgbm-i-catboost-jako-nowoczesne-odmiany-boostingu-drzew.-omów-ich-najważniejsze-pomysły-algorytmiczne-sposób-pracy-z-danymi-oraz-typowe-przewagi-praktyczne." class="level2">
+<h2 class="anchored" data-anchor-id="porównaj-xgboost-lightgbm-i-catboost-jako-nowoczesne-odmiany-boostingu-drzew.-omów-ich-najważniejsze-pomysły-algorytmiczne-sposób-pracy-z-danymi-oraz-typowe-przewagi-praktyczne.">17. Porównaj XGBoost, LightGBM i CatBoost jako nowoczesne odmiany boostingu drzew. Omów ich najważniejsze pomysły algorytmiczne, sposób pracy z danymi oraz typowe przewagi praktyczne.</h2>
+<ul>
+<li><strong>XGBoost:</strong>
+<ul>
+<li><strong>Kluczowe idee:</strong> Wykorzystuje silnie zaawansowaną regularyzację w węzłach struktury (kary L1 i L2 za wartości w liściach oraz koszt tworzenia nowych) i opiera proces cięć na potężniejszym, drugim rzędzie rozwinięcia Taylora (tzw. Newton boosting),,.</li>
+<li><strong>Praca z danymi i zalety:</strong> Posiada wbudowaną świadomość rzadkich macierzy (<em>sparsity-aware</em>) oraz uczy się naturalnych “domyślnych kierunków” kierowania wartości pustych, radząc sobie natywnie z brakiem informacji.</li>
+</ul></li>
+<li><strong>LightGBM:</strong>
+<ul>
+<li><strong>Kluczowe idee:</strong> Zbudowany wokół radykalnej szybkości – nie tworzy drzew równomiernie poziomami jak rywale, lecz stosuje agresywną strukturę <em>leaf-wise</em> (tnie te liście z grupy, które obiecują natychmiastowy największy zysk), co jest celne, choć wymaga asekuracji przed przeuczeniem limitami głębokości.</li>
+<li><strong>Praca z danymi i zalety:</strong> Agreguje rozkłady punktów zrzucając je do uśrednionych koszyków (<em>histogram-based splitting</em>) drastycznie przyspieszając pracę. Dodatkowo wykorzystuje metody GOSS i EFB by ignorować niewymagające uwagi obserwacje oraz scalać rzadkie, ekskluzywne wiersze cech, oszczędzając pamięć serwerów,.</li>
+</ul></li>
+<li><strong>CatBoost:</strong>
+<ul>
+<li><strong>Kluczowe idee:</strong> Walczy z wyciekiem targetu informacyjnego (target leakage) do cechy – dokonuje w tle wielu losowych permutacji próbek upewniając się, że tworzenie parametrów kategorycznych (<em>ordered target statistics</em>) oraz ocena gradientu w węźle (<em>ordered boosting</em>) dla danej próbki czerpią wiedzę wyłącznie z symulowanej “przeszłości” innych próbek, nigdy z niej samej,,,.</li>
+<li><strong>Praca z danymi i zalety:</strong> Został powołany do zwalczenia morderczego w klasycznych algorytmach przyrostu wymiarowości dla danych kategorycznych. Samodzielnie radzi sobie z nimi bez uprzedniego manualnego i bolesnego <em>one-hot encoding</em>, pozostając wybitnym wyborem “out of the box” dla takich tabel,.</li>
+</ul></li>
+</ul>
+</section>
+<section id="wyjaśnij-związek-między-twierdzeniem-bayesa-estymacją-metodą-największej-wiarygodności-i-estymacją-map.-omów-rolę-informacji-a-priori-w-uczeniu-modeli-probabilistycznych." class="level2">
+<h2 class="anchored" data-anchor-id="wyjaśnij-związek-między-twierdzeniem-bayesa-estymacją-metodą-największej-wiarygodności-i-estymacją-map.-omów-rolę-informacji-a-priori-w-uczeniu-modeli-probabilistycznych.">18. Wyjaśnij związek między twierdzeniem Bayesa, estymacją metodą największej wiarygodności i estymacją MAP. Omów rolę informacji a priori w uczeniu modeli probabilistycznych.</h2>
+<ul>
+<li><strong>Związek fundamentów matematycznych:</strong> Do predykcji wykorzystuje się wprost twierdzenie Bayesa – szansa poprawności przydziału klasy testowej jest zbitką wymnożenia globalnego ułamka popularności (prioru) przez matematyczną celność (likelihood) dopasowania cech wewnętrznych w badanej klasie,.</li>
+<li><strong>Estymacja MLE (Maximum Likelihood Estimation):</strong> Uczy się powyższych wskaźników ufając twardo i ślepo zbiorowi danych. Doprowadza to do wyliczania zerowej “twardej” wiarygodności w przypadku napotkania nowego słowa, które ominęło bazę uczącą, niszcząc logikę późniejszego mnożenia w twierdzeniu dla dokumentów,.</li>
+<li><strong>Estymacja MAP (Maximum A Posteriori):</strong> Utożsamia parametry uczone jako zjawiska losowe, wtłaczając w równanie dodatkowy stabilizujący “prior P” wyrażający pierwotne przekonanie badacza o prawach prawdopodobieństwa przed zobaczeniem samych próbek uczących,.</li>
+<li><strong>Rola informacji a priori:</strong> Pełni kluczową rolę “bezpiecznika” przed skrajnościami w małych próbkach. Aplikowanie na starcie a priori (tzw. wygładzanie bayesowskie) mityguje pomyłki estymatora MLE chroniąc go sztucznymi zliczeniami zjawisk (pseudoobserwacjami) by nigdy nie wyrzucił z siebie drastycznej wagi równającej się zeru,,.</li>
+</ul>
+</section>
+<section id="omów-założenia-i-odmiany-naiwnego-bayesa.-porównaj-warianty-multinomial-bernoulli-i-gaussian-z-punktu-widzenia-typu-danych-modelowanych-rozkładów-i-obszarów-zastosowań." class="level2">
+<h2 class="anchored" data-anchor-id="omów-założenia-i-odmiany-naiwnego-bayesa.-porównaj-warianty-multinomial-bernoulli-i-gaussian-z-punktu-widzenia-typu-danych-modelowanych-rozkładów-i-obszarów-zastosowań.">19. Omów założenia i odmiany naiwnego Bayesa. Porównaj warianty Multinomial, Bernoulli i Gaussian z punktu widzenia typu danych, modelowanych rozkładów i obszarów zastosowań.</h2>
+<ul>
+<li><strong>Założenia konstrukcyjne:</strong> “Naiwność” tej rodziny tkwi w ignorowaniu korelacji. Zakłada potężne, rzadko spotykane uproszczenie – każda cecha w obrębie rozkładu klasy wywiera niezależny od siebie pojedynczy wpływ,. To generuje błyskawiczne do policzenia i niewrażliwe na fluktuacje, twarde matematyczne bryły.</li>
+<li><strong>MultinomialNB:</strong>
+<ul>
+<li><em>Typ danych:</em> Operuje wyłącznie na liczbach nieujemnych formujących się w wektory zliczeń (tzw. count vectors),.</li>
+<li><em>Rozkład i zastosowanie:</em> Odwzorowuje rozkład wielomianowy. Idealnie sprawdza się w powszechnej filtracji spamu i analizy natężenia użycia w tekstach, nagradzając wynik tym brutalniej im więcej razy wiersz zaliczy powtórkę sygnałowego słowa,.</li>
+</ul></li>
+<li><strong>BernoulliNB:</strong>
+<ul>
+<li><em>Typ danych:</em> Pożera wyłącznie binarne flagi informacyjne w oparciu o “wystąpił/nie wystąpił”,.</li>
+<li><em>Rozkład i zastosowanie:</em> Realizuje wariant Bernoulliego – w przeciwieństwie do poprzednika celowo odnotowuje logarytmami srogą punktową karę za to że badany wiersz omija dany sygnał na wejściu. Perfekcyjny wszędzie tam gdzie sygnał znaczy wszystko, a intensywność użycia nie ma znaczenia.</li>
+</ul></li>
+<li><strong>GaussianNB:</strong>
+<ul>
+<li><em>Typ danych:</em> Niezbędny do pracy ze stacjonarnymi wartościami w skali ciągłej,. Nie stawia twardych oporów o skalowanie odległości ucinając ten punkt konieczności, charakterystyczny np. dla maszyn SVM.</li>
+<li><em>Rozkład i zastosowanie:</em> Kreuje klasyczne dzwony normlanego rozkładu, dopasowując predykcje do cech i wariancji. Stosowany do ankiet tablicowych. Katastrofalny dla reprezentacji ciągłych tekstów (np. TF-IDF), bo naturalnie nie wykazują one w zjawiskach krzywizn dzwonowatych Gaussa,.</li>
+</ul></li>
+</ul>
+</section>
+<section id="przedstaw-metodę-k-nn-jako-podejście-oparte-na-podobieństwie.-omów-rolę-metryki-odległości-parametru-k-kompromisu-bias-variance-oraz-główne-zalety-i-wady-tej-metody." class="level2">
+<h2 class="anchored" data-anchor-id="przedstaw-metodę-k-nn-jako-podejście-oparte-na-podobieństwie.-omów-rolę-metryki-odległości-parametru-k-kompromisu-bias-variance-oraz-główne-zalety-i-wady-tej-metody.">20. Przedstaw metodę k-NN jako podejście oparte na podobieństwie. Omów rolę metryki odległości, parametru (k), kompromisu bias-variance oraz główne zalety i wady tej metody.</h2>
+<ul>
+<li><strong>Podejście na bazie podobieństwa:</strong> Systematyzuje się pod pojęciem instancyjnego działania (<em>instance-based</em>) – w fazie treningowej algorytm unika w ogóle budowania modelu, ograniczając się do “pamięciowego” chłonięcia wszystkich układów współrzędnych do mapy i aktywując predykcje na żądanie u klienta końcowego bazując na jego otoczeniu.</li>
+<li><strong>Metryka odległości:</strong> Jest głównym silnikiem matematycznym decydującym czym tak naprawdę w danej geometrii jest relacja bycia “blisko”, wymuszając najpierw wygładzanie (standaryzację) cech aby jedna szeroka w wolumen zmienna nie zawładnęła liczoną oceną w np. klasycznym euklidesie czy Manhattanie,.</li>
+<li><strong>Rola kompromisu w k:</strong>
+<ul>
+<li><em>Niskie k (1-5 punktów):</em> Szarpie przestrzeń na mikroskopijne wyspy rygorystycznie podążając za anomalią (niski bias). Doprowadza natychmiast do wygórowanej wariancji łapiąc przeuczenie.</li>
+<li><em>Duże K:</em> Angażuje plemiona punktów w demokratyczny wyrok wygładzający rozbieżności, gasząc wariancję pomyłkową w zamian wprowadzając solidne i zgrubne obciążenie decyzji analitycznej (bias).</li>
+</ul></li>
+<li><strong>Zalety i wady analityczne:</strong> Genialnie omija nieliniowości zachowując intuicyjność – jeśli dwa procesy mają wspólne korzenie, będzie reagował wzorowo i będzie solidnym baselinem na starcie modelowania. Wadą jest mordercze pożeranie obliczeń zmuszając do wyliczeń dystansu nowej próbki do wszystkich osiadłych w pamięci. Pada ofiarą przekleństwa wielowymiarowości, kiedy w ogromnej liczbie osi definicja geometrycznej bliskości staje się bezwartościowa.</li>
+</ul>
+</section>
+<section id="na-czym-polega-regresja-sklejona-i-czym-splajn-różni-się-od-zwykłej-regresji-wielomianowej-omów-ideę-aproksymacji-kawałkami-oraz-znaczenie-gładkiego-łączenia-funkcji." class="level2">
+<h2 class="anchored" data-anchor-id="na-czym-polega-regresja-sklejona-i-czym-splajn-różni-się-od-zwykłej-regresji-wielomianowej-omów-ideę-aproksymacji-kawałkami-oraz-znaczenie-gładkiego-łączenia-funkcji.">21. Na czym polega regresja sklejona i czym splajn różni się od zwykłej regresji wielomianowej? Omów ideę aproksymacji kawałkami oraz znaczenie gładkiego łączenia funkcji.</h2>
+<ul>
+<li><strong>Ideologia aproksymacji kawałkami:</strong> Zamiast siłowego wciskania pojedynczej globalnej krzywej we wszystkie dane, dziedzina cechy (oś X) krojona jest na lokalne przedziały za pomocą tzw. węzłów. Dopiero na tych krótkich, mniejszych obszarach algorytm trenuje i układa niezależne, łagodne wielomiany.</li>
+<li><strong>Splajn kontra klasyczny wielomian:</strong> Zwykła globalna regresja wielomianowa przy wymuszaniu wyższych stopni zaczyna katastrofalnie i abstrakcyjnie falować (zwłaszcza na krańcach danych). Splajn działa lokalnie (zwykle operuje potężnym, elastycznym, lecz potulnym wielomianem stopnia trzeciego), dopasowując sekcję po sekcji bez wybuchowego przenoszenia niestabilności,.</li>
+<li><strong>Wymóg gładkiego łączenia:</strong> Sklejenie krzywych bez narzucenia reguł utworzyłoby pełen załamań wykres. Do zachowania płynności splajn wymusza matematyczną jednorodność w samym punkcie łączenia: zgadzać musi się nie tylko wynik, ale również kąt pochylenia i szybkość zawijania (czyli ciągłość pierwszej i drugiej pochodnej),.</li>
+</ul>
+</section>
+<section id="wyjaśnij-rolę-węzłów-warunków-gładkości-i-elastyczności-modelu-w-metodach-splajnowych.-jak-dobór-tych-elementów-wpływa-na-niedouczenie-przeuczenie-i-interpretację-modelu" class="level2">
+<h2 class="anchored" data-anchor-id="wyjaśnij-rolę-węzłów-warunków-gładkości-i-elastyczności-modelu-w-metodach-splajnowych.-jak-dobór-tych-elementów-wpływa-na-niedouczenie-przeuczenie-i-interpretację-modelu">22. Wyjaśnij rolę węzłów, warunków gładkości i elastyczności modelu w metodach splajnowych. Jak dobór tych elementów wpływa na niedouczenie, przeuczenie i interpretację modelu?</h2>
+<ul>
+<li><strong>Rola węzłów (knots):</strong> Wyznaczają granice styku lokalnych wielomianów. To ich zgęszczenie fizycznie steruje stopniami swobody, narzucając krzywej skalę elastyczności względem dopasowywanego trendu,.</li>
+<li><strong>Wpływ na przeuczenie (kompromis Bias-Variance):</strong> Zbyt skromna liczba węzłów wykreuje niedouczenie (bias), gdyż sztywna krzywa przeoczy nieliniowe nawroty w danych. Z kolei przesadne napompowanie ich liczby wywołuje przeuczenie (wariancję) – krzywa staje się zbyt giętka i poszarpana, naśladując losowy, treningowy szum zjawisk.</li>
+<li><strong>Ochrona gładkości:</strong> Aby uniknąć trudnego celowania z ręki w optymalną liczbę węzłów, techniki “splajnów wygładzających” wymuszają wręcz dodanie kary numerycznej za szorstkość (falowanie krzywizny); model sam w locie stabilizuje agresywne zagięcia,.</li>
+<li><strong>Ułatwiona interpretacja:</strong> Dobrze gładzony splajn chroni czytelną ocenę “gołym okiem”. W dodatku wariant “splajnu naturalnego” zabezpiecza zachowanie linii wybijając “w zero” krzywiznę na brzegach osi, dzięki czemu uogólnione wnioskowanie pozostaje racjonalnie liniowe również tuż za krawędzią zmierzonych obserwacji,.</li>
+</ul>
+</section>
+<section id="przedstaw-ideę-modeli-gam.-omów-ich-strukturę-addytywną-interpretację-efektów-cząstkowych-oraz-najważniejsze-zalety-i-ograniczenia-względem-prostszych-i-bardziej-sztywnych-modeli." class="level2">
+<h2 class="anchored" data-anchor-id="przedstaw-ideę-modeli-gam.-omów-ich-strukturę-addytywną-interpretację-efektów-cząstkowych-oraz-najważniejsze-zalety-i-ograniczenia-względem-prostszych-i-bardziej-sztywnych-modeli.">23. Przedstaw ideę modeli GAM. Omów ich strukturę addytywną, interpretację efektów cząstkowych oraz najważniejsze zalety i ograniczenia względem prostszych i bardziej sztywnych modeli.</h2>
+<ul>
+<li><strong>Struktura Addytywna (Idea):</strong> Zachowuje przejrzystość dodawania (jak w regresji liniowej), ale podmienia proste matematyczne współczynniki na wygięte, nieparametryczne funkcje. Model jest dosłowną sumą efektów każdej nieliniowej cechy <span class="math inline">\(g(E[Y|X]) = \beta_0 + \sum f_j(x_j)\)</span>, budowaną u podstaw za pomocą splajnów,.</li>
+<li><strong>Interpretacja krzywych cząstkowych:</strong> Narzędzie to słynie z bycia krystalicznie czytelną, “szklaną skrzynką”. Wpływ pojedynczej zmiennej (np. zarobków) można odseparować i narysować jako niezależną linię na ekranie; od razu ujawnia ona wygięcia krytyczne w ryzyku czy popycie zjawiska trzymając szum innych zmiennych “w uśpieniu”,.</li>
+<li><strong>Zalety na tle “sztywniaków”:</strong> Potężny kompromis merytoryczny – bez trudu łamie i połyka zaawansowane nieliniowości, jednocześnie zwalniając nas z niewytłumaczalnych reguł budowanych choćby przez głębokie sieci neuronowe,,.</li>
+<li><strong>Ograniczenia operacyjne:</strong> Obliczeniowo wymaga potężnego szacowania kary za wygładzania na tle prostych modeli, ale przede wszystkim ignoruje zjawisko kooperacji interakcyjnej. Jeśli w danych cecha wiek mocno reaguje z cechą dochód, GAM z natury zignoruje tę współpracę przepychając jedynie efekty “solowe”, chyba że dopiszemy tę krzyżową operację za pomocą splajnu dwuwymiarowego,.</li>
+</ul>
+</section>
+<section id="wyjaśnij-ideę-maksymalnego-marginesu-w-liniowo-separowalnym-svm.-omów-znaczenie-hiperpłaszczyzny-decyzyjnej-marginesu-oraz-wektorów-nośnych." class="level2">
+<h2 class="anchored" data-anchor-id="wyjaśnij-ideę-maksymalnego-marginesu-w-liniowo-separowalnym-svm.-omów-znaczenie-hiperpłaszczyzny-decyzyjnej-marginesu-oraz-wektorów-nośnych.">24. Wyjaśnij ideę maksymalnego marginesu w liniowo separowalnym SVM. Omów znaczenie hiperpłaszczyzny decyzyjnej, marginesu oraz wektorów nośnych.</h2>
+<ul>
+<li><strong>Pogoń za maksymalnym marginesem:</strong> Jeśli zjawiska można przeciąć matematyczną linią na “1” i “0” bezbłędnie, istnieje nieskończona ilość pasujących ukośnych granic. Algorytm SVM uderza w optymalność – celuje w fizyczne wyszukanie płaszczyzny o absolutnie maksymalnym pasie bezpieczeństwa buforującego, który w praktyce potężnie niweluje błędy przy zjawiskach dla nowych punktów w przyszłości,.</li>
+<li><strong>Hiperpłaszczyzna decyzyjna:</strong> Fundamentalne centrum równania układu tnącego (np. środek pomiędzy punktami) separującego kategorie.</li>
+<li><strong>Znaczenie wektorów nośnych:</strong> Margines podpierany jest przez obserwacje siedzące bezpośrednio na “ścianach rury” i to te ściśle przylegające rekordy określamy wektorami nośnymi. Mają wyłączne, krytyczne znaczenie dla istnienia granicy tnącej – gdybyśmy usunęli wszystkie inne rekordy uczące znajdujące się dalej, optymalny matematyczny równik wciąż pozostałby na swoim precyzyjnym miejscu w przestrzeni,.</li>
+</ul>
+</section>
+<section id="na-czym-polega-miękki-margines-w-svm-omów-rolę-parametru-c-i-wyjaśnij-jak-wpływa-on-na-kompromis-między-regularizacją-a-dopasowaniem-do-danych-treningowych." class="level2">
+<h2 class="anchored" data-anchor-id="na-czym-polega-miękki-margines-w-svm-omów-rolę-parametru-c-i-wyjaśnij-jak-wpływa-on-na-kompromis-między-regularizacją-a-dopasowaniem-do-danych-treningowych.">25. Na czym polega miękki margines w SVM? Omów rolę parametru (C) i wyjaśnij, jak wpływa on na kompromis między regularizacją a dopasowaniem do danych treningowych.</h2>
+<ul>
+<li><strong>Wstęp dla wariantu miękkiego:</strong> Ekstremalnie rzadko udaje się rozseparować idealnie grupy – świat pęka od szumu. Soft-margin luzuje obostrzenia; zaimplementowane specjalne karzące zmienne luzu pozwalają punktom przekroczyć idealny wymiar marginesu buforowego rury na milimetry lub potężnie spaść na złą stronę za docelową granicą.</li>
+<li><strong>Parametr Kary (C):</strong> Ustala cenę na funkcję straty pobieraną przez algorytm, jeżeli rekord fizycznie zrani ułożoną na siłę, gładką płaszczyznę marginesową.</li>
+<li><strong>Wysokie C (Wąski margines, słaba regularizacja):</strong> Algorytm panicznie unika naruszeń błędu karzącego więc układa granice sztywno, dopasowując się perfekcyjnie punkt w punkt, drastycznie zmniejszając margines i łapiąc potężne zaszumienie (przeuczenie modelu / niska generalizacja).</li>
+<li><strong>Niskie C (Szeroki margines, mocna regularizacja):</strong> Model odpuszcza ściganie uciekających punktów, bezstresowo pozwalając sporej grupie wylecieć za linie obrony buforowej. Wygładza przez to ułożenie płaszczyzny zabezpieczając model grubym pasem marginesowym przed przyszłym przereagowaniem generalizacyjnym ograniczając wariancję (poświęcając dopasowanie treningowe).</li>
+</ul>
+</section>
+<section id="na-czym-polega-sztuczka-jądrowa-w-svm-porównaj-intuicję-i-zastosowania-jąder-liniowego-wielomianowego-i-rbf-a-następnie-odnieś-się-do-idei-regresyjnego-wariantu-svr." class="level2">
+<h2 class="anchored" data-anchor-id="na-czym-polega-sztuczka-jądrowa-w-svm-porównaj-intuicję-i-zastosowania-jąder-liniowego-wielomianowego-i-rbf-a-następnie-odnieś-się-do-idei-regresyjnego-wariantu-svr.">26. Na czym polega sztuczka jądrowa w SVM? Porównaj intuicję i zastosowania jąder liniowego, wielomianowego i RBF, a następnie odnieś się do idei regresyjnego wariantu SVR.</h2>
+<ul>
+<li><strong>Sztuczka jądrowa (Kernel trick):</strong> Zamiast fizycznie i kosztownie mapować dane do ogromnej, skomplikowanej przestrzeni nieliniowej, algorytm wykorzystuje matematyczną funkcję (jądro). Oblicza ona podobieństwo między punktami dokładnie tak, <em>jakby</em> znajdowały się one w tej wyższej przestrzeni. Dzięki temu to, co zawinięte w 2D, SVM bez problemu przecina prostą, płaską “kartką” w wyższym wymiarze bez zapychania pamięci komputera.</li>
+<li><strong>Jądro liniowe:</strong> Klasyczny iloczyn skalarny, tnący dane “na płasko”. To pierwszy wybór do analizy tekstów (NLP) i genetyki, gdzie liczba cech jest na tyle gigantyczna, że zaginanie granic decyzyjnych mija się z celem i grozi przeuczeniem.</li>
+<li><strong>Jądro wielomianowe:</strong> Symuluje istnienie w modelu zaawansowanych potęg i kombinacji zmiennych. Jest idealne, gdy logika biznesowa podpowiada, że to właśnie interakcje konkretnych cech robią różnicę (np. piksele na obrazie), choć wysoki stopień potęgi łatwo destabilizuje model.</li>
+<li><strong>Jądro RBF (Gaussa):</strong> Uniwersalny standard. Traktuje dystans jak “falę radiową”, która gwałtownie słabnie z odległością. Pozwala to na tworzenie bardzo elastycznych, nieliniowych bąbli izolujących klasy wokół punktów treningowych. Bezwzględnie wymaga uprzedniej standaryzacji cech.</li>
+<li><strong>SVR (Odwrotność w regresji):</strong> Podczas gdy klasyfikacja SVM maksymalizuje pas oddzielający klasy, SVR buduje wokół wyestymowanej linii “rurę wybaczenia” o grubości <span class="math inline">\(\varepsilon\)</span>. Model całkowicie ignoruje błędy punktów, które grzecznie zmieszczą się w rurze, a karze finansowo (poprzez zmienne luzu i ograniczenie <span class="math inline">\(C\)</span>) dopiero te obserwacje, które wystrzelą poza pas tolerancji.</li>
+</ul>
+</section>
+<section id="przedstaw-uczenie-ze-wzmocnieniem-jako-odmienny-paradygmat-uczenia-maszynowego.-omów-elementy-procesu-decyzyjnego-markowa-oraz-różnice-między-tym-podejściem-a-klasycznym-uczeniem-nadzorowanym." class="level2">
+<h2 class="anchored" data-anchor-id="przedstaw-uczenie-ze-wzmocnieniem-jako-odmienny-paradygmat-uczenia-maszynowego.-omów-elementy-procesu-decyzyjnego-markowa-oraz-różnice-między-tym-podejściem-a-klasycznym-uczeniem-nadzorowanym.">27. Przedstaw uczenie ze wzmocnieniem jako odmienny paradygmat uczenia maszynowego. Omów elementy procesu decyzyjnego Markowa oraz różnice między tym podejściem a klasycznym uczeniem nadzorowanym.</h2>
+<ul>
+<li><strong>Nowy paradygmat:</strong> Tu nie ma podanych “na tacy” historycznych etykiet klas. Algorytm to agent wrzucony do środowiska, który eksperymentuje systemem prób i błędów. Jego obecna decyzja wpływa na to, jakie dane zobaczy w przyszłości, co czyni ten problem sekwencyjnym i pozbawionym gotowej bazy treningowej na wejściu.</li>
+<li><strong>Proces Decyzyjny Markowa (MDP):</strong> To matematyczny stół gry, składający się z konkretnych filarów:
+<ul>
+<li><strong>Stany (S):</strong> Kompletny cyfrowy opis obecnej sytuacji (np. koordynaty w labiryncie, stany magazynowe).</li>
+<li><strong>Akcje (A):</strong> Zestaw “przycisków” i ruchów fizycznie dostępnych dla agenta z poziomu danego stanu.</li>
+<li><strong>Przejścia (P):</strong> Mechanika i fizyka środowiska. Z jakim prawdopodobieństwem krok do przodu faktycznie wyrzuci nas do przodu, bo np. w losowym środowisku podłoże bywa śliskie.</li>
+<li><strong>Nagrody (R):</strong> Skalarna marchewka lub kij. Agent optymalizuje ich sumę długoterminową, godząc się na obecny minus, aby na końcu gry trafić w wielki zysk.</li>
+<li><strong>Dyskonto (<span class="math inline">\(\gamma\)</span>):</strong> Parametr “krótkowzroczności”. Bliski zera czyni agenta chciwym na natychmiastowe nagrody; bliski jedynki każe mu tworzyć plan i cenić nagrody oddalone w latach.</li>
+</ul></li>
+<li><strong>Własność Markowa:</strong> Koniec z analizowaniem historii. Algorytm zakłada, że aktualnie spakowany Stan jest na tyle bogaty i kompletny, że pozwala obliczyć idealny następny ruch bez patrzenia we wczorajsze logi zdarzeń.</li>
+</ul>
+</section>
+<section id="omów-rolę-funkcji-wartości-równań-bellmana-i-aktualizacji-w-q-learningu.-wyjaśnij-dlaczego-problem-eksploracji-i-eksploatacji-jest-w-uczeniu-ze-wzmocnieniem-kluczowy." class="level2">
+<h2 class="anchored" data-anchor-id="omów-rolę-funkcji-wartości-równań-bellmana-i-aktualizacji-w-q-learningu.-wyjaśnij-dlaczego-problem-eksploracji-i-eksploatacji-jest-w-uczeniu-ze-wzmocnieniem-kluczowy.">28. Omów rolę funkcji wartości, równań Bellmana i aktualizacji w Q-learningu. Wyjaśnij, dlaczego problem eksploracji i eksploatacji jest w uczeniu ze wzmocnieniem kluczowy.</h2>
+<ul>
+<li><strong>Rola funkcji wartości:</strong> Odrzucają ślepą pogoń za jednym zyskiem. Służą jako wewnętrzny radar agenta oceniający całą “ścieżkę”: sprawdzają, jaki skumulowany majątek uda się nam wyciągnąć począwszy od tego konkretnego stanu lub wybranej akcji aż do samego końca symulacji.</li>
+<li><strong>Równania Bellmana:</strong> Rozcinają trudne analizowanie milionów kroków w przód na jedną sprytną rekurencję. Matematycznie mówią: “cała moja opłacalność w tej chwili to po prostu nagroda natychmiastowa dodana do zdyskontowanej oceny wartości następnego pola, na które wejdę”.</li>
+<li><strong>Aktualizacja Q-learning (Cel TD):</strong> W fazie treningu algorytm bezlitośnie nadpisuje starą, niedoskonałą ocenę ruchu. Oblicza <em>Cel TD</em> (zarobek przed chwilą + maksymalna nagroda dostępna w widocznym, kolejnym kroku) i poprzez współczynnik uczenia <span class="math inline">\(\alpha\)</span> koryguje swój pogląd, robiąc uśredniony kompromis między wczorajszą niewiedzą a dzisiejszym doświadczeniem.</li>
+<li><strong>Eksploracja vs Eksploatacja (Kluczowy konflikt):</strong> Ponieważ agent musi samodzielnie generować zbiór danych, wpada w pułapkę. Jeżeli zamknie się na odcinaniu kuponów z już znanego dobrego zachowania (eksploatacja), wpadnie w optimum lokalne. Musi systematycznie losować “głupie” i ryzykowne ruchy (eksploracja), aby skanować teren w poszukiwaniu ścieżek o drastycznie wyższej rentowności, balansując tym np. w regule <span class="math inline">\(\epsilon\)</span>-greedy.</li>
+</ul>
+</section>
+<section id="omów-analizę-koszykową-i-reguły-asocjacyjne.-przedstaw-sposób-formalizacji-danych-transakcyjnych-oraz-ideę-wyszukiwania-częstych-zbiorów-i-reguł-metodami-apriori-oraz-fp-growth." class="level2">
+<h2 class="anchored" data-anchor-id="omów-analizę-koszykową-i-reguły-asocjacyjne.-przedstaw-sposób-formalizacji-danych-transakcyjnych-oraz-ideę-wyszukiwania-częstych-zbiorów-i-reguł-metodami-apriori-oraz-fp-growth.">29. Omów analizę koszykową i reguły asocjacyjne. Przedstaw sposób formalizacji danych transakcyjnych oraz ideę wyszukiwania częstych zbiorów i reguł metodami Apriori oraz FP-Growth.</h2>
+<ul>
+<li><strong>Analiza koszykowa:</strong> Nie posiada etykiet docelowych. Jej misją jest masowe wyłapywanie grupowych nawyków, czyli itemsetów (produktów rzucanych wspólnie na ladę), by zasilać silniki rekomendacyjne lub układać półki.</li>
+<li><strong>Formalizacja (Transakcje):</strong> Rekord to nie zbiór kolumn, ale elastyczny “zestaw”, np. paragon <span class="math inline">\(T_1 = \{chleb, masło\}\)</span>. Do ewaluacji używa wskaźników:
+<ul>
+<li><em>Wsparcie (Support):</em> Twarda popularność – fizyczny odsetek wszystkich paragonów w systemie zawierających analizowany zestaw.</li>
+<li><em>Ufność (Confidence):</em> Warunkowa logika – jaki procent osób z chlebem postanowił dobrać też to masło.</li>
+<li><em>Lift:</em> Test siły – czy powiązanie przebija przypadek. Lift &gt; 1 oznacza solidne sprzężenie, nielosowe dobieranie tych produktów.</li>
+</ul></li>
+<li><strong>Zasada antymonotoniczności (Apriori):</strong> System unika sprawdzania trylionów kombinacji genialnym prawem matematycznym: jeśli koszyk <span class="math inline">\(\{chleb, masło\}\)</span> sprzedaje się fatalnie, to koszyk <span class="math inline">\(\{chleb, masło, piwo\}\)</span> musi sprzedawać się jeszcze gorzej.</li>
+<li><strong>Metoda Apriori:</strong> Szatkuje bazę falami. Szuka często kupowanych duetów, wyrzuca te rzadkie i z ocalałych lepi w locie zbiory potrójne. Brutalnie odcina ślepe gałęzie na każdym etapie, zachowując czystą czytelność kosztem wielu wejść na dysk.</li>
+<li><strong>Metoda FP-Growth:</strong> Całkowicie omija wady Apriori. Kompresuje całą wielką bazę logów w małe, wielogałęziowe “drzewo prefiksów” w pamięci komputera. Nie generuje kandydatów na potęgę, lecz rekurencyjnie wydłubuje wzorce z tego drzewa, co daje potężnego “kopa” wydajnościowego na gigantycznych bazach.</li>
+</ul>
+</section>
+<section id="omów-problem-wykrywania-anomalii.-przedstaw-typy-anomalii-trudności-ich-formalizacji-oraz-porównaj-intuicję-działania-metod-lof-i-isolation-forest." class="level2">
+<h2 class="anchored" data-anchor-id="omów-problem-wykrywania-anomalii.-przedstaw-typy-anomalii-trudności-ich-formalizacji-oraz-porównaj-intuicję-działania-metod-lof-i-isolation-forest.">30. Omów problem wykrywania anomalii. Przedstaw typy anomalii, trudności ich formalizacji oraz porównaj intuicję działania metod LOF i Isolation Forest.</h2>
+<ul>
+<li><strong>Problem z definicją:</strong> Genialnie umiemy zamodelować normę zachowań systemowych, ale rzadka anomalia przy każdym ataku nosi inną maskę. Dlatego problem unika binarnych etykiet; zamiast tego buduje “funkcję skoringową”, zrzucając na barki analityka decyzję, przy jakiej twardej cyfrze podnieść alarm bezpieczeństwa.</li>
+<li><strong>Trzy twarze anomalii:</strong>
+<ul>
+<li><em>Punktowa:</em> Obserwacja sama wystrzelona fizycznie poza orbitę danych (np. gigantyczny zarobek).</li>
+<li><em>Kontekstowa:</em> 30 stopni Celsjusza latem to standard, ale 30 stopni Celsjusza w lutym odpala czerwone lampki.</li>
+<li><em>Zbiorowa:</em> Z pozoru zwykłe, pojedyncze pakiety sieciowe stają się nagle anomalną, rytmiczną armią przy ataku hakerskim.</li>
+</ul></li>
+<li><strong>LOF (Local Outlier Factor) - Intuicja Gęstości:</strong> LOF mierzy gęstość okolicy, a nie kilometry do środka planszy. Z punktu widzenia LOF punkt jest anomalią wtedy, gdy ma bardzo puste podwórko dookoła, a jego sasiedzi żyją zbici w ciasną, gęstą grupkę.</li>
+<li><strong>Isolation Forest - Intuicja Drwala:</strong> Kompletnie porzuca mierzenie dystansu. Wbija w dane losowe, tnące osie. Założenie jest proste: punkty anomalne stoją na takim odludziu, że wystarczą zaledwie dwa czy trzy “cięcia” matematyczne, aby odizolować intruza na osobnej wyspie. Typowe obiekty ukryte w “gęstym tłumie” wymagają do uwięzienia dziesiątek precyzyjnych cięć.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

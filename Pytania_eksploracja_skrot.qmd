@@ -1,0 +1,250 @@
+---
+title: "Eksploracja danych - abstrakt"
+author: "Adam Kołodziejczak"
+date: "2026-06-22"
+format: 
+  html:
+    toc: true
+    toc-title: "Pytania"
+    toc-location: right
+    theme: default
+    fontcolor: "#3c3c3c"
+    backgroundcolor: "#fdfdfd"
+---
+
+# Egzamin ustny z Eksploracji danych
+
+## 1. Omów rolę przygotowania danych w procesie eksploracji danych i uczenia maszynowego. Przedstaw, jakie decyzje podejmuje się na etapie importu, walidacji typów i wstępnego czyszczenia danych oraz dlaczego wpływają one na dalsze modelowanie.
+
+*   **Rola przygotowania danych:** Jakość wejściowych informacji bezpośrednio determinuje jakość predykcji; nawet najlepszy algorytm zrujnuje wnioski, jeśli otrzyma błędne dane.
+*   **Decyzje przy imporcie:** Świadome, ręczne definiowanie kodowania znaków, separatorów i niestandardowych tagów braków (np. "NA", "null") skutecznie blokuje nieświadome gubienie lub psucie rekordów.
+*   **Walidacja typów:** Zablokowanie automatycznego zgadywania formatów ratuje krytyczne dane, np. rzutowanie identyfikatorów na tekst zachowuje wiodące zera, a jawne parsowanie dat otwiera drogę do inżynierii cech czasowych.
+*   **Wstępne czyszczenie:** Normalizacja nazw kolumn do formatu `snake_case` (małe litery, brak spacji) to nie tylko kosmetyka, ale mechanizm uodparniający kod produkcyjny na błędy składniowe i awarie w potokach przetwarzania.
+
+## 2. Jak rozpoznaje się i interpretuje obserwacje odstające oraz braki danych? Omów najważniejsze strategie postępowania z takimi przypadkami i ich konsekwencje dla analizy oraz jakości modelu.
+
+*   **Rozpoznawanie:** Skrajności jednowymiarowe wyłapuje się regułą IQR lub z-score uodpornionym na odchylenia (opartym o MAD). Anomalie wielowymiarowe bada się m.in. odległością Mahalanobisa lub izoluje drzewami (Isolation Forest).
+*   **Interpretacja:** Braki oraz outliery to rzadko zwykłe luki – często niosą cenną merytoryczną informację o procesie, np. opisują zamożnego klienta VIP lub sygnalizują etap, w którym użytkownik porzucił ankietę.
+*   **Strategie (outliery):** Błędy naruszające logikę domeny (np. wiek 120) usuwamy; naturalne ekstrema biznesowe systematycznie "gasimy" logarytmem, przycinamy percentylami (winsoryzacja) lub dodajemy obok binarną flagę nietypowości.
+*   **Strategie (braki):** Wartości liczbowe łata się medianą lub iteracyjnymi modelami np. MICE. Najpotężniejszą strategią jest jednoczesne doklejenie binarnej flagi braku (missing indicator), dzięki której model aktywnie uczy się wzorców z faktu ukrycia informacji.
+*   **Konsekwencje:** Modele oparte na dystansach (k-NN) oraz marginesach (SVM) gwałtownie psują się pod wpływem outlierów, podczas gdy algorytmy drzewiaste wykazują na nie naturalną obojętność.
+
+## 3. Na czym polegają EDA, preprocessing i inżynieria cech w danych tabelarycznych? Omów rolę kodowania zmiennych kategorycznych, skalowania, transformacji oraz konstrukcji nowych cech.
+
+*   **Rozdział ról:** EDA służy bezinwazyjnej diagnozie i wizualizacji problemów z danymi. Preprocessing to techniczne przygotowanie macierzy (w zamkniętych potokach) pod sztywne wymogi algorytmów. Inżynieria cech to z kolei aktywna budowa nowych, silniejszych sygnałów predykcyjnych.
+*   **Kodowanie kategorii:** Konwertuje grupy tekstowe w zrozumiałe dla matematyki wektory, np. One-Hot Encoding rozbija jedną kolumnę na zestaw niezależnych kolumn binarnych.
+*   **Skalowanie zmiennych:** Wymusza jednakowy rozmiar osi liczbowych; jest to bezwzględny wymóg dla metod odległościowych (k-NN, SVM) i regularyzacji, gwarantujący, że ogromny nominał jednej cechy nie pochłonie decyzji całego modelu.
+*   **Transformacje rozkładu:** Logarytmowanie rozkładów silnie prawoskośnych sprowadza ekstremalne odchylenia do relacji względnych, co ułatwia modelom liniowym wyłapanie logicznego trendu.
+*   **Konstrukcja nowych cech:** Łączenie danych kalendarzowych w cechy upływu czasu (recency) czy wyliczanie wskaźników intensywności uwypukla przed modelem surowe reguły behawioralne.
+
+## 4. Przedstaw regresję liniową wieloraką jako metodę uczenia nadzorowanego. Omów składniki modelu, znaczenie parametrów oraz sens minimalizacji błędu w procesie estymacji.
+
+*   **Podejście nadzorowane:** System uczy się na dostarczonych, prawidłowo oetykietowanych parach danych, kompresując wiedzę do pojedynczego, liniowego równania, które odtwarza ciągłą zmienną docelową.
+*   **Składniki modelu:** Kombinacja wyrazu wolnego (punktu startowego/odcięcia), zestawu wektorów wyestymowanych wag dopasowanych do każdej cechy oraz marginesu na nieunikniony szum losowy.
+*   **Znaczenie parametrów:** Każda wyliczona waga precyzyjnie ustala kierunek oraz fizyczną siłę, z jaką jednostkowa zmiana konkretnej cechy "pcha" w górę lub w dół wynik predykcji.
+*   **Sens minimalizacji błędu:** Proces estymacji szuka i ustala wagi w taki sposób, aby zagwarantować najniższą sumę kwadratów odchyleń predykcji od rzeczywistych wartości na zbiorze treningowym (MSE), co zapewnia najlepszy kompromis dopasowania.
+
+## 5. Omów interpretację modeli liniowych oraz ich ograniczenia. Wyjaśnij, kiedy współczynniki modelu są informatywne, a kiedy interpretacja staje się problematyczna.
+
+*   **Kiedy są informatywne:** Działają jak "biała skrzynka" dająca natychmiastowe wnioski o sile badanych zjawisk, ale ich czytelność jest zagwarantowana wyłącznie po uprzednim, rygorystycznym ustandaryzowaniu cech.
+*   **Zaburzenia skali:** Jeśli nie użyto standaryzacji, zderzenie zmiennych ułamkowych z gigantycznymi nominałami nienaturalnie wywinduje mniejsze liczby, całkowicie fałszując rzetelną wielkość parametru analitycznego.
+*   **Współliniowość (utrata stabilności):** Kiedy zjawiska użyte w modelu dublują w tle ten sam sygnał, algorytm wpada w matematyczną panikę – estymator drastycznie traci stabilność numeryczną, silnie uzależniając wagę od losowego ułożenia konkretnej próby treningowej.
+*   **Sztywność strukturalna:** Model bezwzględnie wciska wszystkie relacje w ramy prostej addytywnej linii, programowo ignorując wszelkie naturalne nieliniowości oraz interakcje pomiędzy predyktorami.
+
+## 5. Omów interpretację modeli liniowych oraz ich ograniczenia. Wyjaśnij, kiedy współczynniki modelu są informatywne, a kiedy interpretacja staje się problematyczna.
+
+*   **Kiedy wagi są informatywne:** Modele liniowe zachowują się jak "biała skrzynka". Jeśli rygorystycznie ustandaryzujemy cechy przed treningiem, przypisane im współczynniki bezpośrednio wskażą nam kierunek (wzrost/spadek) oraz realną wagę zjawiska.
+*   **Destrukcyjny problem skali:** Jeśli zestawimy zmienne w różnych jednostkach (np. ułamkowe odsetki z ogromnymi wartościami finansowymi), model wymusi nienaturalnie potężne wagi dla najmniejszych nominałów, co sztucznie zafałszuje analityczny sens takiego predyktora.
+*   **Współliniowość i utrata stabilności:** Kiedy zasilimy model zmiennymi, które mocno dublują swoją informację, algorytm "głupieje". Estymator ulega destabilizacji numerycznej, przez co wagi stają się chaotyczne i tracą zdolność wiarygodnego uchwycenia relacji.
+*   **Sztywne ograniczenia założeń:** Model liniowy wpycha całą matematykę świata w ramy "prostej rury" (addytwność funkcji). Całkowicie omija wygięcia, nieliniowe efekty progowe czy też naturalnie występujące interakcje pomiędzy badanymi predyktorami.
+
+## 6. Na czym polega regularyzacja modeli liniowych? Porównaj Ridge, LASSO i Elastic Net z punktu widzenia celu stosowania, wpływu na współczynniki oraz praktycznych zastosowań.
+
+*   **Cel stosowania:** To mechanizm ratunkowy dla modelu. Wymierza w funkcji straty matematyczną karę za nadmiernie rozdmuchane wagi współczynników. Zmusza model do ostrożności, mitygując przeuczenie (zmniejsza wariancję, lekko zwiększając obciążenie estymacji).
+*   **Ridge (kara $L_2$):** Systematycznie i płynnie "dusi" duże współczynniki w kierunku zera, ale nigdy ich fizycznie nie eliminuje. Idealnie neutralizuje wybuchowe wagi wynikające z silnie skorelowanych cech.
+*   **LASSO (kara $L_1$):** Potrafi bezpowrotnie zredukować wagę do absolutnego zera. Działa zatem jak wbudowany autokorektor i agresywny filtr (feature selection), samodzielnie usuwając śmieciowe zmienne z układu predykcyjnego.
+*   **Elastic Net:** Kombinacja sił obu kar. Czyści model z informacyjnych "chwastów" jak LASSO, ale w odniesieniu do gęsto skorelowanych koalicji cech potrafi zachować je razem przy życiu z płynnością Ridge'a.
+
+## 7. Omów regresję logistyczną jako model klasyfikacyjny. Wyjaśnij związek między liniowym predyktorem, prawdopodobieństwem przynależności do klasy i granicą decyzyjną.
+
+*   **Predyktor a prawdopodobieństwo:** Pierwotne, klasyczne równanie regresji (wagi i wartości cech) zostaje brutalnie przepchnięte przez funkcję logistyczną (sigmoidalną). Kompresuje to surowy wynik do użytecznego, czytelnego ułamka prawdopodobieństwa z przedziału $$.
+*   **Granica decyzyjna:** Zwróconemu prawdopodobieństwu narzuca się sztywny, fizyczny próg ucięcia (najczęściej na poziomie 0.5). Zamienia to ułamki bezpowrotnie w "twardą" wytyczną o przynależności obserwacji do badanej klasy docelowej.
+*   **Związek decyzyjny (Log-loss):** Optymalizacja takiego modelu realizowana jest przez rygorystyczne karanie ujemną log-wiarygodnością. Strata zmusza maszynę do bolesnego płacenia za dużą pewność siebie, jeżeli jej decyzyjny strzał obarczony był błędem.
+
+## 8. Porównaj LDA, QDA i regresję logistyczną jako metody klasyfikacji. Zwróć uwagę na różnice w założeniach, sposobie modelowania oraz typowych sytuacjach, w których każda z tych metod może być uzasadniona.
+
+*   **Różnica w filozofii modelowania:** Logistyczna precyzuje $P(y|x)$ na wprost z matematycznej kombinacji. Metody dyskryminacyjne (LDA, QDA) są modelami generatywnymi – uczą się parametrów opisujących wielowymiarowe wnętrze samej klasy ($P(x|y)$), a dopiero z twierdzenia Bayesa konwertują to do prawdopodobieństwa powrotnego.
+*   **Założenia i kształt (LDA):** Zakłada brutalnie, że każda badana klasa ma jednakową, uogólnioną kowariancję. Oddziela klastry w przestrzeni za pomocą najsztywniejszej, twardej płaskiej linii brzegowej. Stanowi wybitny, bardzo rzadko przeuczający się "baseline" dla małych próbek danych.
+*   **Założenia i kształt (QDA):** Udostępnia każdej wyłonionej klasie jej swobodny profil kowariancji. Formuje granice za pomocą nieliniowych kwadratów przestrzennych (np. elips czy hiperbol). Błyszczy przy potężnych wolumenach danych z natury układających się we własne zawiłe chmury statystyczne.
+
+## 9. Z czego składa się drzewo decyzyjne? Opisz funkcje poszczególnych elementów konstrukcji drzewa oraz sposób, w jaki prowadzą one do decyzji klasyfikacyjnej lub regresyjnej.
+
+*   **Korzeń (Root node):** Najwyższy punkt startowy i główny magazyn. Zbiera na samym starcie absolutnie cały, nienaruszony zasób danych informacyjnych przed zleceniem pierwszego testu.
+*   **Węzły wewnętrzne (Internal nodes):** Punkty operacyjne (komory z regułami matematycznymi). Testują na sztywno podział ucinający dla pojedynczych cech (np. staż > 30 dni), po czym permanentnie rozbijają populację na mniejsze bryły.
+*   **Gałęzie (Branches):** Pasy przesyłowe "TAK/NIE". Transportują konkretne podzbiory we wskazanych kierunkach pod kolejne operacje węzłowe.
+*   **Liście (Terminal nodes):** Końcowe obszary spoczynku węzłów. Odpowiadają za finalny wyrok modelu: wystawiają najczęstszą klasę ze znaleziska/rozkładu (dla klasyfikacji), bądź uśredniają liczby wszystkich zablokowanych w sobie obiektów na jednorodną wartość ciągłą (dla regresji).
+
+## 10. Jak wyznacza się podziały w drzewach decyzyjnych dla klasyfikacji i regresji? Omów kryteria podziału oraz różnice między pracą na cechach ciągłych i kategorycznych.
+
+*   **Mechanika wyboru:** Algorytm postępuje "zachłannie" – w konkretnym kroku przeczesuje całą dostępną logikę tak, by natychmiast zmaksymalizować ucieczkę (zysk) ze startowego zanieczyszczenia/chaosu grup potomnych.
+*   **Kryteria cięcia w klasyfikacji:** Model opiera podziały o Entropię lub Indeks Giniego. Uderza tak, by zmusić grupy wynikowe do ekstremalnej, jednorodnej izolacji konkretnych klas docelowych.
+*   **Kryteria cięcia w regresji:** Poszukuje limitów w ten sposób, by w uciętych grupach drastycznie ograniczyć wariancję (minimalizacja sumy kwadratów odchyleń reszt od zaoferowanej w punkcie średniej).
+*   **Praca z wymiarami ciągłymi:** Model zestraja zmienną liczbowo w osi, rzucając punkty testowe w uśrednionych dystansach dokładnie w pół drogi między unikalnymi pomiarami.
+*   **Praca z kategoriami:** System pozwala rozerwać grupy na osobne ścieżki dla każdego nominału tekstowego (drzewa wielogałęziowe) lub wrzuca logikę wszystkich kategorii sztucznie w dwa obozy binarnych przeciwieństw, np. w standardzie budowy CART.
+
+## 11. W jaki sposób kontroluje się złożoność drzewa decyzyjnego? Omów sens reguł stopu, pre-pruningu i post-pruningu oraz ich wpływ na przeuczenie i uogólnianie modelu.
+
+*   **Reguły stopu (Stopping rules):** Przerywają rekurencyjny rozwój drzewa w danym węźle. Stosuje się je, gdy węzeł osiągnie całkowitą czystość (jednorodność klas), nie da się go technicznie podzielić lub gdy najlepszy podział nie daje satysfakcjonującego, minimalnego przyrostu jakości (spadku nieczystości).
+*   **Pre-pruning (Wczesne zatrzymywanie):** Narzucanie twardych limitów strukturalnych jeszcze podczas budowy drzewa. Kontroluje się maksymalną głębokość (`max_depth`), limit liści (`max_leaf_nodes`) oraz minimalną liczbę obserwacji w węźle (`min_samples_split` i `min_samples_leaf`). Znacząco obniża to wariancję i ryzyko przeuczenia, lecz może zbyt wcześnie usztywnić model (wzrost biasu).
+*   **Post-pruning (Przycinanie po fakcie):** Pozwala drzewu urosnąć całkowicie (maksymalnie dopasowując się do treningu), a następnie ocenia i usuwa od dołu najsłabsze gałęzie. Wykorzystuje funkcje kary za złożoność (*cost-complexity pruning*), co pozwala optymalnie wyważyć kompromis między trafnością predykcji a prostotą algorytmu, co często lepiej poprawia uogólnianie niż sztuczne limity pre-pruningu.
+
+## 12. Omów zalety i ograniczenia pojedynczych drzew decyzyjnych. W jakich sytuacjach drzewa są szczególnie użyteczne, a kiedy ich własności stają się problemem?
+
+*   **Zalety (użyteczność):** Drzewa wykazują naturalną tolerancję i odporność na obserwacje odstające (outliery). Skutecznie uwalniają analityka od obowiązku standaryzacji czy skalowania cech, ponieważ ich podziały bazują na zwykłych liczbowych punktach odcięcia. Ponadto automatycznie wyłapują silne nieliniowości i interakcje między danymi, oferując wybitnie interpretowalny "ludzki" zbiór reguł decyzyjnych.
+*   **Ograniczenia (problemy):** Ich kluczową i fundamentalną wadą jest potworna niestabilność (wysoka wariancja) i skrajna podatność na przeuczenie. Pojedyncze drzewo drastycznie potrafi przebudować całą swoją logikę na skutek minimalnej zmiany, zaszumienia lub rotacji w zbiorze treningowym. Sprawia to, że jako samodzielne algorytmy często ulegają porażce pod kątem mocy uogólniania i najczęściej zamyka się je w formacjach zespołowych.
+
+## 13. Na czym polega bagging i dlaczego bootstrap jest w nim tak istotny? Wyjaśnij, jak zespołowanie wielu drzew wpływa na stabilność i wariancję predykcji.
+
+*   **Idea Baggingu (Bootstrap Aggregating):** To strategia "zespołowa", która polega na wytrenowaniu dużej liczby osobnych, słabych algorytmów (np. drzew), a potem wygenerowaniu z nich wspólnego, zagregowanego werdyktu poprzez uśrednienie (w regresji) lub demokratyczne głosowanie (w klasyfikacji).
+*   **Rola Bootstrapu:** Pojedynczy zestaw danych ogranicza pole manewru. Bootstrap omija to, losując z oryginalnego zbioru obserwacje *ze zwracaniem*. W efekcie każde budowane w zespole drzewo uczy się na lekko unikalnej, zniekształconej perspektywie tego samego zbioru. 
+*   **Wpływ na stabilność:** Mimo że poszczególne drzewa mają naturalnie wysoką i "poszarpaną" wariancję, to ich zagregowanie uśrednia błędy i niweluje drastyczne odchylenia. Zespołowanie zachowuje niskie obciążenie, natychmiastowo ubijając i uodparniając wariancję predykcji na szum.
+
+## 14. Czym las losowy różni się od zwykłego baggingu drzew? Omów rolę losowania cech, mechanizm budowy modelu oraz skutki tego podejścia dla jakości i różnorodności drzew w zespole.
+
+*   **Kluczowa różnica:** Klasyczny bagging uczy na losowych wierszach, ale mając mocno dominującą cechę decyzyjną (np. zarobki), prawie każde drzewo i tak użyłoby jej na samym starcie jako głównego filaru, co produkowałoby mocno powielone modele.
+*   **Rola losowania cech (mechanizm):** Las Losowy, będąc rozszerzeniem baggingu, wymusza, by w *każdym węźle* struktury podczas tworzenia podziału, algorytm miał do wyboru tylko losowo wydzielony i ucięty, mały podzbiór wszystkich dostępnych cech ($m$).
+*   **Skutki (jakość i różnorodność):** Tak agresywne nałożenie pęt narzuca tzw. **dekorelację (uniezależnienie) drzew**. Zmusza to poszczególne modele w zespole do omijania głównych filarów predykcji i odkrywania zupełnie innych, niszowych relacji predykcyjnych. Ostatecznie czyni to każdy element lasu słabszym jednostkowo, ale sam sumaryczny Las staje się znacznie potężniejszy i radykalnie mocniej redukuje wariancję niż tradycyjny Bagging.
+
+## 15. Omów najważniejsze hiperparametry lasów losowych i innych zespołów drzewiastych. Wyjaśnij, jak wpływają one na złożoność modelu, przeuczenie i koszt obliczeniowy.
+
+*   **`n_estimators` (liczba drzew):** Im więcej modeli wygenerujemy, tym skuteczniej uśrednimy odchylenia stabilizując wynik. Powyżej konkretnego progu redukcja wariancji zwalnia i nie ulepsza już wyniku na teście, za to brutalnie oraz liniowo podnosi obciążenie czasowe i pamięciowe serwera.
+*   **`max_features` (liczba losowanych cech):** Parametr całkowicie krytyczny dla Lasu Losowego – określa, jak mała pula informacji wymusza na drzewie dywersyfikację. Zbyt niska wartość drastycznie dekoreluje drzewa, ale może doprowadzić do poważnego niedouczenia struktury (zbyt wysoki bias).
+*   **`max_depth` (limit głębokości):** Podczas gdy w Lasach Losowych drzewom najczęściej pozwala się budować na pełną głębokość, niwelując narzut przeuczenia siłą uśredniającego tłumu, w Boostingach (jak XGBoost), płytkie głębokości (np. 2-6) są całkowicie bezwzględnym ogranicznikiem chroniącym sekwencyjny zespół przed utopieniem się w losowym szumie.
+*   **`min_samples_leaf` i `min_samples_split` (limity objętości podziałów):** Pilnują, by w komorze modelu po rozłamie ocalała konkretna minimalna liczba pacjentów. Działa jak tarcza stabilizująca. Ucięcie możliwości formowania węzłów dla np. dwóch klientów pozbawia zespół zachłannego przeuczenia na szumie w danych, czyniąc podziały bardziej uogólnionymi.
+
+## 16. Na czym polega boosting jako model addytywny uczący się na błędach poprzednich modeli? Porównaj ogólną ideę AdaBoost i gradient boostingu.
+
+*   **Modele Addytywne (Boosting):** Proces ten buduje silny model sekwencyjnie krok po kroku. Ostateczna predykcja jest tu dosłowną matematyczną sumą wyników wszystkich składowych (najczęściej płytkich drzew), gdzie każda z nowo dokładanych jednostek ma za zadanie skorygować błędy popełnione przez swoich poprzedników w szeregu,.
+*   **AdaBoost (Działanie na wagach obserwacji):** Aktualizuje w pamięci wagę każdej badanej obserwacji w zależności od tego, czy poprzedni model miał z nią problem. Jeśli wiersz został źle sklasyfikowany, jego waga rośnie, zmuszając następny w kolejce algorytm do rygorystycznego skupienia się właśnie na tym potknięciu,. Finalny wynik to głosowanie ważone jakością (siłą) całego szeregu dodanych modeli.
+*   **Gradient Boosting (Minimalizacja straty):** Traktuje korygowanie jako proces zejścia gradientowego w przestrzeni funkcji – zamiast podbijać wagi próbek, algorytm wylicza "pseudo-reszty", czyli ujemny kierunek błędu zadanej matematycznej funkcji straty,. Nowe drzewo tnie dane dopasowując się dokładnie do kształtu tych reszt, domykając stopniowo luki błędu całego zespołu,.
+
+## 17. Porównaj XGBoost, LightGBM i CatBoost jako nowoczesne odmiany boostingu drzew. Omów ich najważniejsze pomysły algorytmiczne, sposób pracy z danymi oraz typowe przewagi praktyczne.
+
+*   **XGBoost:**
+    *   **Kluczowe idee:** Wykorzystuje silnie zaawansowaną regularyzację w węzłach struktury (kary L1 i L2 za wartości w liściach oraz koszt tworzenia nowych) i opiera proces cięć na potężniejszym, drugim rzędzie rozwinięcia Taylora (tzw. Newton boosting),,.
+    *   **Praca z danymi i zalety:** Posiada wbudowaną świadomość rzadkich macierzy (*sparsity-aware*) oraz uczy się naturalnych "domyślnych kierunków" kierowania wartości pustych, radząc sobie natywnie z brakiem informacji. 
+*   **LightGBM:**
+    *   **Kluczowe idee:** Zbudowany wokół radykalnej szybkości – nie tworzy drzew równomiernie poziomami jak rywale, lecz stosuje agresywną strukturę *leaf-wise* (tnie te liście z grupy, które obiecują natychmiastowy największy zysk), co jest celne, choć wymaga asekuracji przed przeuczeniem limitami głębokości. 
+    *   **Praca z danymi i zalety:** Agreguje rozkłady punktów zrzucając je do uśrednionych koszyków (*histogram-based splitting*) drastycznie przyspieszając pracę. Dodatkowo wykorzystuje metody GOSS i EFB by ignorować niewymagające uwagi obserwacje oraz scalać rzadkie, ekskluzywne wiersze cech, oszczędzając pamięć serwerów,.
+*   **CatBoost:**
+    *   **Kluczowe idee:** Walczy z wyciekiem targetu informacyjnego (target leakage) do cechy – dokonuje w tle wielu losowych permutacji próbek upewniając się, że tworzenie parametrów kategorycznych (*ordered target statistics*) oraz ocena gradientu w węźle (*ordered boosting*) dla danej próbki czerpią wiedzę wyłącznie z symulowanej "przeszłości" innych próbek, nigdy z niej samej,,,.
+    *   **Praca z danymi i zalety:** Został powołany do zwalczenia morderczego w klasycznych algorytmach przyrostu wymiarowości dla danych kategorycznych. Samodzielnie radzi sobie z nimi bez uprzedniego manualnego i bolesnego *one-hot encoding*, pozostając wybitnym wyborem "out of the box" dla takich tabel,.
+
+## 18. Wyjaśnij związek między twierdzeniem Bayesa, estymacją metodą największej wiarygodności i estymacją MAP. Omów rolę informacji a priori w uczeniu modeli probabilistycznych.
+
+*   **Związek fundamentów matematycznych:** Do predykcji wykorzystuje się wprost twierdzenie Bayesa – szansa poprawności przydziału klasy testowej jest zbitką wymnożenia globalnego ułamka popularności (prioru) przez matematyczną celność (likelihood) dopasowania cech wewnętrznych w badanej klasie,. 
+*   **Estymacja MLE (Maximum Likelihood Estimation):** Uczy się powyższych wskaźników ufając twardo i ślepo zbiorowi danych. Doprowadza to do wyliczania zerowej "twardej" wiarygodności w przypadku napotkania nowego słowa, które ominęło bazę uczącą, niszcząc logikę późniejszego mnożenia w twierdzeniu dla dokumentów,.
+*   **Estymacja MAP (Maximum A Posteriori):** Utożsamia parametry uczone jako zjawiska losowe, wtłaczając w równanie dodatkowy stabilizujący "prior P" wyrażający pierwotne przekonanie badacza o prawach prawdopodobieństwa przed zobaczeniem samych próbek uczących,.
+*   **Rola informacji a priori:** Pełni kluczową rolę "bezpiecznika" przed skrajnościami w małych próbkach. Aplikowanie na starcie a priori (tzw. wygładzanie bayesowskie) mityguje pomyłki estymatora MLE chroniąc go sztucznymi zliczeniami zjawisk (pseudoobserwacjami) by nigdy nie wyrzucił z siebie drastycznej wagi równającej się zeru,,.
+
+## 19. Omów założenia i odmiany naiwnego Bayesa. Porównaj warianty Multinomial, Bernoulli i Gaussian z punktu widzenia typu danych, modelowanych rozkładów i obszarów zastosowań.
+
+*   **Założenia konstrukcyjne:** "Naiwność" tej rodziny tkwi w ignorowaniu korelacji. Zakłada potężne, rzadko spotykane uproszczenie – każda cecha w obrębie rozkładu klasy wywiera niezależny od siebie pojedynczy wpływ,. To generuje błyskawiczne do policzenia i niewrażliwe na fluktuacje, twarde matematyczne bryły.
+*   **MultinomialNB:**
+    *   *Typ danych:* Operuje wyłącznie na liczbach nieujemnych formujących się w wektory zliczeń (tzw. count vectors),.
+    *   *Rozkład i zastosowanie:* Odwzorowuje rozkład wielomianowy. Idealnie sprawdza się w powszechnej filtracji spamu i analizy natężenia użycia w tekstach, nagradzając wynik tym brutalniej im więcej razy wiersz zaliczy powtórkę sygnałowego słowa,.
+*   **BernoulliNB:**
+    *   *Typ danych:* Pożera wyłącznie binarne flagi informacyjne w oparciu o "wystąpił/nie wystąpił",.
+    *   *Rozkład i zastosowanie:* Realizuje wariant Bernoulliego – w przeciwieństwie do poprzednika celowo odnotowuje logarytmami srogą punktową karę za to że badany wiersz omija dany sygnał na wejściu. Perfekcyjny wszędzie tam gdzie sygnał znaczy wszystko, a intensywność użycia nie ma znaczenia.
+*   **GaussianNB:**
+    *   *Typ danych:* Niezbędny do pracy ze stacjonarnymi wartościami w skali ciągłej,. Nie stawia twardych oporów o skalowanie odległości ucinając ten punkt konieczności, charakterystyczny np. dla maszyn SVM.
+    *   *Rozkład i zastosowanie:* Kreuje klasyczne dzwony normlanego rozkładu, dopasowując predykcje do cech i wariancji. Stosowany do ankiet tablicowych. Katastrofalny dla reprezentacji ciągłych tekstów (np. TF-IDF), bo naturalnie nie wykazują one w zjawiskach krzywizn dzwonowatych Gaussa,.
+
+## 20. Przedstaw metodę k-NN jako podejście oparte na podobieństwie. Omów rolę metryki odległości, parametru (k), kompromisu bias-variance oraz główne zalety i wady tej metody.
+
+*   **Podejście na bazie podobieństwa:** Systematyzuje się pod pojęciem instancyjnego działania (*instance-based*) – w fazie treningowej algorytm unika w ogóle budowania modelu, ograniczając się do "pamięciowego" chłonięcia wszystkich układów współrzędnych do mapy i aktywując predykcje na żądanie u klienta końcowego bazując na jego otoczeniu.
+*   **Metryka odległości:** Jest głównym silnikiem matematycznym decydującym czym tak naprawdę w danej geometrii jest relacja bycia "blisko", wymuszając najpierw wygładzanie (standaryzację) cech aby jedna szeroka w wolumen zmienna nie zawładnęła liczoną oceną w np. klasycznym euklidesie czy Manhattanie,.
+*   **Rola kompromisu w k:**
+    *   *Niskie k (1-5 punktów):* Szarpie przestrzeń na mikroskopijne wyspy rygorystycznie podążając za anomalią (niski bias). Doprowadza natychmiast do wygórowanej wariancji łapiąc przeuczenie.
+    *   *Duże K:* Angażuje plemiona punktów w demokratyczny wyrok wygładzający rozbieżności, gasząc wariancję pomyłkową w zamian wprowadzając solidne i zgrubne obciążenie decyzji analitycznej (bias).
+*   **Zalety i wady analityczne:** Genialnie omija nieliniowości zachowując intuicyjność – jeśli dwa procesy mają wspólne korzenie, będzie reagował wzorowo i będzie solidnym baselinem na starcie modelowania. Wadą jest mordercze pożeranie obliczeń zmuszając do wyliczeń dystansu nowej próbki do wszystkich osiadłych w pamięci. Pada ofiarą przekleństwa wielowymiarowości, kiedy w ogromnej liczbie osi definicja geometrycznej bliskości staje się bezwartościowa.
+
+## 21. Na czym polega regresja sklejona i czym splajn różni się od zwykłej regresji wielomianowej? Omów ideę aproksymacji kawałkami oraz znaczenie gładkiego łączenia funkcji.
+
+*   **Ideologia aproksymacji kawałkami:** Zamiast siłowego wciskania pojedynczej globalnej krzywej we wszystkie dane, dziedzina cechy (oś X) krojona jest na lokalne przedziały za pomocą tzw. węzłów. Dopiero na tych krótkich, mniejszych obszarach algorytm trenuje i układa niezależne, łagodne wielomiany.
+*   **Splajn kontra klasyczny wielomian:** Zwykła globalna regresja wielomianowa przy wymuszaniu wyższych stopni zaczyna katastrofalnie i abstrakcyjnie falować (zwłaszcza na krańcach danych). Splajn działa lokalnie (zwykle operuje potężnym, elastycznym, lecz potulnym wielomianem stopnia trzeciego), dopasowując sekcję po sekcji bez wybuchowego przenoszenia niestabilności,.
+*   **Wymóg gładkiego łączenia:** Sklejenie krzywych bez narzucenia reguł utworzyłoby pełen załamań wykres. Do zachowania płynności splajn wymusza matematyczną jednorodność w samym punkcie łączenia: zgadzać musi się nie tylko wynik, ale również kąt pochylenia i szybkość zawijania (czyli ciągłość pierwszej i drugiej pochodnej),.
+
+## 22. Wyjaśnij rolę węzłów, warunków gładkości i elastyczności modelu w metodach splajnowych. Jak dobór tych elementów wpływa na niedouczenie, przeuczenie i interpretację modelu?
+
+*   **Rola węzłów (knots):** Wyznaczają granice styku lokalnych wielomianów. To ich zgęszczenie fizycznie steruje stopniami swobody, narzucając krzywej skalę elastyczności względem dopasowywanego trendu,.
+*   **Wpływ na przeuczenie (kompromis Bias-Variance):** Zbyt skromna liczba węzłów wykreuje niedouczenie (bias), gdyż sztywna krzywa przeoczy nieliniowe nawroty w danych. Z kolei przesadne napompowanie ich liczby wywołuje przeuczenie (wariancję) – krzywa staje się zbyt giętka i poszarpana, naśladując losowy, treningowy szum zjawisk.
+*   **Ochrona gładkości:** Aby uniknąć trudnego celowania z ręki w optymalną liczbę węzłów, techniki "splajnów wygładzających" wymuszają wręcz dodanie kary numerycznej za szorstkość (falowanie krzywizny); model sam w locie stabilizuje agresywne zagięcia,.
+*   **Ułatwiona interpretacja:** Dobrze gładzony splajn chroni czytelną ocenę "gołym okiem". W dodatku wariant "splajnu naturalnego" zabezpiecza zachowanie linii wybijając "w zero" krzywiznę na brzegach osi, dzięki czemu uogólnione wnioskowanie pozostaje racjonalnie liniowe również tuż za krawędzią zmierzonych obserwacji,.
+
+## 23. Przedstaw ideę modeli GAM. Omów ich strukturę addytywną, interpretację efektów cząstkowych oraz najważniejsze zalety i ograniczenia względem prostszych i bardziej sztywnych modeli.
+
+*   **Struktura Addytywna (Idea):** Zachowuje przejrzystość dodawania (jak w regresji liniowej), ale podmienia proste matematyczne współczynniki na wygięte, nieparametryczne funkcje. Model jest dosłowną sumą efektów każdej nieliniowej cechy $g(E[Y|X]) = \beta_0 + \sum f_j(x_j)$, budowaną u podstaw za pomocą splajnów,.
+*   **Interpretacja krzywych cząstkowych:** Narzędzie to słynie z bycia krystalicznie czytelną, "szklaną skrzynką". Wpływ pojedynczej zmiennej (np. zarobków) można odseparować i narysować jako niezależną linię na ekranie; od razu ujawnia ona wygięcia krytyczne w ryzyku czy popycie zjawiska trzymając szum innych zmiennych "w uśpieniu",.
+*   **Zalety na tle "sztywniaków":** Potężny kompromis merytoryczny – bez trudu łamie i połyka zaawansowane nieliniowości, jednocześnie zwalniając nas z niewytłumaczalnych reguł budowanych choćby przez głębokie sieci neuronowe,,.
+*   **Ograniczenia operacyjne:** Obliczeniowo wymaga potężnego szacowania kary za wygładzania na tle prostych modeli, ale przede wszystkim ignoruje zjawisko kooperacji interakcyjnej. Jeśli w danych cecha wiek mocno reaguje z cechą dochód, GAM z natury zignoruje tę współpracę przepychając jedynie efekty "solowe", chyba że dopiszemy tę krzyżową operację za pomocą splajnu dwuwymiarowego,.
+
+## 24. Wyjaśnij ideę maksymalnego marginesu w liniowo separowalnym SVM. Omów znaczenie hiperpłaszczyzny decyzyjnej, marginesu oraz wektorów nośnych.
+
+*   **Pogoń za maksymalnym marginesem:** Jeśli zjawiska można przeciąć matematyczną linią na "1" i "0" bezbłędnie, istnieje nieskończona ilość pasujących ukośnych granic. Algorytm SVM uderza w optymalność – celuje w fizyczne wyszukanie płaszczyzny o absolutnie maksymalnym pasie bezpieczeństwa buforującego, który w praktyce potężnie niweluje błędy przy zjawiskach dla nowych punktów w przyszłości,.
+*   **Hiperpłaszczyzna decyzyjna:** Fundamentalne centrum równania układu tnącego (np. środek pomiędzy punktami) separującego kategorie.
+*   **Znaczenie wektorów nośnych:** Margines podpierany jest przez obserwacje siedzące bezpośrednio na "ścianach rury" i to te ściśle przylegające rekordy określamy wektorami nośnymi. Mają wyłączne, krytyczne znaczenie dla istnienia granicy tnącej – gdybyśmy usunęli wszystkie inne rekordy uczące znajdujące się dalej, optymalny matematyczny równik wciąż pozostałby na swoim precyzyjnym miejscu w przestrzeni,.
+
+## 25. Na czym polega miękki margines w SVM? Omów rolę parametru (C) i wyjaśnij, jak wpływa on na kompromis między regularizacją a dopasowaniem do danych treningowych.
+
+*   **Wstęp dla wariantu miękkiego:** Ekstremalnie rzadko udaje się rozseparować idealnie grupy – świat pęka od szumu. Soft-margin luzuje obostrzenia; zaimplementowane specjalne karzące zmienne luzu pozwalają punktom przekroczyć idealny wymiar marginesu buforowego rury na milimetry lub potężnie spaść na złą stronę za docelową granicą.
+*   **Parametr Kary (C):** Ustala cenę na funkcję straty pobieraną przez algorytm, jeżeli rekord fizycznie zrani ułożoną na siłę, gładką płaszczyznę marginesową.
+*   **Wysokie C (Wąski margines, słaba regularizacja):** Algorytm panicznie unika naruszeń błędu karzącego więc układa granice sztywno, dopasowując się perfekcyjnie punkt w punkt, drastycznie zmniejszając margines i łapiąc potężne zaszumienie (przeuczenie modelu / niska generalizacja).
+*   **Niskie C (Szeroki margines, mocna regularizacja):** Model odpuszcza ściganie uciekających punktów, bezstresowo pozwalając sporej grupie wylecieć za linie obrony buforowej. Wygładza przez to ułożenie płaszczyzny zabezpieczając model grubym pasem marginesowym przed przyszłym przereagowaniem generalizacyjnym ograniczając wariancję (poświęcając dopasowanie treningowe).
+
+## 26. Na czym polega sztuczka jądrowa w SVM? Porównaj intuicję i zastosowania jąder liniowego, wielomianowego i RBF, a następnie odnieś się do idei regresyjnego wariantu SVR.
+
+*   **Sztuczka jądrowa (Kernel trick):** Zamiast fizycznie i kosztownie mapować dane do ogromnej, skomplikowanej przestrzeni nieliniowej, algorytm wykorzystuje matematyczną funkcję (jądro). Oblicza ona podobieństwo między punktami dokładnie tak, *jakby* znajdowały się one w tej wyższej przestrzeni. Dzięki temu to, co zawinięte w 2D, SVM bez problemu przecina prostą, płaską "kartką" w wyższym wymiarze bez zapychania pamięci komputera.
+*   **Jądro liniowe:** Klasyczny iloczyn skalarny, tnący dane "na płasko". To pierwszy wybór do analizy tekstów (NLP) i genetyki, gdzie liczba cech jest na tyle gigantyczna, że zaginanie granic decyzyjnych mija się z celem i grozi przeuczeniem.
+*   **Jądro wielomianowe:** Symuluje istnienie w modelu zaawansowanych potęg i kombinacji zmiennych. Jest idealne, gdy logika biznesowa podpowiada, że to właśnie interakcje konkretnych cech robią różnicę (np. piksele na obrazie), choć wysoki stopień potęgi łatwo destabilizuje model.
+*   **Jądro RBF (Gaussa):** Uniwersalny standard. Traktuje dystans jak "falę radiową", która gwałtownie słabnie z odległością. Pozwala to na tworzenie bardzo elastycznych, nieliniowych bąbli izolujących klasy wokół punktów treningowych. Bezwzględnie wymaga uprzedniej standaryzacji cech.
+*   **SVR (Odwrotność w regresji):** Podczas gdy klasyfikacja SVM maksymalizuje pas oddzielający klasy, SVR buduje wokół wyestymowanej linii "rurę wybaczenia" o grubości $\varepsilon$. Model całkowicie ignoruje błędy punktów, które grzecznie zmieszczą się w rurze, a karze finansowo (poprzez zmienne luzu i ograniczenie $C$) dopiero te obserwacje, które wystrzelą poza pas tolerancji.
+
+## 27. Przedstaw uczenie ze wzmocnieniem jako odmienny paradygmat uczenia maszynowego. Omów elementy procesu decyzyjnego Markowa oraz różnice między tym podejściem a klasycznym uczeniem nadzorowanym.
+
+*   **Nowy paradygmat:** Tu nie ma podanych "na tacy" historycznych etykiet klas. Algorytm to agent wrzucony do środowiska, który eksperymentuje systemem prób i błędów. Jego obecna decyzja wpływa na to, jakie dane zobaczy w przyszłości, co czyni ten problem sekwencyjnym i pozbawionym gotowej bazy treningowej na wejściu.
+*   **Proces Decyzyjny Markowa (MDP):** To matematyczny stół gry, składający się z konkretnych filarów:
+    *   **Stany (S):** Kompletny cyfrowy opis obecnej sytuacji (np. koordynaty w labiryncie, stany magazynowe).
+    *   **Akcje (A):** Zestaw "przycisków" i ruchów fizycznie dostępnych dla agenta z poziomu danego stanu.
+    *   **Przejścia (P):** Mechanika i fizyka środowiska. Z jakim prawdopodobieństwem krok do przodu faktycznie wyrzuci nas do przodu, bo np. w losowym środowisku podłoże bywa śliskie.
+    *   **Nagrody (R):** Skalarna marchewka lub kij. Agent optymalizuje ich sumę długoterminową, godząc się na obecny minus, aby na końcu gry trafić w wielki zysk.
+    *   **Dyskonto ($\gamma$):** Parametr "krótkowzroczności". Bliski zera czyni agenta chciwym na natychmiastowe nagrody; bliski jedynki każe mu tworzyć plan i cenić nagrody oddalone w latach.
+*   **Własność Markowa:** Koniec z analizowaniem historii. Algorytm zakłada, że aktualnie spakowany Stan jest na tyle bogaty i kompletny, że pozwala obliczyć idealny następny ruch bez patrzenia we wczorajsze logi zdarzeń.
+
+## 28. Omów rolę funkcji wartości, równań Bellmana i aktualizacji w Q-learningu. Wyjaśnij, dlaczego problem eksploracji i eksploatacji jest w uczeniu ze wzmocnieniem kluczowy.
+
+*   **Rola funkcji wartości:** Odrzucają ślepą pogoń za jednym zyskiem. Służą jako wewnętrzny radar agenta oceniający całą "ścieżkę": sprawdzają, jaki skumulowany majątek uda się nam wyciągnąć począwszy od tego konkretnego stanu lub wybranej akcji aż do samego końca symulacji.
+*   **Równania Bellmana:** Rozcinają trudne analizowanie milionów kroków w przód na jedną sprytną rekurencję. Matematycznie mówią: "cała moja opłacalność w tej chwili to po prostu nagroda natychmiastowa dodana do zdyskontowanej oceny wartości następnego pola, na które wejdę".
+*   **Aktualizacja Q-learning (Cel TD):** W fazie treningu algorytm bezlitośnie nadpisuje starą, niedoskonałą ocenę ruchu. Oblicza *Cel TD* (zarobek przed chwilą + maksymalna nagroda dostępna w widocznym, kolejnym kroku) i poprzez współczynnik uczenia $\alpha$ koryguje swój pogląd, robiąc uśredniony kompromis między wczorajszą niewiedzą a dzisiejszym doświadczeniem.
+*   **Eksploracja vs Eksploatacja (Kluczowy konflikt):** Ponieważ agent musi samodzielnie generować zbiór danych, wpada w pułapkę. Jeżeli zamknie się na odcinaniu kuponów z już znanego dobrego zachowania (eksploatacja), wpadnie w optimum lokalne. Musi systematycznie losować "głupie" i ryzykowne ruchy (eksploracja), aby skanować teren w poszukiwaniu ścieżek o drastycznie wyższej rentowności, balansując tym np. w regule $\epsilon$-greedy.
+
+## 29. Omów analizę koszykową i reguły asocjacyjne. Przedstaw sposób formalizacji danych transakcyjnych oraz ideę wyszukiwania częstych zbiorów i reguł metodami Apriori oraz FP-Growth.
+
+*   **Analiza koszykowa:** Nie posiada etykiet docelowych. Jej misją jest masowe wyłapywanie grupowych nawyków, czyli itemsetów (produktów rzucanych wspólnie na ladę), by zasilać silniki rekomendacyjne lub układać półki.
+*   **Formalizacja (Transakcje):** Rekord to nie zbiór kolumn, ale elastyczny "zestaw", np. paragon $T_1 = \{chleb, masło\}$. Do ewaluacji używa wskaźników:
+    *   *Wsparcie (Support):* Twarda popularność – fizyczny odsetek wszystkich paragonów w systemie zawierających analizowany zestaw.
+    *   *Ufność (Confidence):* Warunkowa logika – jaki procent osób z chlebem postanowił dobrać też to masło.
+    *   *Lift:* Test siły – czy powiązanie przebija przypadek. Lift > 1 oznacza solidne sprzężenie, nielosowe dobieranie tych produktów.
+*   **Zasada antymonotoniczności (Apriori):** System unika sprawdzania trylionów kombinacji genialnym prawem matematycznym: jeśli koszyk $\{chleb, masło\}$ sprzedaje się fatalnie, to koszyk $\{chleb, masło, piwo\}$ musi sprzedawać się jeszcze gorzej. 
+*   **Metoda Apriori:** Szatkuje bazę falami. Szuka często kupowanych duetów, wyrzuca te rzadkie i z ocalałych lepi w locie zbiory potrójne. Brutalnie odcina ślepe gałęzie na każdym etapie, zachowując czystą czytelność kosztem wielu wejść na dysk.
+*   **Metoda FP-Growth:** Całkowicie omija wady Apriori. Kompresuje całą wielką bazę logów w małe, wielogałęziowe "drzewo prefiksów" w pamięci komputera. Nie generuje kandydatów na potęgę, lecz rekurencyjnie wydłubuje wzorce z tego drzewa, co daje potężnego "kopa" wydajnościowego na gigantycznych bazach.
+
+## 30. Omów problem wykrywania anomalii. Przedstaw typy anomalii, trudności ich formalizacji oraz porównaj intuicję działania metod LOF i Isolation Forest.
+
+*   **Problem z definicją:** Genialnie umiemy zamodelować normę zachowań systemowych, ale rzadka anomalia przy każdym ataku nosi inną maskę. Dlatego problem unika binarnych etykiet; zamiast tego buduje "funkcję skoringową", zrzucając na barki analityka decyzję, przy jakiej twardej cyfrze podnieść alarm bezpieczeństwa.
+*   **Trzy twarze anomalii:**
+    *   *Punktowa:* Obserwacja sama wystrzelona fizycznie poza orbitę danych (np. gigantyczny zarobek).
+    *   *Kontekstowa:* 30 stopni Celsjusza latem to standard, ale 30 stopni Celsjusza w lutym odpala czerwone lampki.
+    *   *Zbiorowa:* Z pozoru zwykłe, pojedyncze pakiety sieciowe stają się nagle anomalną, rytmiczną armią przy ataku hakerskim.
+*   **LOF (Local Outlier Factor) - Intuicja Gęstości:** LOF mierzy gęstość okolicy, a nie kilometry do środka planszy. Z punktu widzenia LOF punkt jest anomalią wtedy, gdy ma bardzo puste podwórko dookoła, a jego sasiedzi żyją zbici w ciasną, gęstą grupkę.
+*   **Isolation Forest - Intuicja Drwala:** Kompletnie porzuca mierzenie dystansu. Wbija w dane losowe, tnące osie. Założenie jest proste: punkty anomalne stoją na takim odludziu, że wystarczą zaledwie dwa czy trzy "cięcia" matematyczne, aby odizolować intruza na osobnej wyspie. Typowe obiekty ukryte w "gęstym tłumie" wymagają do uwięzienia dziesiątek precyzyjnych cięć.

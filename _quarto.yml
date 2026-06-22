@@ -10,6 +10,8 @@ website:
         href: index.qmd
       - text: "Eksploracja danych"
         href: Pytania_eksploracja.qmd
+      - text: "Eksploracja danych - abstrakt"
+        href: Pytania_eksploracja_skrot.qmd
 
 format:
   html:
