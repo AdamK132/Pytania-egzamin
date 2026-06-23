@@ -249,259 +249,259 @@
     "href": "analizaII.html#warunki-jednostajnej-zbieżności-ciągu-funkcyjnego.",
     "title": "Analiza matematyczna II",
     "section": "2. Warunki jednostajnej zbieżności ciągu funkcyjnego.",
-    "text": "2. Warunki jednostajnej zbieżności ciągu funkcyjnego.\nWarunek Cauchy’ego jednostajnej zbieżności ciągu funkcyjnego\n\nDefinicja: Ciąg funkcyjny jest jednostajnie zbieżny na zadanym zbiorze wtedy i tylko wtedy, gdy odległość między dowolnymi dwoma jego dostatecznie dalekimi wyrazami jest wspólnie ograniczona przez arbitralnie zadaną tolerancję błędu dla wszystkich punktów dziedziny.\nWzór / Warunek formalny: \\[ \\forall \\varepsilon&gt;0 \\,\\, \\exists \\delta&gt;0 \\,\\, \\forall n\\in\\mathbb{N} \\,\\, \\forall k\\in\\mathbb{N}^+ \\,\\, \\forall x\\in A \\;\\; [\\delta &lt; n \\implies |f_{n+k}(x) - f_n(x)| &lt; \\varepsilon] \\]\nKluczowy wymóg: Wskaźnik \\(\\delta\\) dobierany jest wyłącznie w zależności od \\(\\varepsilon\\) i pozostaje wspólny (niezależny od wyboru punktu) dla wszystkich elementów \\(x \\in A\\).\n\nWarunek konieczny i wystarczający jednostajnej zbieżności (z supremum)\n\nDefinicja: Ciąg funkcyjny zbiega jednostajnie do badanej funkcji granicznej na zadanym zbiorze wtedy i tylko wtedy, gdy ciąg liczbowy utworzony z kresów górnych odchyleń wyrazów tego ciągu od funkcji granicznej jest zbieżny do zera.\nWzór / Warunek formalny: \\[ f_n \\rightrightarrows f \\iff \\lim_{n \\to \\infty} a_n = 0, \\quad \\text{gdzie } a_n = \\sup_{x \\in A} |f_n(x) - f(x)| \\]\nKluczowy wymóg: Kres górny (supremum) odległości między badanym wyrazem ciągu funkcyjnego a funkcją graniczną musi być wyznaczany globalnie na całym zbiorze \\(A\\)."
+    "text": "2. Warunki jednostajnej zbieżności ciągu funkcyjnego.\nWarunek Cauchy’ego jednostajnej zbieżności ciągu funkcyjnego\n\nDefinicja:\nCiąg funkcyjny określony na zbiorze \\(A \\subseteq \\mathbb{R}\\) jest jednostajnie zbieżny wtedy i tylko wtedy, gdy odległość między jego dowolnymi dwoma dostatecznie dalekimi wyrazami jest wspólnie ograniczona przez zadaną tolerancję błędu dla wszystkich punktów dziedziny.\nWzór / Warunek formalny:\n\\[ \\forall \\varepsilon&gt;0 \\,\\, \\exists \\delta&gt;0 \\,\\, \\forall n\\in\\mathbb{N} \\,\\, \\forall k\\in\\mathbb{N}^+ \\,\\, \\forall x\\in A \\;\\; [\\delta &lt; n \\implies |f_{n+k}(x) - f_n(x)| &lt; \\varepsilon] \\]\nKluczowy wymóg:\nWskaźnik \\(\\delta\\) musi być dobrany wyłącznie w zależności od \\(\\varepsilon\\) i pozostawać uniwersalny (wspólny) dla wszystkich punktów \\(x \\in A\\).\n\nWarunek konieczny i wystarczający jednostajnej zbieżności (z supremum)\n\nDefinicja:\nCiąg funkcyjny zbiega jednostajnie do funkcji granicznej na zadanym zbiorze wtedy i tylko wtedy, gdy ciąg liczbowy utworzony z kresów górnych odchyleń wyrazów tego ciągu od funkcji granicznej dąży do zera.\nWzór / Warunek formalny:\n\\[ f_n \\rightrightarrows f \\iff \\lim_{n \\to \\infty} a_n = 0, \\quad \\text{gdzie } a_n = \\sup_{x \\in A} |f_n(x) - f(x)| \\]\nKluczowy wymóg:\nKres górny odległości między danym wyrazem ciągu a funkcją graniczną musi być wyznaczany globalnie i symultanicznie na całym zbiorze \\(A\\)."
   },
   {
     "objectID": "analizaII.html#pojęcie-szeregu-funkcyjnego-oraz-zbieżność-punktowa-i-jednostajna-takiego-szeregu.",
     "href": "analizaII.html#pojęcie-szeregu-funkcyjnego-oraz-zbieżność-punktowa-i-jednostajna-takiego-szeregu.",
     "title": "Analiza matematyczna II",
     "section": "3. Pojęcie szeregu funkcyjnego oraz zbieżność punktowa i jednostajna takiego szeregu.",
-    "text": "3. Pojęcie szeregu funkcyjnego oraz zbieżność punktowa i jednostajna takiego szeregu."
+    "text": "3. Pojęcie szeregu funkcyjnego oraz zbieżność punktowa i jednostajna takiego szeregu.\nSzereg funkcyjny\n\nDefinicja:\nSzereg funkcyjny określony na zbiorze \\(A \\subseteq \\mathbb{R}\\) to ciąg funkcyjny sum częściowych \\((S_n)\\), utworzony z zadanego nieskończonego ciągu funkcyjnego \\((f_n)\\). Zbieżność lub rozbieżność szeregu funkcyjnego definiuje się wprost jako zbieżność lub rozbieżność odpowiadającego mu ciągu sum częściowych.\nWzór / Warunek formalny:\n\\[ S_n(x) = \\sum_{k=1}^n f_k(x), \\quad \\text{dla } x \\in A \\]\nKluczowy wymóg:\nWszystkie wyrazy ciągu funkcyjnego tworzącego szereg muszą stanowić określone funkcje zdefiniowane na wspólnej dziedzinie \\(A\\).\n\nZbieżność punktowa szeregu funkcyjnego\n\nDefinicja:\nSzereg funkcyjny jest zbieżny punktowo na zbiorze \\(A\\) do funkcji granicznej \\(S\\), jeżeli dla każdego ustalonego punktu \\(x \\in A\\) ciąg liczbowy jego sum częściowych jest zbieżny do wartości \\(S(x)\\).\nWzór / Warunek formalny:\n\\[ \\forall \\varepsilon&gt;0 \\,\\, \\forall x\\in A \\,\\, \\exists n_0\\in\\mathbb{N} \\,\\, \\forall n&gt;n_0 \\;\\; \\left| \\sum_{k=1}^n f_k(x) - S(x) \\right| &lt; \\varepsilon \\]\nKluczowy wymóg:\nDobór wskaźnika \\(n_0\\) zależy w ogólności zarówno od ustalonej tolerancji błędu \\(\\varepsilon\\), jak i od konkretnego wyboru punktu dziedziny \\(x \\in A\\).\n\nZbieżność jednostajna szeregu funkcyjnego\n\nDefinicja:\nSzereg funkcyjny zbiega jednostajnie na zbiorze \\(A\\) do funkcji \\(S\\), jeżeli ciąg jego sum częściowych zbiega do niej jednostajnie na całej dziedzinie. Oznacza to, że odchylenie sum częściowych od sumy szeregu, dla wskaźników przekraczających pewien próg, staje się arbitralnie małe symultanicznie dla wszystkich punktów zbioru \\(A\\).\nWzór / Warunek formalny:\n\\[ \\forall \\varepsilon&gt;0 \\,\\, \\exists n_0\\in\\mathbb{N} \\,\\, \\forall n&gt;n_0 \\,\\, \\forall x\\in A \\;\\; \\left| \\sum_{k=1}^n f_k(x) - S(x) \\right| &lt; \\varepsilon \\]\nKluczowy wymóg:\nWskaźnik \\(n_0\\) dobierany jest wyłącznie w zależności od zadanej tolerancji błędu \\(\\varepsilon\\) i stanowi uniwersalny (niezależny od \\(x\\)) próg zbieżności dla wszystkich elementów zbioru \\(A\\)."
   },
   {
     "objectID": "analizaII.html#związki-zbieżności-jednostajnej-szeregu-funkcyjnego-z-ciągłością-różniczkowaniem-i-całkowaniem-takiego-szeregu.",
     "href": "analizaII.html#związki-zbieżności-jednostajnej-szeregu-funkcyjnego-z-ciągłością-różniczkowaniem-i-całkowaniem-takiego-szeregu.",
     "title": "Analiza matematyczna II",
     "section": "4. Związki zbieżności jednostajnej szeregu funkcyjnego z ciągłością, różniczkowaniem i całkowaniem takiego szeregu.",
-    "text": "4. Związki zbieżności jednostajnej szeregu funkcyjnego z ciągłością, różniczkowaniem i całkowaniem takiego szeregu."
+    "text": "4. Związki zbieżności jednostajnej szeregu funkcyjnego z ciągłością, różniczkowaniem i całkowaniem takiego szeregu.\nCiągłość sumy szeregu funkcyjnego\n\nDefinicja:\nJeżeli wszystkie funkcje tworzące szereg funkcyjny są ciągłe w punkcie, a szereg ten jest jednostajnie zbieżny na badanej dziedzinie, to funkcja będąca jego sumą jest również ciągła w tym punkcie.\nWzór / Warunek formalny:\n\\[ \\lim_{x \\to x_0} \\sum_{n=0}^{\\infty} f_n(x) = \\sum_{n=0}^{\\infty} f_n(x_0) \\]\nKluczowy wymóg:\nKluczowym założeniem gwarantującym dziedziczenie ciągłości przez sumę jest jednostajna zbieżność całego szeregu funkcyjnego na analizowanym zbiorze.\n\nCałkowanie szeregu funkcyjnego (wyraz po wyrazie)\n\nDefinicja:\nJeżeli wyrazy szeregu funkcyjnego są całkowalne w sensie Riemanna na przedziale domkniętym, a szereg zbiega jednostajnie do swojej sumy na tym przedziale, to jego suma jest funkcją całkowalną, a całka z sumy jest równa sumie całek.\nWzór / Warunek formalny:\n\\[ \\int_a^b \\left( \\sum_{n=1}^{\\infty} f_n(x) \\right) dx = \\sum_{n=1}^{\\infty} \\int_a^b f_n(x)dx \\]\nKluczowy wymóg:\nJednostajna zbieżność szeregu na przedziale całkowania jest warunkiem bezwzględnie wymaganym do uprawnionej zamiany kolejności operacji całkowania i nieskończonego sumowania.\n\nRóżniczkowanie szeregu funkcyjnego (wyraz po wyrazie)\n\nDefinicja:\nSzereg funkcyjny różniczkuje się wyraz po wyrazie, jeżeli jego wyrazy posiadają pochodne, szereg utworzony z tych pochodnych jest jednostajnie zbieżny na przedziale otwartym, a sam szereg wyjściowy jest zbieżny w co najmniej jednym punkcie tego przedziału.\nWzór / Warunek formalny:\n\\[ \\left( \\sum_{n=1}^{\\infty} f_n(x) \\right)' = \\sum_{n=1}^{\\infty} f'_n(x) \\]\nKluczowy wymóg:\nZałożenie o jednostajnej zbieżności jest wymagane nie wobec wyjściowego szeregu funkcyjnego, lecz względem szeregu utworzonego z pochodnych jego wyrazów."
   },
   {
     "objectID": "analizaII.html#pojęcie-szeregu-potęgowego-oraz-twierdzenia-abela-i-hadamarda.",
     "href": "analizaII.html#pojęcie-szeregu-potęgowego-oraz-twierdzenia-abela-i-hadamarda.",
     "title": "Analiza matematyczna II",
     "section": "5. Pojęcie szeregu potęgowego oraz twierdzenia Abela i Hadamarda.",
-    "text": "5. Pojęcie szeregu potęgowego oraz twierdzenia Abela i Hadamarda."
+    "text": "5. Pojęcie szeregu potęgowego oraz twierdzenia Abela i Hadamarda.\nSzereg potęgowy\n\nDefinicja:\nSzereg potęgowy to szczególny przypadek szeregu funkcyjnego, którego wyrazami są funkcje potęgowe przesunięte o ustalony środek \\(x_0\\), pomnożone przez ciąg współczynników liczbowych. Zbiór zbieżności takiego szeregu jest zawsze niepusty, gdyż zbiega on w sposób trywialny w swoim środku.\nWzór / Warunek formalny:\n\\[ \\sum_{n=0}^{\\infty} a_n(x-x_0)^n \\]\nKluczowy wymóg:\nDziedzina zbieżności szeregu potęgowego zawsze stanowi przedział symetryczny wokół jego środka (zwany przedziałem zbieżności), wewnątrz którego szereg zbiega bezwzględnie.\n\nTwierdzenie Cauchy’ego-Hadamarda\n\nDefinicja:\nTwierdzenie określające promień zbieżności szeregu potęgowego \\(R\\) w oparciu o granicę górną z pierwiastków stopnia n-tego z modułów jego współczynników. Wewnątrz wyznaczonego w ten sposób przedziału szereg ten zbiega zarówno bezwzględnie, jak i jednostajnie.\nWzór / Warunek formalny:\n\\[ \\frac{1}{R} = \\limsup_{n\\to\\infty} \\sqrt[n]{|a_n|} \\]\nKluczowy wymóg:\nTwierdzenie to gwarantuje zbieżność ściśle wewnątrz przedziału zbieżności, jednak w ogólności nie rozstrzyga o zbieżności na samych jego końcach (gdzie \\(|x| = R\\)).\n\nTwierdzenie Abela\n\nDefinicja:\nTwierdzenie orzekające, że jeśli szereg potęgowy jest zbieżny na brzegu swojego przedziału zbieżności, to funkcja będąca sumą tego szeregu jest jednostronnie ciągła w tym punkcie brzegowym. Pozwala to na obliczanie wartości funkcji na granicy poprzez bezpośrednie przejście graniczne we wnętrzu.\nWzór / Warunek formalny:\n\\[ \\text{Jeśli } \\sum_{n=0}^\\infty a_n R^n = S(R), \\quad \\text{to } \\lim_{x \\to R^-} S(x) = \\sum_{n=0}^\\infty a_n R^n \\]\nKluczowy wymóg:\nDo skorzystania z tezy o ciągłości sumy na brzegu wymagane jest niezależne, uprzednie udowodnienie zbieżności szeregu liczbowego w badanym punkcie brzegowym."
   },
   {
     "objectID": "analizaII.html#reguły-różniczkowania-i-całkowania-szeregów-potęgowych.",
     "href": "analizaII.html#reguły-różniczkowania-i-całkowania-szeregów-potęgowych.",
     "title": "Analiza matematyczna II",
     "section": "6. Reguły różniczkowania i całkowania szeregów potęgowych.",
-    "text": "6. Reguły różniczkowania i całkowania szeregów potęgowych."
+    "text": "6. Reguły różniczkowania i całkowania szeregów potęgowych.\n\nDefinicja:\nSzeregi potęgowe we wnętrzu swojego przedziału zbieżności wyznaczają funkcję ciągłą i gładką nieskończenie wiele razy, którą można obustronnie różniczkować i całkować wyraz po wyrazie. Operacje te generują nowe szeregi potęgowe o identycznym promieniu zbieżności co szereg wyjściowy.\nWzór / Warunek formalny:\n\\[ \\left( \\sum_{n=0}^{\\infty} a_n x^n \\right)' = \\sum_{n=1}^{\\infty} n a_n x^{n-1} \\quad \\text{oraz} \\quad \\int_0^x \\left( \\sum_{n=0}^{\\infty} a_n t^n \\right) dt = \\sum_{n=0}^{\\infty} \\frac{a_n}{n+1} x^{n+1} \\]\nKluczowy wymóg:\nOperacje te są w pełni uprawnione wyłącznie dla argumentów znajdujących się ściśle we wnętrzu przedziału zbieżności (\\(|x| &lt; R\\)), co opiera się na założeniu zbieżności jednostajnej powstałego szeregu pochodnych w domkniętych podprzedziałach."
   },
   {
     "objectID": "analizaII.html#analityczna-definicja-funkcji-trygonometrycznych.",
     "href": "analizaII.html#analityczna-definicja-funkcji-trygonometrycznych.",
     "title": "Analiza matematyczna II",
     "section": "7. Analityczna definicja funkcji trygonometrycznych.",
-    "text": "7. Analityczna definicja funkcji trygonometrycznych."
+    "text": "7. Analityczna definicja funkcji trygonometrycznych.\n\nDefinicja:\nFunkcje trygonometryczne definiuje się formalnie w analizie matematycznej za pomocą wszędzie zbieżnych szeregów potęgowych (szeregów Maclaurina), co pozwala całkowicie uniezależnić ich koncepcję i własności od geometrii elementarnej. Dzięki temu ich domena w sposób naturalny rozszerza się także na liczby zespolone.\nWzór / Warunek formalny:\n\\[ \\sin x = \\sum_{n=0}^{\\infty} \\frac{(-1)^n}{(2n+1)!} x^{2n+1}, \\quad \\cos x = \\sum_{n=0}^{\\infty} \\frac{(-1)^n}{(2n)!} x^{2n} \\]\nKluczowy wymóg:\nSformułowane wyżej szeregi potęgowe muszą posiadać promień zbieżności równy nieskończoności (\\(R = \\infty\\)), co gwarantuje poprawność i analityczność tych funkcji dla każdej liczby rzeczywistej."
   },
   {
     "objectID": "analizaII.html#związek-między-funkcją-wykładniczą-a-funkcjami-trygonometrycznymi-wzory-eulera.",
     "href": "analizaII.html#związek-między-funkcją-wykładniczą-a-funkcjami-trygonometrycznymi-wzory-eulera.",
     "title": "Analiza matematyczna II",
     "section": "8. Związek między funkcją wykładniczą a funkcjami trygonometrycznymi – wzory Eulera.",
-    "text": "8. Związek między funkcją wykładniczą a funkcjami trygonometrycznymi – wzory Eulera."
+    "text": "8. Związek między funkcją wykładniczą a funkcjami trygonometrycznymi – wzory Eulera.\n\nDefinicja:\nWzór Eulera ściśle wiąże zespoloną funkcję wykładniczą z trygonometrycznymi, stanowiąc analityczne przedłużenie eksponenty na płaszczyznę zespoloną. Przekłada on rotacyjną naturę wartości trygonometrycznych na działania bezpośrednio wykładnicze.\nWzór / Warunek formalny:\n\\[ e^{ix} = \\cos x + i \\sin x \\implies \\cos x = \\frac{e^{ix} + e^{-ix}}{2}, \\,\\, \\sin x = \\frac{e^{ix} - e^{-ix}}{2i} \\]\nKluczowy wymóg:\nTożsamości te obowiązują dzięki absolutnej zbieżności rozwinięć eksponenty, sinusa i cosinusa w nieskończone szeregi potęgowe, skąd uzyskuje się je z bezpośredniego uporządkowania składników urojonych i rzeczywistych."
   },
   {
     "objectID": "analizaII.html#szereg-fouriera-oraz-warunki-zbieżności.",
     "href": "analizaII.html#szereg-fouriera-oraz-warunki-zbieżności.",
     "title": "Analiza matematyczna II",
     "section": "9. Szereg Fouriera oraz warunki zbieżności.",
-    "text": "9. Szereg Fouriera oraz warunki zbieżności."
+    "text": "9. Szereg Fouriera oraz warunki zbieżności.\n\nDefinicja:\nSzereg Fouriera to rozwinięcie funkcji okresowej na ortogonalną bazę funkcji trygonometrycznych, pozwalające na gładką, harmoniczną analizę sygnałów. Zbieżność punktową i ewentualną zbieżność jednostajną szeregu Fouriera do wartości wyjściowej funkcji wprost regulują tzw. warunki Dirichleta.\nWzór / Warunek formalny:\n\\[ f(x) \\sim \\frac{a_0}{2} + \\sum_{n=1}^{\\infty} \\left( a_n \\cos\\left(\\frac{n\\pi x}{L}\\right) + b_n \\sin\\left(\\frac{n\\pi x}{L}\\right) \\right) \\]\nKluczowy wymóg:\nDla zbieżności punktowej szeregu do \\(f(x)\\), weryfikowana funkcja musi spełniać kryteria Dirichleta na zadanym przedziale, co w szczególności nakazuje, by była przedziałami gładka oraz miała co najwyżej skończoną liczbę ekstremów i punktów nieciągłości pierwszego rodzaju."
   },
   {
     "objectID": "analizaII.html#zasada-minimalności-nierówność-bessela-i-zasada-lokalizacji.",
     "href": "analizaII.html#zasada-minimalności-nierówność-bessela-i-zasada-lokalizacji.",
     "title": "Analiza matematyczna II",
     "section": "10. Zasada minimalności, nierówność Bessela i zasada lokalizacji.",
-    "text": "10. Zasada minimalności, nierówność Bessela i zasada lokalizacji."
+    "text": "10. Zasada minimalności, nierówność Bessela i zasada lokalizacji.\nZasada minimalności i Nierówność Bessela\n\nDefinicja:\nZasada minimalności orzeka, że zredukowana suma częściowa szeregu Fouriera stanowi najlepszą możliwą aproksymację funkcji w sensie błędu średniokwadratowego. Stanowi to fundament i granicę do wyprowadzenia nierówności Bessela, stwierdzającej formalnie, że suma kwadratów współczynników Fouriera nie przekracza całkowitej kwadratowej normy funkcji.\nWzór / Warunek formalny:\n\\[ \\frac{a_0^2}{2} + \\sum_{n=1}^{\\infty} (a_n^2 + b_n^2) \\le \\frac{1}{L} \\int_{-L}^{L} |f(x)|^2 dx \\]\nKluczowy wymóg:\nZależności te są uprawnione i poprawnie uwarunkowane jedynie dla funkcji należących do przestrzeni Hilberta \\(L^2\\), czyli funkcji bezwzględnie całkowalnych z kwadratem na danym interwale.\n\nZasada lokalizacji (Riemanna)\n\nDefinicja:\nZasada lokalizacji orzeka formalnie, że punktowa zbieżność oraz wartość sumy szeregu Fouriera w wybranym, ustalonym punkcie dziedziny zależą wyłącznie od analitycznego zachowania się funkcji w dowolnie małym i bezpośrednim otoczeniu tego punktu, całkowicie ignorując własności funkcji w strefach odległych.\nWzór / Warunek formalny:\n\\[ \\lim_{n \\to \\infty} S_n(f, x) = \\lim_{n \\to \\infty} \\frac{1}{\\pi} \\int_{-\\delta}^{\\delta} f(x+t) \\frac{\\sin\\left((n+\\frac{1}{2})t\\right)}{2 \\sin(t/2)} dt \\]\nKluczowy wymóg:\nGłównym mechanizmem dającym podstawę dla zasady lokalizacji jest lemat Riemanna-Lebesgue’a, udowadniający zanikanie w nieskończoności całek zawierających szybkozmienne częstotliwości harmoniczne leżące poza otoczeniem punktu.\n\nUwaga: Informacje podane w odpowiedziach na pytania od 7 do 10 pochodzą z ogólnej wiedzy analitycznej poza dostarczonym materiałem źródłowym (który kończy się na problematyce szeregów potęgowych) i mogą wymagać w związku z tym niezależnej weryfikacji."
   },
   {
     "objectID": "analizaII.html#zbieżność-ciągów-w-przestrzeni-mathbbrk-i-warunki-istnienia-granicy-takich-ciągów-oraz-twierdzenia-dotyczące-ich-obliczania.",
     "href": "analizaII.html#zbieżność-ciągów-w-przestrzeni-mathbbrk-i-warunki-istnienia-granicy-takich-ciągów-oraz-twierdzenia-dotyczące-ich-obliczania.",
     "title": "Analiza matematyczna II",
     "section": "11. Zbieżność ciągów w przestrzeni \\(\\mathbb{R}^k\\) i warunki istnienia granicy takich ciągów oraz twierdzenia dotyczące ich obliczania.",
-    "text": "11. Zbieżność ciągów w przestrzeni \\(\\mathbb{R}^k\\) i warunki istnienia granicy takich ciągów oraz twierdzenia dotyczące ich obliczania."
+    "text": "11. Zbieżność ciągów w przestrzeni \\(\\mathbb{R}^k\\) i warunki istnienia granicy takich ciągów oraz twierdzenia dotyczące ich obliczania.\n\nDefinicja:\nCiąg punktów \\(a_n \\in \\mathbb{R}^k\\) jest zbieżny do granicy \\(a^\\circ \\in \\mathbb{R}^k\\), jeżeli odległość euklidesowa między wyrazami ciągu a punktem granicznym dąży do zera wraz ze wzrostem indeksu \\(n\\) do nieskończoności. Twierdzenia o arytmetyce granic przenoszą się wprost z ciągów liczbowych.\nWzór / Warunek formalny:\n\\[ \\forall \\varepsilon&gt;0 \\,\\, \\exists \\delta&gt;0 \\,\\, \\forall n\\in\\mathbb{N}^+ \\;\\; [\\delta &lt; n \\implies d_k(a_n, a^\\circ) &lt; \\varepsilon] \\]\nKluczowy wymóg:\nZbieżność ciągu w przestrzeni \\(\\mathbb{R}^k\\) jest analitycznie równoważna jednoczesnej zbieżności “po współrzędnych” wszystkich jego \\(k\\) ciągów składowych."
   },
   {
     "objectID": "analizaII.html#granica-funkcji-z-mathbbrk-do-mathbbr-i-granica-jednostronna-oraz-ich-własności.",
     "href": "analizaII.html#granica-funkcji-z-mathbbrk-do-mathbbr-i-granica-jednostronna-oraz-ich-własności.",
     "title": "Analiza matematyczna II",
     "section": "12. Granica funkcji z \\(\\mathbb{R}^k\\) do \\(\\mathbb{R}\\) i granica jednostronna oraz ich własności.",
-    "text": "12. Granica funkcji z \\(\\mathbb{R}^k\\) do \\(\\mathbb{R}\\) i granica jednostronna oraz ich własności."
+    "text": "12. Granica funkcji z \\(\\mathbb{R}^k\\) do \\(\\mathbb{R}\\) i granica jednostronna oraz ich własności.\n\nDefinicja:\nFunkcja \\(f: A \\to \\mathbb{R}\\) (gdzie \\(A \\subseteq \\mathbb{R}^k\\)) ma w punkcie skupienia dziedziny granicę właściwą, jeżeli dla każdego zbieżnego do niego ciągu argumentów, ciąg wartości funkcji zbiega do tej samej granicy. Pojęcie granicy jednostronnej stosuje się ściśle dla funkcji jednej zmiennej lub w badaniu granic wzdłuż określonej trajektorii jednowymiarowej.\nWzór / Warunek formalny:\n\\[ \\forall \\varepsilon&gt;0 \\,\\, \\exists \\delta&gt;0 \\,\\, \\forall x\\in A \\;\\; [0 &lt; d_k(x, x^\\circ) &lt; \\delta \\implies |f(x) - g| &lt; \\varepsilon] \\]\nKluczowy wymóg:\nGranica funkcji wielu zmiennych musi istnieć i przyjmować identyczną wartość całkowicie niezależnie od wybranej trajektorii (ciągu argumentów), po której następuje zbieganie do punktu skupienia."
   },
   {
     "objectID": "analizaII.html#ciągłość-funkcji-wielu-zmiennych-oraz-ciągłość-jednostajna.",
     "href": "analizaII.html#ciągłość-funkcji-wielu-zmiennych-oraz-ciągłość-jednostajna.",
     "title": "Analiza matematyczna II",
     "section": "13. Ciągłość funkcji wielu zmiennych oraz ciągłość jednostajna.",
-    "text": "13. Ciągłość funkcji wielu zmiennych oraz ciągłość jednostajna."
+    "text": "13. Ciągłość funkcji wielu zmiennych oraz ciągłość jednostajna.\n\nDefinicja:\nFunkcja jest ciągła w punkcie, jeżeli jej granica w nim istnieje i równa się wartości funkcji w tym punkcie. Funkcja jest jednostajnie ciągła na zbiorze, jeżeli odchylenie jej wartości jest mniejsze od zadanego błędu dla dowolnych dwóch punktów dziedziny oddalonych o mniej niż pewien próg odległości.\nWzór / Warunek formalny:\n\\[ \\forall \\varepsilon&gt;0 \\,\\, \\exists \\delta&gt;0 \\,\\, \\forall x_1, x_2\\in A \\;\\; [d_k(x_1, x_2) &lt; \\delta \\implies |f(x_1) - f(x_2)| &lt; \\varepsilon] \\]\nKluczowy wymóg:\nW ciągłości jednostajnej próg tolerancji \\(\\delta\\) jest dobierany globalnie i zależy wyłącznie od arbitralnie ustalonego \\(\\varepsilon\\), stanowiąc warunek niezależny od lokalizacji punktów w dziedzinie."
   },
   {
     "objectID": "analizaII.html#pojęcie-pochodnej-kierunkowej-i-jej-własności.-pochodna-cząstkowa.",
     "href": "analizaII.html#pojęcie-pochodnej-kierunkowej-i-jej-własności.-pochodna-cząstkowa.",
     "title": "Analiza matematyczna II",
     "section": "14. Pojęcie pochodnej kierunkowej i jej własności. Pochodna cząstkowa.",
-    "text": "14. Pojęcie pochodnej kierunkowej i jej własności. Pochodna cząstkowa."
+    "text": "14. Pojęcie pochodnej kierunkowej i jej własności. Pochodna cząstkowa.\n\nDefinicja:\nPochodna kierunkowa to skończona granica ilorazu różnicowego mierząca tempo zmian funkcji wzdłuż prostej wyznaczonej przez zadany wektor \\(a\\). Pochodna cząstkowa to jej szczególny wariant, definiowany wyłącznie wzdłuż wektorów bazy kanonicznej przestrzeni \\(\\mathbb{R}^k\\).\nWzór / Warunek formalny:\n\\[ f'_a(x_0) = \\lim_{t \\to 0} \\frac{f(x_0 + ta) - f(x_0)}{t} \\]\nKluczowy wymóg:\nSamo istnienie wszystkich możliwych pochodnych kierunkowych (w tym cząstkowych) w badanym punkcie nie implikuje ciągłości funkcji wielu zmiennych w tym punkcie."
   },
   {
     "objectID": "analizaII.html#pochodna-słaba-funkcji-wielu-zmiennych-przykłady-i-własności.",
     "href": "analizaII.html#pochodna-słaba-funkcji-wielu-zmiennych-przykłady-i-własności.",
     "title": "Analiza matematyczna II",
     "section": "15. Pochodna słaba funkcji wielu zmiennych – przykłady i własności.",
-    "text": "15. Pochodna słaba funkcji wielu zmiennych – przykłady i własności."
+    "text": "15. Pochodna słaba funkcji wielu zmiennych – przykłady i własności.\n\nDefinicja:\nPochodna słaba (w sensie Gateaux) to wyznaczony jednoznacznie wektor \\(f'(x_0) \\in \\mathbb{R}^k\\), którego współrzędnymi są pochodne cząstkowe. Jej iloczyn skalarny z dowolnym wektorem kierunku \\(a\\) determinuje wartość pochodnej kierunkowej wzdłuż tego wektora.\nWzór / Warunek formalny:\n\\[ f'_a(x_0) = f'(x_0) \\circ a = \\sum_{i=1}^k \\frac{\\partial f}{\\partial x_i}(x_0) \\cdot a_i \\]\nKluczowy wymóg:\nIstnienie pochodnej słabej bezwzględnie wymaga, aby pochodna kierunkowa była jednoznaczną funkcją liniową względem rozpatrywanego wektora kierunku \\(a\\)."
   },
   {
     "objectID": "analizaII.html#pochodna-słaba-odwzorowania.",
     "href": "analizaII.html#pochodna-słaba-odwzorowania.",
     "title": "Analiza matematyczna II",
     "section": "16. Pochodna słaba odwzorowania.",
-    "text": "16. Pochodna słaba odwzorowania."
+    "text": "16. Pochodna słaba odwzorowania.\n\nDefinicja:\nPochodna słaba (w sensie Gateaux) odwzorowania przestrzeni euklidesowych w punkcie to macierz przekształcenia liniowego wyznaczona przez pochodne kierunkowe tego odwzorowania we wszystkich kierunkach. Jest ona tożsama z macierzą Jacobiego, zbudowaną z pochodnych cząstkowych wszystkich funkcji składowych odwzorowania.\nWzór / Warunek formalny:\n\\[ F'_a(x_0) = F'(x_0) \\circ a, \\quad \\text{gdzie } F'(x_0) = \\left[ \\frac{\\partial f_i}{\\partial x_j}(x_0) \\right]_{l \\times k} \\]\nKluczowy wymóg:\nIstnienie pochodnej kierunkowej we wszystkich kierunkach wektorowych oraz jej ścisła liniowość względem tych wektorów."
   },
   {
     "objectID": "analizaII.html#pochodna-superpozycji-dla-pochodnych-cząstkowych-i-słabych.",
     "href": "analizaII.html#pochodna-superpozycji-dla-pochodnych-cząstkowych-i-słabych.",
     "title": "Analiza matematyczna II",
     "section": "17. Pochodna superpozycji dla pochodnych cząstkowych i słabych.",
-    "text": "17. Pochodna superpozycji dla pochodnych cząstkowych i słabych."
+    "text": "17. Pochodna superpozycji dla pochodnych cząstkowych i słabych.\n\nDefinicja:\nPochodna słaba superpozycji dwóch różniczkowalnych odwzorowań jest iloczynem macierzy Jacobiego odwzorowania zewnętrznego i wewnętrznego. Odpowiednie pochodne cząstkowe takiego złożenia wyrażają się jako suma iloczynów pochodnych cząstkowych funkcji składowych obu odwzorowań, zgodnie z regułą łańcuchową.\nWzór / Warunek formalny:\n\\[ (G \\circ F)'(x) = G'(F(x)) \\cdot F'(x) \\implies \\frac{\\partial h_i}{\\partial x_j}(x) = \\sum_{t=1}^l \\frac{\\partial g_i}{\\partial y_t}(F(x)) \\cdot \\frac{\\partial f_t}{\\partial x_j}(x) \\]\nKluczowy wymóg:\nRóżniczkowalność odwzorowania wewnętrznego \\(F\\) w badanym punkcie dziedziny \\(x\\) oraz odwzorowania zewnętrznego \\(G\\) w odpowiadającym mu punkcie obrazu \\(y = F(x)\\)."
   },
   {
     "objectID": "analizaII.html#funkcje-klasy-c1-na-zbiorach-otwartych-w-mathbbrk-oraz-ich-własności.",
     "href": "analizaII.html#funkcje-klasy-c1-na-zbiorach-otwartych-w-mathbbrk-oraz-ich-własności.",
     "title": "Analiza matematyczna II",
     "section": "18. Funkcje klasy \\(C^{(1)}\\) na zbiorach otwartych w \\(\\mathbb{R}^k\\) oraz ich własności.",
-    "text": "18. Funkcje klasy \\(C^{(1)}\\) na zbiorach otwartych w \\(\\mathbb{R}^k\\) oraz ich własności."
+    "text": "18. Funkcje klasy \\(C^{(1)}\\) na zbiorach otwartych w \\(\\mathbb{R}^k\\) oraz ich własności.\n\nDefinicja:\nFunkcja wielu zmiennych należy do klasy \\(C^{(1)}\\) na zbiorze otwartym, jeżeli posiada w każdym jego punkcie wszystkie pochodne cząstkowe pierwszego rzędu, które są na tym zbiorze funkcjami ciągłymi. Każda funkcja tej klasy jest automatycznie funkcją ciągłą oraz różniczkowalną (w sensie Stolza-Darboux) na całej swojej dziedzinie.\nWzór / Warunek formalny:\n\\[ f \\in C^{(1)}(A) \\iff \\forall i \\in \\{1, 2, \\dots, k\\} \\;\\; \\frac{\\partial f}{\\partial x_i} \\in C(A) \\]\nKluczowy wymóg:\nCiągłość wszystkich pierwszych pochodnych cząstkowych w zadanym obszarze stanowi warunek znacznie silniejszy niż sama różniczkowalność funkcji."
   },
   {
     "objectID": "analizaII.html#pochodna-mocna-funkcji-i-jej-interpretacja-geometryczna.",
     "href": "analizaII.html#pochodna-mocna-funkcji-i-jej-interpretacja-geometryczna.",
     "title": "Analiza matematyczna II",
     "section": "19. Pochodna mocna funkcji i jej interpretacja geometryczna.",
-    "text": "19. Pochodna mocna funkcji i jej interpretacja geometryczna."
+    "text": "19. Pochodna mocna funkcji i jej interpretacja geometryczna.\n\nDefinicja:\nPochodna mocna (w sensie Stolza-Darboux) funkcji w punkcie to wyznaczony jednoznacznie wektor definiujący różniczkę, czyli główną, liniową część przyrostu funkcji. Geometrycznie wektor ten determinuje hiperpłaszczyznę styczną do wykresu funkcji w badanym punkcie, stanowiącą jej najlepsze lokalne przybliżenie liniowe.\nWzór / Warunek formalny:\n\\[ \\lim_{\\|a\\| \\to 0} \\frac{f(x_0 + a) - f(x_0) - w(x_0) \\circ a}{\\|a\\|} = 0, \\quad \\text{hiperpłaszczyzna: } y = f(x_0) + (x - x_0) \\circ w(x_0) \\]\nKluczowy wymóg:\nBłąd aproksymacji przyrostu funkcji za pomocą różniczki musi dążyć do zera szybciej niż norma wektora przyrostu argumentów \\(\\|a\\|\\)."
   },
   {
     "objectID": "analizaII.html#warunki-konieczny-i-dostateczny-różniczkowalności-funkcji-wielu-zmiennych.",
     "href": "analizaII.html#warunki-konieczny-i-dostateczny-różniczkowalności-funkcji-wielu-zmiennych.",
     "title": "Analiza matematyczna II",
     "section": "20. Warunki konieczny i dostateczny różniczkowalności funkcji wielu zmiennych.",
-    "text": "20. Warunki konieczny i dostateczny różniczkowalności funkcji wielu zmiennych."
+    "text": "20. Warunki konieczny i dostateczny różniczkowalności funkcji wielu zmiennych.\n\nDefinicja:\nWarunkiem koniecznym różniczkowalności (w sensie mocnym) funkcji wielu zmiennych w punkcie jest jej ciągłość oraz istnienie w nim wszystkich pochodnych cząstkowych. Warunkiem dostatecznym różniczkowalności jest natomiast istnienie i ciągłość wszystkich jej pochodnych cząstkowych pierwszego rzędu w pewnym otoczeniu tego punktu.\nWzór / Warunek formalny:\n\\[ f \\in C^{(1)}(U_{x_0}) \\implies f \\text{ różniczkowalna w } x_0 \\implies f \\in C(\\{x_0\\}) \\land \\exists \\nabla f(x_0) \\]\nKluczowy wymóg:\nSamo istnienie pochodnych cząstkowych w punkcie nie implikuje różniczkowalności funkcji; niezbędna jest gwarancja ich ciągłości w bezpośrednim otoczeniu tego punktu."
   },
   {
     "objectID": "analizaII.html#pochodna-mocna-odwzorowania-przykłady-i-własności.",
     "href": "analizaII.html#pochodna-mocna-odwzorowania-przykłady-i-własności.",
     "title": "Analiza matematyczna II",
     "section": "21. Pochodna mocna odwzorowania – przykłady i własności.",
-    "text": "21. Pochodna mocna odwzorowania – przykłady i własności."
+    "text": "21. Pochodna mocna odwzorowania – przykłady i własności.\n\nDefinicja:\nPochodna mocna (różniczka Stolza) odwzorowania w punkcie to przekształcenie liniowe reprezentowane przez macierz, stanowiące optymalne, liniowe przybliżenie przyrostu tego odwzorowania. Jej istnienie w danym punkcie pociąga za sobą istnienie w nim pochodnej słabej (w sensie Gateaux) oraz całkowitą równość wymiarów i elementów ich macierzy.\nWzór / Warunek formalny:\n\\[ \\lim_{\\|a\\| \\to 0} \\frac{\\|F(x_0 + a) - F(x_0) - A \\circ a\\|}{\\|a\\|} = 0 \\]\nKluczowy wymóg:\nBłąd aproksymacji odwzorowania przez układ liniowy \\(A\\) musi zbiegać do zera bezwzględnie szybciej niż długość samego wektora przyrostu argumentów \\(\\|a\\|\\)."
   },
   {
     "objectID": "analizaII.html#pochodne-kierunkowe-i-pochodne-cząstkowe-wyższych-rzędów.-twierdzenie-schwarza.",
     "href": "analizaII.html#pochodne-kierunkowe-i-pochodne-cząstkowe-wyższych-rzędów.-twierdzenie-schwarza.",
     "title": "Analiza matematyczna II",
     "section": "22. Pochodne kierunkowe i pochodne cząstkowe wyższych rzędów. Twierdzenie Schwarza.",
-    "text": "22. Pochodne kierunkowe i pochodne cząstkowe wyższych rzędów. Twierdzenie Schwarza."
+    "text": "22. Pochodne kierunkowe i pochodne cząstkowe wyższych rzędów. Twierdzenie Schwarza.\n\nDefinicja:\nPochodna kierunkowa wyższego rzędu to forma wieloliniowa wektorów kierunkowych wyznaczana z pochodnych rzędu niższego, podczas gdy pochodna cząstkowa wyższego rzędu obliczana jest sukcesywnie względem kolejnych osi bazy kanonicznej. Twierdzenie Schwarza orzeka, że przy zagwarantowanej ciągłości odpowiednich pochodnych mieszanych na obszarze, ostateczny wynik wielokrotnego różniczkowania jest całkowicie niezależny od przyjętej kolejności brania pochodnych względem poszczególnych zmiennych.\nWzór / Warunek formalny:\n\\[ f''_{a,b}(x) = f''_{b,a}(x) \\implies \\frac{\\partial^2 f}{\\partial x_i \\partial x_j} = \\frac{\\partial^2 f}{\\partial x_j \\partial x_i} \\]\nKluczowy wymóg:\nZastosowanie twierdzenia Schwarza, determinującego pełną symetrię macierzy tych pochodnych, wymaga bezwzględnie ciągłości uwikłanych pochodnych mieszanych w rozpatrywanym zbiorze (obszarze)."
   },
   {
     "objectID": "analizaII.html#funkcje-klasy-cp-oraz-ich-własności.",
     "href": "analizaII.html#funkcje-klasy-cp-oraz-ich-własności.",
     "title": "Analiza matematyczna II",
     "section": "23. Funkcje klasy \\(C^{(p)}\\) oraz ich własności.",
-    "text": "23. Funkcje klasy \\(C^{(p)}\\) oraz ich własności."
+    "text": "23. Funkcje klasy \\(C^{(p)}\\) oraz ich własności.\n\nDefinicja:\nOdwzorowanie przynależy do analitycznej klasy \\(C^{(p)}\\) na ściśle określonym zbiorze otwartym, jeżeli wszystkie jego pochodne cząstkowe aż do rzędu \\(p\\) włącznie istnieją i stanowią na tym zbiorze funkcje ciągłe. Zbiory tychże funkcji posiadają architekturę zagnieżdżoną, co oznacza, że przynależność do klasy wyższej wymusza analitycznie przynależność do wszystkich klas niższych.\nWzór / Warunek formalny:\n\\[ f \\in C^{(p)}(A) \\implies \\forall i \\in \\{0, 1, \\dots, p\\} \\;\\; f \\in C^{(i)}(A) \\]\nKluczowy wymóg:\nPrzynależność funkcji do klasy \\(C^{(p)}\\) narzuca w sposób bezpośredni i wystarczający istnienie pełnej różniczki (czyli pochodnej mocnej) w każdym badanym punkcie dziedziny."
   },
   {
     "objectID": "analizaII.html#wzór-taylora-dla-funkcji-i-dla-odwzorowania.-przykłady-i-wnioski.",
     "href": "analizaII.html#wzór-taylora-dla-funkcji-i-dla-odwzorowania.-przykłady-i-wnioski.",
     "title": "Analiza matematyczna II",
     "section": "24. Wzór Taylora dla funkcji i dla odwzorowania. Przykłady i wnioski.",
-    "text": "24. Wzór Taylora dla funkcji i dla odwzorowania. Przykłady i wnioski."
+    "text": "24. Wzór Taylora dla funkcji i dla odwzorowania. Przykłady i wnioski.\n\nDefinicja:\nWzór Taylora gwarantuje uogólnione, analityczne rozwinięcie w wielomian stanowiący sumę form wieloliniowych określonych przez poszczególne różniczki, który jest zwieńczony odpowiednim składnikiem reszty precyzującym błąd całej operacji. W odróżnieniu od pojedynczej funkcji z resztą podaną w zamkniętej formie Lagrange’a, w ogólnych odwzorowaniach nieliniowych bazuje się na asymptotycznej postaci reszty Peano.\nWzór / Warunek formalny:\n\\[ F(x+a) = F(x) + \\sum_{j=1}^{m} \\frac{1}{j!} F^{(j)}(x) \\circ [a]^j + R(a), \\quad \\text{gdzie } \\lim_{\\|a\\| \\to 0} \\frac{\\|R(a)\\|}{\\|a\\|^m} = 0 \\]\nKluczowy wymóg:\nWarunkiem nieodzownym do prawidłowego zdefiniowania wzoru z odpowiednio ograniczoną resztą jest założenie klasy ciągłości co najmniej \\(C^{(m)}\\) dla analizowanego odwzorowania na zadanym zbiorze otwartym."
   },
   {
     "objectID": "analizaII.html#ekstrema-lokalne-funkcji-wielu-zmiennych.",
     "href": "analizaII.html#ekstrema-lokalne-funkcji-wielu-zmiennych.",
     "title": "Analiza matematyczna II",
     "section": "25. Ekstrema lokalne funkcji wielu zmiennych.",
-    "text": "25. Ekstrema lokalne funkcji wielu zmiennych."
+    "text": "25. Ekstrema lokalne funkcji wielu zmiennych.\n\nDefinicja:\nFunkcja posiada ekstremum lokalne wyłącznie w tym punkcie, w którego pełnym otoczeniu różnica pomiędzy jej wartościami lokalnymi a wartością w badanym punkcie wykazuje znak stały. Analiza istnienia tego ekstremum sprowadza się do wyznaczenia punktów krytycznych zgodnie z warunkiem koniecznym Fermata (zerowanie gradientu), aby docelowo zastosować warunek dostateczny, nakazujący zbadanie określoności formy kwadratowej różniczki drugiego rzędu.\nWzór / Warunek formalny:\n\\[ f'(x_0) = 0 \\quad \\land \\quad d^2f(x_0) = \\frac{1}{2} f''(x_0) \\circ [a]^2 \\gtrless 0 \\quad \\text{dla } a \\neq 0 \\]\nKluczowy wymóg:\nRozstrzygnięcie o obecności oraz precyzyjnym rodzaju ekstremum wymusza wykorzystanie kryterium Sylvestera determinującego ściśle dodatnią bądź ściśle ujemną określoność macierzy (hesjanu) drugich pochodnych wytypowanego punktu."
   },
   {
     "objectID": "analizaII.html#warunki-konieczny-i-wystarczający-istnienia-ekstremum-bezwarunkowego-funkcji.",
     "href": "analizaII.html#warunki-konieczny-i-wystarczający-istnienia-ekstremum-bezwarunkowego-funkcji.",
     "title": "Analiza matematyczna II",
     "section": "26. Warunki konieczny i wystarczający istnienia ekstremum bezwarunkowego funkcji.",
-    "text": "26. Warunki konieczny i wystarczający istnienia ekstremum bezwarunkowego funkcji."
+    "text": "26. Warunki konieczny i wystarczający istnienia ekstremum bezwarunkowego funkcji.\n\nDefinicja:\nWarunkiem koniecznym istnienia ekstremum różniczkowalnej funkcji wielu zmiennych w punkcie jest bezwzględne zerowanie się w nim jej słabej pochodnej, czyli gradientu. Warunek wystarczający wymaga dodatkowo, aby forma kwadratowa drugiej różniczki w badanym punkcie była ściśle dodatnio określona dla minimum lokalnego, lub ściśle ujemnie określona w przypadku maksimum lokalnego.\nWzór / Warunek formalny:\n\\[ f'(x_0) = 0 \\quad \\land \\quad d^2f(x_0) = \\frac{1}{2} f''(x_0) \\circ [a]^2 \\gtrless 0 \\quad \\text{dla } a \\neq 0 \\]\nKluczowy wymóg:\nAnalityczne rozstrzygnięcie określoności macierzy drugich pochodnych, warunkującej rodzaj ewentualnego ekstremum, wymusza zastosowanie rygorystycznego kryterium Sylvestera."
   },
   {
     "objectID": "analizaII.html#twierdzenia-pomocnicze-oraz-twierdzenie-o-odwzorowaniu-odwrotnym.",
     "href": "analizaII.html#twierdzenia-pomocnicze-oraz-twierdzenie-o-odwzorowaniu-odwrotnym.",
     "title": "Analiza matematyczna II",
     "section": "27. Twierdzenia pomocnicze oraz twierdzenie o odwzorowaniu odwrotnym.",
-    "text": "27. Twierdzenia pomocnicze oraz twierdzenie o odwzorowaniu odwrotnym."
+    "text": "27. Twierdzenia pomocnicze oraz twierdzenie o odwzorowaniu odwrotnym.\n\nDefinicja:\nTwierdzenie o odwzorowaniu odwrotnym gwarantuje, że różniczkowalne w sposób ciągły odwzorowanie otwartego podzbioru przestrzeni \\(\\mathbb{R}^k\\) w \\(\\mathbb{R}^k\\), którego jakobian w danym punkcie jest niezerowy, posiada w jego otoczeniu jednoznacznie określoną, różniczkowalną funkcję odwrotną. Narzędziami do jego dowodu są: lemat o otwartości zbioru odwzorowań odwracalnych operujący na relacjach norm macierzy oraz lemat o wartości średniej szacujący normę przyrostu odwzorowania na przedziale.\nWzór / Warunek formalny:\n\\[ \\det[F'(x_0)] \\neq 0 \\implies \\exists F^{-1} \\in C^{(1)}(V), \\quad [F^{-1}(y)]' = [F'(x)]^{-1} \\]\nKluczowy wymóg:\nBezwzględnym kryterium do poprawnego, lokalnego odwrócenia odwzorowania wokół zadanego punktu jest nieosobliwość jego macierzy Jacobiego dokładnie w tym punkcie dziedziny."
   },
   {
     "objectID": "analizaII.html#ekstrema-funkcji-uwikłanej-i-przykłady-ich-wyznaczania.",
     "href": "analizaII.html#ekstrema-funkcji-uwikłanej-i-przykłady-ich-wyznaczania.",
     "title": "Analiza matematyczna II",
     "section": "28. Ekstrema funkcji uwikłanej i przykłady ich wyznaczania.",
-    "text": "28. Ekstrema funkcji uwikłanej i przykłady ich wyznaczania."
+    "text": "28. Ekstrema funkcji uwikłanej i przykłady ich wyznaczania.\n\nDefinicja:\nEkstremum lokalnego funkcji uwikłanej jednej zmiennej \\(y=y(x)\\), narzuconej równaniem \\(F(x,y)=0\\), poszukuje się w punktach krytycznych, w których zeruje się pierwsza pochodna cząstkowa funkcji bazowej \\(F\\) względem zmiennej niezależnej \\(x\\). Docelowy rodzaj tego ekstremum weryfikuje się analizując znak drugiej pochodnej funkcji uwikłanej, który przy zerującej się pierwszej pochodnej wyraża się bezpośrednim stosunkiem drugich pochodnych cząstkowych funkcji \\(F\\).\nWzór / Warunek formalny:\n\\[ F(x_0, y_0) = 0 \\land \\frac{\\partial F}{\\partial x}(x_0, y_0) = 0 \\implies y''(x_0) = - \\frac{\\frac{\\partial^2 F}{\\partial x^2}(x_0, y_0)}{\\frac{\\partial F}{\\partial y}(x_0, y_0)} \\gtrless 0 \\]\nKluczowy wymóg:\nWyjściowe równanie definiuje funkcję uwikłaną w otoczeniu analizowanego punktu w sposób poprawny tylko przy niezmiennym spełnieniu założenia różniczkowego \\(\\frac{\\partial F}{\\partial y}(x_0, y_0) \\neq 0\\)."
   },
   {
     "objectID": "analizaII.html#ekstrema-warunkowe-mnożniki-lagrangea-oraz-przykłady-ilustracyjne.",
     "href": "analizaII.html#ekstrema-warunkowe-mnożniki-lagrangea-oraz-przykłady-ilustracyjne.",
     "title": "Analiza matematyczna II",
     "section": "29. Ekstrema warunkowe – mnożniki Lagrange’a oraz przykłady ilustracyjne.",
-    "text": "29. Ekstrema warunkowe – mnożniki Lagrange’a oraz przykłady ilustracyjne."
+    "text": "29. Ekstrema warunkowe – mnożniki Lagrange’a oraz przykłady ilustracyjne.\n\nDefinicja:\nEkstremum warunkowe to ekstremum lokalne funkcji zmiennych rzeczywistych osiągane wyłącznie na określonej analitycznie hiperpowierzchni, narzuconej układem równań więzów. Zgodnie z procedurą mnożników Lagrange’a, punktów krytycznych takiego ekstremum szuka się jako zwykłych, bezwarunkowych punktów stacjonarnych pomocniczej funkcji Lagrange’a, zdefiniowanej jako suma funkcji optymalizowanej oraz kombinacji liniowej funkcji więzów.\nWzór / Warunek formalny:\n\\[ F(x, \\lambda) = f(x) + \\sum_{i=1}^l \\lambda_i f_i(x), \\quad F'(x_0, \\lambda_0) = 0 \\]\nKluczowy wymóg:\nSkuteczna klasyfikacja wytypowanego punktu stacjonarnego narzuca konieczność precyzyjnego zbadania znaku formy kwadratowej drugiej różniczki funkcji Lagrange’a wyłącznie na zawężonej przestrzeni wektorów stycznych do hiperpowierzchni więzów."
   },
   {
     "objectID": "analizaII.html#pojęcie-całki-riemanna-na-przedziale-k-wymiarowym.",
     "href": "analizaII.html#pojęcie-całki-riemanna-na-przedziale-k-wymiarowym.",
     "title": "Analiza matematyczna II",
     "section": "30. Pojęcie całki Riemanna na przedziale \\(k\\)-wymiarowym.",
-    "text": "30. Pojęcie całki Riemanna na przedziale \\(k\\)-wymiarowym."
+    "text": "30. Pojęcie całki Riemanna na przedziale \\(k\\)-wymiarowym.\n\nDefinicja:\nCałka wielokrotna Riemanna określona na \\(k\\)-wymiarowym zbiorze zwartym i mierzalnym jest definiowana jako właściwa granica nieskończonego ciągu sum całkowych, budowanych dla normalnego ciągu podziałów tego zbioru na mierzalne podzbiory. Każda z takich sum stanowi analityczną kombinację liniową wartości funkcji podcałkowej wyliczonych w punktach pośrednich oraz miar geometrycznych objętości odpowiadających im podobszarów.\nWzór / Warunek formalny:\n\\[ \\int \\dots \\int_D f(x) dx = \\lim_{\\mu(\\Pi_n) \\to 0} \\sum_{i=1}^n f(\\Xi_i) |D_i| \\]\nKluczowy wymóg:\nPowyższa, skończona granica ciągu sum musi bezwzględnie istnieć i być zawsze stała w sposób całkowicie niezależny od obranego ciągu podziałów dziedziny całkowania, a także od konkretnego ulokowania punktów pośrednich."
   },
   {
     "objectID": "analizaII.html#całka-dolna-i-całka-górna-riemanna-darboux.-warunki-całkowalności.",
     "href": "analizaII.html#całka-dolna-i-całka-górna-riemanna-darboux.-warunki-całkowalności.",
     "title": "Analiza matematyczna II",
     "section": "31. Całka dolna i całka górna Riemanna-Darboux. Warunki całkowalności.",
-    "text": "31. Całka dolna i całka górna Riemanna-Darboux. Warunki całkowalności."
+    "text": "31. Całka dolna i całka górna Riemanna-Darboux. Warunki całkowalności.\n\nDefinicja:\nCałka dolna i całka górna Darboux to odpowiednio kres górny zbioru sum dolnych i kres dolny zbioru sum górnych wyznaczonych dla wszystkich możliwych podziałów przedziału, na którym określona jest funkcja. Funkcja jest całkowalna w sensie Riemanna wtedy i tylko wtedy, gdy jej całka dolna i całka górna są sobie równe.\nWzór / Warunek formalny:\n\\[ \\underline{\\int_a^b} f(x)dx = \\sup_{\\pi_n} s(f, \\pi_n) = \\inf_{\\pi_n} S(f, \\pi_n) = \\overline{\\int_a^b} f(x)dx \\]\nKluczowy wymóg (opcjonalnie):\nFunkcja rozpatrywana na przedziale całkowania musi być bezwzględnie ograniczona."
   },
   {
     "objectID": "analizaII.html#twierdzenia-fubiniego-o-zamianie-całki-wielokrotnej-na-całkę-iterowaną.",
     "href": "analizaII.html#twierdzenia-fubiniego-o-zamianie-całki-wielokrotnej-na-całkę-iterowaną.",
     "title": "Analiza matematyczna II",
     "section": "32. Twierdzenia Fubiniego o zamianie całki wielokrotnej na całkę iterowaną.",
-    "text": "32. Twierdzenia Fubiniego o zamianie całki wielokrotnej na całkę iterowaną."
+    "text": "32. Twierdzenia Fubiniego o zamianie całki wielokrotnej na całkę iterowaną.\n\nDefinicja:\nTwierdzenie Fubiniego umożliwia sprowadzenie obliczania całki wielokrotnej z funkcji zdefiniowanej na obszarze normalnym lub prostokątnym do sekwencyjnego obliczania układu całek pojedynczych iterowanych względem poszczególnych zmiennych.\nWzór / Warunek formalny:\n\\[ \\iint_D f(x_1, x_2)dx_1dx_2 = \\int_a^b \\left[ \\int_{\\varphi(x_1)}^{\\psi(x_1)} f(x_1, x_2)dx_2 \\right] dx_1 \\]\nKluczowy wymóg (opcjonalnie):\nCałkowany obszar \\(D\\) musi stanowić obszar normalny (bądź prostokąt), a funkcja podcałkowa musi być na nim ciągła lub całkowalna w sensie Riemanna."
   },
   {
     "objectID": "analizaII.html#pojęcie-dyfeomorfizmu-i-przykłady-dyfeomorfizmów.",
     "href": "analizaII.html#pojęcie-dyfeomorfizmu-i-przykłady-dyfeomorfizmów.",
     "title": "Analiza matematyczna II",
     "section": "33. Pojęcie dyfeomorfizmu i przykłady dyfeomorfizmów.",
-    "text": "33. Pojęcie dyfeomorfizmu i przykłady dyfeomorfizmów."
+    "text": "33. Pojęcie dyfeomorfizmu i przykłady dyfeomorfizmów.\n\nDefinicja:\nDyfeomorfizm to obustronnie ciągła bijekcja (homeomorfizm) między otwartymi podzbiorami przestrzeni euklidesowych, będąca klasy \\(C^{(1)}\\), której jakobian jest niezerowy w każdym punkcie rozpatrywanej dziedziny. Standardowymi przykładami dyfeomorfizmów w analizie są przekształcenia do współrzędnych biegunowych, walcowych (cylindrycznych) oraz sferycznych.\nWzór / Warunek formalny:\n\\[ \\Phi: A \\xrightarrow{1-1} B, \\quad \\Phi, \\Phi^{-1} \\in C^{(1)}, \\quad J_\\Phi(x) \\neq 0 \\text{ dla } x \\in A \\]\nKluczowy wymóg (opcjonalnie):\nPrzekształcenie bezwzględnie musi zachowywać wzajemną jednoznaczność (bijekcję) oraz nieosobliwość macierzy Jacobiego w całym otwartym zbiorze."
   },
   {
     "objectID": "analizaII.html#twierdzenie-o-zmianie-zmiennych-dla-całek-wielokrotnych.",
     "href": "analizaII.html#twierdzenie-o-zmianie-zmiennych-dla-całek-wielokrotnych.",
     "title": "Analiza matematyczna II",
     "section": "34. Twierdzenie o zmianie zmiennych dla całek wielokrotnych.",
-    "text": "34. Twierdzenie o zmianie zmiennych dla całek wielokrotnych."
+    "text": "34. Twierdzenie o zmianie zmiennych dla całek wielokrotnych.\n\nDefinicja:\nTwierdzenie o zamianie zmiennych orzeka, że całkę wielokrotną ze zbioru zwartego można zastąpić całką po jego dyfeomorficznym przeciwobrazie, pod warunkiem przemnożenia superpozycji funkcji podcałkowej z nowym odwzorowaniem przez moduł jakobianu zastosowanego dyfeomorfizmu.\nWzór / Warunek formalny:\n\\[ \\iint_{\\Phi(E)} f(x)dx = \\iint_E f(\\Phi(t)) |J_\\Phi(t)| dt \\]\nKluczowy wymóg (opcjonalnie):\nWymagane jest, aby przekształcenie \\(\\Phi\\) było ścisłym dyfeomorfizmem operującym na zbiorach zwartych, a modyfikowana funkcja podcałkowa musi być na nich ciągła lub całkowalna."
   },
   {
     "objectID": "analizaII.html#zastosowanie-całek-wielokrotnych-do-wyznaczania-pól-powierzchni-i-objętości.",
     "href": "analizaII.html#zastosowanie-całek-wielokrotnych-do-wyznaczania-pól-powierzchni-i-objętości.",
     "title": "Analiza matematyczna II",
     "section": "35. Zastosowanie całek wielokrotnych do wyznaczania pól powierzchni i objętości.",
-    "text": "35. Zastosowanie całek wielokrotnych do wyznaczania pól powierzchni i objętości."
+    "text": "35. Zastosowanie całek wielokrotnych do wyznaczania pól powierzchni i objętości.\n\nDefinicja:\nCałki wielokrotne pozwalają na wyliczanie miar geometrycznych zbiorów mierzalnych w sensie Jordana, gdzie całka podwójna z jedynki określa pole figury płaskiej, a całka podwójna z funkcji nieujemnej determinuje objętość walca krzywoliniowego ograniczonego z góry wykresem tej funkcji. Analogicznie, całka potrójna z funkcji tożsamościowo równej jeden na zbiorze zwartym pozwala określić jego miarę trójwymiarową (objętość).\nWzór / Warunek formalny:\n\\[ |D| = \\iint_D 1 dx dy \\quad \\text{oraz} \\quad |V| = \\iint_D f(x_1, x_2) dx_1 dx_2 \\]\nKluczowy wymóg (opcjonalnie):\nRozpatrywane obszary całkowania muszą stanowić zbiory bezwzględnie mierzalne (posiadać objętość/pole), a powierzchnie ograniczające od góry muszą być poprawnie wyznaczone przez funkcje całkowalne."
   },
   {
     "objectID": "analizaII.html#wielokrotne-całki-niewłaściwe.",
     "href": "analizaII.html#wielokrotne-całki-niewłaściwe.",
     "title": "Analiza matematyczna II",
     "section": "36. Wielokrotne całki niewłaściwe.",
-    "text": "36. Wielokrotne całki niewłaściwe."
+    "text": "36. Wielokrotne całki niewłaściwe.\n\nDefinicja:\nWielokrotną całkę niewłaściwą na obszarze nieograniczonym lub z funkcji nieograniczonej definiuje się jako właściwą granicę ciągu całek wyznaczonych po wstępującym ciągu podzbiorów zwartych, wyczerpujących dany obszar całkowania i omijających jego ewentualne punkty oraz linie osobliwe.\nWzór / Warunek formalny:\n\\[ \\iint_D f(x,y)dxdy = \\lim_{\\lambda \\to \\infty} \\iint_{D^*} f(x,y)dxdy \\]\nKluczowy wymóg (opcjonalnie):\nZbieżność całki niewłaściwej bezwzględnie wymaga, aby ostateczna granica ciągu aproksymujących ją całek właściwych była stała i niezależna od sposobu doboru ciągu podobszarów."
   },
   {
     "objectID": "analizaII.html#twierdzenie-o-zmianie-zmiennych-dla-całek-niewłaściwych.",
     "href": "analizaII.html#twierdzenie-o-zmianie-zmiennych-dla-całek-niewłaściwych.",
     "title": "Analiza matematyczna II",
     "section": "37. Twierdzenie o zmianie zmiennych dla całek niewłaściwych.",
-    "text": "37. Twierdzenie o zmianie zmiennych dla całek niewłaściwych."
+    "text": "37. Twierdzenie o zmianie zmiennych dla całek niewłaściwych.\n\nDefinicja:\nTwierdzenie orzeka, że przy obliczaniu całki niewłaściwej dopuszczalna jest zamiana układu współrzędnych oparta na dyfeomorfizmie, pod warunkiem jednoczesnej zgodnej transformacji granicznych podobszarów omijających osobliwości (lub rozciągających się do nieskończoności) w obydwu dziedzinach.\nWzór / Warunek formalny:\n\\[ \\iint_D f(x,y)dxdy = \\iint_E f(x(u,v), y(u,v)) |J_\\Phi(u,v)| dudv \\]\nKluczowy wymóg (opcjonalnie):\nPrzekształcenie transformujące musi stanowić rygorystyczny homeomorfizm między obszarami obydwu dziedzin, pozwalający na jednoznaczne i synchroniczne przechodzenie do granicy z odpowiednio wyselekcjonowanymi podobszarami."
   },
   {
     "objectID": "analizaII.html#zastosowania-wielokrotnych-całek-niewłaściwych.",
     "href": "analizaII.html#zastosowania-wielokrotnych-całek-niewłaściwych.",
     "title": "Analiza matematyczna II",
     "section": "38. Zastosowania wielokrotnych całek niewłaściwych.",
-    "text": "38. Zastosowania wielokrotnych całek niewłaściwych."
+    "text": "38. Zastosowania wielokrotnych całek niewłaściwych.\n\nDefinicja:\nWielokrotne całki niewłaściwe znajdują bezpośrednie zastosowanie w analitycznym wyznaczaniu objętości przestrzennych figur nieograniczonych oraz ułatwiają obliczanie skomplikowanych jednowymiarowych całek nieelementarnych (takich jak całka Gaussa-Poissona) poprzez ich redukcję do całek uogólnionych.\nWzór / Warunek formalny:\n\\[ \\left( \\int_0^\\infty e^{-x^2} dx \\right)^2 = \\iint_{[0,\\infty) \\times [0,\\infty)} e^{-(x^2+y^2)} dxdy \\]\nKluczowy wymóg (opcjonalnie):\nDla skutecznego zredukowania uciążliwej jednowymiarowej całki konieczne jest znalezienie takiego dyfeomorfizmu dla podniesionej do kwadratu całki podwójnej (najczęściej zmiany na współrzędne biegunowe), po którym zintegrowana z jakobianem funkcja zyskuje nową, w pełni elementarną postać."
   },
   {
     "objectID": "Pytania_eksploracja.html",
