@@ -231,6 +231,279 @@
     "text": "Przelosuj pytanie\n          \n        \n      \n      Wylosuj\n    \n    \n    \n    \n      \n        Kliknij Wylosuj, aby wylosować zestaw pytań."
   },
   {
+    "objectID": "analizaII.html",
+    "href": "analizaII.html",
+    "title": "Analiza matematyczna II",
+    "section": "",
+    "text": "Ciąg funkcyjny\nCiąg funkcyjny\n\nDefinicja:\nCiąg funkcyjny określony na niepustym zbiorze \\(A \\subseteq \\mathbb{R}\\) to funkcja przyporządkowująca każdej liczbie naturalnej określoną funkcję o dziedzinie \\(A\\) i wartościach rzeczywistych, będąca elementem przestrzeni \\((\\mathbb{R}^A)^\\mathbb{N}\\).\nWzór / Warunek formalny:\n\\[ (f_n) \\in (\\mathbb{R}^A)^\\mathbb{N}, \\quad \\text{gdzie } f_n: A \\to \\mathbb{R} \\text{ dla } n \\in \\mathbb{N} \\]\nKluczowy wymóg:\nKażdy wyraz ciągu musi stanowić kompletną funkcję zdefiniowaną na wspólnej dla całego ciągu dziedzinie \\(A\\).\n\nZbieżność punktowa (granica ciągu funkcyjnego)\n\nDefinicja:\nCiąg funkcyjny \\((f_n)\\) jest zbieżny punktowo na zbiorze \\(A\\) do funkcji granicznej \\(f\\), jeżeli dla każdego ustalonego punktu \\(x \\in A\\) ciąg wartości liczbowych \\((f_n(x))\\) jest zbieżny do granicy \\(f(x)\\).\nWzór / Warunek formalny:\n\\[ f_n \\to f \\iff \\forall \\varepsilon&gt;0 \\,\\, \\forall x\\in A \\,\\, \\exists \\delta&gt;0 \\,\\, \\forall n\\in\\mathbb{N} \\;\\; [\\delta &lt; n \\implies |f_n(x) - f(x)| &lt; \\varepsilon] \\]\nKluczowy wymóg:\nDobór wskaźnika \\(\\delta\\) zależy w ogólności zarówno od zadanej tolerancji błędu \\(\\varepsilon\\), jak i od konkretnego wyboru punktu \\(x \\in A\\).\n\nZbieżność jednostajna\n\nDefinicja:\nCiąg funkcyjny \\((f_n)\\) zbiega jednostajnie na zbiorze \\(A\\) do funkcji \\(f\\), jeżeli dla każdej liczby \\(\\varepsilon &gt; 0\\) odchylenie wszystkich funkcji ciągu, dla indeksów większych od pewnego progu, od funkcji granicznej jest mniejsze od \\(\\varepsilon\\) dla wszystkich punktów dziedziny jednocześnie.\nWzór / Warunek formalny:\n\\[ f_n \\rightrightarrows f \\iff \\forall \\varepsilon&gt;0 \\,\\, \\exists \\delta&gt;0 \\,\\, \\forall n\\in\\mathbb{N}^+ \\,\\, \\forall x\\in A \\;\\; [\\delta &lt; n \\implies |f_n(x) - f(x)| &lt; \\varepsilon] \\]\nKluczowy wymóg:\nWskaźnik \\(\\delta\\) dobierany jest wyłącznie w zależności od \\(\\varepsilon\\) i pozostaje wspólny (niezależny od wyboru punktu) dla wszystkich elementów \\(x \\in A\\)."
+  },
+  {
+    "objectID": "analizaII.html#pojęcie-ciągu-funkcyjnego-oraz-jego-granicy.-zbieżność-punktowa-i-zbieżność-jednostajna.",
+    "href": "analizaII.html#pojęcie-ciągu-funkcyjnego-oraz-jego-granicy.-zbieżność-punktowa-i-zbieżność-jednostajna.",
+    "title": "Analiza matematyczna II",
+    "section": "",
+    "text": "Ciąg funkcyjny\nCiąg funkcyjny\n\nDefinicja:\nCiąg funkcyjny określony na niepustym zbiorze \\(A \\subseteq \\mathbb{R}\\) to funkcja przyporządkowująca każdej liczbie naturalnej określoną funkcję o dziedzinie \\(A\\) i wartościach rzeczywistych, będąca elementem przestrzeni \\((\\mathbb{R}^A)^\\mathbb{N}\\).\nWzór / Warunek formalny:\n\\[ (f_n) \\in (\\mathbb{R}^A)^\\mathbb{N}, \\quad \\text{gdzie } f_n: A \\to \\mathbb{R} \\text{ dla } n \\in \\mathbb{N} \\]\nKluczowy wymóg:\nKażdy wyraz ciągu musi stanowić kompletną funkcję zdefiniowaną na wspólnej dla całego ciągu dziedzinie \\(A\\).\n\nZbieżność punktowa (granica ciągu funkcyjnego)\n\nDefinicja:\nCiąg funkcyjny \\((f_n)\\) jest zbieżny punktowo na zbiorze \\(A\\) do funkcji granicznej \\(f\\), jeżeli dla każdego ustalonego punktu \\(x \\in A\\) ciąg wartości liczbowych \\((f_n(x))\\) jest zbieżny do granicy \\(f(x)\\).\nWzór / Warunek formalny:\n\\[ f_n \\to f \\iff \\forall \\varepsilon&gt;0 \\,\\, \\forall x\\in A \\,\\, \\exists \\delta&gt;0 \\,\\, \\forall n\\in\\mathbb{N} \\;\\; [\\delta &lt; n \\implies |f_n(x) - f(x)| &lt; \\varepsilon] \\]\nKluczowy wymóg:\nDobór wskaźnika \\(\\delta\\) zależy w ogólności zarówno od zadanej tolerancji błędu \\(\\varepsilon\\), jak i od konkretnego wyboru punktu \\(x \\in A\\).\n\nZbieżność jednostajna\n\nDefinicja:\nCiąg funkcyjny \\((f_n)\\) zbiega jednostajnie na zbiorze \\(A\\) do funkcji \\(f\\), jeżeli dla każdej liczby \\(\\varepsilon &gt; 0\\) odchylenie wszystkich funkcji ciągu, dla indeksów większych od pewnego progu, od funkcji granicznej jest mniejsze od \\(\\varepsilon\\) dla wszystkich punktów dziedziny jednocześnie.\nWzór / Warunek formalny:\n\\[ f_n \\rightrightarrows f \\iff \\forall \\varepsilon&gt;0 \\,\\, \\exists \\delta&gt;0 \\,\\, \\forall n\\in\\mathbb{N}^+ \\,\\, \\forall x\\in A \\;\\; [\\delta &lt; n \\implies |f_n(x) - f(x)| &lt; \\varepsilon] \\]\nKluczowy wymóg:\nWskaźnik \\(\\delta\\) dobierany jest wyłącznie w zależności od \\(\\varepsilon\\) i pozostaje wspólny (niezależny od wyboru punktu) dla wszystkich elementów \\(x \\in A\\)."
+  },
+  {
+    "objectID": "analizaII.html#warunki-jednostajnej-zbieżności-ciągu-funkcyjnego.",
+    "href": "analizaII.html#warunki-jednostajnej-zbieżności-ciągu-funkcyjnego.",
+    "title": "Analiza matematyczna II",
+    "section": "2. Warunki jednostajnej zbieżności ciągu funkcyjnego.",
+    "text": "2. Warunki jednostajnej zbieżności ciągu funkcyjnego.\nWarunek Cauchy’ego jednostajnej zbieżności ciągu funkcyjnego\n\nDefinicja: Ciąg funkcyjny jest jednostajnie zbieżny na zadanym zbiorze wtedy i tylko wtedy, gdy odległość między dowolnymi dwoma jego dostatecznie dalekimi wyrazami jest wspólnie ograniczona przez arbitralnie zadaną tolerancję błędu dla wszystkich punktów dziedziny.\nWzór / Warunek formalny: \\[ \\forall \\varepsilon&gt;0 \\,\\, \\exists \\delta&gt;0 \\,\\, \\forall n\\in\\mathbb{N} \\,\\, \\forall k\\in\\mathbb{N}^+ \\,\\, \\forall x\\in A \\;\\; [\\delta &lt; n \\implies |f_{n+k}(x) - f_n(x)| &lt; \\varepsilon] \\]\nKluczowy wymóg: Wskaźnik \\(\\delta\\) dobierany jest wyłącznie w zależności od \\(\\varepsilon\\) i pozostaje wspólny (niezależny od wyboru punktu) dla wszystkich elementów \\(x \\in A\\).\n\nWarunek konieczny i wystarczający jednostajnej zbieżności (z supremum)\n\nDefinicja: Ciąg funkcyjny zbiega jednostajnie do badanej funkcji granicznej na zadanym zbiorze wtedy i tylko wtedy, gdy ciąg liczbowy utworzony z kresów górnych odchyleń wyrazów tego ciągu od funkcji granicznej jest zbieżny do zera.\nWzór / Warunek formalny: \\[ f_n \\rightrightarrows f \\iff \\lim_{n \\to \\infty} a_n = 0, \\quad \\text{gdzie } a_n = \\sup_{x \\in A} |f_n(x) - f(x)| \\]\nKluczowy wymóg: Kres górny (supremum) odległości między badanym wyrazem ciągu funkcyjnego a funkcją graniczną musi być wyznaczany globalnie na całym zbiorze \\(A\\)."
+  },
+  {
+    "objectID": "analizaII.html#pojęcie-szeregu-funkcyjnego-oraz-zbieżność-punktowa-i-jednostajna-takiego-szeregu.",
+    "href": "analizaII.html#pojęcie-szeregu-funkcyjnego-oraz-zbieżność-punktowa-i-jednostajna-takiego-szeregu.",
+    "title": "Analiza matematyczna II",
+    "section": "3. Pojęcie szeregu funkcyjnego oraz zbieżność punktowa i jednostajna takiego szeregu.",
+    "text": "3. Pojęcie szeregu funkcyjnego oraz zbieżność punktowa i jednostajna takiego szeregu."
+  },
+  {
+    "objectID": "analizaII.html#związki-zbieżności-jednostajnej-szeregu-funkcyjnego-z-ciągłością-różniczkowaniem-i-całkowaniem-takiego-szeregu.",
+    "href": "analizaII.html#związki-zbieżności-jednostajnej-szeregu-funkcyjnego-z-ciągłością-różniczkowaniem-i-całkowaniem-takiego-szeregu.",
+    "title": "Analiza matematyczna II",
+    "section": "4. Związki zbieżności jednostajnej szeregu funkcyjnego z ciągłością, różniczkowaniem i całkowaniem takiego szeregu.",
+    "text": "4. Związki zbieżności jednostajnej szeregu funkcyjnego z ciągłością, różniczkowaniem i całkowaniem takiego szeregu."
+  },
+  {
+    "objectID": "analizaII.html#pojęcie-szeregu-potęgowego-oraz-twierdzenia-abela-i-hadamarda.",
+    "href": "analizaII.html#pojęcie-szeregu-potęgowego-oraz-twierdzenia-abela-i-hadamarda.",
+    "title": "Analiza matematyczna II",
+    "section": "5. Pojęcie szeregu potęgowego oraz twierdzenia Abela i Hadamarda.",
+    "text": "5. Pojęcie szeregu potęgowego oraz twierdzenia Abela i Hadamarda."
+  },
+  {
+    "objectID": "analizaII.html#reguły-różniczkowania-i-całkowania-szeregów-potęgowych.",
+    "href": "analizaII.html#reguły-różniczkowania-i-całkowania-szeregów-potęgowych.",
+    "title": "Analiza matematyczna II",
+    "section": "6. Reguły różniczkowania i całkowania szeregów potęgowych.",
+    "text": "6. Reguły różniczkowania i całkowania szeregów potęgowych."
+  },
+  {
+    "objectID": "analizaII.html#analityczna-definicja-funkcji-trygonometrycznych.",
+    "href": "analizaII.html#analityczna-definicja-funkcji-trygonometrycznych.",
+    "title": "Analiza matematyczna II",
+    "section": "7. Analityczna definicja funkcji trygonometrycznych.",
+    "text": "7. Analityczna definicja funkcji trygonometrycznych."
+  },
+  {
+    "objectID": "analizaII.html#związek-między-funkcją-wykładniczą-a-funkcjami-trygonometrycznymi-wzory-eulera.",
+    "href": "analizaII.html#związek-między-funkcją-wykładniczą-a-funkcjami-trygonometrycznymi-wzory-eulera.",
+    "title": "Analiza matematyczna II",
+    "section": "8. Związek między funkcją wykładniczą a funkcjami trygonometrycznymi – wzory Eulera.",
+    "text": "8. Związek między funkcją wykładniczą a funkcjami trygonometrycznymi – wzory Eulera."
+  },
+  {
+    "objectID": "analizaII.html#szereg-fouriera-oraz-warunki-zbieżności.",
+    "href": "analizaII.html#szereg-fouriera-oraz-warunki-zbieżności.",
+    "title": "Analiza matematyczna II",
+    "section": "9. Szereg Fouriera oraz warunki zbieżności.",
+    "text": "9. Szereg Fouriera oraz warunki zbieżności."
+  },
+  {
+    "objectID": "analizaII.html#zasada-minimalności-nierówność-bessela-i-zasada-lokalizacji.",
+    "href": "analizaII.html#zasada-minimalności-nierówność-bessela-i-zasada-lokalizacji.",
+    "title": "Analiza matematyczna II",
+    "section": "10. Zasada minimalności, nierówność Bessela i zasada lokalizacji.",
+    "text": "10. Zasada minimalności, nierówność Bessela i zasada lokalizacji."
+  },
+  {
+    "objectID": "analizaII.html#zbieżność-ciągów-w-przestrzeni-mathbbrk-i-warunki-istnienia-granicy-takich-ciągów-oraz-twierdzenia-dotyczące-ich-obliczania.",
+    "href": "analizaII.html#zbieżność-ciągów-w-przestrzeni-mathbbrk-i-warunki-istnienia-granicy-takich-ciągów-oraz-twierdzenia-dotyczące-ich-obliczania.",
+    "title": "Analiza matematyczna II",
+    "section": "11. Zbieżność ciągów w przestrzeni \\(\\mathbb{R}^k\\) i warunki istnienia granicy takich ciągów oraz twierdzenia dotyczące ich obliczania.",
+    "text": "11. Zbieżność ciągów w przestrzeni \\(\\mathbb{R}^k\\) i warunki istnienia granicy takich ciągów oraz twierdzenia dotyczące ich obliczania."
+  },
+  {
+    "objectID": "analizaII.html#granica-funkcji-z-mathbbrk-do-mathbbr-i-granica-jednostronna-oraz-ich-własności.",
+    "href": "analizaII.html#granica-funkcji-z-mathbbrk-do-mathbbr-i-granica-jednostronna-oraz-ich-własności.",
+    "title": "Analiza matematyczna II",
+    "section": "12. Granica funkcji z \\(\\mathbb{R}^k\\) do \\(\\mathbb{R}\\) i granica jednostronna oraz ich własności.",
+    "text": "12. Granica funkcji z \\(\\mathbb{R}^k\\) do \\(\\mathbb{R}\\) i granica jednostronna oraz ich własności."
+  },
+  {
+    "objectID": "analizaII.html#ciągłość-funkcji-wielu-zmiennych-oraz-ciągłość-jednostajna.",
+    "href": "analizaII.html#ciągłość-funkcji-wielu-zmiennych-oraz-ciągłość-jednostajna.",
+    "title": "Analiza matematyczna II",
+    "section": "13. Ciągłość funkcji wielu zmiennych oraz ciągłość jednostajna.",
+    "text": "13. Ciągłość funkcji wielu zmiennych oraz ciągłość jednostajna."
+  },
+  {
+    "objectID": "analizaII.html#pojęcie-pochodnej-kierunkowej-i-jej-własności.-pochodna-cząstkowa.",
+    "href": "analizaII.html#pojęcie-pochodnej-kierunkowej-i-jej-własności.-pochodna-cząstkowa.",
+    "title": "Analiza matematyczna II",
+    "section": "14. Pojęcie pochodnej kierunkowej i jej własności. Pochodna cząstkowa.",
+    "text": "14. Pojęcie pochodnej kierunkowej i jej własności. Pochodna cząstkowa."
+  },
+  {
+    "objectID": "analizaII.html#pochodna-słaba-funkcji-wielu-zmiennych-przykłady-i-własności.",
+    "href": "analizaII.html#pochodna-słaba-funkcji-wielu-zmiennych-przykłady-i-własności.",
+    "title": "Analiza matematyczna II",
+    "section": "15. Pochodna słaba funkcji wielu zmiennych – przykłady i własności.",
+    "text": "15. Pochodna słaba funkcji wielu zmiennych – przykłady i własności."
+  },
+  {
+    "objectID": "analizaII.html#pochodna-słaba-odwzorowania.",
+    "href": "analizaII.html#pochodna-słaba-odwzorowania.",
+    "title": "Analiza matematyczna II",
+    "section": "16. Pochodna słaba odwzorowania.",
+    "text": "16. Pochodna słaba odwzorowania."
+  },
+  {
+    "objectID": "analizaII.html#pochodna-superpozycji-dla-pochodnych-cząstkowych-i-słabych.",
+    "href": "analizaII.html#pochodna-superpozycji-dla-pochodnych-cząstkowych-i-słabych.",
+    "title": "Analiza matematyczna II",
+    "section": "17. Pochodna superpozycji dla pochodnych cząstkowych i słabych.",
+    "text": "17. Pochodna superpozycji dla pochodnych cząstkowych i słabych."
+  },
+  {
+    "objectID": "analizaII.html#funkcje-klasy-c1-na-zbiorach-otwartych-w-mathbbrk-oraz-ich-własności.",
+    "href": "analizaII.html#funkcje-klasy-c1-na-zbiorach-otwartych-w-mathbbrk-oraz-ich-własności.",
+    "title": "Analiza matematyczna II",
+    "section": "18. Funkcje klasy \\(C^{(1)}\\) na zbiorach otwartych w \\(\\mathbb{R}^k\\) oraz ich własności.",
+    "text": "18. Funkcje klasy \\(C^{(1)}\\) na zbiorach otwartych w \\(\\mathbb{R}^k\\) oraz ich własności."
+  },
+  {
+    "objectID": "analizaII.html#pochodna-mocna-funkcji-i-jej-interpretacja-geometryczna.",
+    "href": "analizaII.html#pochodna-mocna-funkcji-i-jej-interpretacja-geometryczna.",
+    "title": "Analiza matematyczna II",
+    "section": "19. Pochodna mocna funkcji i jej interpretacja geometryczna.",
+    "text": "19. Pochodna mocna funkcji i jej interpretacja geometryczna."
+  },
+  {
+    "objectID": "analizaII.html#warunki-konieczny-i-dostateczny-różniczkowalności-funkcji-wielu-zmiennych.",
+    "href": "analizaII.html#warunki-konieczny-i-dostateczny-różniczkowalności-funkcji-wielu-zmiennych.",
+    "title": "Analiza matematyczna II",
+    "section": "20. Warunki konieczny i dostateczny różniczkowalności funkcji wielu zmiennych.",
+    "text": "20. Warunki konieczny i dostateczny różniczkowalności funkcji wielu zmiennych."
+  },
+  {
+    "objectID": "analizaII.html#pochodna-mocna-odwzorowania-przykłady-i-własności.",
+    "href": "analizaII.html#pochodna-mocna-odwzorowania-przykłady-i-własności.",
+    "title": "Analiza matematyczna II",
+    "section": "21. Pochodna mocna odwzorowania – przykłady i własności.",
+    "text": "21. Pochodna mocna odwzorowania – przykłady i własności."
+  },
+  {
+    "objectID": "analizaII.html#pochodne-kierunkowe-i-pochodne-cząstkowe-wyższych-rzędów.-twierdzenie-schwarza.",
+    "href": "analizaII.html#pochodne-kierunkowe-i-pochodne-cząstkowe-wyższych-rzędów.-twierdzenie-schwarza.",
+    "title": "Analiza matematyczna II",
+    "section": "22. Pochodne kierunkowe i pochodne cząstkowe wyższych rzędów. Twierdzenie Schwarza.",
+    "text": "22. Pochodne kierunkowe i pochodne cząstkowe wyższych rzędów. Twierdzenie Schwarza."
+  },
+  {
+    "objectID": "analizaII.html#funkcje-klasy-cp-oraz-ich-własności.",
+    "href": "analizaII.html#funkcje-klasy-cp-oraz-ich-własności.",
+    "title": "Analiza matematyczna II",
+    "section": "23. Funkcje klasy \\(C^{(p)}\\) oraz ich własności.",
+    "text": "23. Funkcje klasy \\(C^{(p)}\\) oraz ich własności."
+  },
+  {
+    "objectID": "analizaII.html#wzór-taylora-dla-funkcji-i-dla-odwzorowania.-przykłady-i-wnioski.",
+    "href": "analizaII.html#wzór-taylora-dla-funkcji-i-dla-odwzorowania.-przykłady-i-wnioski.",
+    "title": "Analiza matematyczna II",
+    "section": "24. Wzór Taylora dla funkcji i dla odwzorowania. Przykłady i wnioski.",
+    "text": "24. Wzór Taylora dla funkcji i dla odwzorowania. Przykłady i wnioski."
+  },
+  {
+    "objectID": "analizaII.html#ekstrema-lokalne-funkcji-wielu-zmiennych.",
+    "href": "analizaII.html#ekstrema-lokalne-funkcji-wielu-zmiennych.",
+    "title": "Analiza matematyczna II",
+    "section": "25. Ekstrema lokalne funkcji wielu zmiennych.",
+    "text": "25. Ekstrema lokalne funkcji wielu zmiennych."
+  },
+  {
+    "objectID": "analizaII.html#warunki-konieczny-i-wystarczający-istnienia-ekstremum-bezwarunkowego-funkcji.",
+    "href": "analizaII.html#warunki-konieczny-i-wystarczający-istnienia-ekstremum-bezwarunkowego-funkcji.",
+    "title": "Analiza matematyczna II",
+    "section": "26. Warunki konieczny i wystarczający istnienia ekstremum bezwarunkowego funkcji.",
+    "text": "26. Warunki konieczny i wystarczający istnienia ekstremum bezwarunkowego funkcji."
+  },
+  {
+    "objectID": "analizaII.html#twierdzenia-pomocnicze-oraz-twierdzenie-o-odwzorowaniu-odwrotnym.",
+    "href": "analizaII.html#twierdzenia-pomocnicze-oraz-twierdzenie-o-odwzorowaniu-odwrotnym.",
+    "title": "Analiza matematyczna II",
+    "section": "27. Twierdzenia pomocnicze oraz twierdzenie o odwzorowaniu odwrotnym.",
+    "text": "27. Twierdzenia pomocnicze oraz twierdzenie o odwzorowaniu odwrotnym."
+  },
+  {
+    "objectID": "analizaII.html#ekstrema-funkcji-uwikłanej-i-przykłady-ich-wyznaczania.",
+    "href": "analizaII.html#ekstrema-funkcji-uwikłanej-i-przykłady-ich-wyznaczania.",
+    "title": "Analiza matematyczna II",
+    "section": "28. Ekstrema funkcji uwikłanej i przykłady ich wyznaczania.",
+    "text": "28. Ekstrema funkcji uwikłanej i przykłady ich wyznaczania."
+  },
+  {
+    "objectID": "analizaII.html#ekstrema-warunkowe-mnożniki-lagrangea-oraz-przykłady-ilustracyjne.",
+    "href": "analizaII.html#ekstrema-warunkowe-mnożniki-lagrangea-oraz-przykłady-ilustracyjne.",
+    "title": "Analiza matematyczna II",
+    "section": "29. Ekstrema warunkowe – mnożniki Lagrange’a oraz przykłady ilustracyjne.",
+    "text": "29. Ekstrema warunkowe – mnożniki Lagrange’a oraz przykłady ilustracyjne."
+  },
+  {
+    "objectID": "analizaII.html#pojęcie-całki-riemanna-na-przedziale-k-wymiarowym.",
+    "href": "analizaII.html#pojęcie-całki-riemanna-na-przedziale-k-wymiarowym.",
+    "title": "Analiza matematyczna II",
+    "section": "30. Pojęcie całki Riemanna na przedziale \\(k\\)-wymiarowym.",
+    "text": "30. Pojęcie całki Riemanna na przedziale \\(k\\)-wymiarowym."
+  },
+  {
+    "objectID": "analizaII.html#całka-dolna-i-całka-górna-riemanna-darboux.-warunki-całkowalności.",
+    "href": "analizaII.html#całka-dolna-i-całka-górna-riemanna-darboux.-warunki-całkowalności.",
+    "title": "Analiza matematyczna II",
+    "section": "31. Całka dolna i całka górna Riemanna-Darboux. Warunki całkowalności.",
+    "text": "31. Całka dolna i całka górna Riemanna-Darboux. Warunki całkowalności."
+  },
+  {
+    "objectID": "analizaII.html#twierdzenia-fubiniego-o-zamianie-całki-wielokrotnej-na-całkę-iterowaną.",
+    "href": "analizaII.html#twierdzenia-fubiniego-o-zamianie-całki-wielokrotnej-na-całkę-iterowaną.",
+    "title": "Analiza matematyczna II",
+    "section": "32. Twierdzenia Fubiniego o zamianie całki wielokrotnej na całkę iterowaną.",
+    "text": "32. Twierdzenia Fubiniego o zamianie całki wielokrotnej na całkę iterowaną."
+  },
+  {
+    "objectID": "analizaII.html#pojęcie-dyfeomorfizmu-i-przykłady-dyfeomorfizmów.",
+    "href": "analizaII.html#pojęcie-dyfeomorfizmu-i-przykłady-dyfeomorfizmów.",
+    "title": "Analiza matematyczna II",
+    "section": "33. Pojęcie dyfeomorfizmu i przykłady dyfeomorfizmów.",
+    "text": "33. Pojęcie dyfeomorfizmu i przykłady dyfeomorfizmów."
+  },
+  {
+    "objectID": "analizaII.html#twierdzenie-o-zmianie-zmiennych-dla-całek-wielokrotnych.",
+    "href": "analizaII.html#twierdzenie-o-zmianie-zmiennych-dla-całek-wielokrotnych.",
+    "title": "Analiza matematyczna II",
+    "section": "34. Twierdzenie o zmianie zmiennych dla całek wielokrotnych.",
+    "text": "34. Twierdzenie o zmianie zmiennych dla całek wielokrotnych."
+  },
+  {
+    "objectID": "analizaII.html#zastosowanie-całek-wielokrotnych-do-wyznaczania-pól-powierzchni-i-objętości.",
+    "href": "analizaII.html#zastosowanie-całek-wielokrotnych-do-wyznaczania-pól-powierzchni-i-objętości.",
+    "title": "Analiza matematyczna II",
+    "section": "35. Zastosowanie całek wielokrotnych do wyznaczania pól powierzchni i objętości.",
+    "text": "35. Zastosowanie całek wielokrotnych do wyznaczania pól powierzchni i objętości."
+  },
+  {
+    "objectID": "analizaII.html#wielokrotne-całki-niewłaściwe.",
+    "href": "analizaII.html#wielokrotne-całki-niewłaściwe.",
+    "title": "Analiza matematyczna II",
+    "section": "36. Wielokrotne całki niewłaściwe.",
+    "text": "36. Wielokrotne całki niewłaściwe."
+  },
+  {
+    "objectID": "analizaII.html#twierdzenie-o-zmianie-zmiennych-dla-całek-niewłaściwych.",
+    "href": "analizaII.html#twierdzenie-o-zmianie-zmiennych-dla-całek-niewłaściwych.",
+    "title": "Analiza matematyczna II",
+    "section": "37. Twierdzenie o zmianie zmiennych dla całek niewłaściwych.",
+    "text": "37. Twierdzenie o zmianie zmiennych dla całek niewłaściwych."
+  },
+  {
+    "objectID": "analizaII.html#zastosowania-wielokrotnych-całek-niewłaściwych.",
+    "href": "analizaII.html#zastosowania-wielokrotnych-całek-niewłaściwych.",
+    "title": "Analiza matematyczna II",
+    "section": "38. Zastosowania wielokrotnych całek niewłaściwych.",
+    "text": "38. Zastosowania wielokrotnych całek niewłaściwych."
+  },
+  {
     "objectID": "Pytania_eksploracja.html",
     "href": "Pytania_eksploracja.html",
     "title": "Eksploracja danych",

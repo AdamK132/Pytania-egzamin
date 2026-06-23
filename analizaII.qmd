@@ -1,0 +1,146 @@
+---
+title: "Analiza matematyczna II"
+author: "Adam Kołodziejczak"
+date: "2026-06-23"
+format: 
+  html:
+    toc: true
+    toc-title: "Pytania"
+    toc-location: right
+    theme: default
+    fontcolor: "#3c3c3c"
+    backgroundcolor: "#fdfdfd"
+---
+
+## 1. Pojęcie ciągu funkcyjnego oraz jego granicy. Zbieżność punktowa i zbieżność jednostajna.
+
+**Ciąg funkcyjny**
+
+**Ciąg funkcyjny**
+
+1. Definicja:  
+Ciąg funkcyjny określony na niepustym zbiorze $A \subseteq \mathbb{R}$ to funkcja przyporządkowująca każdej liczbie naturalnej określoną funkcję o dziedzinie $A$ i wartościach rzeczywistych, będąca elementem przestrzeni $(\mathbb{R}^A)^\mathbb{N}$.
+
+2. Wzór / Warunek formalny:  
+$$ (f_n) \in (\mathbb{R}^A)^\mathbb{N}, \quad \text{gdzie } f_n: A \to \mathbb{R} \text{ dla } n \in \mathbb{N} $$
+
+3. Kluczowy wymóg:  
+Każdy wyraz ciągu musi stanowić kompletną funkcję zdefiniowaną na wspólnej dla całego ciągu dziedzinie $A$.
+
+**Zbieżność punktowa (granica ciągu funkcyjnego)**
+
+1. Definicja:  
+Ciąg funkcyjny $(f_n)$ jest zbieżny punktowo na zbiorze $A$ do funkcji granicznej $f$, jeżeli dla każdego ustalonego punktu $x \in A$ ciąg wartości liczbowych $(f_n(x))$ jest zbieżny do granicy $f(x)$.
+
+2. Wzór / Warunek formalny:  
+$$ f_n \to f \iff \forall \varepsilon>0 \,\, \forall x\in A \,\, \exists \delta>0 \,\, \forall n\in\mathbb{N} \;\; [\delta < n \implies |f_n(x) - f(x)| < \varepsilon] $$
+
+3. Kluczowy wymóg:  
+Dobór wskaźnika $\delta$ zależy w ogólności zarówno od zadanej tolerancji błędu $\varepsilon$, jak i od konkretnego wyboru punktu $x \in A$.
+
+**Zbieżność jednostajna**
+
+1. Definicja:  
+Ciąg funkcyjny $(f_n)$ zbiega jednostajnie na zbiorze $A$ do funkcji $f$, jeżeli dla każdej liczby $\varepsilon > 0$ odchylenie wszystkich funkcji ciągu, dla indeksów większych od pewnego progu, od funkcji granicznej jest mniejsze od $\varepsilon$ dla wszystkich punktów dziedziny jednocześnie.
+
+2. Wzór / Warunek formalny:  
+$$ f_n \rightrightarrows f \iff \forall \varepsilon>0 \,\, \exists \delta>0 \,\, \forall n\in\mathbb{N}^+ \,\, \forall x\in A \;\; [\delta < n \implies |f_n(x) - f(x)| < \varepsilon] $$
+
+3. Kluczowy wymóg:  
+Wskaźnik $\delta$ dobierany jest wyłącznie w zależności od $\varepsilon$ i pozostaje wspólny (niezależny od wyboru punktu) dla wszystkich elementów $x \in A$.
+
+## 2. Warunki jednostajnej zbieżności ciągu funkcyjnego.
+
+**Warunek Cauchy'ego jednostajnej zbieżności ciągu funkcyjnego**
+
+1. Definicja:
+Ciąg funkcyjny jest jednostajnie zbieżny na zadanym zbiorze wtedy i tylko wtedy, gdy odległość między dowolnymi dwoma jego dostatecznie dalekimi wyrazami jest wspólnie ograniczona przez arbitralnie zadaną tolerancję błędu dla wszystkich punktów dziedziny.
+
+2. Wzór / Warunek formalny:
+$$ \forall \varepsilon>0 \,\, \exists \delta>0 \,\, \forall n\in\mathbb{N} \,\, \forall k\in\mathbb{N}^+ \,\, \forall x\in A \;\; [\delta < n \implies |f_{n+k}(x) - f_n(x)| < \varepsilon] $$
+
+3. Kluczowy wymóg:
+Wskaźnik $\delta$ dobierany jest wyłącznie w zależności od $\varepsilon$ i pozostaje wspólny (niezależny od wyboru punktu) dla wszystkich elementów $x \in A$.
+
+**Warunek konieczny i wystarczający jednostajnej zbieżności (z supremum)**
+
+1. Definicja:
+Ciąg funkcyjny zbiega jednostajnie do badanej funkcji granicznej na zadanym zbiorze wtedy i tylko wtedy, gdy ciąg liczbowy utworzony z kresów górnych odchyleń wyrazów tego ciągu od funkcji granicznej jest zbieżny do zera.
+
+2. Wzór / Warunek formalny:
+$$ f_n \rightrightarrows f \iff \lim_{n \to \infty} a_n = 0, \quad \text{gdzie } a_n = \sup_{x \in A} |f_n(x) - f(x)| $$
+
+3. Kluczowy wymóg:
+Kres górny (supremum) odległości między badanym wyrazem ciągu funkcyjnego a funkcją graniczną musi być wyznaczany globalnie na całym zbiorze $A$.
+
+## 3. Pojęcie szeregu funkcyjnego oraz zbieżność punktowa i jednostajna takiego szeregu.
+
+## 4. Związki zbieżności jednostajnej szeregu funkcyjnego z ciągłością, różniczkowaniem i całkowaniem takiego szeregu.
+
+## 5. Pojęcie szeregu potęgowego oraz twierdzenia Abela i Hadamarda.
+
+## 6. Reguły różniczkowania i całkowania szeregów potęgowych.
+
+## 7. Analityczna definicja funkcji trygonometrycznych.
+
+## 8. Związek między funkcją wykładniczą a funkcjami trygonometrycznymi – wzory Eulera.
+
+## 9. Szereg Fouriera oraz warunki zbieżności.
+
+## 10. Zasada minimalności, nierówność Bessela i zasada lokalizacji.
+
+## 11. Zbieżność ciągów w przestrzeni $\mathbb{R}^k$ i warunki istnienia granicy takich ciągów oraz twierdzenia dotyczące ich obliczania.
+
+## 12. Granica funkcji z $\mathbb{R}^k$ do $\mathbb{R}$ i granica jednostronna oraz ich własności.
+
+## 13. Ciągłość funkcji wielu zmiennych oraz ciągłość jednostajna.
+
+## 14. Pojęcie pochodnej kierunkowej i jej własności. Pochodna cząstkowa.
+
+## 15. Pochodna słaba funkcji wielu zmiennych – przykłady i własności.
+
+## 16. Pochodna słaba odwzorowania.
+
+## 17. Pochodna superpozycji dla pochodnych cząstkowych i słabych.
+
+## 18. Funkcje klasy $C^{(1)}$ na zbiorach otwartych w $\mathbb{R}^k$ oraz ich własności.
+
+## 19. Pochodna mocna funkcji i jej interpretacja geometryczna.
+
+## 20. Warunki konieczny i dostateczny różniczkowalności funkcji wielu zmiennych.
+
+## 21. Pochodna mocna odwzorowania – przykłady i własności.
+
+## 22. Pochodne kierunkowe i pochodne cząstkowe wyższych rzędów. Twierdzenie Schwarza.
+
+## 23. Funkcje klasy $C^{(p)}$ oraz ich własności.
+
+## 24. Wzór Taylora dla funkcji i dla odwzorowania. Przykłady i wnioski.
+
+## 25. Ekstrema lokalne funkcji wielu zmiennych.
+
+## 26. Warunki konieczny i wystarczający istnienia ekstremum bezwarunkowego funkcji.
+
+## 27. Twierdzenia pomocnicze oraz twierdzenie o odwzorowaniu odwrotnym.
+
+## 28. Ekstrema funkcji uwikłanej i przykłady ich wyznaczania.
+
+## 29. Ekstrema warunkowe – mnożniki Lagrange’a oraz przykłady ilustracyjne.
+
+## 30. Pojęcie całki Riemanna na przedziale $k$-wymiarowym.
+
+## 31. Całka dolna i całka górna Riemanna-Darboux. Warunki całkowalności.
+
+## 32. Twierdzenia Fubiniego o zamianie całki wielokrotnej na całkę iterowaną.
+
+## 33. Pojęcie dyfeomorfizmu i przykłady dyfeomorfizmów.
+
+## 34. Twierdzenie o zmianie zmiennych dla całek wielokrotnych.
+
+## 35. Zastosowanie całek wielokrotnych do wyznaczania pól powierzchni i objętości.
+
+## 36. Wielokrotne całki niewłaściwe.
+
+## 37. Twierdzenie o zmianie zmiennych dla całek niewłaściwych.
+
+## 38. Zastosowania wielokrotnych całek niewłaściwych.
