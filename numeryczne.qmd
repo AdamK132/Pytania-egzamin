@@ -1,0 +1,171 @@
+---
+title: "Numeryczne - egzamin"
+author: "Adam Kołodziejczak"
+date: "2026-06-26"
+format: 
+  html:
+    toc: true
+    toc-title: "Pytania"
+    toc-location: right
+    theme: default
+    fontcolor: "#3c3c3c"
+    backgroundcolor: "#fdfdfd"
+---
+# Reprezentacja liczb
+
+## 1. Jak reprezentowane są liczby rzeczywiste w pamięci komputera i jak wykonywane są na nich działania arytmetyczne?
+
+Liczby rzeczywiste reprezentowane są w arytmetyce zmiennopozycyjnej poprzez zapamiętanie znaku, cechy określającej rząd wielkości oraz uciętej do ustalonej liczby bitów mantysy. Działania arytmetyczne realizowane są ze skończoną precyzją w środowisku zmiennoprzecinkowym, co polega na wykonaniu operacji matematycznej (np. ze sprowadzeniem argumentów do wspólnej cechy przy dodawaniu) i ponownym zaokrągleniu wynikowej mantysy.
+
+$$rd(x) = s \cdot 2^c \cdot m_t$$
+$$fl(\tilde{a}\square\tilde{b}) = (\tilde{a}\square\tilde{b})(1 + \varepsilon)$$
+
+* $rd(x)$ – numeryczna reprezentacja liczby rzeczywistej $x$ w pamięci komputera.
+* $s \in \{-1, 1\}$ – znak reprezentowanej liczby.
+* $c$ – cecha, czyli liczba całkowita określająca rząd wielkości.
+* $m_t$ – mantysa zaokrąglona do dostępnych $t$ bitów dokładności.
+* $fl$ – środowisko arytmetyki zmiennoprzecinkowej realizujące działanie.
+* $\tilde{a}, \tilde{b}$ – komputerowe reprezentacje argumentów operacji.
+* $\square \in \{+, -, *, /\}$ – podstawowa operacja arytmetyczna.
+* $\varepsilon$ – błąd względny zaokrąglenia, ograniczony przez $|\varepsilon| \le 2^{-t}$.
+
+Głównym ograniczeniem tego podejścia jest generowanie niewielkiego, względnego błędu w każdym pojedynczym działaniu arytmetycznym oraz ryzyko wystąpienia nadmiaru lub niedomiaru przy przekroczeniu dopuszczalnego przedziału wartości cechy.
+
+# Równania nieliniowe
+
+## 2. Opisz metodę Newtona (inaczej metodę stycznych), służącą do rozwiązywania równań nieliniowych.
+
+Metoda Newtona służy do szybkiego znajdowania miejsc zerowych funkcji poprzez przybliżenie jej za pomocą funkcji liniowej, co geometrycznie odpowiada poprowadzeniu stycznej do wykresu w aktualnie rozważanym punkcie. Kolejne przybliżenie poszukiwanego pierwiastka wyznaczane jest jako punkt przecięcia tej stycznej z osią $OX$. 
+
+Wzór rekurencyjny metody ma postać:
+$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
+
+Znaczenie poszczególnych zmiennych:
+
+* $x_{n+1}$ – nowo wyznaczone, kolejne przybliżenie miejsca zerowego.
+* $x_n$ – bieżące przybliżenie miejsca zerowego.
+* $f(x_n)$ – wartość badanej funkcji nieliniowej w punkcie $x_n$.
+* $f'(x_n)$ – wartość pierwszej pochodnej tej funkcji w punkcie $x_n$.
+
+Głównym ograniczeniem metody jest to, że nie zawsze jest ona zbieżna, dlatego w praktyce stosuje się ją najczęściej w bliskim otoczeniu dokładnego pierwiastka jako zwieńczenie obliczeń rozpoczętych inną, wolniejszą, ale zawsze zbieżną metodą (np. bisekcji).
+
+## 3. Jak działają i do czego służą metody siecznych oraz Steffensena?
+Obie metody służą do rozwiązywania równań nieliniowych i stanowią modyfikacje metody Newtona, eliminujące konieczność analitycznego wyznaczania dokładnej wartości pochodnej funkcji. W metodzie siecznych pochodną przybliża się za pomocą ilorazu różnicowego z wykorzystaniem dwóch poprzednich przybliżeń, natomiast metoda Steffensena unika liczenia pochodnej poprzez przyjęcie jako kroku przyrostu $h$ samej wartości funkcji w aktualnym punkcie.
+
+Wzór iteracyjny dla metody siecznych:
+
+$$x_{n+1} = x_n - f(x_n) \cdot \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}$$
+Wzór iteracyjny dla metody Steffensena:
+$$x_{n+1} = x_n - \frac{[f(x_n)]^2}{f(x_n + f(x_n)) - f(x_n)}$$
+
+Znaczenie poszczególnych zmiennych:
+
+* $x_{n+1}$ – wyznaczane, nowe przybliżenie miejsca zerowego.
+* $x_n$ – ostatnie znane przybliżenie miejsca zerowego.
+* $x_{n-1}$ – przedostatnie znane przybliżenie miejsca zerowego (wymagane tylko w metodzie siecznych).
+* $f(x)$ – wartość funkcji, której miejsca zerowego poszukujemy, dla danego argumentu.
+
+Głównym ograniczeniem metody siecznych jest konieczność pamiętania i wykorzystywania dwóch poprzednich przybliżeń do wyznaczenia kolejnego punktu, choć gwarantuje ona zbieżność szybszą niż metoda bisekcji.
+
+# Układy równań liniowych
+
+## 4. Opisz metody dokładne rozwiązywania układów równań liniowych.
+
+* Metody dokładne rozwiązują układ równań liniowych poprzez algebraiczne przekształcenie macierzy współczynników do postaci ułatwiającej obliczenia (np. macierzy trójkątnej), co pozwala wyznaczyć niewiadome metodą podstawiania wstecz lub w przód. Teoretycznie dają one precyzyjny wynik, co odpowiada operacji lewostronnego przemnożenia wektora wyrazów wolnych przez macierz odwrotną.
+ $$Ax = b \implies x = A^{-1}b$$
+* Znaczenie poszczególnych zmiennych:
+
+  * $A$ – kwadratowa macierz współczynników układu równań liniowych.
+  * $A^{-1}$ – macierz odwrotna do macierzy $A$.
+  * $x$ – poszukiwany wektor rozwiązań układu.
+  * $b$ – wektor wyrazów wolnych.
+* Głównym ograniczeniem tych metod w praktyce komputerowej jest podatność na powstawanie błędów wynikających z wykonywania ogromnej liczby działań w arytmetyce zmiennopozycyjnej.
+
+## 5. Opisz metody iteracyjne rozwiązywania układów równań liniowych.
+
+* Metody iteracyjne polegają na konstrukcji ciągu wektorów przybliżających, który w granicy jest zbieżny do dokładnego rozwiązania układu. Algorytm opiera się na przekształceniu równania bazowego z wykorzystaniem odpowiednio dobranej, nieosobliwej macierzy, co pozwala rekurencyjnie wyliczać nowe przybliżenia na podstawie kroków poprzednich.
+ $$x^{(k)} = (I - Q^{-1}A)x^{(k-1)} + Q^{-1}b$$
+* Znaczenie poszczególnych zmiennych:  
+  * $x^{(k)}$ – wektor nowo wyznaczanego przybliżenia w $k$-tym kroku iteracji.
+  * $x^{(k-1)}$ – znany wektor przybliżenia z poprzedniego kroku iteracji.
+  * $A$ – pierwotna macierz współczynników układu równań.
+  * $b$ – wyjściowy wektor wyrazów wolnych.
+  * $Q$ – dobrana macierz nieosobliwa (np. jednostkowa lub przekątniowa), definiująca konkretną metodę iteracyjną.
+  * $I$ – macierz jednostkowa.
+* Metody te są stosowane dla bardzo dużych układów równań ze względu na szybkość i mniejsze wymagania pamięciowe, lecz ich ograniczeniem jest bezwzględny wymóg spełnienia kryteriów zbieżności, takich jak dominacja przekątniowa macierzy.
+
+## 6. Jak działa i do czego służy metoda Cholesky'ego?
+
+* Metoda Cholesky'ego to szczególny wariant rozkładu macierzy służący do rozwiązywania układów równań poprzez faktoryzację macierzy do postaci iloczynu macierzy dolnie trójkątnej i jej transpozycji. Jej działanie opiera się na sekwencyjnym wyznaczaniu poszczególnych elementów, gdzie wartości dla głównej przekątnej nowej macierzy liczone są przy użyciu pierwiastka kwadratowego.
+ $$A = LL^T$$
+* Znaczenie poszczególnych zmiennych:
+
+  * $A$ – wyjściowa macierz układu równań.
+  * $L$ – wyliczona macierz dolnie trójkątna posiadająca dodatnie elementy na głównej przekątnej.
+  * $L^T$ – macierz transponowana do macierzy $L$, będąca macierzą górnie trójkątną.
+* Metoda ta służy do bardzo efektywnego rozwiązywania układów równań, ale jej surowym ograniczeniem jest fakt, że macierz $A$ musi być koniecznie rzeczywista, symetryczna i dodatnio określona.
+
+## 7. Opisz metody rozkładu $A=LU$.
+* Metody rozkładu $LU$ polegają na algebraicznym rozbiciu macierzy układu na iloczyn macierzy dolnie trójkątnej oraz górnie trójkątnej, poprzez ustalenie wartości wybranych elementów przekątnych (np. jedynek). Procedura ta sprowadza poszukiwanie rozwiązania do dwóch prostszych etapów: podstawiania w przód dla wektora pomocniczego, a następnie podstawiania wstecz dla wyznaczenia ostatecznych niewiadomych.
+ $$A = LU \implies Lz = b \land Ux = z$$
+* Znaczenie poszczególnych zmiennych:
+
+  * $A$ – początkowa macierz współczynników układu równań.
+  * $L$ – wyznaczona macierz dolnie trójkątna.
+  * $U$ – wyznaczona macierz górnie trójkątna.
+  * $b$ – pierwotny wektor wyrazów wolnych.
+  * $z$ – wektor pomocniczy wyznaczany w pierwszym etapie równania.
+  * $x$ – końcowy, poszukiwany wektor rozwiązań.
+* Używa się ich w praktycznych solwerach (np. rozkład Doolittle'a) jako optymalnej bazy do rozwiązywania układów, lecz ich matematycznym ograniczeniem jest konieczność nieosobliwości wszystkich minorów głównych macierzy $A$.
+
+# Wielomiany
+
+## 8. W jakich przedziałach znajdują się rzeczywiste miejsca zerowe wielomianów?
+
+* Rzeczywiste miejsca zerowe wielomianów można zlokalizować, wyznaczając granice ich modułów na podstawie maksymalnych wartości współczynników wielomianu. Każde niezerowe miejsce zerowe znajduje się wewnątrz przedziału ograniczonego z dołu przez odwrotność promienia $\varrho_1$, a z góry przez promień $\varrho$.
+ $$\frac{1}{\varrho_1} \le |x_0| \le \varrho$$
+* Znaczenie poszczególnych zmiennych:
+
+  * $x_0$ – poszukiwane, rzeczywiste i niezerowe miejsce zerowe wielomianu.
+  * $\varrho$ – promień koła wyznaczający górne ograniczenie wielkości pierwiastka, zależny od współczynnika przy najwyższej potędze wielomianu.
+  * $\frac{1}{\varrho_1}$ – promień koła wyznaczający dolne ograniczenie wielkości pierwiastka, zależny od wyrazu wolnego wielomianu.
+* Metoda ta służy w praktyce do wstępnego wyznaczania węższych zbiorów (np. $[- \varrho, -\frac{1}{\varrho_1}] \cup [\frac{1}{\varrho_1}, \varrho]$), w których można następnie poszukiwać dokładnych pierwiastków zbieżnymi metodami iteracyjnymi.
+
+## 9. Do czego służy schemat Hornera i jakie są jego zastosowania?
+
+* Schemat Hornera służy do bardzo efektywnego obliczania wartości wielomianu w zadanym punkcie poprzez algebraiczną zmianę kolejności wykonywanych operacji. Operacja ta jest matematycznie równoważna dzieleniu wielomianu przez czynnik liniowy, co stosuje się do deflacji wielomianu (wyłączania odnalezionego pierwiastka) oraz szybkiego wyznaczania wartości kolejnych pochodnych poprzez rozwinięcie w szereg Taylora.
+ $$w(x_0) = (...((a_n x_0 + a_{n-1})x_0 + a_{n-2})x_0 ... + a_2)x_0 + a_0$$
+* Znaczenie poszczególnych zmiennych:
+
+  * $w(x_0)$ – wyznaczana wartość wielomianu w punkcie $x_0$, będąca jednocześnie resztą z dzielenia przez czynnik liniowy $(x - x_0)$.
+  * $x_0$ – argument wielomianu lub badany pierwiastek.
+  * $a_n, a_{n-1}, ..., a_0$ – kolejne współczynniki wielomianu, począwszy od wyrazu przy najwyższej potędze.
+* Algorytm ten powszechnie wykorzystuje się w implementacjach numerycznych w celu zredukowania kosztu obliczeniowego wyznaczenia wartości wielomianu do $n$ dodawań i $n$ mnożeń, lecz pozwala on na analityczne wyłączanie z wielomianu wyłącznie czynników stopnia pierwszego.
+
+# Interpolacja
+
+## 10. Czym jest interpolacja i na czym polega metoda interpolacji Newtona?
+
+* Interpolacja to przybliżenie nieznanej funkcji za pomocą innej funkcji (nazywanej interpolującą), która w zadanych punktach dziedziny (węzłach) przyjmuje dokładnie takie same wartości, co funkcja interpolowana. Metoda Newtona służy do budowy wielomianu interpolującego i polega na wykorzystaniu odpowiedniego wzoru różnicowego opartego o rekurencyjnie wyliczane ilorazy różnicowe. 
+ $$w(x) = \sum_{k=0}^n f[x_0, x_1, \dots, x_k] \cdot \prod_{j=0}^{k-1} (x - x_j)$$.
+* Znaczenie poszczególnych zmiennych:
+
+  * $w(x)$ – wyznaczany wielomian interpolacyjny.
+  * $n$ – stopień wielomianu interpolacyjnego oraz liczba węzłów pomniejszona o jeden.
+  * $f[x_0, x_1, \dots, x_k]$ – iloraz różnicowy rzędu $k$, wyznaczany rekurencyjnie na podstawie wartości funkcji w węzłach.
+  * $x_j$ – dany z góry węzeł interpolacji, dla którego znana jest wartość funkcji.
+  * $x$ – argument funkcji, dla którego wyznaczane jest przybliżenie.
+* Z algorytmicznego punktu widzenia wzór różnicowy zwalnia z konieczności rozwiązywania pełnego układu równań, a ilorazy różnicowe wyznacza się niezwykle szybko w wygodnej postaci tablicowej, nadpisując poprzednie wartości w wektorze pamięci.
+
+## 11. Opisz metodę interpolacji Lagrange'a.
+
+* Metoda Lagrange'a reprezentuje dokładnie ten sam, jednoznaczny wielomian interpolacyjny co w przypadku metody Newtona, lecz zapisuje go w postaci kombinacji liniowej zadanych wartości funkcji oraz specjalnych wielomianów bazowych. Każdy wielomian bazowy konstruowany jest tak, aby przyjmował wartość 1 w swoim przypisanym węźle oraz zerował się we wszystkich pozostałych węzłach.
+$$w(x) = \sum_{k=0}^n y_k \prod_{j=0, j \neq k}^n \frac{x - x_j}{x_k - x_j}$$.
+* Znaczenie poszczególnych zmiennych:
+
+  * $w(x)$ – poszukiwany wielomian interpolacyjny funkcji.
+  * $n$ – najwyższy indeks i stopień analizowanego wielomianu.
+  * $y_k$ – rzędna, czyli odczytana z góry wartość funkcji interpolowanej w węźle $x_k$.
+  * $x_k, x_j$ – parami różne od siebie węzły interpolacji ze znanej dziedziny.
+  * $x$ – badany argument przybliżanej funkcji.
+* Podstawowym ograniczeniem wszystkich wielomianów interpolacyjnych (w tym Lagrange'a) jest występowanie błędu interpolacji, minimalizowanego w praktyce poprzez umiejętny dobór optymalnych węzłów, na przykład wykorzystując jako węzły miejsca zerowe wielomianów Czebyszewa.

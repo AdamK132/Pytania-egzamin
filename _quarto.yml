@@ -14,6 +14,8 @@ website:
         href: Pytania_eksploracja_skrot.qmd
       - text: "Testowe"
         href: analizaII.qmd
+      - text: "Metody numeryczne"
+        href: numeryczne.qmd
 
 format:
   html:

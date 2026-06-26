@@ -16,8 +16,6 @@ format:
 
 **Ciąg funkcyjny**
 
-**Ciąg funkcyjny**
-
 1. Definicja:  
 Ciąg funkcyjny określony na niepustym zbiorze $A \subseteq \mathbb{R}$ to funkcja przyporządkowująca każdej liczbie naturalnej określoną funkcję o dziedzinie $A$ i wartościach rzeczywistych, będąca elementem przestrzeni $(\mathbb{R}^A)^\mathbb{N}$.
 
