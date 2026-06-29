@@ -136,8 +136,16 @@ window.Quarto = {
 <span class="menu-text">Eksploracja danych - abstrakt</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./Pytania_eksploracja_skrot2.html"> 
+<span class="menu-text">Eksploracja danych - streszczenie</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./analizaII.html"> 
 <span class="menu-text">Testowe</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./numeryczne.html"> 
+<span class="menu-text">Metody numeryczne</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -351,7 +359,7 @@ window.Quarto = {
 <p><strong>3. Elastic Net (kara mieszana)</strong></p>
 <ul>
 <li><strong>Cel stosowania:</strong> Połączenie zalet Ridge i LASSO, aby przezwyciężyć słabości metody LASSO w środowiskach z silną korelacją zgrupowanych zmiennych.</li>
-<li><strong>Wpływ na współczynniki:</strong> Stosuje połączoną kombinację obu kar (<span class="math inline">\(L_1\)</span> i <span class="math inline">\(L_2\)</span>), której proporcją steruje parametr <span class="math inline">\(\alpha \in\)</span>. Zapewnia to zdolność do wyzerowania nieważnych cech przy stabilniejszym działaniu na tych ważnych.</li>
+<li><strong>Wpływ na współczynniki:</strong> Stosuje połączoną kombinację obu kar (<span class="math inline">\(L_1\)</span> i <span class="math inline">\(L_2\)</span>), której proporcją steruje parametr <span class="math inline">\(\alpha \in [0,1]\)</span>. Zapewnia to zdolność do wyzerowania nieważnych cech przy stabilniejszym działaniu na tych ważnych.</li>
 <li><strong>Praktyczne zastosowanie:</strong> Kiedy predyktory tworzą w danych silnie skorelowane grupy (np. wiele wskaźników opisujących tę samą cechę użytkownika), samo LASSO ma tendencję do losowego wybrania pojedynczej zmiennej z takiej grupy i wyzerowania całej reszty. <strong>Elastic Net rozwiązuje ten problem, preferując zachowywanie całych grup skorelowanych cech</strong>, nakładając na nie “współdzielone” kurczenie. Jest to często najbezpieczniejszy i najstabilniejszy wybór dla złożonych danych analitycznych.</li>
 </ul>
 </section>
@@ -360,7 +368,7 @@ window.Quarto = {
 <p><strong>Regresja logistyczna</strong> to jeden z podstawowych modeli liniowych, który – wbrew swojej nazwie – jest przeznaczony do rozwiązywania problemów <strong>klasyfikacji binarnej</strong>, gdzie docelowa zmienna kategoryczna przyjmuje dwie wartości <span class="math inline">\(y \in \{0, 1\}\)</span>. Działanie tego algorytmu opiera się na trzystopniowym procesie, łączącym kombinację cech, estymację prawdopodobieństwa i sztywną regułę decyzyjną:</p>
 <ul>
 <li><strong>Liniowy predyktor:</strong> Punktem wyjścia jest wyliczenie wartości tzw. predyktora liniowego (<span class="math inline">\(\eta_i\)</span>). Stanowi on po prostu klasyczną liniową kombinację wektora cech danej obserwacji oraz wyuczonych wag modelu: <span class="math inline">\(\eta_i = \beta_0 + x_i^\top \beta\)</span>.</li>
-<li><strong>Prawdopodobieństwo przynależności do klasy:</strong> Ponieważ predyktor liniowy może przyjmować dowolne wartości z przedziału od minus do plus nieskończoności, nie może on wprost wyrażać prawdopodobieństwa. Aby to naprawić, <strong>wynik predyktora jest mapowany na przedział $$ za pomocą nieliniowej funkcji logistycznej (tzw. sigmoidy)</strong>: <span class="math inline">\(p_i = P(y_i = 1 \mid x_i) = \frac{1}{1 + e^{-\eta_i}}\)</span>. W ten sposób model bezpośrednio estymuje prawdopodobieństwo, z jakim dana obserwacja należy do wyróżnionej klasy (klasy 1).</li>
+<li><strong>Prawdopodobieństwo przynależności do klasy:</strong> Ponieważ predyktor liniowy może przyjmować dowolne wartości z przedziału od minus do plus nieskończoności, nie może on wprost wyrażać prawdopodobieństwa. Aby to naprawić, <strong>wynik predyktora jest mapowany na przedział <span class="math inline">\([0,1]\)</span> za pomocą nieliniowej funkcji logistycznej (tzw. sigmoidy)</strong>: <span class="math inline">\(p_i = P(y_i = 1 \mid x_i) = \frac{1}{1 + e^{-\eta_i}}\)</span>. W ten sposób model bezpośrednio estymuje prawdopodobieństwo, z jakim dana obserwacja należy do wyróżnionej klasy (klasy 1).</li>
 <li><strong>Granica decyzyjna:</strong> Wygenerowanie samego prawdopodobieństwa nie kończy klasyfikacji. Ostateczną decyzję podejmuje się poprzez <strong>ustalenie sztywnego progu odcięcia</strong> <span class="math inline">\(t\)</span> (zazwyczaj przyjmuje się <span class="math inline">\(t = 0.5\)</span>). Reguła jest prosta: jeżeli obliczone prawdopodobieństwo <span class="math inline">\(p_i \ge t\)</span>, obserwacji przypisuje się etykietę 1, w przeciwnym razie (gdy <span class="math inline">\(p_i &lt; t\)</span>) – etykietę 0. To właśnie ten próg na prawdopodobieństwie definiuje matematycznie pozycję granicy decyzyjnej w przestrzeni cech.</li>
 </ul>
 <p>Z punktu widzenia uczenia maszynowego, aby model potrafił poprawnie kształtować predyktor liniowy (a w konsekwencji granicę decyzyjną), zakłada on dla zmiennej docelowej rozkład Bernoulliego i estymuje parametry minimalizując tzw. <strong>stratę logarytmiczną (log-loss / entropię krzyżową)</strong>.</p>

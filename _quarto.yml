@@ -12,6 +12,8 @@ website:
         href: Pytania_eksploracja.qmd
       - text: "Eksploracja danych - abstrakt"
         href: Pytania_eksploracja_skrot.qmd
+      - text: "Eksploracja danych - streszczenie"
+        href: Pytania_eksploracja_skrot2.qmd
       - text: "Testowe"
         href: analizaII.qmd
       - text: "Metody numeryczne"

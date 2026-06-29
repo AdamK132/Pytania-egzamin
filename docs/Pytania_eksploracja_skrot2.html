@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adam Kołodziejczak">
+<meta name="dcterms.date" content="2026-06-22">
+
+<title>Eksploracja danych - streszczenie – Egzaminy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e442beeda8854585f2117682f91a714a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Egzaminy</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Losowanie</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Pytania_eksploracja.html"> 
+<span class="menu-text">Eksploracja danych</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Pytania_eksploracja_skrot.html"> 
+<span class="menu-text">Eksploracja danych - abstrakt</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Pytania_eksploracja_skrot2.html" aria-current="page"> 
+<span class="menu-text">Eksploracja danych - streszczenie</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./analizaII.html"> 
+<span class="menu-text">Testowe</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./numeryczne.html"> 
+<span class="menu-text">Metody numeryczne</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Eksploracja danych - streszczenie</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Adam Kołodziejczak </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 22, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Pytanie 1: Przygotowanie danych</strong> Przygotowanie danych to kluczowy, integralny proces analityczny, który bezpośrednio determinuje jakość budowanych modeli uczenia maszynowego. Proces ten obejmuje trzy główne etapy:</p>
+<ul>
+<li><strong>Import danych:</strong> Należy poprawnie skonfigurować parser, jawnie zidentyfikować braki danych oraz zadbać o optymalizację pamięci dla dużych plików.</li>
+<li><strong>Walidacja typów:</strong> Wymaga ręcznej interwencji analityka m.in. przy formatowaniu dat, ochronie identyfikatorów tekstowych przed obcięciem wiodących zer oraz rzutowaniu kolumn o mieszanych typach.</li>
+<li><strong>Wstępne czyszczenie:</strong> Obejmuje ujednolicanie nazw kolumn (np. do formatu <em>snake_case</em>), weryfikację reguł domenowych (wykluczanie absurdalnych wartości, jak ujemny wiek) oraz standaryzację kategorii tekstowych. <strong>Zignorowanie tych kroków prowadzi do błędnego działania algorytmów, rozbicia informacji na sztuczne cechy, zaburzenia estymacji parametrów lub wręcz całkowitej niemożności uruchomienia modelu</strong>.</li>
+</ul>
+<p><strong>Pytanie 2: Obserwacje odstające i braki danych</strong> Obserwacje odstające (anomalie) rozpoznaje się za pomocą metod jednowymiarowych (np. reguły IQR) lub wielowymiarowych (np. Isolation Forest). Ponieważ mogą one drastycznie zaburzyć estymację, stosuje się wobec nich techniki takie jak transformacja rozkładu (np. logarytmowanie), winsoryzacja, tworzenie specjalnych flag lub rzadziej całkowite usunięcie. Z kolei braki danych to nie tylko puste komórki, lecz bardzo ważny sygnał diagnostyczny informujący o procesie powstawania danych. Niewłaściwe podejście do nich może prowadzić do niebezpiecznego wycieku informacji. <strong>Aby temu zapobiec, uzupełnianie braków musi być zamknięte w zautomatyzowanych potokach analitycznych uczonych wyłącznie na zbiorze treningowym</strong>. Do najlepszych strategii należy stworzenie odrębnej kategorii (np. “missing”), imputacja statystyczna lub algorytmiczna oraz wykorzystanie binarnych wskaźników braków przed imputacją.</p>
+<p><strong>Pytanie 3: EDA, preprocessing i inżynieria cech</strong></p>
+<ul>
+<li><strong>Eksploracyjna analiza danych (EDA):</strong> Pozwala na wczesne, głębokie zrozumienie struktury, rozkładów i zależności w danych przy użyciu narzędzi wizualnych i statystycznych, co pomaga identyfikować usterki jakościowe.</li>
+<li><strong>Preprocessing:</strong> Przygotowuje ustrukturyzowaną macierz cech, skupiając się m.in. na kodowaniu zmiennych kategorycznych (np. <em>one-hot encoding</em> do zamiany na postać binarną) oraz <strong>krytycznie ważnym skalowaniu zmiennych, które jest absolutnie niezbędne przy modelach opartych na odległości i regularyzacji</strong>.</li>
+<li><strong>Inżynieria cech:</strong> Najważniejszy etap maksymalizujący ilość użytecznych dla algorytmu informacji. Polega na celowej transformacji skrajnych rozkładów, tworzeniu użytecznych cech czasowych i wskaźników intensywności (uniezależniających wskaźnik od czasu), budowaniu interakcji oraz dzieleniu zmiennych na koszyki.</li>
+</ul>
+<p><strong>Pytanie 4: Regresja liniowa wieloraka</strong> Jest to klasyczny i fundamentalny algorytm uczenia nadzorowanego, który wykorzystuje się do przewidywania ciągłej wartości docelowej. Z matematycznego punktu widzenia predykcja to <strong>liniowa kombinacja cech wejściowych oraz przypisanych im wyestymowanych wag (parametrów <span class="math inline">\(\beta\)</span>), uwzględniająca stałą oraz błąd z zakłóceń (szum)</strong>. Proces estymacji (uczenia) stanowi klasyczne zadanie optymalizacyjne, w którym dąży się do zminimalizowania ustalonej funkcji straty, najczęściej sumy kwadratów błędów, aby poprowadzić hiperpłaszczyznę jak najbliżej faktycznych punktów. Czysta minimalizacja błędów wyłącznie na zbiorze treningowym niesie jednak ryzyko przeuczenia, zwłaszcza przy silnej współliniowości predyktorów.</p>
+<p><strong>Pytanie 5: Interpretacja i ograniczenia modeli liniowych</strong> W standardowych warunkach współczynniki (wagi) modeli liniowych stanowią precyzyjne i wysoce interpretowalne informacje o kierunku oraz sile wpływu danej cechy na ostateczną wartość predykcji. <strong>Interpretacja tych wag bywa jednak problematyczna w trzech konkretnych sytuacjach</strong>: przy silnej współliniowości cech (co powoduje chwiejność wag), przy zastosowaniu regularyzacji (gdzie wagi są kurczone i tracą czysty charakter) oraz w przypadku zignorowania uprzedniej standaryzacji (wówczas model niesprawiedliwie faworyzuje zmienne o wysokich nominałach wyłącznie z powodu ich skali). Główne ograniczenie tej metody tkwi w wymuszaniu rygorystycznych założeń o liniowości oraz addytywności wpływów. Z natury algorytm nie jest zdolny do wyłapywania skomplikowanych nieliniowości czy interakcji między poszczególnymi atrybutami, chyba że analityk uprzednio przygotuje je za pomocą ręcznej inżynierii cech.</p>
+<p><strong>Pytanie 6: Regularyzacja modeli liniowych</strong> Regularyzacja to technika zapobiegająca przeuczeniu modelu poprzez dodanie do funkcji straty kary za “zbyt duże” wartości współczynników. Aby funkcja kary działała sprawiedliwie, <strong>bezwzględnie wymagana jest uprzednia standaryzacja cech</strong>. Główne metody to:</p>
+<ul>
+<li><strong>Ridge (kara L2):</strong> Zmniejsza współczynniki płynnie w stronę zera, ale zwykle ich nie zeruje. Stabilizuje estymację przy mocno skorelowanych predyktorach.</li>
+<li><strong>LASSO (kara L1):</strong> Posiada zdolność do ściągania współczynników dokładnie do zera, co działa jako automatyczna selekcja cech. Sprawdza się na danych o wielu wymiarach, gdzie mało cech niesie sygnał.</li>
+<li><strong>Elastic Net:</strong> Łączy kary L1 i L2. W przeciwieństwie do LASSO, preferuje zachowywanie całych grup skorelowanych zmiennych, zapewniając bezpieczniejszy wybór dla złożonych danych analitycznych.</li>
+</ul>
+<p><strong>Pytanie 7: Regresja logistyczna jako model klasyfikacyjny</strong> Regresja logistyczna to wbrew nazwie model służący do klasyfikacji binarnej. Jej działanie składa się z trzech etapów: 1. Obliczenie liniowego predyktora (kombinacji wag i cech). 2. Zmapowanie wyniku za pomocą nieliniowej funkcji logistycznej (sigmoidy) na przedział od 0 do 1, co pozwala wprost estymować prawdopodobieństwo przynależności do danej klasy. 3. Ustalenie ostatecznej decyzji za pomocą sztywnego progu (zazwyczaj 0.5), definiującego liniową granicę decyzyjną. Model optymalizuje swoje parametry, minimalizując tzw. <strong>stratę logarytmiczną (log-loss)</strong>, która silnie karze sytuacje, gdy algorytm przypisuje wysoką pewność błędnej klasie.</p>
+<p><strong>Pytanie 8: Porównanie LDA, QDA i regresji logistycznej</strong></p>
+<ul>
+<li><strong>Regresja logistyczna:</strong> Model dyskryminacyjny, który nie narzuca wymogu normalności cech. Szacuje bezpośrednio prawdopodobieństwo klasy i wyznacza liniową granicę decyzyjną.</li>
+<li><strong>Analiza Dyskryminacyjna (LDA i QDA):</strong> To modele generatywne oparte na twierdzeniu Bayesa, które rygorystycznie zakładają, że cechy posiadają wielowymiarowy rozkład normalny.</li>
+<li><strong>LDA vs QDA:</strong> LDA zakłada jedną wspólną macierz kowariancji dla wszystkich klas, co skutkuje <strong>liniowymi granicami decyzyjnymi</strong> i świetnie sprawdza się na mniejszych zbiorach danych. Z kolei QDA pozwala każdej klasie na własną macierz kowariancji, tworząc <strong>kwadratowe (nieliniowe) granice</strong>, jednak z powodu liczby parametrów wymaga dużych zbiorów uczących do stabilnego działania.</li>
+</ul>
+<p><strong>Pytanie 9: Składniki i mechanizm drzewa decyzyjnego</strong> Drzewo decyzyjne to hierarchiczny algorytm dzielący przestrzeń cech, składający się z: korzenia (węzła startowego), węzłów wewnętrznych (zawierających reguły podziału np. wiek &gt; 30), gałęzi (kierujących według wyniku testu) oraz liści (węzłów końcowych). Węzły wewnętrzne dobierają podział tak, aby maksymalizować spadek “nieczystości” danych. Proces predykcyjny polega na przejściu nowej obserwacji przez gałęzie aż do konkretnego liścia.</p>
+<ul>
+<li><strong>W klasyfikacji:</strong> Liść przypisuje nowej obserwacji tę klasę, która była klasą większościową z danych treningowych zebranych w tym liściu.</li>
+<li><strong>W regresji:</strong> Liść przypisuje predykcję równą uśrednionej wartości ciągłej wyliczonej z obserwacji treningowych, które spłynęły do danego węzła końcowego.</li>
+</ul>
+<p><strong>Pytanie 10: Wyznaczanie podziałów w drzewach decyzyjnych</strong> Drzewa wykorzystują metodę zachłanną, w każdym kroku szukając podziału maksymalizującego spadek nieczystości (czyli najlepiej poprawiającego jednorodność powstałych grup).</p>
+<ul>
+<li><strong>Kryteria:</strong> W klasyfikacji stosuje się <strong>indeks Giniego lub entropię Shannona</strong> w celu oddzielenia klas, a w regresji <strong>wariancję lub sumę kwadratów odchyleń (SSE)</strong>, aby zminimalizować rozproszenie wokół średniej.</li>
+<li><strong>Cechy ciągłe:</strong> Algorytm sortuje wartości ciągłe i jako kandydatów na próg odcięcia sprawdza punkty leżące pośrodku między unikalnymi wartościami w danych.</li>
+<li><strong>Cechy kategoryczne:</strong> Przy podziałach binarnych (np. w algorytmie CART) kategorie są wstępnie sortowane na podstawie średniej wartości docelowej (dla regresji) lub odsetka klasy pozytywnej (dla klasyfikacji), a po posortowaniu traktuje się je i rozcina jak wartości ciągłe.</li>
+</ul>
+<p><strong>Pytanie 11: Złożoność drzew decyzyjnych i jej kontrola</strong> Algorytmy budujące drzewa decyzyjne posiadają naturalną tendencję do przeuczenia (overfittingu), ponieważ nieograniczone potrafią “uczyć się na pamięć” szumu z danych, co skutkuje bardzo dużą wariancją predykcji. Aby kontrolować tę złożoność, stosuje się trzy podejścia:</p>
+<ul>
+<li><strong>Reguły stopu:</strong> Zatrzymują one proces rekurencyjnego dzielenia, gdy np. węzeł stanie się idealnie czysty merytorycznie lub gdy testy statystyczne nie wykażą już istotnych zależności (co działa jako regularyzacja).</li>
+<li><strong>Pre-pruning (wczesne przycinanie):</strong> Polega na nakładaniu z góry restrykcji podczas budowy struktury, m.in. poprzez narzucenie maksymalnej głębokości drzewa (<code>max_depth</code>) czy minimalnej liczby obserwacji w liściu.</li>
+<li><strong>Post-pruning (przycinanie po zbudowaniu):</strong> Pozwala drzewu rozrosnąć się do przeuczonej formy, a dopiero potem wycina najsłabsze gałęzie na podstawie bilansu błędu i złożoności drzewa (optymalizowanego za pomocą walidacji krzyżowej). <strong>Wymuszenie prostszej struktury drzewa akceptuje nieznacznie wyższe obciążenie (bias), ale pozwala drastycznie zredukować wariancję</strong>, co uodparnia model na szum i diametralnie polepsza uogólnianie na nowe dane.</li>
+</ul>
+<p><strong>Pytanie 12: Zalety i ograniczenia pojedynczych drzew decyzyjnych</strong> <strong>Pojedyncze drzewa decyzyjne cechują się znakomitą interpretowalnością i przejrzystością, ponieważ ich decyzje opierają się na logicznych sekwencjach progowych</strong>. Mają ogromną przewagę w pracy z danymi, gdyż nie wymagają skalowania zmiennych, radzą sobie z brakami danych, a także w naturalny sposób potrafią modelować nieliniowości i skomplikowane interakcje cech. Największym ich ograniczeniem jest jednak ogromna niestabilność i wysoka wariancja – zaledwie niewielka modyfikacja w zbiorze uczącym potrafi wygenerować zupełnie inne predykcje i strukturę modelu. Mają też silną skłonność do przeuczenia oraz cierpią na zjawisko fragmentacji danych na głębokich poziomach. Pojedyncze drzewa świetnie sprawdzają się jako modele bazowe (baseline) tam, gdzie czytelność biznesowa jest priorytetem, jednak w scenariuszach wymagających precyzji i odporności na anomalię korzysta się z nich głównie w formie zespołu wielu drzew (bagging lub boosting).</p>
+<p><strong>Pytanie 13: Zespołowanie w baggingu i waga techniki bootstrap</strong> Bagging to metoda polegająca na budowie wielu pojedynczych “słabych” modeli bazowych (drzew) i zagregowaniu ich w jeden potężny predyktor. <strong>Absolutnie kluczowym mechanizmem jest tu bootstrap, czyli losowanie próbek treningowych ze zwracaniem</strong>. Dzięki losowaniu każde drzewo uczy się na minimalnie innej próbie, co gwarantuje niezbędną różnorodność – bez tego wszystkie drzewa uczyłyby się dokładnie tego samego i zespołowanie nie dałoby efektu. Gotowe wyniki poszczególnych drzew są następnie uśredniane (w regresji) lub poddawane głosowaniu (w klasyfikacji). Mechanizm ten pozwala utrzymać niskie obciążenie, a dzięki uśrednieniu niezależnych predykcji, <strong>drastycznie redukuje wysoką wariancję charakterystyczną dla pojedynczych drzew</strong>. Bagging skutecznie tłumi negatywny wpływ anomalii w danych i zapewnia dużo większą stabilność uogólniania.</p>
+<p><strong>Pytanie 14: Różnica między klasycznym baggingiem a lasami losowymi</strong> Podczas gdy w klasycznym baggingu algorytm buduje węzły szukając podziałów wśród wszystkich dostępnych predyktorów, <strong>las losowy dodaje dodatkową warstwę randomizacji: w każdym pojedynczym węźle rozpatruje wyłącznie wylosowany podzbiór cech</strong>. Brak tego losowania w baggingu powodowałby, że przy obecności jednej, dominującej cechy, większość drzew budowałaby swoje wierzchołki identycznie, prowadząc do silnego skorelowania całego zespołu. Lasy losowe omijają tę wadę, wymuszając na modelu odkrywanie również słabszych cech, co <strong>skutecznie dekoreluje poszczególne drzewa i zapewnia ich większą różnorodność</strong>. Pomimo faktu, że pojedyncze drzewo w lesie dysponując mniejszą wiedzą staje się “słabsze”, to spadek korelacji pozwala całemu zespołowi uogólniać predykcje i redukować wariancję znacząco skuteczniej niż w klasycznym baggingu.</p>
+<p><strong>Pytanie 15: Hiperparametry i sterowanie złożonością w zespołach drzewiastych</strong> Zarządzanie kompromisem <em>bias-variance</em> wygląda zupełnie inaczej w lasach losowych, a inaczej w metodach boostingowych (jak XGBoost czy LightGBM).</p>
+<ul>
+<li><strong>W Lasy losowych:</strong> Zwiększanie liczby drzew (<code>n_estimators</code>) obniża wariancję i polepsza stabilność bez wprowadzania ryzyka przeuczenia, odbywa się to jedynie kosztem proporcjonalnie dłuższego czasu obliczeń. <strong>Krytycznym hiperparametrem chroniącym model przed przeuczeniem jest tu <code>max_features</code> (liczba losowanych cech), którego zmniejszenie wymusza dekorelację całego zespołu</strong>. Z kolei sama głębokość drzew zazwyczaj nie jest mocno ograniczana, ponieważ agregacja neutralizuje błędy skomplikowanych węzłów.</li>
+<li><strong>W Boostingu:</strong> Skoro nowe drzewa uczą się tam na błędach poprzednich, model jest wyjątkowo narażony na przeuczenie i wymaga rygorystycznej kontroli złożoności. Współczynnik uczenia (<code>learning_rate</code>) oraz liczba iteracji muszą być precyzyjnie strojone w tandemie – wolne uczenie bardzo uodparnia algorytm na błędy, ale zmusza do użycia potężnej liczby drzew, co generuje olbrzymi koszt obliczeniowy. Ponadto, <strong>pojedyncze drzewa budowane w metodzie boosting muszą być relatywnie “słabe”, dlatego bezwzględnie ucina się ich elastyczność</strong>, limitując <code>max_depth</code> lub nakładając bezpośrednie matematyczne kary z regularyzacji (Ridge/LASSO) na same liście. W nowoczesnych wariantach wykorzystuje się także optymalizacje pamięci oparte na grupowaniu ciągłych wartości w koszyki (histogramy).</li>
+</ul>
+<p><strong>Pytanie 16: Boosting jako model addytywny i uczenie na błędach</strong> Boosting to technika budowania sekwencyjnego zespołu (zazwyczaj płytkich drzew decyzyjnych), w którym każdy kolejny dodawany model koryguje błędy swoich poprzedników, tworząc sumaryczny model addytywny. W przeciwieństwie do baggingu, algorytm skupia się głównie na redukcji obciążenia (biasu), a nowo dodawane składniki są skalowane przez współczynnik uczenia.</p>
+<ul>
+<li><strong>AdaBoost (Adaptive Boosting):</strong> Działa poprzez dynamiczną zmianę wag poszczególnych obserwacji. Przypadki błędnie sklasyfikowane otrzymują większą wagę, zmuszając kolejny model do skupienia się na najtrudniejszych przykładach.</li>
+<li><strong>Gradient Boosting:</strong> Uogólnia tę ideę, pozwalając na minimalizację dowolnej różniczkowalnej funkcji straty za pomocą tzw. pseudo-reszt (ujemnych gradientów). Każde nowe drzewo uczy się wprost przewidywać i niwelować błąd pozostawiony przez cały dotychczasowy zespół.</li>
+</ul>
+<p><strong>Pytanie 17: Porównanie XGBoost, LightGBM i CatBoost</strong> Są to trzy najpopularniejsze i najpotężniejsze biblioteki gradient boostingu (GBDT) różniące się optymalizacjami architektonicznymi:</p>
+<ul>
+<li><strong>XGBoost:</strong> Wykorzystuje przybliżenie drugiego rzędu funkcji straty (gradienty i hessiany) do precyzyjnej zbieżności oraz nakłada rygorystyczne kary regularyzacyjne (L1, L2, gamma) bezpośrednio na strukturę drzewa. Posiada świetnie działający mechanizm obsługi braków danych i rzadkich macierzy cech.</li>
+<li><strong>LightGBM:</strong> Buduje drzewa niezwykle innowacyjną strategią <em>leaf-wise</em> (rozwija najpierw najlepsze liście, a nie całe poziomy) i używa inteligentnego próbkowania (GOSS). Skutkuje to ekstremalną szybkością i niskim zużyciem pamięci, lecz wymaga ucinania liczby liści, by nie wpaść w przeuczenie.</li>
+<li><strong>CatBoost:</strong> Stosuje koncepcję <em>Ordered Boosting</em>, która skutecznie eliminuje problem wycieku informacji i tendencyjności (<em>biasu</em>) algorytmu. Jego największą siłą są wbudowane bezpieczne statystyki dla zmiennych kategorycznych (bez konieczności wcześniejszego kodowania <em>one-hot</em>), co daje mu ogromną przewagę w pracy na danych o charakterze tekstowym.</li>
+</ul>
+<p><strong>Pytanie 18: Twierdzenie Bayesa, estymacja MLE i MAP</strong> Twierdzenie Bayesa to reguła wyliczania prawdopodobieństwa a posteriori, jednak do jej zastosowania należy najpierw wyestymować odpowiednie parametry z danych uczących. Służą do tego dwa ujęcia:</p>
+<ul>
+<li><strong>MLE (Estymacja największej wiarygodności):</strong> Opiera się wyłącznie na empirycznej próbie i szuka takich parametrów, dla których zebrane dane są po prostu najbardziej prawdopodobne.</li>
+<li><strong>MAP (Maximum A Posteriori):</strong> Wprowadza do estymacji rozkład <em>a priori</em> (wiedzę i wcześniejsze przekonania o parametrach). Informacja <em>a priori</em> pełni tu kluczową funkcję ochronną: stabilizuje estymacje przy bardzo małych próbach danych oraz zapobiega powstawaniu zerowych prawdopodobieństw (działa jak wygładzanie, dopisując pseudoobserwacje do niewidzianych wcześniej słów). Wraz ze wzrostem ilości danych przewagę zyskuje jednak czysta wiarygodność, a różnice między MAP a MLE zanikają.</li>
+</ul>
+<p><strong>Pytanie 19: Naiwny Bayes i jego odmiany</strong> Naiwny Bayes to generatywny klasyfikator, którego fundamentalnym założeniem jest <strong>warunkowa niezależność cech wewnątrz danej klasy</strong>. Dzięki temu “naiwnemu” założeniu model nie musi wyznaczać skomplikowanych rozkładów wielowymiarowych, co drastycznie obniża wariancję estymacji na małych zbiorach danych. W zależności od typu danych stosuje się różne jego wersje:</p>
+<ul>
+<li><strong>Multinomial (Wielomianowy):</strong> Służy do modelowania dyskretnych liczników (częstości wystąpień danego słowa w dokumencie). Wymaga wygładzania bayesowskiego i bryluje w projektach z dziedziny NLP, takich jak filtry spamu.</li>
+<li><strong>Bernoulli:</strong> Przetwarza wektory ściśle binarne (0/1). W bezpośredni sposób karze model za <em>brak</em> wystąpienia konkretnego słowa, sprawdzając się znakomicie tam, gdzie sam fakt obecności sygnału jest ważniejszy niż jego wielokrotność.</li>
+<li><strong>Gaussian (Gaussowski):</strong> Zakłada, że cechy ciągłe w danej klasie mają rozkład normalny. Wykorzystywany głównie do klasycznych danych tabelarycznych i absolutnie niezalecany do zadań tekstowych ze względu na silną asymetrię częstości słów.</li>
+</ul>
+<p><strong>Pytanie 20: Metoda k-NN (k najbliższych sąsiadów)</strong> Jest to nieparametryczny algorytm klasyfikacji i regresji oparty na instancjach – nie buduje jawnej funkcji decyzyjnej, lecz zapamiętuje zbiór uczący, podejmując decyzję na podstawie odległości badanej obserwacji od jej najbliższych <em>k</em> sąsiadów. Do jego optymalnego działania <strong>absolutnie niezbędna jest uprzednia standaryzacja danych</strong>, gdyż inaczej miara odległości (np. euklidesowa) faworyzowałaby liczby o potężnych nominałach. Kluczowy <strong>parametr k</strong> steruje kompromisem obciążenia i wariancji: małe <em>k</em> (np. 1-3) gwarantuje elastyczność i świetne dopasowanie, ale wywołuje gigantyczną wariancję (przeuczenie i “poszarpane” granice), natomiast duże <em>k</em> uśrednia usterki, obniża wariancję i silnie wygładza granice. Zaletą tej metody jest niezwykła prostota i naturalna zdolność do wychwytywania nieliniowości, jednak jej główną wadą pozostaje ogromny koszt obliczeniowy w momencie samej predykcji oraz całkowita bezradność w starciu ze zjawiskiem tzw. przekleństwa wymiarowości (wielka liczba cech).</p>
+<p>Oto przygotowane streszczenie, które – podobnie jak poprzednio – prezentuje każdy temat jako oddzielną, kompletną wypowiedź, skupiającą się na najważniejszych informacjach z omawianego zagadnienia:</p>
+<p><strong>Pytanie 21: Regresja sklejona i splajny</strong> Regresja sklejona to technika służąca do aproksymacji nieliniowych zależności kawałkami, która w przeciwieństwie do wysoce niestabilnej klasycznej regresji wielomianowej, dzieli dziedzinę na mniejsze przedziały za pomocą tak zwanych węzłów. Na każdym z wyodrębnionych przedziałów dopasowuje się osobny wielomian niskiego stopnia, zazwyczaj trzeciego. Aby uniknąć nienaturalnych przerw czy ostrych załamań na krawędziach, w węzłach narzuca się rygorystyczne warunki gładkości – musi tam zgadzać się zarówno wartość poszczególnych funkcji, jak i ich pierwsza oraz druga pochodna. Gwarantuje to powstanie w pełni płynnej i elastycznej krzywej na całej rozpatrywanej dziedzinie.</p>
+<p><strong>Pytanie 22: Węzły, warunki gładkości i elastyczność</strong> Węzły rozcinają dziedzinę analizowanej zmiennej, a warunki gładkości sprawiają, że lokalne wielomiany łączą się ze sobą w naturalny, ciągły sposób. Liczba użytych węzłów bezpośrednio kontroluje elastyczność modelu: zbyt mała ich ilość prowadzi do usztywnienia (niedouczenia) modelu, z kolei ich nadmiar skutkuje przeuczeniem, przez co krzywa zaczyna nienaturalnie falować, dopasowując się do przypadkowego szumu. Rozwiązaniem tego dylematu są m.in. splajny wygładzające, które nakładają na funkcję kary za jej “szorstkość”. Odpowiednio gładkie i dopasowane splajny umożliwiają analitykowi stworzenie czytelnej reguły biznesowej i precyzyjne odczytanie nieliniowych trendów.</p>
+<p><strong>Pytanie 23: Uogólnione Modele Addytywne (GAM)</strong> Modele GAM są naturalnym rozwinięciem modeli liniowych, pozwalającym omijać sztywne założenia dotyczące stricte liniowych wpływów predyktorów. Ich główną cechą jest struktura addytywna – ostateczna predykcja wynika z sumy wpływów poszczególnych cech, jednak wpływ każdej z nich modelowany jest niezależnie za pomocą gładkich funkcji nieliniowych (najczęściej splajnów). Największą zaletą tej metody jest jej transparentność (brak zjawiska “czarnej skrzynki”), ułatwiająca interpretację predyktorów poprzez krzywe efektów cząstkowych. Do najistotniejszych ograniczeń należy zaliczyć wysokie koszty obliczeniowe, dużą wrażliwość modelu na hiperparametry wygładzania oraz brak naturalnej zdolności do wykrywania złożonych interakcji między zmiennymi, które trzeba dołączać jawnie.</p>
+<p><strong>Pytanie 24: Idea maksymalnego marginesu w SVM</strong> W przypadku liniowo separowalnych zbiorów danych, algorytm SVM poszukuje nie jakiejkolwiek hiperpłaszczyzny decyzyjnej, ale takiej optymalnej, która zapewnia maksymalny margines (strefę buforową) oddzielający od siebie skrajne obserwacje klas. Z matematycznego punktu widzenia szerokość tego marginesu maksymalizuje się poprzez minimalizację normy wektora wag, co czyni model mniej wrażliwym na zaszumienie. Margines ten opiera się i jest podtrzymywany wyłącznie przez wektory nośne, czyli kluczowe, najtrudniejsze obserwacje leżące dokładnie na jego krawędziach. Pozostałe punkty, znajdujące się w głębi i bezpiecznie poza marginesem, nie mają wpływu na ostateczny model – ich usunięcie nie zmieniłoby wyuczonej granicy.</p>
+<p><strong>Pytanie 25: Miękki margines w SVM i rola parametru C</strong> Koncepcja miękkiego marginesu pozwala na użycie SVM w rzeczywistych warunkach, gdy danych nie da się idealnie odseparować, wykorzystując do tego zmienne luzu pozwalające wybranym obserwacjom na wtargnięcie do wnętrza marginesu lub znalezienie się po złej stronie granicy. Obserwacje naruszające ten bufor stają się wówczas aktywnymi wektorami nośnymi kształtującymi granicę decyzyjną. Kluczową rolę w kontroli tego mechanizmu pełni parametr C, wyznaczający kompromis między karą za błędy a szerokością marginesu. Małe wartości C (silna regularyzacja) oznaczają wysoką tolerancję na błędy, co tworzy szerszy i bardziej uodporniony na przeuczenie margines, natomiast duże wartości C wymuszają bezbłędne dopasowanie, prowadząc do tworzenia wąskich, zaginających się marginesów podatnych na przeuczenie.</p>
+<p><strong>Pytanie 26: Sztuczka jądrowa i SVM/SVR</strong> Sztuczka jądrowa (kernel trick) w modelach SVM umożliwia rozwiązywanie nieliniowych problemów bez kosztownego obliczeniowo mapowania danych do wielowymiarowych przestrzeni, wyliczając “podobieństwo” wprost za pomocą funkcji jądra. Najważniejsze warianty to: jądro liniowe (idealne do rzadkich danych o dużej liczbie wymiarów, np. tekstu), jądro wielomianowe (skupione na interakcjach i kombinacjach zmiennych) oraz RBF/Gaussa (oparte na fizycznej odległości i bezwzględnie wymagające standaryzacji cech). SVR to regresyjna adaptacja tej metody, która poszukuje “najbardziej płaskiej” krzywej otoczonej buforem tolerancji na błędy (rurką <span class="math inline">\(\epsilon\)</span>). Błędy występujące wewnątrz rurki są całkowicie ignorowane, a kształt modelu determinują wyłącznie najtrudniejsze punkty – wektory nośne leżące na jej krawędziach lub zewnątrz.</p>
+<p><strong>Pytanie 27: Uczenie ze wzmocnieniem i proces decyzyjny Markowa</strong> Uczenie ze wzmocnieniem (RL) to odrębny paradygmat, w którym agent nie polega na gotowych etykietach, ale uczy się optymalnego zachowania metodą prób i błędów poprzez sekwencyjną interakcję ze środowiskiem. Wymaga to perspektywicznego myślenia i gotowości na chwilowe straty w imię długofalowych zysków. Środowisko decyzyjne formalizuje się jako Proces Decyzyjny Markowa (MDP), opisany za pomocą stanów, akcji, funkcji (mechaniki) przejścia, systemu nagród i współczynnika dyskonta. Najważniejszym założeniem koncepcyjnym jest tu własność Markowa – zasada mówiąca, że bieżący stan przechowuje wszystkie informacje potrzebne do przewidzenia przyszłości, dzięki czemu skomplikowana historia minionych zdarzeń przestaje mieć znaczenie.</p>
+<p><strong>Pytanie 28: Q-learning, równania Bellmana i problem eksploracji</strong> Ponieważ w uczeniu ze wzmocnieniem natychmiastowa nagroda nie obrazuje pełnego potencjału wybranej akcji, stosuje się funkcje wartości oceniające skumulowany, przyszły zysk z całej ścieżki. Ich fundamentem są równania Bellmana, które upraszczają ten trudny problem, rozbijając go na nagrodę natychmiastową zsumowaną ze zdyskontowaną wartością kolejnego kroku. Opiera się na tym algorytm Q-learning, który sekwencyjnie poprawia ocenę opłacalności akcji wyliczając tzw. błąd TD. Trening agenta napotyka jednak na krytyczny dylemat pomiędzy eksploatacją (wykorzystaniem najlepszych dotąd poznanych akcji w celu zysku) a eksploracją (testowaniem losowych opcji, by odkryć nieznane, wysoce nagradzane ścieżki). Problem ten rozwiązuje się m.in. kompromisową strategią <span class="math inline">\(\epsilon\)</span>-greedy.</p>
+<p><strong>Pytanie 29: Analiza koszykowa, Apriori i FP-Growth</strong> Analiza koszykowa zajmuje się poszukiwaniem częstych współwystąpień produktów i budowaniem reguł asocjacyjnych bez zdefiniowanej zmiennej docelowej. Wzorce ocenia się trzema wskaźnikami: wsparcia (jak popularny jest zestaw), ufności (prawdopodobieństwo warunkowe zajścia reguły) oraz liftu (miara powiązania produktów niezależna od ich samej popularności). Algorytm Apriori odkrywa takie reguły poziomowo, odrzucając zbędne kombinacje dzięki zasadzie głoszącej, że superset rzadkiego zbioru również musi być rzadki, jednak bywa on powolny dla dużych baz danych. Znacznie szybszą alternatywą jest metoda FP-Growth, która nie generuje żmudnie kandydatów, lecz kompresuje całą bazę transakcyjną do pamięciowej, skompresowanej struktury drzewa (FP-tree), z której rekurencyjnie wydobywa powtarzalne wzorce.</p>
+<p><strong>Pytanie 30: Wykrywanie anomalii, LOF i Isolation Forest</strong> Wykrywanie anomalii jest skomplikowane, ponieważ analityk zazwyczaj potrafi opisać “normę”, ale nie wie z góry, jak będzie wyglądać rzadkie odstępstwo. Z tego powodu stosuje się tu ciągłe funkcje skoringowe oceniające “podejrzaność”, a same anomalie dzieli na punktowe, kontekstowe i zbiorowe. Do detekcji nietypowych przypadków wykorzystuje się m.in. metodę LOF, która ocenia lokalną gęstość – punkt uważa się za anomalię, jeżeli w porównaniu z jego bezpośrednimi sąsiadami leży on w znacznie rzadszym (luźniejszym) obszarze danych. Całkowicie odmienną filozofię stosuje algorytm Isolation Forest, który w ogóle nie mierzy odległości czy gęstości, lecz buduje las losowych podziałów. Zakłada on, że anomalie znajdują się tak bardzo na obrzeżach skupisk, iż wystarczy kilka losowych przecięć przestrzeni, aby szybko i skutecznie odizolować je we własnych liściach.</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

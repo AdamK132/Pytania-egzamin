@@ -248,3 +248,6 @@ format:
     *   *Zbiorowa:* Z pozoru zwykłe, pojedyncze pakiety sieciowe stają się nagle anomalną, rytmiczną armią przy ataku hakerskim.
 *   **LOF (Local Outlier Factor) - Intuicja Gęstości:** LOF mierzy gęstość okolicy, a nie kilometry do środka planszy. Z punktu widzenia LOF punkt jest anomalią wtedy, gdy ma bardzo puste podwórko dookoła, a jego sasiedzi żyją zbici w ciasną, gęstą grupkę.
 *   **Isolation Forest - Intuicja Drwala:** Kompletnie porzuca mierzenie dystansu. Wbija w dane losowe, tnące osie. Założenie jest proste: punkty anomalne stoją na takim odludziu, że wystarczą zaledwie dwa czy trzy "cięcia" matematyczne, aby odizolować intruza na osobnej wyspie. Typowe obiekty ukryte w "gęstym tłumie" wymagają do uwięzienia dziesiątek precyzyjnych cięć.
+
+
+
