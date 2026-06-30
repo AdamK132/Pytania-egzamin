@@ -9,20 +9,27 @@ format:
 ```{=html}
 <div class="container-fluid" style="padding-left: 0; padding-right: 0; margin-top: 20px; font-family: system-ui, -apple-system, sans-serif;">
   <div class="row">
-    <!-- sidebarPanel -->
     <div class="col-md-4 well" style="background-color: #f5f5f5; border: 1px solid #e3e3e3; border-radius: 4px; padding: 19px; margin-bottom: 20px;">
+      
+      <div class="form-group shiny-input-container" style="margin-bottom: 15px;">
+        <label for="wybor_puli" style="font-weight: bold; margin-bottom: 5px; display: block;">Wybierz zbiór pytań:</label>
+        <select id="wybor_puli" class="form-control" style="width: 100%; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px;">
+          <option value="pula1">Eksploracja danych</option>
+          <option value="pula2">Metody walidacji</option>
+        </select>
+      </div>
+
       <div class="form-group shiny-input-container" style="margin-bottom: 15px;">
         <div class="checkbox">
           <label style="cursor: pointer; user-select: none;">
             <input id="przelosuj" type="checkbox" style="margin-right: 6px;"/>
-            <span>Przelosuj pytanie</span>
+            <span>Przelosuj pojedyncze pytanie</span>
           </label>
         </div>
       </div>
       <button id="losuj_btn" type="button" class="btn btn-primary btn-block" style="width: 100%;">Wylosuj</button>
     </div>
     
-    <!-- mainPanel -->
     <div class="col-md-8" style="padding-left: 25px;">
       <div id="wylosowane_pytania" class="shiny-html-output">
         <p style="color: grey; font-size: 16px;">Kliknij <b>Wylosuj</b>, aby wylosować zestaw pytań.</p>
@@ -33,7 +40,8 @@ format:
 
 <script>
 (function() {
-  const bazaPytan = [
+  // Pula 1 - Twoje dotychczasowe pytania
+  const bazaPytan1 = [
     "1. Omów rolę przygotowania danych w procesie eksploracji danych i uczenia maszynowego. Przedstaw, jakie decyzje podejmuje się na etapie importu, walidacji typów i wstępnego czyszczenia danych oraz dlaczego wpływają one na dalsze modelowanie.",
     "2. Jak rozpoznaje się i interpretuje obserwacje odstające oraz braki danych? Omów najważniejsze strategie postępowania z takimi przypadkami i ich konsekwencje dla analizy oraz jakości modelu.",
     "3. Na czym polegają EDA, preprocessing i inżynieria cech w danych tabelarycznych? Omów rolę kodowania zmiennych kategorycznych, skalowania, transformacji oraz konstrukcji nowych cech.",
@@ -66,23 +74,72 @@ format:
     "30. Omów problem wykrywania anomalii. Przedstaw typy anomalii, trudności ich formalizacji oraz porównaj intuicję działania metod LOF i Isolation Forest."
   ];
 
+  // Pula 2 - Miejsce na nową pulę pytań
+  const bazaPytan2 = [
+    "1. Opisz typy modeli statystycznych w podziale na przeznaczenie. Wymień po jednym przykładzie dla każdego typu.",
+    "2. Opisz proces tworzenia modelu statystycznego.",
+    "3. Opisz zasadę działania testów bootstrapowych.",
+    "4. Opisz zasadę działania testów permutacyjnych.",
+    "5. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli regresyjnych.",
+    "6. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli klasyfikacyjnych.",
+    "7. Podaj miary dopasowania modeli ze zmienną zależną wieloklasową.",
+    "8. Opisz czym jest krzywa ROC i miara AUC.",
+    "9. Opisz do czego jest stosowany podział na próbę uczącą i testową oraz opisz jak można przeprowadzić podział, na co wpływa proporcja podziału, jak ją można ustalić.",
+    "10. Na czym polega ekstrakcja cech? Podaj przykłady dwóch technik z tego zakresu.",
+    "11. Czym jest walidacja krzyżowa i walidacja krzyżowa z powtórzeniami?",
+    "12. Czym jest metoda Leave-One-Out?",
+    "13. Czym jest walidacja metodą Monte-Carlo?",
+    "14. Jak stosujemy bootstraping do walidacji modeli?",
+    "15. Czym jest i do czego stosujemy próbkowanie kroczące?",
+    "16. Na czym polega optymalizacja modeli predykcyjnych?",
+    "17. Przedstaw zasadę działania dwóch sposobów podejścia do tuningu modeli.",
+    "18. Opisz przeszukiwanie z wykorzystaniem siatki regularnej i nieregularnej.",
+    "19. Opisz zasadę wykorzystania wielu rdzeni procesora w optymalizacji modelu.",
+    "20. Czym jest metoda wyścigów?",
+    "21. Czym jest przeszukiwanie iteracyjne?",
+    "22. Opisz optymalizację bayesowską.",
+    "23. Czym są procesu gaussowskie?",
+    "24. Co to jest funkcja akwizycji?",
+    "25. Opisz zasadę działania metody symulowanego wyżarzania.",
+    "26. Przedstaw powody stosowania redukcji wymiarowości.",
+    "27. Jakie są powody stosowania podpróbkowania i nadpróbkowania w modelowaniu predykcyjnym?",
+    "28. Jakie są korzyści ze stosowania próbkowania zaniżającego liczebność klasy większościowej?",
+    "29. Jakie są zalety próbkowania zawyżającego liczebność klasy mniejszościowej?",
+    "30. Jak należy stosować poszczególne kroki przygotowania danych w procesie uczenia i walidacji modelu?"
+    ];
+
   function init() {
     const losujBtn = document.getElementById("losuj_btn");
     const przelosujCheckbox = document.getElementById("przelosuj");
+    const wyborPuliSelect = document.getElementById("wybor_puli");
     const wynikOutput = document.getElementById("wylosowane_pytania");
     
     if (losujBtn && !losujBtn.dataset.bound) {
       losujBtn.dataset.bound = "true";
       losujBtn.addEventListener("click", function() {
         const drawSingle = przelosujCheckbox.checked;
-        let wylosowane = [];
-        const count = drawSingle ? 1 : Math.min(2, bazaPytan.length);
+        const wybranaPula = wyborPuliSelect.value;
+        let pool = [];
 
-        let pool = [...bazaPytan];
+        // Przypisanie odpowiedniej puli na podstawie wyboru
+        if (wybranaPula === "pula1") {
+          pool = [...bazaPytan1];
+        } else if (wybranaPula === "pula2") {
+          pool = [...bazaPytan2];
+        }
+
+        let wylosowane = [];
+        const count = drawSingle ? 1 : Math.min(2, pool.length);
+
         for (let i = 0; i < count; i++) {
           const idx = Math.floor(Math.random() * pool.length);
           wylosowane.push(pool[idx]);
           pool.splice(idx, 1);
+        }
+
+        // Zabezpieczenie przed błędami, gdy wylosowana zostanie pusta pula
+        if (wylosowane.length === 0) {
+           wylosowane.push("Brak pytań w wybranym zbiorze.");
         }
 
         wynikOutput.innerHTML = `<div style="font-size: 18px; line-height: 1.5; border-left: 4px solid #337ab7; padding-left: 15px;">` + 

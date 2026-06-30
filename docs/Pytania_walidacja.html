@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adam Kołodziejczak">
+<meta name="dcterms.date" content="2026-06-30">
+
+<title>Metody walidacji – Egzaminy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e442beeda8854585f2117682f91a714a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Egzaminy</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Losowanie</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Pytania_eksploracja.html"> 
+<span class="menu-text">Eksploracja danych</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./Pytania_walidacja.html" aria-current="page"> 
+<span class="menu-text">Metody walidacji</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./numeryczne.html"> 
+<span class="menu-text">Metody numeryczne</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Spis treści</h2>
+   
+  <ul>
+  <li><a href="#egzamin-ustny-z-metod-walidacji" id="toc-egzamin-ustny-z-metod-walidacji" class="nav-link active" data-scroll-target="#egzamin-ustny-z-metod-walidacji">Egzamin ustny z Metod walidacji</a>
+  <ul class="collapse">
+  <li><a href="#sugerowana-kolejność-nauki" id="toc-sugerowana-kolejność-nauki" class="nav-link" data-scroll-target="#sugerowana-kolejność-nauki">Sugerowana Kolejność Nauki</a></li>
+  <li><a href="#opisz-typy-modeli-statystycznych-w-podziale-na-przeznaczenie.-wymień-po-jednym-przykładzie-dla-każdego-typu." id="toc-opisz-typy-modeli-statystycznych-w-podziale-na-przeznaczenie.-wymień-po-jednym-przykładzie-dla-każdego-typu." class="nav-link" data-scroll-target="#opisz-typy-modeli-statystycznych-w-podziale-na-przeznaczenie.-wymień-po-jednym-przykładzie-dla-każdego-typu.">1. Opisz typy modeli statystycznych w podziale na przeznaczenie. Wymień po jednym przykładzie dla każdego typu.</a></li>
+  <li><a href="#opisz-proces-tworzenia-modelu-statystycznego." id="toc-opisz-proces-tworzenia-modelu-statystycznego." class="nav-link" data-scroll-target="#opisz-proces-tworzenia-modelu-statystycznego.">2. Opisz proces tworzenia modelu statystycznego.</a></li>
+  <li><a href="#opisz-zasadę-działania-testów-bootstrapowych." id="toc-opisz-zasadę-działania-testów-bootstrapowych." class="nav-link" data-scroll-target="#opisz-zasadę-działania-testów-bootstrapowych.">3. Opisz zasadę działania testów bootstrapowych.</a></li>
+  <li><a href="#opisz-zasadę-działania-testów-permutacyjnych." id="toc-opisz-zasadę-działania-testów-permutacyjnych." class="nav-link" data-scroll-target="#opisz-zasadę-działania-testów-permutacyjnych.">4. Opisz zasadę działania testów permutacyjnych.</a></li>
+  <li><a href="#podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-regresyjnych." id="toc-podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-regresyjnych." class="nav-link" data-scroll-target="#podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-regresyjnych.">5. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli regresyjnych.</a></li>
+  <li><a href="#podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-klasyfikacyjnych." id="toc-podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-klasyfikacyjnych." class="nav-link" data-scroll-target="#podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-klasyfikacyjnych.">6. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli klasyfikacyjnych.</a></li>
+  <li><a href="#podaj-miary-dopasowania-modeli-ze-zmienną-zależną-wieloklasową." id="toc-podaj-miary-dopasowania-modeli-ze-zmienną-zależną-wieloklasową." class="nav-link" data-scroll-target="#podaj-miary-dopasowania-modeli-ze-zmienną-zależną-wieloklasową.">7. Podaj miary dopasowania modeli ze zmienną zależną wieloklasową.</a></li>
+  <li><a href="#opisz-czym-jest-krzywa-roc-i-miara-auc." id="toc-opisz-czym-jest-krzywa-roc-i-miara-auc." class="nav-link" data-scroll-target="#opisz-czym-jest-krzywa-roc-i-miara-auc.">8. Opisz czym jest krzywa ROC i miara AUC.</a></li>
+  <li><a href="#opisz-do-czego-jest-stosowany-podział-na-próbę-uczącą-i-testową-oraz-opisz-jak-można-przeprowadzić-podział-na-co-wpływa-proporcja-podziału-jak-ją-można-ustalić." id="toc-opisz-do-czego-jest-stosowany-podział-na-próbę-uczącą-i-testową-oraz-opisz-jak-można-przeprowadzić-podział-na-co-wpływa-proporcja-podziału-jak-ją-można-ustalić." class="nav-link" data-scroll-target="#opisz-do-czego-jest-stosowany-podział-na-próbę-uczącą-i-testową-oraz-opisz-jak-można-przeprowadzić-podział-na-co-wpływa-proporcja-podziału-jak-ją-można-ustalić.">9. Opisz do czego jest stosowany podział na próbę uczącą i testową oraz opisz jak można przeprowadzić podział, na co wpływa proporcja podziału, jak ją można ustalić.</a></li>
+  <li><a href="#na-czym-polega-ekstrakcja-cech-podaj-przykłady-dwóch-technik-z-tego-zakresu." id="toc-na-czym-polega-ekstrakcja-cech-podaj-przykłady-dwóch-technik-z-tego-zakresu." class="nav-link" data-scroll-target="#na-czym-polega-ekstrakcja-cech-podaj-przykłady-dwóch-technik-z-tego-zakresu.">10. Na czym polega ekstrakcja cech? Podaj przykłady dwóch technik z tego zakresu.</a></li>
+  <li><a href="#czym-jest-walidacja-krzyżowa-i-walidacja-krzyżowa-z-powtórzeniami" id="toc-czym-jest-walidacja-krzyżowa-i-walidacja-krzyżowa-z-powtórzeniami" class="nav-link" data-scroll-target="#czym-jest-walidacja-krzyżowa-i-walidacja-krzyżowa-z-powtórzeniami">11. Czym jest walidacja krzyżowa i walidacja krzyżowa z powtórzeniami?</a></li>
+  <li><a href="#czym-jest-metoda-leave-one-out" id="toc-czym-jest-metoda-leave-one-out" class="nav-link" data-scroll-target="#czym-jest-metoda-leave-one-out">12. Czym jest metoda Leave-One-Out?</a></li>
+  <li><a href="#czym-jest-walidacja-metodą-monte-carlo" id="toc-czym-jest-walidacja-metodą-monte-carlo" class="nav-link" data-scroll-target="#czym-jest-walidacja-metodą-monte-carlo">13. Czym jest walidacja metodą Monte-Carlo?</a></li>
+  <li><a href="#jak-stosujemy-bootstraping-do-walidacji-modeli" id="toc-jak-stosujemy-bootstraping-do-walidacji-modeli" class="nav-link" data-scroll-target="#jak-stosujemy-bootstraping-do-walidacji-modeli">14. Jak stosujemy bootstraping do walidacji modeli?</a></li>
+  <li><a href="#czym-jest-i-do-czego-stosujemy-próbkowanie-kroczące" id="toc-czym-jest-i-do-czego-stosujemy-próbkowanie-kroczące" class="nav-link" data-scroll-target="#czym-jest-i-do-czego-stosujemy-próbkowanie-kroczące">15. Czym jest i do czego stosujemy próbkowanie kroczące?</a></li>
+  <li><a href="#na-czym-polega-optymalizacja-modeli-predykcyjnych" id="toc-na-czym-polega-optymalizacja-modeli-predykcyjnych" class="nav-link" data-scroll-target="#na-czym-polega-optymalizacja-modeli-predykcyjnych">16. Na czym polega optymalizacja modeli predykcyjnych?</a></li>
+  <li><a href="#przedstaw-zasadę-działania-dwóch-sposobów-podejścia-do-tuningu-modeli." id="toc-przedstaw-zasadę-działania-dwóch-sposobów-podejścia-do-tuningu-modeli." class="nav-link" data-scroll-target="#przedstaw-zasadę-działania-dwóch-sposobów-podejścia-do-tuningu-modeli.">17. Przedstaw zasadę działania dwóch sposobów podejścia do tuningu modeli.</a></li>
+  <li><a href="#opisz-przeszukiwanie-z-wykorzystaniem-siatki-regularnej-i-nieregularnej." id="toc-opisz-przeszukiwanie-z-wykorzystaniem-siatki-regularnej-i-nieregularnej." class="nav-link" data-scroll-target="#opisz-przeszukiwanie-z-wykorzystaniem-siatki-regularnej-i-nieregularnej.">18. Opisz przeszukiwanie z wykorzystaniem siatki regularnej i nieregularnej.</a></li>
+  <li><a href="#opisz-zasadę-wykorzystania-wielu-rdzeni-procesora-w-optymalizacji-modelu." id="toc-opisz-zasadę-wykorzystania-wielu-rdzeni-procesora-w-optymalizacji-modelu." class="nav-link" data-scroll-target="#opisz-zasadę-wykorzystania-wielu-rdzeni-procesora-w-optymalizacji-modelu.">19. Opisz zasadę wykorzystania wielu rdzeni procesora w optymalizacji modelu.</a></li>
+  <li><a href="#czym-jest-metoda-wyścigów" id="toc-czym-jest-metoda-wyścigów" class="nav-link" data-scroll-target="#czym-jest-metoda-wyścigów">20. Czym jest metoda wyścigów?</a></li>
+  <li><a href="#czym-jest-przeszukiwanie-iteracyjne" id="toc-czym-jest-przeszukiwanie-iteracyjne" class="nav-link" data-scroll-target="#czym-jest-przeszukiwanie-iteracyjne">21. Czym jest przeszukiwanie iteracyjne?</a></li>
+  <li><a href="#opisz-optymalizację-bayesowską." id="toc-opisz-optymalizację-bayesowską." class="nav-link" data-scroll-target="#opisz-optymalizację-bayesowską.">22. Opisz optymalizację bayesowską.</a></li>
+  <li><a href="#czym-są-procesu-gaussowskie" id="toc-czym-są-procesu-gaussowskie" class="nav-link" data-scroll-target="#czym-są-procesu-gaussowskie">23. Czym są procesu gaussowskie?</a></li>
+  <li><a href="#co-to-jest-funkcja-akwizycji" id="toc-co-to-jest-funkcja-akwizycji" class="nav-link" data-scroll-target="#co-to-jest-funkcja-akwizycji">24. Co to jest funkcja akwizycji?</a></li>
+  <li><a href="#opisz-zasadę-działania-metody-symulowanego-wyżarzania." id="toc-opisz-zasadę-działania-metody-symulowanego-wyżarzania." class="nav-link" data-scroll-target="#opisz-zasadę-działania-metody-symulowanego-wyżarzania.">25. Opisz zasadę działania metody symulowanego wyżarzania.</a></li>
+  <li><a href="#przedstaw-powody-stosowania-redukcji-wymiarowości." id="toc-przedstaw-powody-stosowania-redukcji-wymiarowości." class="nav-link" data-scroll-target="#przedstaw-powody-stosowania-redukcji-wymiarowości.">26. Przedstaw powody stosowania redukcji wymiarowości.</a></li>
+  <li><a href="#jakie-są-powody-stosowania-podpróbkowania-i-nadpróbkowania-w-modelowaniu-predykcyjnym" id="toc-jakie-są-powody-stosowania-podpróbkowania-i-nadpróbkowania-w-modelowaniu-predykcyjnym" class="nav-link" data-scroll-target="#jakie-są-powody-stosowania-podpróbkowania-i-nadpróbkowania-w-modelowaniu-predykcyjnym">27. Jakie są powody stosowania podpróbkowania i nadpróbkowania w modelowaniu predykcyjnym?</a></li>
+  <li><a href="#jakie-są-korzyści-ze-stosowania-próbkowania-zaniżającego-liczebność-klasy-większościowej" id="toc-jakie-są-korzyści-ze-stosowania-próbkowania-zaniżającego-liczebność-klasy-większościowej" class="nav-link" data-scroll-target="#jakie-są-korzyści-ze-stosowania-próbkowania-zaniżającego-liczebność-klasy-większościowej">28. Jakie są korzyści ze stosowania próbkowania zaniżającego liczebność klasy większościowej?</a></li>
+  <li><a href="#jakie-są-zalety-próbkowania-zawyżającego-liczebność-klasy-mniejszościowej" id="toc-jakie-są-zalety-próbkowania-zawyżającego-liczebność-klasy-mniejszościowej" class="nav-link" data-scroll-target="#jakie-są-zalety-próbkowania-zawyżającego-liczebność-klasy-mniejszościowej">29. Jakie są zalety próbkowania zawyżającego liczebność klasy mniejszościowej?</a></li>
+  <li><a href="#jak-należy-stosować-poszczególne-kroki-przygotowania-danych-w-procesie-uczenia-i-walidacji-modelu" id="toc-jak-należy-stosować-poszczególne-kroki-przygotowania-danych-w-procesie-uczenia-i-walidacji-modelu" class="nav-link" data-scroll-target="#jak-należy-stosować-poszczególne-kroki-przygotowania-danych-w-procesie-uczenia-i-walidacji-modelu">30. Jak należy stosować poszczególne kroki przygotowania danych w procesie uczenia i walidacji modelu?</a></li>
+  <li><a href="#źródło" id="toc-źródło" class="nav-link" data-scroll-target="#źródło">Źródło</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Metody walidacji</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Adam Kołodziejczak </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 30, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="egzamin-ustny-z-metod-walidacji" class="level1">
+<h1>Egzamin ustny z Metod walidacji</h1>
+<section id="sugerowana-kolejność-nauki" class="level3">
+<h3 class="anchored" data-anchor-id="sugerowana-kolejność-nauki">Sugerowana Kolejność Nauki</h3>
+<p><strong>I. Fundamenty i Higiena Danych</strong></p>
+<ul>
+<li>Wstęp i kroki budowy modelu: <strong>Pyt. 1, 2</strong></li>
+<li>Podział danych: <strong>Pyt. 9</strong></li>
+<li>Nierównowaga klas i sampling: <strong>Pyt. 27, 28, 29</strong></li>
+<li>Złota zasada (Data Leakage): <strong>Pyt. 30</strong></li>
+</ul>
+<p><strong>II. Miary i Walidacja</strong></p>
+<ul>
+<li>Metryki oceny (Regresja, Klasyfikacja, ROC): <strong>Pyt. 5, 6, 7, 8</strong></li>
+<li>Klasyczna walidacja (CV, LOOCV, Monte-Carlo): <strong>Pyt. 11, 12, 13</strong></li>
+<li>Szeregi czasowe, Testy i Bootstrap (OOB): <strong>Pyt. 3, 4, 14, 15</strong></li>
+</ul>
+<p><strong>III. Optymalizacja i Ekstrakcja Cech</strong></p>
+<ul>
+<li>Podstawy tuningu (Parametry, Siatki): <strong>Pyt. 16, 17, 18, 19</strong></li>
+<li>Zaawansowane przeszukiwanie (Racing, Wyżarzanie): <strong>Pyt. 20, 21, 25</strong></li>
+<li>Optymalizacja Bayesowska: <strong>Pyt. 22, 23, 24</strong></li>
+<li>Redukcja wymiarowości (PCA, LDA): <strong>Pyt. 10, 26</strong></li>
+</ul>
+</section>
+<section id="opisz-typy-modeli-statystycznych-w-podziale-na-przeznaczenie.-wymień-po-jednym-przykładzie-dla-każdego-typu." class="level2">
+<h2 class="anchored" data-anchor-id="opisz-typy-modeli-statystycznych-w-podziale-na-przeznaczenie.-wymień-po-jednym-przykładzie-dla-każdego-typu.">1. Opisz typy modeli statystycznych w podziale na przeznaczenie. Wymień po jednym przykładzie dla każdego typu.</h2>
+<p>Wyróżnia się trzy główne typy modeli statystycznych, pogrupowane ze względu na ich przeznaczenie:</p>
+<ol type="1">
+<li><strong>Modele opisowe</strong> – ich nadrzędnym celem jest <strong>opis lub zilustrowanie pewnych cech badanych danych</strong>. Często służą one jedynie do wizualnego podkreślenia jakiegoś trendu, artefaktu lub konkretnego defektu w zbiorze bez konieczności prowadzenia głębszego wnioskowania.
+<ul>
+<li><strong>Przykład:</strong> Wykorzystanie <strong>modeli na poziomie sondy (PLM)</strong> do oceny jakości pomiarów z mikromacierzy badających RNA. Model taki bierze pod uwagę różne różnice w danych, a z wykreślonych reszt pozwala zauważyć przestrzenne wzorce na mikrochipie, które informują badacza o potencjalnym problemie i wadzie odczytu (np. pozostawionym odcisku palca).</li>
+</ul></li>
+<li><strong>Modele do wnioskowania (inferencyjne)</strong> – stosuje się je do <strong>podejmowania decyzji dotyczących postawionego pytania badawczego lub weryfikacji określonej hipotezy</strong>. Opierają się na przyjętych z góry założeniach teoretycznych i w ramach wnioskowania dostarczają parametry probabilistyczne (np. wartość <em>p</em>, przedziały ufności).
+<ul>
+<li><strong>Przykład:</strong> Model weryfikujący skuteczność leków w <strong>badaniu klinicznym</strong>. Oceniana jest w nim hipoteza zerowa sprawdzająca, czy nowa terapia wydłuża życie pacjenta w porównaniu do istniejącego leczenia. Wygenerowana przez model niska wartość <em>p</em> (przy spełnionych założeniach probabilistycznych) dawałaby wniosek, że nowa terapia faktycznie działa.</li>
+</ul></li>
+<li><strong>Modele predykcyjne</strong> – ich głównym zadaniem jest <strong>uzyskanie jak najdokładniejszej prognozy dla nowych danych</strong>. W tego typu konstrukcjach najważniejsza jest maksymalna zgoda pomiędzy wartościami przewidywanymi przez algorytm a wartościami rzeczywistymi, dlatego głównym celem jest trafna estymacja, a nie formalne testowanie hipotez.
+<ul>
+<li><strong>Przykład:</strong> Stworzenie prognozy popytu dla sprzedawcy książek, dzięki której będzie on w stanie ustalić optymalną wielkość zamówienia na kolejny miesiąc. Osiągnąć to można empirycznie np. za pomocą modelu uczenia maszynowego <strong>K-najbliższych sąsiadów (KNN)</strong>, estymując wielkość sprzedaży nowego tytułu na podstawie danych historycznych o sprzedaży pięciu innych, bardzo podobnych książek.</li>
+</ul></li>
+</ol>
+</section>
+<section id="opisz-proces-tworzenia-modelu-statystycznego." class="level2">
+<h2 class="anchored" data-anchor-id="opisz-proces-tworzenia-modelu-statystycznego.">2. Opisz proces tworzenia modelu statystycznego.</h2>
+<p>Proces tworzenia użytecznego modelu statystycznego oraz modelu uczenia maszynowego jest cyklem wieloetapowym. Jak wskazują źródła, droga od surowych danych do ostatecznej postaci analitycznej często wymaga powtarzania wielu kroków, związanych z transformacją, modelowaniem i wizualizacją. Całość tego procesu można podzielić na następujące kluczowe etapy:</p>
+<ol type="1">
+<li><strong>Zdefiniowanie celu i metryk oceny:</strong> Zanim przystąpi się do pracy z danymi, badacz musi określić jasne cele, jakie ma spełniać model, oraz wybrać odpowiednie metryki jego wydajności (np. błąd średniokwadratowy RMSE w modelu regresji lub pole pod krzywą ROC dla modeli klasyfikacyjnych). Ważne, aby na początku założyć realistyczne oczekiwania i ustalić kryteria oznaczające sukces analizy.</li>
+<li><strong>Zarządzanie budżetem danych (podział zbioru):</strong> Z racji tego, że dysponujemy skończoną ilością danych, na starcie prac dzieli się je zwykle na niezależne podzbiory. Najczęściej wydziela się <strong>zbiór uczący (treningowy)</strong>, z którego czerpie się wiedzę do budowy i optymalizacji, oraz <strong>zbiór testowy</strong>. Zbiór testowy należy zachować jako całkowicie niezależny i użyć go tylko raz, do końcowej i bezstronnej oceny wybranego już, sfinalizowanego modelu. W procesie decyzyjnym wykorzystuje się także zbiór walidacyjny lub techniki ponownego próbkowania (resamplingu).</li>
+<li><strong>Czyszczenie danych i import:</strong> To zadanie polegające na wstępnym weryfikowaniu, czy zebrane informacje są odpowiednie i pozbawione wad. Etap ten jest często niedoceniany, a potrafi pochłonąć więcej czasu niż wszystkie późniejsze fazy analizy.</li>
+<li><strong>Eksploracyjna analiza danych (EDA):</strong> Faza przebiegająca niekiedy równolegle z czyszczeniem. Wykorzystując obliczenia statystyczne i wizualizację, analityk stara się tu odkryć podstawowe relacje i korelacje panujące między predyktorami a zmienną wynikową, dostrzec ich rozkłady, asymetrię (np. dwumodalność) czy zlokalizować odstające obserwacje. Pozwala to m.in. zidentyfikować nieprawidłowości wynikające z łączenia baz danych.</li>
+<li><strong>Pre-processing (Przygotowanie danych) i Inżynieria cech:</strong> Etap ten obejmuje wszelkiego rodzaju transformacje i formatowanie danych wejściowych, po to aby ułatwić modelowi uczenie się ukrytych wzorców. Może to być:
+<ul>
+<li><strong>Imputacja braków, skalowanie i centrowanie zmiennych</strong>.</li>
+<li><strong>Selekcja i ekstrakcja cech</strong>, np. poprzez Analizę Składowych Głównych (PCA), co redukuje problemy ze współliniowością silnie skorelowanych predyktorów.</li>
+<li><strong>Transformacje zmiennych</strong>, np. kodowanie zmiennych jakościowych do postaci numerycznej (indykatorów/dummy variables), wymuszanie symetryczności rozkładów, lub wprowadzanie jawnych interakcji czy nieliniowych splajnów.</li>
+</ul></li>
+<li><strong>Dopasowanie (Model Fitting) i Optymalizacja (Model Tuning):</strong> Po przekształceniu danych dobiera się właściwą strukturę matematyczną modelu lub algorytm. Wielu modeli uczenia maszynowego nie da się wyuczyć bez wcześniejszego określenia ich <strong>hiperparametrów</strong> (np. liczby drzew w lesie losowym, liczby ukrytych neuronów w sieci neuronowej, stopnia kary w regularyzacji), które bezpośrednio wpływają na ich złożoność i skłonność do przeuczenia. Optymalizację takich wartości (tuning) przeprowadza się w oparciu o zestaw wartości siatki parametrów lub algorytmy iteracyjne, ewaluując każdą konfigurację na próbach walidacyjnych (za pomocą resamplingu).</li>
+<li><strong>Post-processing i końcowa ocena dopasowania:</strong> Gotowy i zoptymalizowany model wymaga zbadania. Dokonuje się oceny błędów z wykorzystaniem miar statystycznych (omówionych z punktu widzenia przyjętego we wstępie celu) oraz w oparciu o wykresy diagnostyczne. Ostatnią, niezwykle ważną czynnością bywa <em>post-processing</em>, który polega na drobnych korektach predykcji, np. wyborze optymalnego, twardego punktu odcięcia (threshold) prawdopodobieństwa klas w modelu regresji logistycznej celem zrównoważenia czułości i swoistości modelu.</li>
+</ol>
+</section>
+<section id="opisz-zasadę-działania-testów-bootstrapowych." class="level2">
+<h2 class="anchored" data-anchor-id="opisz-zasadę-działania-testów-bootstrapowych.">3. Opisz zasadę działania testów bootstrapowych.</h2>
+<p>Zasada działania testów bootstrapowych opiera się na empirycznym symulowaniu rozkładu statystyki testowej przy założeniu, że prawdziwa jest hipoteza zerowa. <strong>Metoda bootstrap to technika ponownego próbkowania (ang. <em>resampling</em>), która polega na wielokrotnym losowaniu ze zwracaniem nowych prób o rozmiarze identycznym jak oryginalny zbiór danych</strong>. Została ona pierwotnie wynaleziona do aproksymacji rozkładów statystyk, których własności teoretyczne nie są znane. Narzędzie to jest szczególnie użyteczne, gdy badacz ma wątpliwości, czy spełnione są rygorystyczne założenia klasycznych testów statystycznych, takie jak np. wymóg normalności rozkładu badanej cechy.</p>
+<p>Proces przeprowadzania testu bootstrapowego odbywa się zazwyczaj według następujących kroków (zobrazowanych na przykładzie weryfikacji hipotezy o równości średniej z określoną wartością teoretyczną):</p>
+<ol type="1">
+<li><strong>Wyznaczenie statystyki z oryginalnej próby:</strong> Na samym początku na podstawie zebranych danych wylicza się interesującą badacza statystykę (np. średnią arytmetyczną).</li>
+<li><strong>Dostosowanie (przesunięcie) danych do hipotezy zerowej:</strong> Aby rozkład odzwierciedlał założenia hipotezy zerowej, oryginalną próbę należy odpowiednio zmodyfikować. W przypadku testowania średniej, wszystkie obserwacje przesuwa się o różnicę pomiędzy średnią teoretyczną (zakładaną w hipotezie) a średnią wyliczoną z badanej próby.</li>
+<li><strong>Losowanie prób bootstrapowych:</strong> Z nowej, przesuniętej próby, wielokrotnie losuje się ze zwracaniem nowe zestawy danych.</li>
+<li><strong>Wyznaczenie rozkładu statystyki testowej:</strong> Na podstawie każdej wylosowanej próby bootstrapowej ponownie oblicza się badaną statystykę (np. średnią poszczególnych prób). W ten sposób generuje się cały empiryczny rozkład interesującej nas wielkości.</li>
+<li><strong>Szacowanie wartości <em>p</em> (p-value):</strong> Na koniec wylicza się prawdopodobieństwo wygenerowania (wewnątrz rozkładu bootstrapowego) wartości bardziej ekstremalnych niż statystyka wyliczona z oryginalnej próby. Dla weryfikacji hipotez dwustronnych, prawdopodobieństwo to sprawdza się na obu krańcach rozkładu.</li>
+</ol>
+</section>
+<section id="opisz-zasadę-działania-testów-permutacyjnych." class="level2">
+<h2 class="anchored" data-anchor-id="opisz-zasadę-działania-testów-permutacyjnych.">4. Opisz zasadę działania testów permutacyjnych.</h2>
+<p>Zasada działania testów permutacyjnych, podobnie jak testów bootstrapowych, opiera się na technikach ponownego próbkowania (ang. <em>resampling</em>). Są to metody powszechnie polecane do weryfikacji hipotez oraz uwiarygodnienia wyników, <strong>szczególnie gdy badacz ma wątpliwości, czy spełnione są rygorystyczne założenia klasycznych testów statystycznych</strong>.</p>
+<p>Główna idea testu permutacyjnego opiera się na zbadaniu, jak zachowywałaby się dana statystyka dla <strong>całkowicie losowego układu obserwacji</strong>. Taki losowy układ empirycznie <strong>odzwierciedla warunek wynikający z hipotezy zerowej</strong>, która zakłada, że widoczny w danych efekt lub różnica wynika wyłącznie z przypadku.</p>
+<p>Na przykładzie badania różnic pomiędzy dwiema grupami (np. testowania hipotezy o równości median), proces ten można opisać następująco:</p>
+<ol type="1">
+<li><strong>Obliczenie statystyki z próby:</strong> Na początku wylicza się interesującą różnicę (np. różnicę median) na podstawie oryginalnych, niezmodyfikowanych danych.</li>
+<li><strong>Generowanie rozkładu permutacyjnego (losowego):</strong> Następnie wielokrotnie stosuje się całkowicie losowy układ obserwacji (wymieszanie przynależności do grup), obliczając za każdym razem badaną różnicę. W ten sposób powstaje empiryczny rozkład różnic, który – zgodnie z założeniami hipotezy zerowej – oscyluje wokół zera.</li>
+<li><strong>Ocena i decyzja:</strong> Na koniec sprawdza się, czy statystyka obliczona na oryginalnej próbie znajduje się wewnątrz wyznaczonego przedziału ufności dla różnicy. <strong>Jeśli wartość ta nie leży wewnątrz przedziału ufności, należy odrzucić hipotezę zerową</strong>. Decyzję tę można podjąć również sprawdzając empiryczną wartość <em>p</em> – jeżeli jest ona niższa od założonego poziomu istotności <span class="math inline">\(\alpha\)</span>, odrzucamy hipotezę zerową na korzyść hipotezy alternatywnej.</li>
+</ol>
+<p>Warto również zaznaczyć ważną cechę charakterystyczną tych testów: <strong>w przypadku weryfikacji hipotez dotyczących tylko jednej zmiennej, wyniki testu permutacyjnego są identyczne z wynikami testu bootstrapowego</strong>, ponieważ operacje losowania (próbkowania) stosowane w obu tych metodach są w takim wariancie dokładnie takie same.</p>
+</section>
+<section id="podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-regresyjnych." class="level2">
+<h2 class="anchored" data-anchor-id="podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-regresyjnych.">5. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli regresyjnych.</h2>
+<p>Zasadniczy podział miar dopasowania modeli predykcyjnych (nadzorowanych) opiera się na rodzaju przewidywanej zmiennej wynikowej, co dzieli je na dwie główne kategorie: <strong>miary dla modeli regresyjnych</strong> oraz <strong>miary dla modeli klasyfikacyjnych</strong>.</p>
+<p><strong>1. Miary dopasowania modeli regresyjnych</strong> Stosuje się je do oceny modeli przewidujących zmienną o charakterze ilościowym. Wewnętrznie grupę tę dzieli się ze względu na aspekt badanej oceny: na miary mierzące <strong>zgodność</strong> pomiędzy wartościami obserwowanymi a przewidywanymi (często wyrażone korelacjami) oraz miary opierające się na ewaluacji <strong>błędów predykcji</strong> (bezwzględnych i względnych).</p>
+<p>Trzy przykłady miar regresyjnych to:</p>
+<ul>
+<li><strong><span class="math inline">\(R^2\)</span> (oraz skorygowane <span class="math inline">\(\tilde{R}^2\)</span>)</strong> – to miara zgodności, która bazuje na korelacji i określa, jak dobrze wartości przewidywane przez model oddają zróżnicowanie wartości rzeczywistych.</li>
+<li><strong>RMSE (Pierwiastek błędu średniokwadratowego)</strong> – wyznacza średnią wielkość błędu modelu, wyrażoną w tych samych jednostkach co zmienna wynikowa; miara ta jest jednak bardzo wrażliwa na wartości odstające.</li>
+<li><strong>MAE (Średni absolutny błąd)</strong> – określa średnią bezwzględną wartość błędów, a dzięki temu, że różnice nie są podnoszone do kwadratu, jest ona znacznie mniej wrażliwa na punkty odstające niż RMSE.</li>
+</ul>
+<p><strong>2. Miary dopasowania modeli klasyfikacyjnych</strong> Wykorzystuje się je w przypadku modeli przewidujących zmienne jakościowe (kategoryczne). Zbiór tych miar posiada w literaturze dwa istotne podziały:</p>
+<ul>
+<li>Ze względu na <strong>liczbę stanów zmiennej wyjściowej</strong>: wyróżnia się specyficzne miary dla <strong>modeli binarnych</strong> (dwustanowych) oraz miary dla <strong>klasyfikacji wieloklasowej</strong>, gdzie te same parametry wymagają przyjęcia technik uśredniania wyników dla poszczególnych klas (np. mikro, makro i makro-ważone uśrednianie).</li>
+<li>Ze względu na <strong>mechanizm oceny</strong>: wyróżnia się miary zależne wyłącznie od ostatecznej, <strong>„twardej” klasyfikacji</strong> zebranej w postaci macierzy błędów (ang. <em>confusion matrix</em>) oraz miary <strong>probabilistyczne</strong>, które zależą od dystrybucji przewidywanych prawdopodobieństw poszczególnych stanów (jak krzywe zależące od progu odcięcia czy log loss).</li>
+</ul>
+<p>Trzy przykłady miar klasyfikacyjnych to:</p>
+<ul>
+<li><strong>Accuracy (Dokładność)</strong> – wyliczana na podstawie macierzy błędów miara informująca o całkowitym odsetku poprawnie zaklasyfikowanych przez algorytm obserwacji.</li>
+<li><strong>Precision (Precyzja)</strong> – miara odpowiadająca na pytanie, jaki odsetek spośród wszystkich obserwacji sklasyfikowanych przez model jako pozytywne stanowią przypadki rzeczywiście pozytywne.</li>
+<li><strong>AUC (Area Under ROC Curve)</strong> – pole pod krzywą ROC stanowiące sumaryczną, probabilistyczną ocenę modelu; charakteryzuje skuteczność klasyfikatora na przestrzeni różnych poziomów odcięcia (threshold), dlatego wysokie AUC jest ważnym sygnałem świadczącym o dobrym dopasowaniu.</li>
+</ul>
+</section>
+<section id="podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-klasyfikacyjnych." class="level2">
+<h2 class="anchored" data-anchor-id="podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-klasyfikacyjnych.">6. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli klasyfikacyjnych.</h2>
+<p>Zasadniczy podział miar dopasowania modeli predykcyjnych dzieli je na dwie główne kategorie: <strong>miary dla modeli regresyjnych</strong> (gdzie przewidywana jest wartość ilościowa) oraz <strong>miary dla modeli klasyfikacyjnych</strong> (gdzie zmienna wynikowa ma charakter jakościowy).</p>
+<p>Wewnątrz grupy <strong>modeli klasyfikacyjnych</strong> stosuje się dodatkowe podziały:</p>
+<ul>
+<li>Ze względu na <strong>liczbę stanów zmiennej wynikowej</strong>: na miary dla <strong>modeli z binarną zmienną wynikową</strong> (dwustanową) oraz dla <strong>zmiennej wielostanowej</strong> (wieloklasowej).</li>
+<li>Ze względu na <strong>mechanizm oceny</strong>: na miary <strong>probabilistyczne</strong>, które <strong>zależą od prawdopodobieństwa poszczególnych stanów</strong> (np. log loss, AUC), oraz na te, które <strong>zależą tylko od ostatecznej klasyfikacji wynikowej</strong> (“twardej” decyzji opisywanej za pomocą macierzy błędów).</li>
+</ul>
+<p>Trzy miary dedykowane do oceny modeli klasyfikacyjnych to:</p>
+<ol type="1">
+<li><strong>Accuracy (Dokładność)</strong> – miara zależąca bezpośrednio od macierzy klasyfikacji, która informuje o całkowitym <strong>odsetku poprawnie zaklasyfikowanych obserwacji</strong>.</li>
+<li><strong>Precision (Precyzja)</strong> – miara, która odpowiada za <strong>stosunek poprawnie zaklasyfikowanych wartości pozytywnych</strong> (True Positive) do wszystkich obserwacji, które algorytm przewidział jako pozytywne.</li>
+<li><strong>AUC (Area Under ROC Curve)</strong> – miara probabilistyczna mierząca pole pod krzywą ROC i podsumowująca jakość klasyfikatora w postaci jednej liczby; <strong>wysokie AUC jest wyraźnym sygnałem dobrego dopasowania modelu</strong>.</li>
+</ol>
+</section>
+<section id="podaj-miary-dopasowania-modeli-ze-zmienną-zależną-wieloklasową." class="level2">
+<h2 class="anchored" data-anchor-id="podaj-miary-dopasowania-modeli-ze-zmienną-zależną-wieloklasową.">7. Podaj miary dopasowania modeli ze zmienną zależną wieloklasową.</h2>
+<p>Do oceny dopasowania modeli klasyfikacyjnych ze zmienną zależną wieloklasową (wielostanową) można z powodzeniem zaadaptować miary dedykowane pierwotnie dla klasyfikacji binarnej, takie jak precyzja (precision), czułość (recall) czy dokładność (accuracy). Ponadto istnieją miary posiadające własne, wyspecjalizowane implementacje dla wielu klas, do których należą:</p>
+<ul>
+<li><strong>Średnia logarytmu funkcji straty (log loss)</strong> – w przypadku klasyfikacji wielostanowej określana jako wielopoziomowa entropia krzyżowa (<em>multilevel cross-entropy</em>) lub kategoryczna entropia krzyżowa (<em>categorical cross-entropy</em>).</li>
+<li><strong>Współczynnik korelacji Matthewsa (MCC)</strong> – posiadający specjalną odmianę zdefiniowaną bezpośrednio dla wielostanowej zmiennej wynikowej.</li>
+</ul>
+<p>Zastosowanie klasycznych miar binarnych do oceny zmiennej wieloklasowej wymaga przyjęcia <strong>technik uśredniania wyników</strong> dla poszczególnych klas. Problem sprowadza się wówczas do serii porównań “jeden kontra reszta” (<em>one-vs-all</em>), a ostateczna miara powstaje za pomocą jednej z trzech głównych metod:</p>
+<ol type="1">
+<li><strong>Makro uśrednianie (Macro averaging)</strong> – redukuje predykcje wieloklasowe do wielu oddzielnych zestawów przewidywań binarnych. Odpowiednia metryka (np. precyzja) obliczana jest osobno dla każdej klasy, a ostateczny wynik to ich zwykła średnia arytmetyczna. W tym wariancie wszystkie klasy traktowane są z równą wagą, bez względu na to, ile obserwacji do nich należy.</li>
+<li><strong>Makro-ważone uśrednianie (Macro-weighted averaging)</strong> – zasada działania jest podobna jak w uśrednianiu makro, z tą różnicą, że wagi poszczególnych klas w wyliczanej średniej zależą od ich liczebności w zbiorze. Dzięki temu miara ta jest znacznie bardziej optymalna w sytuacjach, gdy w zmiennej wynikowej występują wyraźne dysproporcje między klasami.</li>
+<li><strong>Mikro uśrednianie (Micro averaging)</strong> – traktuje cały zbiór danych jako jeden wynik zbiorczy i oblicza pojedynczą metrykę. Zamiast uśredniać gotowe wartości ze wszystkich klas, najpierw sumuje się składowe oceny z macierzy błędów dla każdej z klas (np. sumę wszystkich poprawnie zaklasyfikowanych wyników <em>True Positive</em> oraz błędnych <em>False Positive</em>), a następnie na podstawie tych łącznych sum liczy się ostateczny wskaźnik. W tym podejściu równą wagę posiadają pojedyncze obserwacje, a nie klasy, co sprawia, że najliczniejsze grupy mają największy wpływ na ostateczny wynik metryki.</li>
+</ol>
+</section>
+<section id="opisz-czym-jest-krzywa-roc-i-miara-auc." class="level2">
+<h2 class="anchored" data-anchor-id="opisz-czym-jest-krzywa-roc-i-miara-auc.">8. Opisz czym jest krzywa ROC i miara AUC.</h2>
+<p><strong>Krzywa ROC (Receiver Operating Characteristic)</strong> to narzędzie graficzne służące do oceny i wizualizacji jakości modeli klasyfikacyjnych. Przedstawia ona kompromis pomiędzy czułością (<em>sensitivity</em>) a swoistością (<em>specificity</em>) modelu dla różnych poziomów prawdopodobieństwa odcięcia (tzw. <em>threshold</em>). Z technicznego punktu widzenia, krzywa ROC pokazuje czułość klasyfikatora poprzez wykreślenie wskaźnika prawdziwie pozytywnych (TPR) względem wskaźnika fałszywie pozytywnych (FPR). Pozwala to zaobserwować, ile poprawnych klasyfikacji pozytywnych można uzyskać w sytuacji, gdy dopuszcza się coraz więcej błędów w postaci fałszywych pozytywów. Idealny klasyfikator, który nie popełnia żadnych błędów, osiągnąłby na wykresie natychmiast 100% wskaźnika prawdziwie pozytywnych wyników, bez generowania jakichkolwiek fałszywych pozytywów. Warto dodać, że ta specyficzna nazwa wywodzi się z analizy sygnałów radiowych, a do użycia w statystyce spopularyzował ją w 1978 roku Charles Metz.</p>
+<p><strong>Miara AUC (Area Under ROC Curve)</strong> jest bezpośrednim rozszerzeniem koncepcji krzywej ROC i mierzy po prostu pole znajdujące się pod tą krzywą. Chociaż sama krzywa ROC dostarcza szczegółowych informacji o zachowaniu klasyfikatora, z perspektywy analitycznej trudno jest szybko i obiektywnie porównać wiele wykresów ze sobą. Wymierny wskaźnik jest w szczególności niezbędny, jeśli chcemy zastosować automatyczne mechanizmy strojenia hiperparametrów (tuningu) modelu, które do działania wymagają pojedynczej wartości liczbowej, a nie obrazu.</p>
+<p>AUC rozwiązuje ten problem, podsumowując całą informację zawartą w krzywej ROC do pojedynczej liczby, co pozwala na łatwe i automatyczne porównywanie wydajności różnych klasyfikatorów. Interpretacja tego wskaźnika jest prosta:</p>
+<ul>
+<li>Dobra krzywa ROC gromadzi pod sobą bardzo dużo miejsca, ponieważ w modelu poprawnie działającym wskaźnik prawdziwie pozytywnych predykcji bardzo szybko wzrasta do 100%.</li>
+<li>Zła krzywa ROC znajduje się blisko przekątnej wykresu (lub poniżej), przez co obejmuje bardzo mały obszar.</li>
+<li>Zatem <strong>wysoka wartość AUC jest jednoznacznym sygnałem świadczącym o dobrym dopasowaniu modelu predykcyjnego</strong>.</li>
+</ul>
+</section>
+<section id="opisz-do-czego-jest-stosowany-podział-na-próbę-uczącą-i-testową-oraz-opisz-jak-można-przeprowadzić-podział-na-co-wpływa-proporcja-podziału-jak-ją-można-ustalić." class="level2">
+<h2 class="anchored" data-anchor-id="opisz-do-czego-jest-stosowany-podział-na-próbę-uczącą-i-testową-oraz-opisz-jak-można-przeprowadzić-podział-na-co-wpływa-proporcja-podziału-jak-ją-można-ustalić.">9. Opisz do czego jest stosowany podział na próbę uczącą i testową oraz opisz jak można przeprowadzić podział, na co wpływa proporcja podziału, jak ją można ustalić.</h2>
+<p><strong>Zastosowanie podziału na próbę uczącą i testową</strong> Podział dostępnej puli danych ma na celu rzetelną, empiryczną walidację modelu i jest podstawowym podejściem ograniczającym ryzyko nadmiernego dopasowania (przeuczenia).</p>
+<ul>
+<li><strong>Zbiór uczący (treningowy)</strong> obejmuje zazwyczaj większość danych i wykorzystywany jest do <strong>budowy modelu, selekcji istotnych cech predykcyjnych oraz poszukiwania optymalnych parametrów</strong>.</li>
+<li><strong>Zbiór testowy</strong> musi być przechowywany bez użycia aż do momentu sfinalizowania modelu. Służy on jako <strong>ostateczny, niezależny arbiter oceniający jakość i dopasowanie gotowego już modelu</strong> na nowych, niewidzianych wcześniej danych. Kluczowe jest, aby zbioru testowego <strong>użyć tylko raz</strong>; w przeciwnym razie traci on charakter bezstronnej oceny i staje się częścią procesu modelowania.</li>
+</ul>
+<p><strong>Sposoby przeprowadzania podziału danych</strong> Podziału można dokonać na kilka sposobów, dopasowując metodę do charakterystyki danych:</p>
+<ol type="1">
+<li><strong>Losowanie proste</strong> – klasyczna metoda polegająca na całkowicie losowym wybieraniu indeksów obserwacji do zbioru uczącego, podczas gdy reszta trafia do testowego. Metoda ta ma jednak wadę: w przypadku silnie niezbalansowanych klas może prowadzić do niereprezentatywnej oceny, gdy w zbiorze testowym zabraknie przykładów rzadkiej kategorii.</li>
+<li><strong>Losowanie warstwowe</strong> – rozwiązuje problem losowania prostego poprzez <strong>zachowanie przybliżonego rozkładu klas w obu utworzonych zbiorach</strong>. Może być ono również stosowane dla zmiennej wynikowej typu ilościowego – algorytm tworzy wówczas przedziały kwantylowe i dzieli próbę zachowując w nich proporcje, co jest szczególnie ważne przy asymetrycznych rozkładach predykowanej zmiennej.</li>
+<li><strong>Podział chronologiczny (czasowy)</strong> – stosowany dla szeregów czasowych lub danych ze znaczącym składnikiem czasowym, dla których podział losowy zaburzyłby sekwencyjną strukturę. Polega on na posortowaniu danych i przydzieleniu <strong>ustalonej proporcji starszych obserwacji (z początku zbioru) do próby uczącej, a nowszych danych do próby testowej</strong>.</li>
+</ol>
+<p><strong>Wpływ proporcji podziału na model</strong> Wielkość wybranej proporcji podziału jest rodzajem kompromisu i bezpośrednio wpływa na jakość modelowania:</p>
+<ul>
+<li>Zbyt mała ilość danych uczących <strong>ogranicza zdolność modelu do znalezienia odpowiednich oszacowań parametrów</strong>, co prowadzi do ich wysokiej wariancji.</li>
+<li>Zbyt mała liczba danych testowych obniża jakość ostatecznej oceny – <strong>powoduje wysoką wariancję miar dopasowania</strong>, co sprawia, że wynik ewaluacji może być w dużej mierze dziełem przypadku i silnie zależeć od jednego, konkretnego podziału danych.</li>
+</ul>
+<p><strong>Jak ustalić proporcję podziału</strong> W literaturze <strong>nie ma powszechnej zgody co do jednej, optymalnej reguły podziału</strong>, a wybór ten w dużej mierze zależy od kontekstu rozpatrywanego problemu i wielkości zbioru. W powszechnych zastosowaniach często spotyka się przyjęty domyślnie stosunek 3:1 (co oznacza 75% obserwacji dla zbioru uczącego i 25% dla testowego). Istnieją jednak formalne zalecenia dla konkretnych sytuacji, np. według pracy Josepha z 2022 roku, dedykowanej dla modeli regresyjnych, <strong>próba testowa powinna stanowić ułamek <span class="math inline">\(\frac{1}{\sqrt{p} + 1}\)</span> całkowitego zbioru danych</strong>, gdzie <span class="math inline">\(p\)</span> oznacza liczbę predyktorów w modelu.</p>
+</section>
+<section id="na-czym-polega-ekstrakcja-cech-podaj-przykłady-dwóch-technik-z-tego-zakresu." class="level2">
+<h2 class="anchored" data-anchor-id="na-czym-polega-ekstrakcja-cech-podaj-przykłady-dwóch-technik-z-tego-zakresu.">10. Na czym polega ekstrakcja cech? Podaj przykłady dwóch technik z tego zakresu.</h2>
+<p><strong>Ekstrakcja cech</strong> to technika przetwarzania (inżynierii) danych polegająca na <strong>tworzeniu nowych cech na podstawie oryginalnych predyktorów, tak aby te nowe zmienne wychwytywały i reprezentowały jak najwięcej informacji z całego, szerszego zestawu danych</strong>. Podejście to pozwala na reprezentowanie wielu cech jednocześnie w przestrzeni o mniejszej liczbie wymiarów, co jest niezwykle użyteczne w walce z tzw. klątwą wymiarowości oraz skutecznie redukuje problem silnej korelacji (współliniowości) pomiędzy oryginalnymi zmiennymi wejściowymi.</p>
+<p>Przykłady dwóch technik z tego zakresu to:</p>
+<ol type="1">
+<li><strong>Analiza Składowych Głównych (PCA)</strong> – jest to prosta, nienadzorowana i liniowa metoda ekstrakcji cech. Generuje ona nowe zmienne (nazywane głównymi składowymi) będące liniowymi kombinacjami pierwotnych predyktorów. Najważniejszą zaletą tej metody jest to, że każda z nowo powstałych cech jest całkowicie nieskorelowana z pozostałymi, a algorytm stara się w nich skompresować i wyodrębnić jak największą zmienność (informację) oryginalnych danych.</li>
+<li><strong>Cząstkowe Najmniejsze Kwadraty (PLS)</strong> – metoda ta bywa określana mianem nadzorowanej wersji algorytmu PCA. W przeciwieństwie do PCA, PLS podczas ekstrakcji cech bierze pod uwagę zmienną objaśnianą (wynikową) i próbuje wyznaczyć takie nowe składowe, które jednocześnie <strong>maksymalizują zmienność predyktorów oraz maksymalizują ich bezpośredni związek z przewidywanym wynikiem</strong>.</li>
+</ol>
+<p>Wśród innych znanych metod z tego zakresu można wymienić również Analizę Składowych Niezależnych (ICA) czy nieliniową, opartą na grafach algorytmikę UMAP.</p>
+</section>
+<section id="czym-jest-walidacja-krzyżowa-i-walidacja-krzyżowa-z-powtórzeniami" class="level2">
+<h2 class="anchored" data-anchor-id="czym-jest-walidacja-krzyżowa-i-walidacja-krzyżowa-z-powtórzeniami">11. Czym jest walidacja krzyżowa i walidacja krzyżowa z powtórzeniami?</h2>
+<p><strong>1. Walidacja krzyżowa (ang. <em>cross-validation</em>)</strong> Jest to powszechnie stosowana metoda ponownego próbkowania (resamplingu), służąca do niezależnej oceny jakości dopasowania modelu bez konieczności używania zbioru testowego. Jej najbardziej popularną odmianą jest <strong><span class="math inline">\(V\)</span>-krotna walidacja krzyżowa</strong>.</p>
+<p>Proces ten przebiega w następujący sposób:</p>
+<ul>
+<li>Zbiór treningowy jest <strong>losowo dzielony na <span class="math inline">\(V\)</span> rozłącznych części o mniej więcej równej wielkości</strong>, które nazywane są krotkami lub foldami.</li>
+<li>Cała procedura ma charakter iteracyjny. W każdej z <span class="math inline">\(V\)</span> iteracji <strong>jeden wybrany fold jest odkładany jako zbiór do oceny modelu, podczas gdy pozostałe foldy łączone są w zbiór analityczny, na którym uczy się model</strong>.</li>
+<li>Proces ten jest powtarzany, aż każdy z foldów zostanie dokładnie raz użyty jako zbiór oceniający.</li>
+<li>W wyniku tego powstaje <span class="math inline">\(V\)</span> niezależnych ocen wydajności modelu. <strong>Ostateczne oszacowanie wydajności stanowi średnią z tych <span class="math inline">\(V\)</span> wyników</strong>.</li>
+</ul>
+<p>W praktyce unika się stosowania małej liczby foldów (np. <span class="math inline">\(V=3\)</span>), ponieważ prowadzi to do estymacji o wysokiej wariancji. Najczęściej przyjmuje się <strong><span class="math inline">\(V=5\)</span> lub <span class="math inline">\(V=10\)</span></strong>, przy czym 10-krotna walidacja krzyżowa uchodzi za standardowy, domyślny wybór, który gwarantuje odpowiedni balans między obciążeniem estymatora a jego wariancją.</p>
+<p><strong>2. Walidacja krzyżowa z powtórzeniami (ang. <em>repeated cross-validation</em>)</strong> Jest to rozszerzenie klasycznej walidacji krzyżowej, które stosuje się, <strong>aby dodatkowo zmniejszyć szum (wysoką wariancję) i błąd standardowy oszacowania modelu</strong>.</p>
+<ul>
+<li>Zasada jej działania polega na tym, że <strong>cały proces <span class="math inline">\(V\)</span>-krotnej walidacji krzyżowej (wraz z nowym losowaniem podziałów na foldy) jest powtarzany ustaloną liczbę razy (<span class="math inline">\(R\)</span>)</strong>.</li>
+<li>Oznacza to wygenerowanie <span class="math inline">\(R\)</span> różnych zestawów złożonych z <span class="math inline">\(V\)</span> podzbiorów.</li>
+<li>Zamiast uśredniać statystyki dopasowania tylko <span class="math inline">\(V\)</span> razy, <strong>ostateczna estymacja resamplingu jest w tym przypadku liczona jako średnia z <span class="math inline">\(V \times R\)</span> wartości</strong>.</li>
+</ul>
+<p>Zaletą powtórzeń jest to, że błąd standardowy estymacji maleje proporcjonalnie do <span class="math inline">\(1/\sqrt{R}\)</span>. Z tego względu metoda ta jest najbardziej użyteczna w sytuacjach, w których standardowa walidacja krzyżowa zwraca mocno “zaszumione” wyniki, a bazowe odchylenie standardowe estymacji jest stosunkowo duże. Należy jednak pamiętać, że wpływ kolejnych powtórzeń na redukcję błędu standardowego maleje w miarę wzrostu całkowitej liczby powtórzeń.</p>
+</section>
+<section id="czym-jest-metoda-leave-one-out" class="level2">
+<h2 class="anchored" data-anchor-id="czym-jest-metoda-leave-one-out">12. Czym jest metoda Leave-One-Out?</h2>
+<p><strong>Metoda <em>Leave-One-Out</em> (LOO)</strong> to jedna z rygorystycznych odmian walidacji krzyżowej. Jej zasada działania opiera się na skrajnym podziale dostępnych danych: w przypadku posiadania zbioru treningowego o rozmiarze <span class="math inline">\(n\)</span> próbek (obserwacji), algorytm <strong>dopasowuje dokładnie <span class="math inline">\(n\)</span> niezależnych modeli</strong>.</p>
+<p>Proces ten przebiega w następujących krokach:</p>
+<ol type="1">
+<li>W każdej iteracji model jest uczony z wykorzystaniem <strong><span class="math inline">\(n - 1\)</span> wierszy zbioru treningowego</strong>.</li>
+<li>Pojedynczy, wykluczony w danej iteracji punkt danych służy jako zbiór do oceny, dla którego <strong>każdy model generuje prognozę</strong>.</li>
+<li>Na koniec całej procedury próbkowania, zebrane <span class="math inline">\(n\)</span> prognoz jest ze sobą łączonych w celu wyznaczenia pojedynczej, sumarycznej statystyki dopasowania modelu.</li>
+</ol>
+<p><strong>Ograniczenia metody LOO:</strong> Pomimo swojej prostoty koncepcyjnej, metody oparte na LOO uważa się za <strong>mniej praktyczne</strong> w zestawieniu z klasyczną, <span class="math inline">\(V\)</span>-krotną walidacją krzyżową. Z wyjątkiem sytuacji, gdy dysponujemy patologicznie małą próbą danych, metoda <em>Leave-One-Out</em> wykazuje dwie główne wady: * <strong>Jest bardzo kosztowna obliczeniowo</strong>, ponieważ wymaga wielokrotnego (równego liczbie obserwacji) trenowania modelu od zera. * Oszacowania generowane za jej pomocą mogą charakteryzować się <strong>dużą wariancją</strong>.</p>
+<p>Z tych powodów w praktyce analitycznej badacze decydują się najczęściej na standardową 5- lub 10-krotną walidację krzyżową. Jeśli jednak zależy nam na użyciu tej konkretnej techniki np. w środowisku R (w pakiecie <code>rsample</code>), można ją wywołać za pomocą dedykowanej funkcji <code>loo_cv()</code>.</p>
+</section>
+<section id="czym-jest-walidacja-metodą-monte-carlo" class="level2">
+<h2 class="anchored" data-anchor-id="czym-jest-walidacja-metodą-monte-carlo">13. Czym jest walidacja metodą Monte-Carlo?</h2>
+<p><strong>Walidacja metodą Monte Carlo</strong> (ang. <em>Monte Carlo Cross-Validation</em>, w skrócie MCCV) to jedna z technik ponownego próbkowania (resamplingu) służąca do oceny jakości modeli.</p>
+<p>W swoim działaniu metoda ta jest bardzo podobna do standardowej walidacji krzyżowej, ponieważ polega na przydzieleniu z góry ustalonej części danych do zbioru przeznaczonego do oceny modelu. Zasadnicza różnica polega jednak na sposobie wyboru obserwacji: w przypadku MCCV <strong>część danych do zbioru oceny jest za każdym razem wybierana całkowicie losowo</strong>.</p>
+<p>Główną konsekwencją takiego losowego przypisywania obserwacji w kolejnych iteracjach jest to, że <strong>powstające w ten sposób zestawy do oceny nie wykluczają się wzajemnie</strong>. Oznacza to, że w przeciwieństwie do klasycznej walidacji krzyżowej (gdzie każda próbka trafia do zbioru testowego dokładnie jeden raz), w metodzie Monte Carlo te same obserwacje mogą wielokrotnie trafić do zbioru walidacyjnego w różnych iteracjach procesu.</p>
+</section>
+<section id="jak-stosujemy-bootstraping-do-walidacji-modeli" class="level2">
+<h2 class="anchored" data-anchor-id="jak-stosujemy-bootstraping-do-walidacji-modeli">14. Jak stosujemy bootstraping do walidacji modeli?</h2>
+<p><strong>Bootstrapping (metoda bootstrap)</strong> w kontekście walidacji modeli to technika ponownego próbkowania (resamplingu), która służy do empirycznej oceny jakości i dopasowania modelu do danych. Wykorzystuje się ją do emulowania procesu uczenia i ewaluacji modelu bez konieczności odkładania całkowicie niezależnego zbioru testowego.</p>
+<p>Zastosowanie metody bootstrap do walidacji przebiega według następujących zasad:</p>
+<ol type="1">
+<li><strong>Tworzenie próby bootstrapowej (zbioru analitycznego):</strong> Algorytm losuje <strong>ze zwracaniem</strong> obserwacje ze zbioru treningowego, tworząc nową próbę o rozmiarze dokładnie takim samym jak oryginalny zestaw danych. Ze względu na losowanie ze zwracaniem, część obserwacji trafia do nowej próby wielokrotnie, a część nie zostaje wylosowana wcale. Statystycznie, każdy punkt danych ma około 63,2% szans na to, że zostanie włączony do próby uczącej co najmniej raz. Zbiór ten służy do wyuczenia modelu.</li>
+<li><strong>Tworzenie zbioru do oceny (Out-of-Bag):</strong> Wszystkie te próbki ze zbioru treningowego, które nie zostały wylosowane do próby bootstrapowej (średnio 36,8% całego zestawu), tworzą zbiór przeznaczony do ewaluacji modelu. W terminologii modelowania zbiór ten nazywa się często <strong>próbką poza workiem (ang. <em>out-of-bag</em>, OOB)</strong>.</li>
+<li><strong>Właściwości ewaluacji:</strong> Oszacowania jakości dopasowania modelu uzyskiwane przy pomocy metody bootstrap charakteryzują się <strong>bardzo niską wariancją</strong> (w przeciwieństwie do walidacji krzyżowej). Ich wadą jest jednak to, że są <strong>pesymistyczne w ocenie obciążenia</strong> – co oznacza, że jeśli prawdziwa dokładność modelu wynosiłaby np. 90%, bootstrap będzie miał tendencję do zwracania oszacowań o nieco niższej wartości. Ponadto wielkość tego błędu systematycznego potrafi być zmienna i zależeć od skali dopasowania modelu.</li>
+<li><strong>Wbudowane zastosowanie w modelach:</strong> Warto zaznaczyć, że walidacja bootstrapowa jest nie tylko techniką stosowaną na zewnątrz modelu, ale stanowi fundamentalny mechanizm działania algorytmów zespołowych, takich jak <strong>lasy losowe (Random Forest)</strong>. W lesie losowym każde pojedyncze drzewo decyzyjne jest trenowane na innej próbie bootstrapowej, a błąd OOB często służy do bieżącej oceny wydajności całego zespołu.</li>
+</ol>
+</section>
+<section id="czym-jest-i-do-czego-stosujemy-próbkowanie-kroczące" class="level2">
+<h2 class="anchored" data-anchor-id="czym-jest-i-do-czego-stosujemy-próbkowanie-kroczące">15. Czym jest i do czego stosujemy próbkowanie kroczące?</h2>
+<p><strong>Próbkowanie kroczące ze źródła</strong> (ang. <em>rolling forecast origin resampling</em> lub walidacja krocząca <em>walk-forward validation</em>) to specjalistyczna metoda ponownego próbkowania (resamplingu) stworzona z myślą o modelowaniu danych ze znaczącym składnikiem czasowym (np. szeregów czasowych).</p>
+<p><strong>Do czego je stosujemy?</strong> Głównym celem stosowania tej metody jest <strong>emulowanie naturalnego procesu analizy danych w czasie, w którym parametry modelu estymuje się wyłącznie na podstawie danych historycznych, a jego skuteczność ocenia na danych nowszych (pochodzących z przyszłości)</strong>. Klasyczne techniki losowego resamplingu (jak standardowa walidacja krzyżowa) całkowicie by się tu nie sprawdziły, ponieważ losowy wybór obserwacji do podzbiorów zaburzyłby chronologiczną strukturę szeregu, co uniemożliwiłoby oszacowanie występujących w nich trendów oraz wzorców sezonowych i okresowych.</p>
+<p><strong>Jak to działa?</strong> Metoda ta opiera się na sekwencyjnym podziale i przesuwaniu “okna” danych. Na początku określa się rozmiar zbioru uczącego (analitycznego) oraz zbioru testowego (do oceny). 1. Pierwsza iteracja odbywa się na początkowym wycinku chronologicznie ułożonej serii. 2. W drugiej (i każdej kolejnej) iteracji schemat przesuwa się do przodu o określoną liczbę próbek (tzw. krok przesunięcia), tworząc nowy podział na historię i przyszłość. Przykładowo krok ten nie musi wynosić pojedynczej obserwacji, lecz może wynosić równowartość tygodnia, miesiąca lub stanowić długość całego horyzontu testowego, co zapobiega zbyt silnemu nakładaniu się na siebie ocenianych próbek. Czasami wprowadza się też odstęp (tzw. <em>gap</em> lub <em>embargo</em>) pomiędzy końcem zbioru uczącego a testowego, co jest przydatne przy danych wysoce autokorelacyjnych.</p>
+<p>W praktyce wyróżnia się dwie główne konfiguracje ustalania zbiorów w próbkowaniu kroczącym:</p>
+<ul>
+<li><strong>Z oknem rozszerzającym (ang. <em>expanding window</em>):</strong> Po utworzeniu początkowego zestawu do analizy, w każdej iteracji nowe próbki są do niego dodawane, bez odrzucania starszych. Rozmiar zbioru analitycznego ciągle narasta. Takie podejście jest sensowne, gdy zakładamy, że cała dostępna historia zachowuje ogromną wartość informacyjną dla prognozy.</li>
+<li><strong>Z oknem przesuwnym o stałej długości (ang. <em>sliding window</em>):</strong> Zbiór analityczny utrzymuje ten sam rozmiar. Kiedy model przesuwa się w przód w czasie, najstarsze obserwacje (z początku przedziału) są usuwane, a na ich miejsce wpadają nowsze. Ten wariant bywa znacznie bezpieczniejszy i lepszy w sytuacjach, gdy w badanym szeregu pojawia się silny dryf, zmienia się sezonowość lub następuje zmiana rynkowego reżimu.</li>
+</ul>
+<p>W ekosystemie <code>tidymodels</code> podział ten jest realizowany głównie za pomocą funkcji pakietu <code>rsample</code> takich jak: <code>sliding_window()</code> (dla regularnych przesunięć wierszowych), <code>sliding_index()</code> (gdy używamy kolumny czasu) lub <code>sliding_period()</code> (podział np. całymi miesiącami).</p>
+</section>
+<section id="na-czym-polega-optymalizacja-modeli-predykcyjnych" class="level2">
+<h2 class="anchored" data-anchor-id="na-czym-polega-optymalizacja-modeli-predykcyjnych">16. Na czym polega optymalizacja modeli predykcyjnych?</h2>
+<p>Optymalizacja modeli predykcyjnych, powszechnie określana jako <strong>dostrajanie (ang. <em>tuning</em>)</strong>, polega na poszukiwaniu optymalnych wartości dla tzw. <strong>hiperparametrów</strong> modelu. W przeciwieństwie do standardowych parametrów (takich jak współczynniki w regresji liniowej), które są szacowane bezpośrednio z danych w procesie uczenia, hiperparametry to wielkości, których model nie jest w stanie wyznaczyć samodzielnie i muszą one zostać zdefiniowane “z góry”.</p>
+<p>Proces ten nie musi ograniczać się tylko do algorytmu modelującego, ale może obejmować cały potok analityczny. Przykłady optymalizowanych wielkości to m.in. liczba sąsiadów w modelu kNN, maksymalna głębokość drzew decyzyjnych w lesie losowym, liczba neuronów i epok w sieciach neuronowych, wybór funkcji łączącej w regresji, a nawet parametry na etapie przygotowania danych (np. odpowiednia liczba składowych w analizie PCA).</p>
+<p><strong>Znaczenie i konsekwencje optymalizacji:</strong> Głównym powodem, dla którego przeprowadza się tuning, jest fakt, że hiperparametry silnie wpływają na stopień złożoności modelu. Niewłaściwy ich dobór niesie za sobą poważne konsekwencje:</p>
+<ul>
+<li>Zbyt duża złożoność (np. za duża liczba neuronów w warstwie ukrytej sieci) powoduje <strong>przeuczenie (overfitting)</strong>. Model zamiast uczyć się ogólnych wzorców, zaczyna precyzyjnie “zapamiętywać” zbiór uczący, co skutkuje rewelacyjnymi wynikami na danych treningowych, ale drastycznym spadkiem skuteczności predykcji na nowych danych.</li>
+</ul>
+<p>W procesie tuningu kluczowy jest wybór jednej, zdefiniowanej <strong>funkcji celu lub metryki dopasowania</strong> (np. dokładności, pola pod krzywą ROC czy RMSE), według której oceniane będą poszczególne konfiguracje. Aby zapobiec wspomnianemu przeuczeniu, ocenę przeprowadza się z wykorzystaniem technik ponownego próbkowania (np. walidacji krzyżowej), a nie na bazowym zbiorze treningowym.</p>
+<p><strong>Podejścia do poszukiwania hiperparametrów:</strong> W praktyce wyróżnia się dwie główne metody realizacji procesu dostrajania:</p>
+<ol type="1">
+<li><strong>Przeszukiwanie siatki (Grid search):</strong> Analityk wstępnie definiuje zbiór wartości dla każdego hiperparametru, z którego tworzona jest siatka możliwych kombinacji do przetestowania. Metoda ta ma jednak wady – gdy przestrzeń parametrów jest duża, liczba niezbędnych kombinacji do oceny może stać się nieefektywna i niemożliwa do przeliczenia w racjonalnym czasie.</li>
+<li><strong>Przeszukiwanie iteracyjne (sekwencyjne):</strong> To inteligentniejsze podejście, w którym algorytm uczy się na błędach. Kolejne zestawy parametrów do przetestowania nie są ustalone z góry, lecz sugerowane przez algorytm na podstawie wyników uzyskanych w poprzednich krokach. Przykładami takiego podejścia są optymalizacja bayesowska oraz metoda symulowanego wyżarzania.</li>
+</ol>
+<p>Spotyka się również podejścia hybrydowe, gdzie przeszukiwanie siatki stosuje się do wstępnego zlokalizowania obiecującego obszaru przestrzeni parametrów, a następnie metody iteracyjne wykorzystuje się do dokładnej korekty hiperparametrów.</p>
+</section>
+<section id="przedstaw-zasadę-działania-dwóch-sposobów-podejścia-do-tuningu-modeli." class="level2">
+<h2 class="anchored" data-anchor-id="przedstaw-zasadę-działania-dwóch-sposobów-podejścia-do-tuningu-modeli.">17. Przedstaw zasadę działania dwóch sposobów podejścia do tuningu modeli.</h2>
+<p>Źródła wymieniają <strong>dwa główne podejścia do dostrajania (tuningu) modeli</strong>, które zasadniczo różnią się sposobem i momentem doboru testowanych hiperparametrów. Są to: przeszukiwanie siatki oraz przeszukiwanie iteracyjne.</p>
+<p><strong>1. Przeszukiwanie siatki (Grid search)</strong> Zasada działania tego podejścia polega na <strong>zdefiniowaniu <em>a priori</em> (z góry) konkretnego zestawu wartości parametrów, które zostaną ocenione</strong>. Po przygotowaniu zestawu, system testuje i ocenia każdą dostępną konfigurację z siatki. Metodę tę dzieli się na dwa podstawowe rodzaje:</p>
+<ul>
+<li><strong>Siatki regularne:</strong> Tworzone są poprzez krzyżowe połączenie każdego parametru ze wszystkimi pozostałymi (wykorzystanie wszystkich możliwych kombinacji czynników). Główną zaletą jest tu łatwość w zrozumieniu wzorców i zależności między dostrajaniem a wydajnością modelu. Wadą jest natomiast problem efektywności – jeśli przestrzenie parametrów są duże, liczba niezbędnych kombinacji do przeliczenia szybko staje się przytłaczająca i niemożliwa do oceny w racjonalnym czasie.</li>
+<li><strong>Siatki nieregularne:</strong> Zestawy parametrów nie są generowane przez pełne łączenie krzyżowe wszystkich wariantów. Najprostszą formą jest po prostu całkowicie losowe próbkowanie z dostępnego zakresu. Lepszą praktyką w nieregularnych siatkach są jednak <strong>plany wypełniające przestrzeń (np. hipersześciany łacińskie)</strong>, które rozkładają zadaną pulę punktów na przestrzeni parametrów w sposób minimalizujący ryzyko powstania nadmiarowych i nakładających się wartości, drastycznie zwiększając szanse na znalezienie dobrego wyniku przy mniejszej liczbie testów.</li>
+</ul>
+<p><strong>2. Przeszukiwanie iteracyjne (sekwencyjne)</strong> W przeciwieństwie do przeszukiwania siatki, to podejście jest bardziej “inteligentne”, ponieważ algorytm uczy się w trakcie swojego działania. Jego zasada polega na <strong>sekwencyjnym przewidywaniu i wybieraniu nowych, obiecujących kombinacji hiperparametrów na podstawie wyników uzyskanych we wcześniejszych etapach</strong>. Proces ten z reguły wymaga dostarczenia jakiejś konfiguracji początkowej. Opisano dwie główne metody realizacji takiego wyszukiwania:</p>
+<ul>
+<li><strong>Optymalizacja bayesowska:</strong> Metoda ta analizuje dotychczasowe wyniki, a na ich podstawie dopasowuje dodatkowy <strong>predykcyjny model statystyczny (często jest to tzw. model procesu gaussowskiego)</strong>. Korzystając z tego modelu i z tzw. <strong>funkcji akwizycji</strong>, algorytm decyduje, jakie parametry sprawdzić w następnej kolejności. Funkcja akwizycji odpowiada za istotny kompromis pomiędzy dwiema siłami: <strong>eksploatacją</strong> (wybieraniem tych regionów siatki, o których już wiadomo, że przynoszą bardzo dobre rezultaty) a <strong>eksploracją</strong> (badaniem zupełnie nowych, nieodkrytych regionów o wysokiej wariancji i niepewności wyników).</li>
+<li><strong>Symulowane wyżarzanie (Simulated annealing):</strong> Jest to technika globalnego przeszukiwania, zainspirowana zjawiskiem stygnięcia metalu. Proces rozpoczyna się od wartości początkowej, a każdy kolejny krok to <strong>iewielka, losowa perturbacja (zmiana) bieżących parametrów</strong>. Unikalną cechą tej zasady jest fakt, że <strong>algorytm potrafi zaakceptować zestaw parametrów o gorszej wydajności w celu ucieczki z utknięcia w lokalnym optimum</strong>. Prawdopodobieństwo na zatrzymanie gorszego wyniku staje się jednak mniejsze, im wyższy jest spadek jakości oraz im wyższy jest numer iteracji procesu.</li>
+</ul>
+<p>Źródła wspominają również o często stosowanych <strong>podejściach hybrydowych</strong>, które łączą oba sposoby – najpierw wykorzystuje się np. rzadką siatkę w celu zlokalizowania odpowiedniego obszaru badawczego, a następnie aktywuje się metody iteracyjne w celu finalnego i wysoce precyzyjnego dostrojenia.</p>
+</section>
+<section id="opisz-przeszukiwanie-z-wykorzystaniem-siatki-regularnej-i-nieregularnej." class="level2">
+<h2 class="anchored" data-anchor-id="opisz-przeszukiwanie-z-wykorzystaniem-siatki-regularnej-i-nieregularnej.">18. Opisz przeszukiwanie z wykorzystaniem siatki regularnej i nieregularnej.</h2>
+<p>Przeszukiwanie siatki (ang. <em>grid search</em>) to metoda dostrajania modeli, w której <strong>wartości kandydujących hiperparametrów są ustalane <em>a priori</em> (z góry)</strong>. System następnie testuje przygotowane kombinacje w celu wyłonienia najlepszej konfiguracji. Metodę tę realizuje się za pomocą dwóch głównych typów siatek: regularnych i nieregularnych.</p>
+<p><strong>1. Siatki regularne</strong> Podejście to polega na zdefiniowaniu odrębnych zestawów wartości dla każdego dostrajanego parametru, a następnie <strong>połączeniu ich w sposób czynnikowy, co oznacza wykorzystanie wszystkich możliwych kombinacji tych zbiorów</strong>. Warto jednak zaznaczyć, że w ramach tego ujęcia stosuje się również techniki opierające się na tzw. konstrukcjach czynnikowych ułamkowych, które pomijają konieczność przeliczania absolutnie wszystkich dostępnych kombinacji.</p>
+<ul>
+<li><strong>Zalety:</strong> Główną korzyścią wynikającą z zastosowania regularnej siatki jest to, że <strong>związki i wzorce zachodzące między zmianą parametrów a ostatecznymi metrykami wydajności modelu są łatwo zrozumiałe</strong>. Taka czynnikowa konstrukcja eksperymentu powoduje, że każdy badany punkt siatki można traktować jako uśredniony względem pozostałych wielkości. W efekcie <strong>wpływ każdego pojedynczego parametru (tzw. efekt brzegowy) na działanie modelu jest znacznie lepiej izolowany</strong> i obarczony niewielką współzależnością.</li>
+</ul>
+<p><strong>2. Siatki nieregularne</strong> W siatkach nieregularnych kombinacje parametrów nie są tworzone w sposób równomierny i uporządkowany. Do tworzenia takich siatek powszechnie stosuje się dwa podejścia:</p>
+<ul>
+<li><strong>Losowe próbkowanie (siatki losowe):</strong> Generuje niezależne rozkłady jednostajne wartości dla pełnego zakresu badanych hiperparametrów. Rozwiązanie to ma jednak wady: w małych lub średnich siatkach <strong>wylosowane punkty mogą generować nakładające się na siebie kombinacje</strong>. Skuteczność siatek losowych w odpowiednim pokryciu przestrzeni zależy od dużej liczby użytych wartości, co zmniejsza wydajność poszukiwań.</li>
+<li><strong>Plany wypełniające przestrzeń (ang. <em>space-filling designs</em>):</strong> Stanowią o wiele lepsze podejście do tworzenia siatek nieregularnych. Ich głównym celem jest znalezienie takiej konfiguracji punktów, która równomiernie pokryje badaną przestrzeń <strong>minimalizując prawdopodobieństwo wylosowania wartości nadmiarowych i nakładających się na siebie</strong>. Do metod tych zalicza się m.in. plany maksymalnej entropii, plany maksymalnej projekcji oraz hipersześciany łacińskie.
+<ul>
+<li><strong>Zalety:</strong> Przykładowo, plan hipersześcianu łacińskiego (domyślnie używany w pakiecie <code>tune</code> środowiska R) umieszcza punkty dalej od siebie, co zapewnia optymalną eksplorację przestrzeni kandydatów i <strong>drastycznie zwiększa szanse na szybkie odnalezienie konfiguracji dających dobre wyniki predykcyjne</strong>.</li>
+<li><strong>Wady:</strong> W przeciwieństwie do siatek regularnych, interpretacja i wizualizacja wpływu poszczególnych hiperparametrów bywa utrudniona. Ponieważ punkty testowe ułożone są nieregularnie, widoczne w izolacji trendy i <strong>efekty jednego parametru mogą być zakłócone przez nakładający się wpływ pozostałych trzech (lub więcej) hiperparametrów użytych w danej konfiguracji</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="opisz-zasadę-wykorzystania-wielu-rdzeni-procesora-w-optymalizacji-modelu." class="level2">
+<h2 class="anchored" data-anchor-id="opisz-zasadę-wykorzystania-wielu-rdzeni-procesora-w-optymalizacji-modelu.">19. Opisz zasadę wykorzystania wielu rdzeni procesora w optymalizacji modelu.</h2>
+<p>Zasada wykorzystania wielu rdzeni procesora (paralelizacji) w optymalizacji modeli opiera się na delegowaniu zadań obliczeniowych do różnych procesów roboczych w celu przyspieszenia czasochłonnego procesu dostrajania (tuningu). Podczas optymalizacji, np. za pomocą przeszukiwania siatki, system realizuje zwykle dwie odrębne pętle: <strong>pętlę zewnętrzną</strong> (iterującą po próbkach danych, np. foldach walidacji krzyżowej) oraz <strong>pętlę wewnętrzną</strong> (iterującą po unikalnych kombinacjach sprawdzanych hiperparametrów).</p>
+<p>Wykorzystanie wielu rdzeni można skonfigurować na dwa główne sposoby:</p>
+<ol type="1">
+<li><strong>Paralelizacja w pętli zewnętrznej (nad próbkami / foldami):</strong>
+<ul>
+<li>Jest to domyślne i najczęściej stosowane podejście (oznaczane argumentem <code>parallel_over = "resamples"</code>).</li>
+<li>W tym schemacie <strong>każdy pojedynczy rdzeń procesora zajmuje się ewaluacją jednego przydzielonego mu foldu</strong> na przestrzeni wszystkich badanych parametrów modelu.</li>
+<li><strong>Zalety:</strong> Największym atutem jest oszczędność zasobów na etapie przygotowania danych (preprocessingu). Poszczególne kroki transformacji danych (często bardzo kosztowne obliczeniowo) wykonywane są tylko jeden raz dla danego rdzenia/foldu.</li>
+<li><strong>Wady:</strong> Wykorzystanie procesora jest limitowane liczbą foldów. Jeśli stosujemy 5-krotną walidację krzyżową, użyjemy maksymalnie 5 rdzeni, niezależnie od tego jak potężnym komputerem dysponujemy. Ogranicza to osiągalne przyspieszenie, zwłaszcza gdy preprocessing nie jest wymagający.</li>
+</ul></li>
+<li><strong>Paralelizacja nad foldami i parametrami łącznie:</strong>
+<ul>
+<li>W tym wariancie (oznaczanym <code>parallel_over = "everything"</code>) pętle nad foldami i modelami zostają spłaszczone i połączone w jedną pulę zadań. Dla 5 foldów i <span class="math inline">\(M\)</span> badanych kombinacji parametrów system dystrybuuje po rdzeniach pulę złożoną z <span class="math inline">\(5 \times M\)</span> niezależnych iteracji.</li>
+<li><strong>Zalety:</strong> Pozwala na zaangażowanie i obciążenie pracą znacznie większej liczby rdzeni procesora.</li>
+<li><strong>Wady:</strong> Ponieważ poszczególne konfiguracje tego samego foldu mogą trafić na różne rdzenie, <strong>faza preprocessingu jest niepotrzebnie powtarzana wielokrotnie</strong>. W sytuacjach, gdy preprocessing danych jest trudny i czasochłonny, podejście to staje się całkowicie nieefektywne.</li>
+</ul></li>
+</ol>
+<p><strong>Ważne ograniczenia w stosowaniu wielu rdzeni:</strong></p>
+<ul>
+<li><strong>Brak ciągłego liniowego przyspieszenia:</strong> Załączenie obliczeń równoległych przeważnie zapewnia proporcjonalny wzrost prędkości (np. dwukrotne przyspieszenie przy dwóch rdzeniach) tylko dla początkowych kilku rdzeni. W miarę angażowania kolejnych rdzeni korzyść z przyrostu prędkości naturalnie spada.</li>
+<li><strong>Koszty w pamięci RAM:</strong> Każdy zaangażowany w analizę proces/rdzeń wymaga własnej przestrzeni, dlatego zapotrzebowanie na pamięć operacyjną rośnie proporcjonalnie do liczby włączonych rdzeni. Użycie zbyt wielu rdzeni na bardzo dużych zbiorach może doprowadzić do wyczerpania RAM i drastycznego spowolnienia komputera.</li>
+<li><strong>Dostęp do zmiennych globalnych:</strong> Technologia obsługująca równoległe rdzenie często uniemożliwia im swobodny dostęp do globalnego środowiska zdefiniowanego w programie. Programując model do równoległych obliczeń, zawsze należy upewnić się, że do obiektów (np. receptur czy hiperparametrów) wstrzyknięto konkretne wartości danych, a nie referencje do zmiennych globalnych, w przeciwnym razie proces na rdzeniu pomocniczym może zakończyć się błędem.</li>
+</ul>
+</section>
+<section id="czym-jest-metoda-wyścigów" class="level2">
+<h2 class="anchored" data-anchor-id="czym-jest-metoda-wyścigów">20. Czym jest metoda wyścigów?</h2>
+<p><strong>Metoda wyścigów</strong> (ang. <em>racing method</em>) to technika stosowana w uczeniu maszynowym, która służy do optymalizacji i znacznego przyspieszenia procesu dostrajania hiperparametrów oraz filtrowania modeli. Stanowi ona bardziej efektywną alternatywę dla klasycznego przeszukiwania siatki (grid search).</p>
+<p><strong>Zasada działania:</strong> W standardowym przeszukiwaniu siatki wszystkie przygotowane konfiguracje modeli muszą zostać przetestowane na wszystkich dostępnych podzbiorach (foldach) walidacji krzyżowej, co zajmuje mnóstwo czasu. Metoda wyścigowa optymalizuje to podejście:</p>
+<ol type="1">
+<li><strong>Początkowa ewaluacja:</strong> Algorytm na początku ocenia wszystkie kandydujące modele tylko na niewielkim, początkowym podzbiorze foldów.</li>
+<li><strong>Analiza przejściowa (pośrednia):</strong> Po zebraniu pierwszych wyników, system weryfikuje wydajność testowanych konfiguracji, budując dedykowany model statystyczny (np. model ANOVA), który sprawdza istotność różnic między testowanymi wariantami a aktualnie najlepszym zestawem parametrów.</li>
+<li><strong>Eliminacja słabych modeli:</strong> Algorytm odrzuca konfiguracje, których skuteczność wypada statystycznie słabiej od najlepszych wyników (np. gdy wyznaczony dla nich przedział ufności dla spadku miary jakości nie obejmuje zera). W kolejnych etapach walidacji (kolejnych foldach) przetwarzane są już <strong>tylko te modele, które nie zostały wyeliminowane</strong>.</li>
+</ol>
+<p><strong>Analogie i zalety:</strong> Mechanizm ten jest w źródłach porównywany do <strong>analizy daremności w badaniach klinicznych</strong>, gdzie nieetyczne i nieefektywne jest kontynuowanie całego badania, jeśli już w jego trakcie widać, że nowy lek działa zbyt słabo.</p>
+<p>Główną zaletą metody wyścigów jest gigantyczna <strong>oszczędność mocy obliczeniowej i czasu</strong>. Sprawdza się to najlepiej w sytuacjach, gdy pewne testowane ustawienia parametrów dają od razu ewidentnie słabą wydajność. Na przykładzie badania modeli w jednym ze źródeł, podejście wyścigowe pozwoliło na oszacowanie zaledwie 1050 modeli zamiast bazowych 12600, co <strong>przyspieszyło cały proces około 7-krotnie</strong>, przy czym ostatecznie wybrane w ten sposób modele miały niemal identyczną jakość (korelacja wartości RMSE wyniosła 0,968) jak w przypadku przeliczenia pełnej siatki.</p>
+<p>W ekosystemie <code>tidymodels</code> w języku R obsługę takich optymalizacji realizuje się m.in. za pomocą funkcji <code>tune_race_anova()</code> dostępnej w pakiecie <code>finetune</code>.</p>
+</section>
+<section id="czym-jest-przeszukiwanie-iteracyjne" class="level2">
+<h2 class="anchored" data-anchor-id="czym-jest-przeszukiwanie-iteracyjne">21. Czym jest przeszukiwanie iteracyjne?</h2>
+<p><strong>Przeszukiwanie iteracyjne (nazywane również przeszukiwaniem sekwencyjnym)</strong> to strategia dostrajania (optymalizacji) hiperparametrów modeli, która stanowi alternatywę dla klasycznego przeszukiwania siatki. Zamiast polegać na testowaniu z góry określonego zestawu wartości, metody iteracyjne uczą się w trakcie działania i <strong>sekwencyjnie przewidują oraz wybierają nowe, obiecujące kombinacje hiperparametrów na podstawie wyników uzyskanych we wcześniejszych etapach</strong>. W wielu przypadkach, aby w ogóle rozpocząć taki proces optymalizacji, algorytm wymaga dostarczenia mu wstępnego zestawu wyników dla jednej lub kilku początkowych kombinacji parametrów.</p>
+<p>Wyróżnia się dwie główne metody realizacji przeszukiwania iteracyjnego:</p>
+<ol type="1">
+<li><p><strong>Optymalizacja bayesowska:</strong> Metoda ta systematycznie analizuje bieżące wyniki dopasowania i tworzy na ich podstawie odrębny model predykcyjny (najczęściej oparty na technice <strong>modeli procesu gaussowskiego</strong>), którego zadaniem jest sugerowanie kolejnych wartości parametrów do oceny. Algorytm opiera się na <strong>funkcji akwizycji</strong>, która decyduje o kolejnym kroku, poszukując kompromisu pomiędzy dwiema strategiami: <strong>eksploracją</strong> (czyli badaniem zupełnie nowych, nieodkrytych regionów cechujących się wysoką wariancją i niepewnością) oraz <strong>eksploatacją</strong> (czyli skupieniem się na obszarach, które już wcześniej wykazały bardzo dobre wyniki). Proces ten jest powtarzany przez ustaloną liczbę iteracji lub do momentu, w którym algorytm przestaje znajdować lepsze parametry.</p></li>
+<li><p><strong>Symulowane wyżarzanie (ang. <em>simulated annealing</em>):</strong> To technika globalnego przeszukiwania, którą zainspirował fizyczny proces stygnięcia metalu. Jej działanie przypomina kontrolowany, losowy spacer w przestrzeni parametrów – <strong>kolejne testowane wartości stanowią jedynie niewielką, losową zmianę (perturbację) w stosunku do poprzedniego ustawienia</strong>. Najważniejszą cechą tego podejścia jest fakt, że <strong>algorytm ma wbudowaną zdolność do okazjonalnego zaakceptowania konfiguracji dającej gorsze wyniki predykcyjne</strong>. Taki mechanizm pozwala modelowi “uciec” z fałszywego, lokalnego optimum i przenieść poszukiwania w inne, potencjalnie znacznie lepsze rejony przestrzeni parametrów. Prawdopodobieństwo przyjęcia gorszych parametrów zależy od tego, jak duży jest spadek wydajności, i stopniowo maleje wraz z postępem wyszukiwania.</p></li>
+</ol>
+</section>
+<section id="opisz-optymalizację-bayesowską." class="level2">
+<h2 class="anchored" data-anchor-id="opisz-optymalizację-bayesowską.">22. Opisz optymalizację bayesowską.</h2>
+<p>Optymalizacja bayesowska to zaawansowana technika przeszukiwania iteracyjnego (sekwencyjnego), która służy do efektywnego strojenia hiperparametrów modeli. Jej główna idea polega na systematycznym analizowaniu bieżących wyników z próbkowania i budowaniu na ich podstawie odrębnego modelu predykcyjnego, którego zadaniem jest sugerowanie kolejnych, nieocenionych jeszcze kombinacji parametrów do przetestowania. Zasugerowane wartości są następnie sprawdzane, a ich wynik zasila model predykcyjny, pozwalając mu rekomendować kolejne wielkości. Proces ten powtarza się przez określoną liczbę iteracji lub do momentu, w którym algorytm nie odnotowuje już dalszej poprawy.</p>
+<p>Skuteczne działanie optymalizacji bayesowskiej opiera się na dwóch fundamentalnych elementach: modelu procesu gaussowskiego oraz funkcji akwizycji.</p>
+<p><strong>1. Model procesu gaussowskiego (GP – <em>Gaussian Process</em>)</strong> Najczęściej stosowanym modelem kierującym optymalizacją bayesowską jest proces gaussowski, który wywodzi się z technik statystyki przestrzennej zwanych <em>krigingiem</em>. Z matematycznego punktu widzenia jest to zbiór zmiennych losowych, których wspólny rozkład prawdopodobieństwa jest wielowymiarowy normalny, reprezentujący w naszym kontekście metryki wydajności dla poszczególnych hiperparametrów.</p>
+<p>Kluczową zaletą zastosowania modeli GP jest fakt, że przewidują one wydajność nowych, niesprawdzonych punktów za pomocą całego rozkładu – dostarczając zarówno przewidywanej <strong>średniej</strong>, jak i <strong>wariancji</strong> (niepewności). Model ten wykorzystuje funkcję kowariancji (np. wykładniczą kwadratową), z której wynika ważna właściwość: w miarę oddalania się od dotychczas ocenionych zestawów parametrów maleje korelacja między wynikami, a wariancja rośnie. Z kolei dla punktów, które już zostały w rzeczywistości zaobserwowane, wariancja (niepewność) spada do zera.</p>
+<p><strong>2. Funkcja akwizycji</strong> Po dopasowaniu modelu GP do aktualnych danych, do gry wchodzi funkcja akwizycji, która odpowiada na pytanie: “jakie parametry należy sprawdzić w następnej kolejności, aby uzyskać lepsze wyniki?”. Decyzja ta opiera się na umiejętnym zarządzaniu kompromisem pomiędzy przewidywaną średnią a wariancją, co określa się jako balans między dwiema siłami:</p>
+<ul>
+<li><strong>Eksploracja (<em>exploration</em>):</strong> Polega na przypisywaniu większej wagi do kandydatów o wysokiej wariancji. W ten sposób algorytm decyduje się na sprawdzanie zupełnie nowych, nieodkrytych regionów przestrzeni parametrów, w których do tej pory wykonano mało prób, zapobiegając utknięciu w optymach lokalnych.</li>
+<li><strong>Eksploatacja (<em>exploitation</em>):</strong> Koncentruje się na opieraniu kolejnych kroków na dotychczasowych wynikach, wybierając obszary o najwyższej przewidywanej wartości średniej wydajności.</li>
+</ul>
+<p>Jednym z najczęściej stosowanych wariantów funkcji akwizycji jest <strong>oczekiwana poprawa (ang. <em>expected improvement</em>)</strong>. Ponieważ algorytm GP opisuje nowy punkt jako rozkład prawdopodobieństwa, funkcja oczekiwanej poprawy mierzy nie tylko to, jaka jest przewidywana średnia wydajność kandydata, ale ocenia, jaki obszar tego rozkładu leży powyżej aktualnie najlepszego odnotowanego w całym procesie wyniku. Sprawia to, że konfiguracja hiperparametrów o nieco niższej przewidywanej średniej, ale cechująca się bardzo wysoką wariancją (niepewnością), może charakteryzować się większym prawdopodobieństwem znalezienia wartości ekstremalnie dobrej, przez co zostanie wybrana przez algorytm przed wartościami bezpieczniejszymi.</p>
+</section>
+<section id="czym-są-procesu-gaussowskie" class="level2">
+<h2 class="anchored" data-anchor-id="czym-są-procesu-gaussowskie">23. Czym są procesu gaussowskie?</h2>
+<p><strong>Procesy gaussowskie (GP)</strong> to techniki statystyczne wywodzące się ze statystyki przestrzennej (gdzie są znane pod nazwą metod <em>krigingu</em>), które w wielu zastosowaniach wyprowadza się jako modele bayesowskie.</p>
+<p>Z matematycznego punktu widzenia, proces gaussowski jest <strong>zbiorem zmiennych losowych, dla których wspólny rozkład prawdopodobieństwa to wielowymiarowy rozkład normalny</strong>. W kontekście dostrajania modeli predykcyjnych, zmienne te służą do reprezentowania metryk wydajności modelu w zależności od wybranych kombinacji hiperparametrów.</p>
+<p>Działanie modeli opartych na procesach gaussowskich definiują dwie główne wielkości: <strong>funkcja średniej oraz funkcja kowariancji</strong> (np. funkcja wykładnicza kwadratowa). To właśnie funkcja kowariancji ma największy wpływ na charakter modelu, ponieważ pozwala mu on <strong>bardzo dobrze reprezentować wysoce nieliniowe zależności pomiędzy zmianą hiperparametrów a wydajnością modelu, nawet jeśli dysponujemy tylko niewielką liczbą sprawdzonych danych</strong>. Wynika z niej również ważna cecha: zmienność (niepewność) estymacji jest minimalizowana do zera w punktach (dla parametrów), które zostały już empirycznie zaobserwowane.</p>
+<p>Najważniejszą zaletą procesu gaussowskiego jest to, że ze względu na zdefiniowanie pełnego modelu probabilistycznego, <strong>predykcje dla nowych, niesprawdzonych jeszcze punktów odzwierciedlają cały rozkład prawdopodobieństwa wyniku</strong>. Oznacza to, że w odróżnieniu od wielu klasycznych metod prognozujących jedynie pojedynczą wartość, modele GP generują oszacowania zarówno pod względem <strong>przewidywanej wartości średniej, jak i wariancji (niepewności prognozy)</strong>. Ta dwutorowa informacja jest bezpośrednio wykorzystywana w algorytmach iteracyjnych (takich jak optymalizacja bayesowska) za pomocą funkcji akwizycji, która używa średniej i wariancji do oceny, czy lepiej przeszukiwać nieodkryte obszary parametrów, czy skupić się na tych dotychczas najlepszych.</p>
+</section>
+<section id="co-to-jest-funkcja-akwizycji" class="level2">
+<h2 class="anchored" data-anchor-id="co-to-jest-funkcja-akwizycji">24. Co to jest funkcja akwizycji?</h2>
+<p><strong>Funkcja akwizycji</strong> to klasa funkcji celu wykorzystywana w algorytmach optymalizacji iteracyjnej (takich jak optymalizacja bayesowska), której zadaniem jest sugerowanie, jakie nowe, niesprawdzone dotąd wartości hiperparametrów należy ocenić w następnej kolejności.</p>
+<p>Głównym zadaniem tej funkcji jest ułatwienie zautomatyzowanemu systemowi <strong>znalezienia optymalnego kompromisu pomiędzy przewidywaną średnią wydajnością a wariancją (niepewnością)</strong> dla badanych kandydatów. Problem ten jest rozpatrywany i równoważony przez pryzmat dwóch sił napędzających proces wyszukiwania:</p>
+<ul>
+<li><strong>Eksploracji (ang. <em>exploration</em>)</strong> – polegającej na koncentrowaniu się na poszukiwaniu nowych wyników. Realizuje się to poprzez nadawanie większej wagi i wyłapywanie tych regionów przestrzeni parametrów, które charakteryzują się wysoką wariancją (gdzie znajduje się dotychczas mało zaobserwowanych modeli). Zapobiega to utknięciu algorytmu w jednym lokalnym obszarze badawczym.</li>
+<li><strong>Eksploatacji (ang. <em>exploitation</em>)</strong> – polegającej na bazowaniu na zdobytych już wynikach, co powoduje wybieranie tych obszarów badawczych, które oferują najlepszą zbadaną wartość średnią.</li>
+</ul>
+<p>Jedną z najpopularniejszych implementacji funkcji akwizycji jest <strong>oczekiwana poprawa (ang. <em>expected improvement</em>)</strong>. Wymaga ona ustalenia wartości punktu odniesienia, którym są najlepsze dotychczas osiągnięte wyniki. Ponieważ algorytm kierujący (np. proces gaussowski) potrafi opisać niesprawdzoną jeszcze kombinację jako rozkład prawdopodobieństwa, funkcja oczekiwanej poprawy analizuje (waży) te fragmenty tego rozkładu, które dają szansę na pobicie dotychczasowego rekordu. Prowadzi to do ciekawego zjawiska: algorytm za pomocą tej funkcji może zarekomendować przetestowanie konfiguracji o gorszym przewidywaniu średnim, jeśli cechuje się ona na tyle dużą wariancją (niepewnością), że z racji szerszego rozkładu oferuje <strong>większy ogólny obszar prawdopodobieństwa przekroczenia dotychczas najlepszego wyniku</strong>.</p>
+<p>Prostszym, aczkolwiek rzadziej stosowanym sposobem definicji funkcji akwizycji jest poleganie wyłącznie na największym przedziale ufności, co służy jako bardzo silna zachęta dla modelu do czystej eksploracji.</p>
+</section>
+<section id="opisz-zasadę-działania-metody-symulowanego-wyżarzania." class="level2">
+<h2 class="anchored" data-anchor-id="opisz-zasadę-działania-metody-symulowanego-wyżarzania.">25. Opisz zasadę działania metody symulowanego wyżarzania.</h2>
+<p><strong>Zasada działania metody symulowanego wyżarzania</strong> (ang. <em>simulated annealing</em>) opiera się na nieliniowej procedurze globalnego wyszukiwania, która została zainspirowana fizycznym procesem stygnięcia metalu. Metoda ta potrafi efektywnie przeszukiwać złożone, a nawet nieciągłe przestrzenie parametrów, i w przeciwieństwie do optymalizacji opartej na gradiencie, potrafi wyjść z pułapki lokalnego optimum.</p>
+<p>Proces optymalizacji przebiega w następujących krokach:</p>
+<ol type="1">
+<li><strong>Inicjalizacja i losowy spacer:</strong> Proces zaczyna się od zdefiniowanej wartości początkowej hiperparametrów, po czym algorytm rozpoczyna kontrolowany “losowy spacer” przez przestrzeń parametrów.</li>
+<li><strong>Generowanie kandydata (perturbacja):</strong> Każda nowa testowana wartość kandydująca stanowi jedynie <strong>niewielką, losową zmianę (perturbację)</strong> w stosunku do poprzednich ustawień. Dla ciągłych parametrów algorytm wykorzystuje w tym celu ustalony, mały promień, który wyznacza lokalne “sąsiedztwo” poszukiwań wokół aktualnego punktu.</li>
+<li><strong>Ocena i akceptacja wyników lepszych:</strong> Nowy kandydat jest oceniany na podstawie metryk (np. przy wykorzystaniu resamplingu). Jeśli wykazuje on lepszą wydajność niż poprzednia konfiguracja, jest natychmiast akceptowany jako nowa najlepsza wartość.</li>
+<li><strong>Zdolność do akceptacji wyników gorszych:</strong> Najważniejszą cechą algorytmu symulowanego wyżarzania jest to, że <strong>może on zaakceptować parametry dające gorsze wyniki predykcyjne</strong>. Ma to na celu umożliwienie poszukiwaniom “ucieczki” z rejonów suboptymalnych. Prawdopodobieństwo zachowania gorszych parametrów zależy od dwóch kluczowych czynników:
+<ul>
+<li><strong>Wielkości spadku jakości:</strong> Prawdopodobieństwo maleje wraz z pogorszeniem się wyników. Oznacza to, że konfiguracja tylko nieznacznie gorsza od obecnej ma znacznie wyższą szansę na akceptację niż ta powodująca duży spadek wydajności.</li>
+<li><strong>Postępu czasu (liczby iteracji):</strong> Algorytm “stygnie” w miarę postępu poszukiwań. Z każdą kolejną iteracją symulowane wyżarzanie jest coraz mniej skłonne do akceptowania suboptymalnych wartości.</li>
+</ul></li>
+</ol>
+<p>Z matematycznego punktu widzenia to prawdopodobieństwo akceptacji gorszego rozwiązania często oblicza się ze wzoru <span class="math inline">\(\exp(c \times D_i \times i)\)</span>, gdzie <span class="math inline">\(i\)</span> to aktualny numer iteracji, <span class="math inline">\(c\)</span> to współczynnik chłodzenia dostosowywany przez użytkownika, a <span class="math inline">\(D_i\)</span> to procentowa różnica między starą a nową wartością (gdzie spadek wydajności przyjmuje wartość ujemną). Obliczone prawdopodobieństwo jest następnie porównywane z liczbą wylosowaną z rozkładu jednostajnego; jeśli losowa liczba jest większa od tego prawdopodobieństwa, nowe gorsze parametry są odrzucane, a w przeciwnym razie algorytm je akceptuje.</p>
+<p><strong>Warunki zatrzymania i restarty:</strong> Proces ten trwa przez z góry zdefiniowaną liczbę iteracji. Zazwyczaj wbudowuje się w niego mechanizm zatrzymania w przypadku braku poprawy przez pewien czas, a także <strong>ustawia się próg restartu</strong>. Jeśli wystąpi ustalony ciąg niepowodzeń i odrzuceń, algorytm potrafi przerwać bieżącą ścieżkę, powrócić do ostatnio zaobserwowanych globalnie najlepszych ustawień parametrów i rozpocząć perturbacje od nowa.</p>
+</section>
+<section id="przedstaw-powody-stosowania-redukcji-wymiarowości." class="level2">
+<h2 class="anchored" data-anchor-id="przedstaw-powody-stosowania-redukcji-wymiarowości.">26. Przedstaw powody stosowania redukcji wymiarowości.</h2>
+<p>Stosowanie redukcji wymiarowości, czyli przekształcania zbioru danych z przestrzeni wielowymiarowej w niskowymiarową, wynika z kilku istotnych problemów związanych z analizą szerokich zbiorów danych. Główne powody wykorzystania tej techniki to:</p>
+<ol type="1">
+<li><strong>Ułatwienie wizualizacji i interpretacji:</strong> Posiadanie “zbyt dużej” liczby zmiennych (predyktorów) sprawia, że dane stają się trudne do zrozumienia i zilustrowania na wykresach, ponieważ człowiek nie jest w stanie wyobrazić sobie przestrzeni o wyższych wymiarach.</li>
+<li><strong>Wsparcie w eksploracyjnej analizie danych (EDA):</strong> W niektórych zastosowaniach (np. w wielowymiarowych eksperymentach biologicznych) zbiory mogą zawierać setki tysięcy wymiarów. Redukcja wymiarowości jest w takich sytuacjach kluczowa na wczesnym etapie pracy z danymi, aby łatwiej zidentyfikować ewentualne niepożądane trendy czy wzorce w danych.</li>
+<li><strong>Zarządzanie nadmiarową liczbą predyktorów:</strong> Niektóre modele matematyczne mają wyraźne ograniczenia co do liczby zmiennych objaśniających. Najprostszym przykładem jest model regresji liniowej, który do poprawnego działania wymaga, aby liczba predyktorów była mniejsza niż liczba obserwacji w zbiorze.</li>
+<li><strong>Minimalizacja problemu współliniowości:</strong> Bardzo często zdarza się, że duża liczba predyktorów w rzeczywistości mierzy te same ukryte efekty i wykazuje silną wzajemną korelację. Taka współliniowość zmiennych potrafi negatywnie wpłynąć na operacje matematyczne wykorzystywane do szacowania parametrów modelu. Techniki redukcji wymiarowości pozwalają skompresować te nadmiarowe, skorelowane informacje do mniejszego podzbioru nowo wygenerowanych cech.</li>
+</ol>
+</section>
+<section id="jakie-są-powody-stosowania-podpróbkowania-i-nadpróbkowania-w-modelowaniu-predykcyjnym" class="level2">
+<h2 class="anchored" data-anchor-id="jakie-są-powody-stosowania-podpróbkowania-i-nadpróbkowania-w-modelowaniu-predykcyjnym">27. Jakie są powody stosowania podpróbkowania i nadpróbkowania w modelowaniu predykcyjnym?</h2>
+<p>Głównym powodem stosowania podpróbkowania (ang. <em>undersampling</em>) i nadpróbkowania (ang. <em>oversampling</em>) jest <strong>konieczność radzenia sobie z problemem nierównowagi klas</strong> w zadaniach klasyfikacyjnych. Zjawisko to występuje w sytuacjach, gdy jedna lub więcej klas zmiennej wynikowej występuje w zbiorze danych niezwykle rzadko w porównaniu z klasą dominującą.</p>
+<p>Jeśli zignorujemy ten problem i zrezygnujemy z kompensacji, pojawiają się następujące problemy:</p>
+<ul>
+<li>Większość modeli będzie naturalnie <strong>preferować i faworyzować klasę większościową</strong>.</li>
+<li>Model może osiągać doskonałe, ale mylące miary dopasowania dla całego zbioru (ponieważ łatwo “zgaduje” większość przypadków), podczas gdy jego <strong>skuteczność w rozpoznawaniu interesującej nas klasy mniejszościowej będzie bardzo słaba</strong>.</li>
+<li>Przy silnej dysproporcji domyślne prawdopodobieństwo odcięcia klasyfikacji (najczęściej na poziomie 50%) staje się całkowicie nieodpowiednie.</li>
+</ul>
+<p>Zastosowanie technik modyfikacji próby dąży do tego, aby <strong>zbiór treningowy lepiej reprezentował klasę mniejszościową, zmuszając algorytm do nieignorowania jej podczas uczenia</strong>. Warto podkreślić, że celem nie zawsze musi być idealne, matematyczne zrównoważenie klas w stosunku 1:1, ale raczej sprawienie, aby model poświęcał rzadziej występującej klasie wystarczająco dużo uwagi.</p>
+<p>Osiąga się to dwutorowo:</p>
+<ol type="1">
+<li><strong>Podpróbkowanie (undersampling):</strong> Polega na redukcji liczby obserwacji należących do klasy większościowej, co sztucznie zmniejsza jej dominację w zbiorze treningowym.</li>
+<li><strong>Nadpróbkowanie (oversampling):</strong> Polega na zwiększeniu reprezentacji klasy mniejszościowej, zazwyczaj poprzez losowe kopiowanie jej dotychczasowych obserwacji lub tworzenie zupełnie nowych, syntetycznych przypadków za pomocą zaawansowanych algorytmów takich jak SMOTE czy ROSE.</li>
+</ol>
+</section>
+<section id="jakie-są-korzyści-ze-stosowania-próbkowania-zaniżającego-liczebność-klasy-większościowej" class="level2">
+<h2 class="anchored" data-anchor-id="jakie-są-korzyści-ze-stosowania-próbkowania-zaniżającego-liczebność-klasy-większościowej">28. Jakie są korzyści ze stosowania próbkowania zaniżającego liczebność klasy większościowej?</h2>
+<p>Główną korzyścią ze stosowania próbkowania w dół (undersamplingu), czyli zaniżania liczebności klasy większościowej, jest <strong>zmniejszenie jej dominacji w zbiorze treningowym, co wymusza na algorytmie poświęcenie odpowiedniej uwagi klasie mniejszościowej</strong>. Bez zastosowania kompensacji, większość modeli ma naturalną tendencję do faworyzowania klasy większościowej, co skutkuje bardzo słabą skutecznością w rozpoznawaniu rzadkich, interesujących nas przypadków.</p>
+<p>Konkretne korzyści zależą od zastosowanej metody redukcji obserwacji:</p>
+<ul>
+<li><strong>Losowe próbkowanie w dół (Random undersampling):</strong> Główną zaletą tego najprostszego podejścia jest fakt, że jest to metoda <strong>ekstremalnie prosta, działa natychmiastowo i nie wymaga ustawiania żadnych dodatkowych parametrów</strong> poza docelowym stosunkiem klas.</li>
+<li><strong>Pary Tomka (Tomek links):</strong> Metoda ta nie usuwa obserwacji w sposób losowy, lecz analizuje pary najbliższych sąsiadów z różnych klas. Jej ogromną korzyścią jest to, że <strong>czyści szum znajdujący się bezpośrednio przy granicy decyzyjnej</strong>, usuwając z klasy większościowej jedynie te przypadki, które są faktycznie trudne do sklasyfikowania i wprowadzają niejednoznaczność.</li>
+<li><strong>NearMiss:</strong> Podejście to jest znacznie bardziej przemyślane niż losowe usuwanie, ponieważ <strong>zachowuje w zbiorze te obserwacje większościowe, które znajdują się najbliżej klasy mniejszościowej</strong>. Dzięki temu w danych pozostają informacje najbardziej istotne z perspektywy rozdzielenia obu klas.</li>
+</ul>
+<p>Warto dodać, że metody zaniżające liczebność klasy większościowej (jak Tomek links czy ENN) przynoszą świetne rezultaty jako <strong>metody hybrydowe</strong>, gdy połączy się je z nadpróbkowaniem (np. SMOTE). Pozwala to połączyć korzyści obu podejść – uzyskujemy zrównoważone liczebności klas przy jednoczesnym zachowaniu czystszej i wyraźniejszej granicy decyzyjnej.</p>
+</section>
+<section id="jakie-są-zalety-próbkowania-zawyżającego-liczebność-klasy-mniejszościowej" class="level2">
+<h2 class="anchored" data-anchor-id="jakie-są-zalety-próbkowania-zawyżającego-liczebność-klasy-mniejszościowej">29. Jakie są zalety próbkowania zawyżającego liczebność klasy mniejszościowej?</h2>
+<p>Główną i najbardziej ogólną zaletą próbkowania w górę (oversamplingu) jest to, że w przeciwieństwie do próbkowania w dół (undersamplingu), <strong>nie prowadzi do utraty jakichkolwiek użytecznych informacji ze zbioru treningowego</strong>. Metoda ta zwiększa reprezentację rzadszej klasy poprzez powielanie istniejących punktów lub generowanie zupełnie nowych obserwacji, co pozwala lepiej wytrenować model bez odrzucania danych.</p>
+<p>Konkretne korzyści zależą od zastosowanego algorytmu zawyżania liczebności:</p>
+<ul>
+<li><strong>Losowe próbkowanie w górę (Random oversampling):</strong> Największą zaletą tego podejścia jest to, że jest <strong>banalnie proste we wdrożeniu</strong>, polegając jedynie na losowym kopiowaniu istniejących obserwacji mniejszościowych.</li>
+<li><strong>ROSE (Random Over-Sampling Examples):</strong> Ponieważ algorytm ten losuje syntetyczne punkty z wyestymowanego rozkładu gęstości, <strong>nowe punkty różnią się od oryginalnych, dzięki czemu model nie uczy się mechanicznie tych samych obserwacji na pamięć</strong>. Cechuje się również dużą elastycznością, ponieważ pozwala na łączenie oversamplingu z jednoczesnym undersamplingiem klasy większościowej.</li>
+<li><strong>SMOTE (Synthetic Minority Over-sampling Technique):</strong> Wykorzystując interpolację między sąsiadami, algorytm ten <strong>tworzy realistyczne i zróżnicowane syntetyczne punkty</strong>, które skutecznie wypełniają przestrzeń klasy mniejszościowej i nie są jedynie zwykłymi kopiami starych obserwacji.</li>
+<li><strong>Borderline-SMOTE:</strong> Wariant ten skupia się wyłącznie na obserwacjach leżących w pobliżu granicy klas. Jego zaletą jest to, że <strong>nie marnuje wysiłku obliczeniowego na łatwe, bezpieczne punkty</strong>, lecz celowo wzmacnia sygnał w miejscach, w których model najbardziej tego potrzebuje (tam, gdzie klasyfikacja jest najtrudniejsza).</li>
+<li><strong>ADASYN (Adaptive Synthetic Sampling):</strong> Posiada wbudowaną intuicję oceny trudności punktów, dzięki czemu <strong>automatycznie adaptuje się do lokalnej struktury danych</strong>. Zaletą tej metody jest to, że przydziela ona różną liczbę nowych punktów w zależności od trudności rejonu i nie wymaga ręcznego dzielenia obserwacji na kategorie (jak robi to Borderline-SMOTE).</li>
+</ul>
+<p>Dodatkowo, metody zawyżania liczebności mogą być stosowane w tzw. formach hybrydowych (np. łącząc SMOTE z techniką <em>Tomek links</em>), co pozwala skumulować korzyści i uzyskać <strong>nie tylko większą liczbę zróżnicowanych obserwacji mniejszościowych, ale także wyraźniejszą i czystszą granicę decyzyjną</strong>.</p>
+</section>
+<section id="jak-należy-stosować-poszczególne-kroki-przygotowania-danych-w-procesie-uczenia-i-walidacji-modelu" class="level2">
+<h2 class="anchored" data-anchor-id="jak-należy-stosować-poszczególne-kroki-przygotowania-danych-w-procesie-uczenia-i-walidacji-modelu">30. Jak należy stosować poszczególne kroki przygotowania danych w procesie uczenia i walidacji modelu?</h2>
+<p>Prawidłowe stosowanie kroków przygotowania danych (tzw. <em>preprocessingu</em> i inżynierii cech) w procesie uczenia i walidacji modelu jest absolutnie kluczowe, aby zapobiec zjawisku <strong>wycieku informacji</strong> (ang. <em>data leakage</em>), które prowadzi do sztucznie zawyżonej, nadmiernie optymistycznej oceny jakości modelu.</p>
+<p>Aby ustrzec się przed błędami metodologicznymi, przygotowanie danych należy realizować trzymając się następujących żelaznych zasad:</p>
+<p><strong>1. Estymacja parametrów wyłącznie na zbiorze uczącym</strong> Wszelkie parametry transformacji danych (np. średnie i odchylenia standardowe do normalizacji, ładunki i kierunki w PCA, mapowanie poziomów zmiennych kategorycznych) <strong>muszą być szacowane (estymowane) wyłącznie na podstawie zbioru treningowego</strong>. Zbiór testowy nie może mieć żadnego wpływu na te obliczenia. Podczas ewaluacji modelu te same, wyliczone wcześniej parametry transformacji są jedynie <strong>aplikowane</strong> do danych testowych lub walidacyjnych, tak aby zostały one przetworzone dokładnie w ten sam sposób co dane uczące, ale bez “podglądania” ich struktury.</p>
+<p><strong>2. Przetwarzanie musi odbywać się wewnątrz pętli resamplingu</strong> Jeśli stosujemy metody walidacji takie jak walidacja krzyżowa (CV) czy <em>bootstrap</em>, <strong>cały potok przygotowania danych musi być na stałe zintegrowany z procesem próbkowania i wykonywany wewnątrz niego</strong>. Błędem jest przetworzenie całego dostępnego zbioru danych na samym początku, a dopiero potem podzielenie go na foldy. Zamiast tego, w każdej iteracji resamplingu algorytm musi od nowa “nauczyć się” transformacji na przypisanym podzbiorze analitycznym (<em>analysis set</em>) i zastosować ją do wykluczonego podzbioru testowego (<em>assessment set</em>). Dzięki temu każda iteracja oceny modelu jest w 100% niezależna i symuluje rzeczywiste warunki.</p>
+<p><strong>3. Modyfikacje liczebności klas (undersampling / oversampling) stosujemy tylko do danych uczących</strong> Jeśli borykamy się z problemem nierównowagi klas i stosujemy metody generujące nowe obserwacje (jak SMOTE, ROSE) lub redukujące klasę większościową, to <strong>kroki te wolno stosować wyłącznie do zbiorów analitycznych (treningowych)</strong>. Zbiór służący do oceny modelu (<em>assessment set</em>) oraz ostateczny zbiór testowy muszą koniecznie zachować swój oryginalny, naturalny rozkład klas. W ekosystemie <code>tidymodels</code> zapobiega się modyfikacji danych testowych poprzez ustawienie w krokach próbkowania dedykowanego argumentu <code>skip = TRUE</code>.</p>
+<p><strong>4. Odpowiednia kolejność operacji ma znaczenie</strong> Podczas projektowania potoku inżynierii cech należy zachować logiczną kolejność kroków:</p>
+<ul>
+<li><strong>Normalizacja a PCA:</strong> Analiza składowych głównych jest wrażliwa na różnice w wariancji, dlatego ekstrakcja cech za pomocą PCA musi być poprzedzona krokiem centrowania i skalowania (normalizacji) zmiennych.</li>
+<li><strong>Zmienne wskaźnikowe a interakcje:</strong> Jeśli chcemy utworzyć w modelu interakcje zmiennych, które obejmują zmienne kategoryczne (typu faktor), najpierw należy zamienić zmienne kategoryczne na zmienne sztuczne (indykatory binarne, ang. <em>dummy variables</em>), a dopiero na ich podstawie wyznaczać operacje interakcji.</li>
+<li><strong>Przekształcenia zmiennej wynikowej:</strong> Proste transformacje matematyczne, które dotyczą wyłącznie zmiennej zależnej (np. zlogarytmowanie ceny domów), zaleca się wykonywać na zewnątrz potoku przygotowania (<em>recipe</em>). Pozwala to uniknąć błędów technicznych w przyszłości, gdy na etapie produkcyjnej predykcji nowych przypadków zmienna wynikowa w naturalny sposób nie będzie jeszcze znana i dostępna.</li>
+</ul>
+</section>
+<section id="źródło" class="level2">
+<h2 class="anchored" data-anchor-id="źródło">Źródło</h2>
+<p><strong>Odpowiedzi na pytania oparte na:</strong> <a href="https://dax44.github.io/ModelsValidation/" class="uri">https://dax44.github.io/ModelsValidation/</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

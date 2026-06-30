@@ -132,16 +132,8 @@ window.Quarto = {
 <span class="menu-text">Eksploracja danych</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Pytania_eksploracja_skrot.html"> 
-<span class="menu-text">Eksploracja danych - abstrakt</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Pytania_eksploracja_skrot2.html"> 
-<span class="menu-text">Eksploracja danych - streszczenie</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./analizaII.html"> 
-<span class="menu-text">Testowe</span></a>
+    <a class="nav-link" href="./Pytania_walidacja.html"> 
+<span class="menu-text">Metody walidacji</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./numeryczne.html"> 
@@ -160,7 +152,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Pytania</h2>
+    <h2 id="toc-title">Spis treści</h2>
    
   <ul>
   <li><a href="#egzamin-ustny-z-eksploracji-danych" id="toc-egzamin-ustny-z-eksploracji-danych" class="nav-link active" data-scroll-target="#egzamin-ustny-z-eksploracji-danych">Egzamin ustny z Eksploracji danych</a>
@@ -204,6 +196,7 @@ window.Quarto = {
   <li><a href="#omów-rolę-funkcji-wartości-równań-bellmana-i-aktualizacji-w-q-learningu.-wyjaśnij-dlaczego-problem-eksploracji-i-eksploatacji-jest-w-uczeniu-ze-wzmocnieniem-kluczowy." id="toc-omów-rolę-funkcji-wartości-równań-bellmana-i-aktualizacji-w-q-learningu.-wyjaśnij-dlaczego-problem-eksploracji-i-eksploatacji-jest-w-uczeniu-ze-wzmocnieniem-kluczowy." class="nav-link" data-scroll-target="#omów-rolę-funkcji-wartości-równań-bellmana-i-aktualizacji-w-q-learningu.-wyjaśnij-dlaczego-problem-eksploracji-i-eksploatacji-jest-w-uczeniu-ze-wzmocnieniem-kluczowy.">28. Omów rolę funkcji wartości, równań Bellmana i aktualizacji w Q-learningu. Wyjaśnij, dlaczego problem eksploracji i eksploatacji jest w uczeniu ze wzmocnieniem kluczowy.</a></li>
   <li><a href="#omów-analizę-koszykową-i-reguły-asocjacyjne.-przedstaw-sposób-formalizacji-danych-transakcyjnych-oraz-ideę-wyszukiwania-częstych-zbiorów-i-reguł-metodami-apriori-oraz-fp-growth." id="toc-omów-analizę-koszykową-i-reguły-asocjacyjne.-przedstaw-sposób-formalizacji-danych-transakcyjnych-oraz-ideę-wyszukiwania-częstych-zbiorów-i-reguł-metodami-apriori-oraz-fp-growth." class="nav-link" data-scroll-target="#omów-analizę-koszykową-i-reguły-asocjacyjne.-przedstaw-sposób-formalizacji-danych-transakcyjnych-oraz-ideę-wyszukiwania-częstych-zbiorów-i-reguł-metodami-apriori-oraz-fp-growth.">29. Omów analizę koszykową i reguły asocjacyjne. Przedstaw sposób formalizacji danych transakcyjnych oraz ideę wyszukiwania częstych zbiorów i reguł metodami Apriori oraz FP-Growth.</a></li>
   <li><a href="#omów-problem-wykrywania-anomalii.-przedstaw-typy-anomalii-trudności-ich-formalizacji-oraz-porównaj-intuicję-działania-metod-lof-i-isolation-forest." id="toc-omów-problem-wykrywania-anomalii.-przedstaw-typy-anomalii-trudności-ich-formalizacji-oraz-porównaj-intuicję-działania-metod-lof-i-isolation-forest." class="nav-link" data-scroll-target="#omów-problem-wykrywania-anomalii.-przedstaw-typy-anomalii-trudności-ich-formalizacji-oraz-porównaj-intuicję-działania-metod-lof-i-isolation-forest.">30. Omów problem wykrywania anomalii. Przedstaw typy anomalii, trudności ich formalizacji oraz porównaj intuicję działania metod LOF i Isolation Forest.</a></li>
+  <li><a href="#źródło" id="toc-źródło" class="nav-link" data-scroll-target="#źródło">Źródło</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -798,6 +791,10 @@ window.Quarto = {
 <li><strong>Intuicja:</strong> Algorytm sprawdza, jak szybko dany punkt zostanie odizolowany od reszty danych we własnym liściu. <strong>Ponieważ obserwacje anomalne leżą zazwyczaj “na uboczu”, kilka losowych przecięć osi przestrzeni często w zupełności wystarczy, aby całkowicie je wyizolować</strong>. Dla typowych, normalnych obserwacji ścieżki podziałów są naturalnie znacznie dłuższe, ponieważ punkty te są otoczone gąszczem wielu innych, podobnych do siebie obserwacji.</li>
 </ul>
 <p><strong>Podsumowując:</strong> LOF to metoda wyczulona przede wszystkim na wykrywanie <strong>lokalnej rzadkości otoczenia</strong> punktu. Z kolei Isolation Forest faworyzuje obserwacje, które ze względu na swoje dziwne położenie są <strong>niezwykle łatwe do odizolowania losowymi cięciami</strong>. Ponadto Isolation Forest z reguły charakteryzuje się tym, że potrafi dobrze skalować się na dużych zbiorach danych bez konieczności jawnej estymacji gęstości, co daje mu ogromną przewagę wydajnościową w przestrzeniach o wysokiej liczbie wymiarów.</p>
+</section>
+<section id="źródło" class="level2">
+<h2 class="anchored" data-anchor-id="źródło">Źródło</h2>
+<p><strong>Odpowiedzi na pytania oparte na:</strong> <a href="https://dariuszmajerek.github.io/ML_and_DM/" class="uri">https://dariuszmajerek.github.io/ML_and_DM/</a></p>
 
 
 </section>

@@ -5,7 +5,7 @@ date: "2026-06-20"
 format: 
   html:
     toc: true
-    toc-title: "Pytania"
+    toc-title: "Spis treści"
     toc-location: right
     theme: default
     fontcolor: "#3c3c3c"
@@ -648,3 +648,7 @@ Z tego powodu problemu tego najczęściej nie formalizuje się jako klasyfikacji
 -   **Intuicja:** Algorytm sprawdza, jak szybko dany punkt zostanie odizolowany od reszty danych we własnym liściu. **Ponieważ obserwacje anomalne leżą zazwyczaj "na uboczu", kilka losowych przecięć osi przestrzeni często w zupełności wystarczy, aby całkowicie je wyizolować**. Dla typowych, normalnych obserwacji ścieżki podziałów są naturalnie znacznie dłuższe, ponieważ punkty te są otoczone gąszczem wielu innych, podobnych do siebie obserwacji.
 
 **Podsumowując:** LOF to metoda wyczulona przede wszystkim na wykrywanie **lokalnej rzadkości otoczenia** punktu. Z kolei Isolation Forest faworyzuje obserwacje, które ze względu na swoje dziwne położenie są **niezwykle łatwe do odizolowania losowymi cięciami**. Ponadto Isolation Forest z reguły charakteryzuje się tym, że potrafi dobrze skalować się na dużych zbiorach danych bez konieczności jawnej estymacji gęstości, co daje mu ogromną przewagę wydajnościową w przestrzeniach o wysokiej liczbie wymiarów.
+
+## Źródło 
+
+**Odpowiedzi na pytania oparte na:** <https://dariuszmajerek.github.io/ML_and_DM/>
