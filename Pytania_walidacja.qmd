@@ -92,28 +92,22 @@ Warto również zaznaczyć ważną cechę charakterystyczną tych testów: **w p
 
 ## 5. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli regresyjnych.
 
-Zasadniczy podział miar dopasowania modeli predykcyjnych (nadzorowanych) opiera się na rodzaju przewidywanej zmiennej wynikowej, co dzieli je na dwie główne kategorie: **miary dla modeli regresyjnych** oraz **miary dla modeli klasyfikacyjnych**. 
+Miary dopasowania modeli predykcyjnych dzielą się przede wszystkim ze względu na typ zagadnienia na miary dedykowane do **modeli regresyjnych** oraz do **modeli klasyfikacyjnych**.
 
-**1. Miary dopasowania modeli regresyjnych**
-Stosuje się je do oceny modeli przewidujących zmienną o charakterze ilościowym. Wewnętrznie grupę tę dzieli się ze względu na aspekt badanej oceny: na miary mierzące **zgodność** pomiędzy wartościami obserwowanymi a przewidywanymi (często wyrażone korelacjami) oraz miary opierające się na ewaluacji **błędów predykcji** (bezwzględnych i względnych).
+W obrębie poszczególnych modeli występuje dodatkowy podział miar oceniających dopasowanie:
+
+*   **W modelach regresyjnych** wyróżnia się dwie główne grupy:
+
+    1.  **Miary mierzące zgodność** – określają one zbieżność predykcji z wartościami obserwowanymi i są często wyrażane współczynnikami korelacji (lub ich kwadratami). W ich przypadku wyższa wartość oznacza lepsze dopasowanie modelu do danych.
+    2.  **Miary błędów (względne i bezwzględne)** – oceniają różnice i odchylenia między obserwowanymi a przewidywanymi wartościami. W przypadku tych metryk, mniejsza ich wartość świadczy o lepszym modelu.
+*   **W modelach klasyfikacyjnych** miary dzieli się z reguły na te dedykowane klasyfikacji z **binarną zmienną wynikową** (dwustanową) oraz te dla zmiennej **wielostanowej (wieloklasowej)**. Kolejnym istotnym podziałem w tej kategorii jest rozróżnienie na miary zależące wyłącznie od ostatecznej klasyfikacji wynikowej (opierające się najczęściej na tzw. macierzy błędnych klasyfikacji) oraz miary, które biorą pod uwagę prawdopodobieństwa poszczególnych stanów.
 
 Trzy przykłady miar regresyjnych to:
 
-* **$R^2$ (oraz skorygowane $\tilde{R}^2$)** – to miara zgodności, która bazuje na korelacji i określa, jak dobrze wartości przewidywane przez model oddają zróżnicowanie wartości rzeczywistych.
-* **RMSE (Pierwiastek błędu średniokwadratowego)** – wyznacza średnią wielkość błędu modelu, wyrażoną w tych samych jednostkach co zmienna wynikowa; miara ta jest jednak bardzo wrażliwa na wartości odstające.
-* **MAE (Średni absolutny błąd)** – określa średnią bezwzględną wartość błędów, a dzięki temu, że różnice nie są podnoszone do kwadratu, jest ona znacznie mniej wrażliwa na punkty odstające niż RMSE.
+1. **$R^2$ (oraz skorygowane $\tilde{R}^2$)** – to miara zgodności, która bazuje na korelacji i określa, jak dobrze wartości przewidywane przez model oddają zróżnicowanie wartości rzeczywistych.
+2. **RMSE (Pierwiastek błędu średniokwadratowego)** – wyznacza średnią wielkość błędu modelu, wyrażoną w tych samych jednostkach co zmienna wynikowa; miara ta jest jednak bardzo wrażliwa na wartości odstające.
+3. **MAE (Średni absolutny błąd)** – określa średnią bezwzględną wartość błędów, a dzięki temu, że różnice nie są podnoszone do kwadratu, jest ona znacznie mniej wrażliwa na punkty odstające niż RMSE.
 
-**2. Miary dopasowania modeli klasyfikacyjnych**
-Wykorzystuje się je w przypadku modeli przewidujących zmienne jakościowe (kategoryczne). Zbiór tych miar posiada w literaturze dwa istotne podziały:
-
-* Ze względu na **liczbę stanów zmiennej wyjściowej**: wyróżnia się specyficzne miary dla **modeli binarnych** (dwustanowych) oraz miary dla **klasyfikacji wieloklasowej**, gdzie te same parametry wymagają przyjęcia technik uśredniania wyników dla poszczególnych klas (np. mikro, makro i makro-ważone uśrednianie).
-* Ze względu na **mechanizm oceny**: wyróżnia się miary zależne wyłącznie od ostatecznej, **„twardej” klasyfikacji** zebranej w postaci macierzy błędów (ang. *confusion matrix*) oraz miary **probabilistyczne**, które zależą od dystrybucji przewidywanych prawdopodobieństw poszczególnych stanów (jak krzywe zależące od progu odcięcia czy log loss).
-
-Trzy przykłady miar klasyfikacyjnych to:
-
-* **Accuracy (Dokładność)** – wyliczana na podstawie macierzy błędów miara informująca o całkowitym odsetku poprawnie zaklasyfikowanych przez algorytm obserwacji.
-* **Precision (Precyzja)** – miara odpowiadająca na pytanie, jaki odsetek spośród wszystkich obserwacji sklasyfikowanych przez model jako pozytywne stanowią przypadki rzeczywiście pozytywne.
-* **AUC (Area Under ROC Curve)** – pole pod krzywą ROC stanowiące sumaryczną, probabilistyczną ocenę modelu; charakteryzuje skuteczność klasyfikatora na przestrzeni różnych poziomów odcięcia (threshold), dlatego wysokie AUC jest ważnym sygnałem świadczącym o dobrym dopasowaniu.
 
 ## 6. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli klasyfikacyjnych.
 

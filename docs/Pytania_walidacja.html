@@ -157,7 +157,7 @@ window.Quarto = {
   <ul>
   <li><a href="#egzamin-ustny-z-metod-walidacji" id="toc-egzamin-ustny-z-metod-walidacji" class="nav-link active" data-scroll-target="#egzamin-ustny-z-metod-walidacji">Egzamin ustny z Metod walidacji</a>
   <ul class="collapse">
-  <li><a href="#sugerowana-kolejność-nauki" id="toc-sugerowana-kolejność-nauki" class="nav-link" data-scroll-target="#sugerowana-kolejność-nauki">Sugerowana Kolejność Nauki</a></li>
+  <li><a href="#sugerowana-kolejność-nauki" id="toc-sugerowana-kolejność-nauki" class="nav-link" data-scroll-target="#sugerowana-kolejność-nauki">Sugerowana kolejność nauki</a></li>
   <li><a href="#opisz-typy-modeli-statystycznych-w-podziale-na-przeznaczenie.-wymień-po-jednym-przykładzie-dla-każdego-typu." id="toc-opisz-typy-modeli-statystycznych-w-podziale-na-przeznaczenie.-wymień-po-jednym-przykładzie-dla-każdego-typu." class="nav-link" data-scroll-target="#opisz-typy-modeli-statystycznych-w-podziale-na-przeznaczenie.-wymień-po-jednym-przykładzie-dla-każdego-typu.">1. Opisz typy modeli statystycznych w podziale na przeznaczenie. Wymień po jednym przykładzie dla każdego typu.</a></li>
   <li><a href="#opisz-proces-tworzenia-modelu-statystycznego." id="toc-opisz-proces-tworzenia-modelu-statystycznego." class="nav-link" data-scroll-target="#opisz-proces-tworzenia-modelu-statystycznego.">2. Opisz proces tworzenia modelu statystycznego.</a></li>
   <li><a href="#opisz-zasadę-działania-testów-bootstrapowych." id="toc-opisz-zasadę-działania-testów-bootstrapowych." class="nav-link" data-scroll-target="#opisz-zasadę-działania-testów-bootstrapowych.">3. Opisz zasadę działania testów bootstrapowych.</a></li>
@@ -230,7 +230,7 @@ window.Quarto = {
 <section id="egzamin-ustny-z-metod-walidacji" class="level1">
 <h1>Egzamin ustny z Metod walidacji</h1>
 <section id="sugerowana-kolejność-nauki" class="level3">
-<h3 class="anchored" data-anchor-id="sugerowana-kolejność-nauki">Sugerowana Kolejność Nauki</h3>
+<h3 class="anchored" data-anchor-id="sugerowana-kolejność-nauki">Sugerowana kolejność nauki</h3>
 <p><strong>I. Fundamenty i Higiena Danych</strong></p>
 <ul>
 <li>Wstęp i kroki budowy modelu: <strong>Pyt. 1, 2</strong></li>
@@ -314,25 +314,22 @@ window.Quarto = {
 </section>
 <section id="podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-regresyjnych." class="level2">
 <h2 class="anchored" data-anchor-id="podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-regresyjnych.">5. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli regresyjnych.</h2>
-<p>Zasadniczy podział miar dopasowania modeli predykcyjnych (nadzorowanych) opiera się na rodzaju przewidywanej zmiennej wynikowej, co dzieli je na dwie główne kategorie: <strong>miary dla modeli regresyjnych</strong> oraz <strong>miary dla modeli klasyfikacyjnych</strong>.</p>
-<p><strong>1. Miary dopasowania modeli regresyjnych</strong> Stosuje się je do oceny modeli przewidujących zmienną o charakterze ilościowym. Wewnętrznie grupę tę dzieli się ze względu na aspekt badanej oceny: na miary mierzące <strong>zgodność</strong> pomiędzy wartościami obserwowanymi a przewidywanymi (często wyrażone korelacjami) oraz miary opierające się na ewaluacji <strong>błędów predykcji</strong> (bezwzględnych i względnych).</p>
-<p>Trzy przykłady miar regresyjnych to:</p>
+<p>Miary dopasowania modeli predykcyjnych dzielą się przede wszystkim ze względu na typ zagadnienia na miary dedykowane do <strong>modeli regresyjnych</strong> oraz do <strong>modeli klasyfikacyjnych</strong>.</p>
+<p>W obrębie poszczególnych modeli występuje dodatkowy podział miar oceniających dopasowanie:</p>
 <ul>
+<li><p><strong>W modelach regresyjnych</strong> wyróżnia się dwie główne grupy:</p>
+<ol type="1">
+<li><strong>Miary mierzące zgodność</strong> – określają one zbieżność predykcji z wartościami obserwowanymi i są często wyrażane współczynnikami korelacji (lub ich kwadratami). W ich przypadku wyższa wartość oznacza lepsze dopasowanie modelu do danych.</li>
+<li><strong>Miary błędów (względne i bezwzględne)</strong> – oceniają różnice i odchylenia między obserwowanymi a przewidywanymi wartościami. W przypadku tych metryk, mniejsza ich wartość świadczy o lepszym modelu.</li>
+</ol></li>
+<li><p><strong>W modelach klasyfikacyjnych</strong> miary dzieli się z reguły na te dedykowane klasyfikacji z <strong>binarną zmienną wynikową</strong> (dwustanową) oraz te dla zmiennej <strong>wielostanowej (wieloklasowej)</strong>. Kolejnym istotnym podziałem w tej kategorii jest rozróżnienie na miary zależące wyłącznie od ostatecznej klasyfikacji wynikowej (opierające się najczęściej na tzw. macierzy błędnych klasyfikacji) oraz miary, które biorą pod uwagę prawdopodobieństwa poszczególnych stanów.</p></li>
+</ul>
+<p>Trzy przykłady miar regresyjnych to:</p>
+<ol type="1">
 <li><strong><span class="math inline">\(R^2\)</span> (oraz skorygowane <span class="math inline">\(\tilde{R}^2\)</span>)</strong> – to miara zgodności, która bazuje na korelacji i określa, jak dobrze wartości przewidywane przez model oddają zróżnicowanie wartości rzeczywistych.</li>
 <li><strong>RMSE (Pierwiastek błędu średniokwadratowego)</strong> – wyznacza średnią wielkość błędu modelu, wyrażoną w tych samych jednostkach co zmienna wynikowa; miara ta jest jednak bardzo wrażliwa na wartości odstające.</li>
 <li><strong>MAE (Średni absolutny błąd)</strong> – określa średnią bezwzględną wartość błędów, a dzięki temu, że różnice nie są podnoszone do kwadratu, jest ona znacznie mniej wrażliwa na punkty odstające niż RMSE.</li>
-</ul>
-<p><strong>2. Miary dopasowania modeli klasyfikacyjnych</strong> Wykorzystuje się je w przypadku modeli przewidujących zmienne jakościowe (kategoryczne). Zbiór tych miar posiada w literaturze dwa istotne podziały:</p>
-<ul>
-<li>Ze względu na <strong>liczbę stanów zmiennej wyjściowej</strong>: wyróżnia się specyficzne miary dla <strong>modeli binarnych</strong> (dwustanowych) oraz miary dla <strong>klasyfikacji wieloklasowej</strong>, gdzie te same parametry wymagają przyjęcia technik uśredniania wyników dla poszczególnych klas (np. mikro, makro i makro-ważone uśrednianie).</li>
-<li>Ze względu na <strong>mechanizm oceny</strong>: wyróżnia się miary zależne wyłącznie od ostatecznej, <strong>„twardej” klasyfikacji</strong> zebranej w postaci macierzy błędów (ang. <em>confusion matrix</em>) oraz miary <strong>probabilistyczne</strong>, które zależą od dystrybucji przewidywanych prawdopodobieństw poszczególnych stanów (jak krzywe zależące od progu odcięcia czy log loss).</li>
-</ul>
-<p>Trzy przykłady miar klasyfikacyjnych to:</p>
-<ul>
-<li><strong>Accuracy (Dokładność)</strong> – wyliczana na podstawie macierzy błędów miara informująca o całkowitym odsetku poprawnie zaklasyfikowanych przez algorytm obserwacji.</li>
-<li><strong>Precision (Precyzja)</strong> – miara odpowiadająca na pytanie, jaki odsetek spośród wszystkich obserwacji sklasyfikowanych przez model jako pozytywne stanowią przypadki rzeczywiście pozytywne.</li>
-<li><strong>AUC (Area Under ROC Curve)</strong> – pole pod krzywą ROC stanowiące sumaryczną, probabilistyczną ocenę modelu; charakteryzuje skuteczność klasyfikatora na przestrzeni różnych poziomów odcięcia (threshold), dlatego wysokie AUC jest ważnym sygnałem świadczącym o dobrym dopasowaniu.</li>
-</ul>
+</ol>
 </section>
 <section id="podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-klasyfikacyjnych." class="level2">
 <h2 class="anchored" data-anchor-id="podaj-podział-miar-dopasowania-modeli-predykcyjnych-oraz-wymień-po-trzy-miary-dedykowane-do-modeli-klasyfikacyjnych.">6. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli klasyfikacyjnych.</h2>
