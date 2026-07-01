@@ -12,6 +12,8 @@ website:
         href: Pytania_eksploracja.qmd
       - text: "Metody walidacji"
         href: Pytania_walidacja.qmd
+      - text: "Ekonometria"
+        href: ekonometria.qmd
       # - text: "Eksploracja danych - abstrakt"
       #   href: Pytania_eksploracja_skrot.qmd
       # - text: "Eksploracja danych - streszczenie"

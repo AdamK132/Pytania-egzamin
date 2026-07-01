@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Adam Kołodziejczak">
+<meta name="dcterms.date" content="2025-07-01">
 
-<title>Losowanie – Egzaminy</title>
+<title>Ekonometria – Egzaminy</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -93,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Losowanie</span></a>
   </li>  
   <li class="nav-item">
@@ -105,7 +136,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Metody walidacji</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./ekonometria.html"> 
+    <a class="nav-link active" href="./ekonometria.html" aria-current="page"> 
 <span class="menu-text">Ekonometria</span></a>
   </li>  
   <li class="nav-item">
@@ -123,22 +154,46 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Spis treści</h2>
+   
+  <ul>
+  <li><a href="#metody-doboru-i-usuwania-zmiennych-objaśniających" id="toc-metody-doboru-i-usuwania-zmiennych-objaśniających" class="nav-link active" data-scroll-target="#metody-doboru-i-usuwania-zmiennych-objaśniających"><strong>1 Metody doboru i usuwania zmiennych objaśniających</strong></a>
+  <ul class="collapse">
+  <li><a href="#metoda-analizy-współczynników-korelacji" id="toc-metoda-analizy-współczynników-korelacji" class="nav-link" data-scroll-target="#metoda-analizy-współczynników-korelacji"><strong>1.1 Metoda analizy współczynników korelacji</strong></a></li>
+  <li><a href="#metoda-pojemności-informacji-metoda-hellwiga" id="toc-metoda-pojemności-informacji-metoda-hellwiga" class="nav-link" data-scroll-target="#metoda-pojemności-informacji-metoda-hellwiga"><strong>1.2 Metoda pojemności informacji (metoda Hellwiga)</strong></a></li>
+  <li><a href="#metoda-grafowa" id="toc-metoda-grafowa" class="nav-link" data-scroll-target="#metoda-grafowa"><strong>1.3 Metoda grafowa</strong></a></li>
+  <li><a href="#metoda-oparta-na-współczynniku-korelacji-wielorakiej" id="toc-metoda-oparta-na-współczynniku-korelacji-wielorakiej" class="nav-link" data-scroll-target="#metoda-oparta-na-współczynniku-korelacji-wielorakiej"><strong>1.4 Metoda oparta na współczynniku korelacji wielorakiej</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Losowanie</h1>
+<h1 class="title">Ekonometria</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Adam Kołodziejczak </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 1, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -148,159 +203,52 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="container-fluid" style="padding-left: 0; padding-right: 0; margin-top: 20px; font-family: system-ui, -apple-system, sans-serif;">
-  <div class="row">
-    <div class="col-md-4 well" style="background-color: #f5f5f5; border: 1px solid #e3e3e3; border-radius: 4px; padding: 19px; margin-bottom: 20px;">
-      
-      <div class="form-group shiny-input-container" style="margin-bottom: 15px;">
-        <label for="wybor_puli" style="font-weight: bold; margin-bottom: 5px; display: block;">Wybierz zbiór pytań:</label>
-        <select id="wybor_puli" class="form-control" style="width: 100%; padding: 6px 12px; border: 1px solid #ccc; border-radius: 4px;">
-          <option value="pula1">Eksploracja danych</option>
-          <option value="pula2">Metody walidacji</option>
-        </select>
-      </div>
-
-      <div class="form-group shiny-input-container" style="margin-bottom: 15px;">
-        <div class="checkbox">
-          <label style="cursor: pointer; user-select: none;">
-            <input id="przelosuj" type="checkbox" style="margin-right: 6px;">
-            <span>Przelosuj pojedyncze pytanie</span>
-          </label>
-        </div>
-      </div>
-      <button id="losuj_btn" type="button" class="btn btn-primary btn-block" style="width: 100%;">Wylosuj</button>
-    </div>
-    
-    <div class="col-md-8" style="padding-left: 25px;">
-      <div id="wylosowane_pytania" class="shiny-html-output">
-        <p style="color: grey; font-size: 16px;">Kliknij <b>Wylosuj</b>, aby wylosować zestaw pytań.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-(function() {
-  // Pula 1 - Twoje dotychczasowe pytania
-  const bazaPytan1 = [
-    "1. Omów rolę przygotowania danych w procesie eksploracji danych i uczenia maszynowego. Przedstaw, jakie decyzje podejmuje się na etapie importu, walidacji typów i wstępnego czyszczenia danych oraz dlaczego wpływają one na dalsze modelowanie.",
-    "2. Jak rozpoznaje się i interpretuje obserwacje odstające oraz braki danych? Omów najważniejsze strategie postępowania z takimi przypadkami i ich konsekwencje dla analizy oraz jakości modelu.",
-    "3. Na czym polegają EDA, preprocessing i inżynieria cech w danych tabelarycznych? Omów rolę kodowania zmiennych kategorycznych, skalowania, transformacji oraz konstrukcji nowych cech.",
-    "4. Przedstaw regresję liniową wieloraką jako metodę uczenia nadzorowanego. Omów składniki modelu, znaczenie parametrów oraz sens minimalizacji błędu w procesie estymacji.",
-    "5. Omów interpretację modeli liniowych oraz ich ograniczenia. Wyjaśnij, kiedy współczynniki modelu są informatywne, a kiedy interpretacja staje się problematyczna.",
-    "6. Na czym polega regularyzacja modeli liniowych? Porównaj Ridge, LASSO i Elastic Net z punktu widzenia celu stosowania, wpływu na współczynniki oraz praktycznych zastosowań.",
-    "7. Omów regresję logistyczną jako model klasyfikacyjny. Wyjaśnij związek między liniowym predyktorem, prawdopodobieństwem przynależności do klasy i granicą decyzyjną.",
-    "8. Porównaj LDA, QDA i regresję logistyczną jako metody klasyfikacji. Zwróć uwagę na różnice w założeniach, sposobie modelowania oraz typowych sytuacjach, w których każda z tych metod może być uzasadniona.",
-    "9. Z czego składa się drzewo decyzyjne? Opisz funkcje poszczególnych elementów konstrukcji drzewa oraz sposób, w jaki prowadzą one do decyzji klasyfikacyjnej lub regresyjnej.",
-    "10. Jak wyznacza się podziały w drzewach decyzyjnych dla klasyfikacji i regresji? Omów kryteria podziału oraz różnice między pracą na cechach ciągłych i kategorycznych.",
-    "11. W jaki sposób kontroluje się złożoność drzewa decyzyjnego? Omów sens reguł stopu, pre-pruningu i post-pruningu oraz ich wpływ na przeuczenie i uogólnianie modelu.",
-    "12. Omów zalety i ograniczenia pojedynczych drzew decyzyjnych. W jakich sytuacjach drzewa są szczególnie użyteczne, a kiedy ich własności stają się problemem?",
-    "13. Na czym polega bagging i dlaczego bootstrap jest w nim tak istotny? Wyjaśnij, jak zespołowanie wielu drzew wpływa na stabilność i wariancję predykcji.",
-    "14. Czym las losowy różni się od zwykłego baggingu drzew? Omów rolę losowania cech, mechanizm budowy modelu oraz skutki tego podejścia dla jakości i różnorodności drzew w zespole.",
-    "15. Omów najważniejsze hiperparametry lasów losowych i innych zespołów drzewiastych. Wyjaśnij, jak wpływają one na złożoność modelu, przeuczenie i koszt obliczeniowy.",
-    "16. Na czym polega boosting jako model addytywny uczący się na błędach poprzednich modeli? Porównaj ogólną ideę AdaBoost i gradient boostingu.",
-    "17. Porównaj XGBoost, LightGBM i CatBoost jako nowoczesne odmiany boostingu drzew. Omów ich najważniejsze pomysły algorytmiczne, sposób pracy z danymi oraz typowe przewagi praktyczne.",
-    "18. Wyjaśnij związek między twierdzeniem Bayesa, estymacją metodą największej wiarygodności i estymacją MAP. Omów rolę informacji a priori w uczeniu modeli probabilistycznych.",
-    "19. Omów założenia i odmiany naiwnego Bayesa. Porównaj warianty Multinomial, Bernoulli i Gaussian z punktu widzenia typu danych, modelowanych rozkładów i obszarów zastosowań.",
-    "20. Przedstaw metodę k-NN jako podejście oparte na podobieństwie. Omów rolę metryki odległości, parametru (k), kompromisu bias-variance oraz główne zalety i wady tej metody.",
-    "21. Na czym polega regresja sklejona i czym splajn różni się od zwykłej regresji wielomianowej? Omów ideę aproksymacji kawałkami oraz znaczenie gładkiego łączenia funkcji.",
-    "22. Wyjaśnij rolę węzłów, warunków gładkości i elastyczności modelu w metodach splajnowych. Jak dobór tych elementów wpływa na niedouczenie, przeuczenie i interpretację modelu?",
-    "23. Przedstaw ideę modeli GAM. Omów ich strukturę addytywną, interpretację efektów cząstkowych oraz najważniejsze zalety i ograniczenia względem prostszych i bardziej sztywnych modeli.",
-    "24. Wyjaśnij ideę maksymalnego marginesu w liniowo separowalnym SVM. Omów znaczenie hiperpłaszczyzny decyzyjnej, marginesu oraz wektorów nośnych.",
-    "25. Na czym polega miękki margines w SVM? Omów rolę parametru (C) i wyjaśnij, jak wpływa on na kompromis między regularizacją a dopasowaniem do danych treningowych.",
-    "26. Na czym polega sztuczka jądrowa w SVM? Porównaj intuicję i zastosowania jąder liniowego, wielomianowego i RBF, a następnie odnieś się do idei regresyjnego wariantu SVR.",
-    "27. Przedstaw uczenie ze wzmocnieniem jako odmienny paradygmat uczenia maszynowego. Omów elementy procesu decyzyjnego Markowa oraz różnice między tym podejściem a klasycznym uczeniem nadzorowanym.",
-    "28. Omów rolę funkcji wartości, równań Bellmana i aktualizacji w Q-learningu. Wyjaśnij, dlaczego problem eksploracji i eksploatacji jest w uczeniu ze wzmocnieniem kluczowy.",
-    "29. Omów analizę koszykową i reguły asocjacyjne. Przedstaw sposób formalizacji danych transakcyjnych oraz ideę wyszukiwania częstych zbiorów i reguł metodami Apriori oraz FP-Growth.",
-    "30. Omów problem wykrywania anomalii. Przedstaw typy anomalii, trudności ich formalizacji oraz porównaj intuicję działania metod LOF i Isolation Forest."
-  ];
-
-  // Pula 2 - Miejsce na nową pulę pytań
-  const bazaPytan2 = [
-    "1. Opisz typy modeli statystycznych w podziale na przeznaczenie. Wymień po jednym przykładzie dla każdego typu.",
-    "2. Opisz proces tworzenia modelu statystycznego.",
-    "3. Opisz zasadę działania testów bootstrapowych.",
-    "4. Opisz zasadę działania testów permutacyjnych.",
-    "5. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli regresyjnych.",
-    "6. Podaj podział miar dopasowania modeli predykcyjnych oraz wymień po trzy miary dedykowane do modeli klasyfikacyjnych.",
-    "7. Podaj miary dopasowania modeli ze zmienną zależną wieloklasową.",
-    "8. Opisz czym jest krzywa ROC i miara AUC.",
-    "9. Opisz do czego jest stosowany podział na próbę uczącą i testową oraz opisz jak można przeprowadzić podział, na co wpływa proporcja podziału, jak ją można ustalić.",
-    "10. Na czym polega ekstrakcja cech? Podaj przykłady dwóch technik z tego zakresu.",
-    "11. Czym jest walidacja krzyżowa i walidacja krzyżowa z powtórzeniami?",
-    "12. Czym jest metoda Leave-One-Out?",
-    "13. Czym jest walidacja metodą Monte-Carlo?",
-    "14. Jak stosujemy bootstraping do walidacji modeli?",
-    "15. Czym jest i do czego stosujemy próbkowanie kroczące?",
-    "16. Na czym polega optymalizacja modeli predykcyjnych?",
-    "17. Przedstaw zasadę działania dwóch sposobów podejścia do tuningu modeli.",
-    "18. Opisz przeszukiwanie z wykorzystaniem siatki regularnej i nieregularnej.",
-    "19. Opisz zasadę wykorzystania wielu rdzeni procesora w optymalizacji modelu.",
-    "20. Czym jest metoda wyścigów?",
-    "21. Czym jest przeszukiwanie iteracyjne?",
-    "22. Opisz optymalizację bayesowską.",
-    "23. Czym są procesu gaussowskie?",
-    "24. Co to jest funkcja akwizycji?",
-    "25. Opisz zasadę działania metody symulowanego wyżarzania.",
-    "26. Przedstaw powody stosowania redukcji wymiarowości.",
-    "27. Jakie są powody stosowania podpróbkowania i nadpróbkowania w modelowaniu predykcyjnym?",
-    "28. Jakie są korzyści ze stosowania próbkowania zaniżającego liczebność klasy większościowej?",
-    "29. Jakie są zalety próbkowania zawyżającego liczebność klasy mniejszościowej?",
-    "30. Jak należy stosować poszczególne kroki przygotowania danych w procesie uczenia i walidacji modelu?"
-    ];
-
-  function init() {
-    const losujBtn = document.getElementById("losuj_btn");
-    const przelosujCheckbox = document.getElementById("przelosuj");
-    const wyborPuliSelect = document.getElementById("wybor_puli");
-    const wynikOutput = document.getElementById("wylosowane_pytania");
-    
-    if (losujBtn && !losujBtn.dataset.bound) {
-      losujBtn.dataset.bound = "true";
-      losujBtn.addEventListener("click", function() {
-        const drawSingle = przelosujCheckbox.checked;
-        const wybranaPula = wyborPuliSelect.value;
-        let pool = [];
-
-        // Przypisanie odpowiedniej puli na podstawie wyboru
-        if (wybranaPula === "pula1") {
-          pool = [...bazaPytan1];
-        } else if (wybranaPula === "pula2") {
-          pool = [...bazaPytan2];
-        }
-
-        let wylosowane = [];
-        const count = drawSingle ? 1 : Math.min(2, pool.length);
-
-        for (let i = 0; i < count; i++) {
-          const idx = Math.floor(Math.random() * pool.length);
-          wylosowane.push(pool[idx]);
-          pool.splice(idx, 1);
-        }
-
-        // Zabezpieczenie przed błędami, gdy wylosowana zostanie pusta pula
-        if (wylosowane.length === 0) {
-           wylosowane.push("Brak pytań w wybranym zbiorze.");
-        }
-
-        wynikOutput.innerHTML = `<div style="font-size: 18px; line-height: 1.5; border-left: 4px solid #337ab7; padding-left: 15px;">` + 
-                                 wylosowane.map(q => `<p>${q}</p>`).join("") + 
-                                 `</div>`;
-      });
-    }
-  }
-
-  // Bind on page load and on dynamic Quarto page navigation
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
-  document.addEventListener("quarto-page-load", init);
-})();
-</script>
+<section id="metody-doboru-i-usuwania-zmiennych-objaśniających" class="level2">
+<h2 class="anchored" data-anchor-id="metody-doboru-i-usuwania-zmiennych-objaśniających"><strong>1 Metody doboru i usuwania zmiennych objaśniających</strong></h2>
+<section id="metoda-analizy-współczynników-korelacji" class="level3">
+<h3 class="anchored" data-anchor-id="metoda-analizy-współczynników-korelacji"><strong>1.1 Metoda analizy współczynników korelacji</strong></h3>
+<ul>
+<li><strong>Wzór na wartość krytyczną:</strong> <span class="math inline">\(r^* = \sqrt{\frac{t^2}{t^2 + n - 2}}\)</span>.</li>
+<li><strong>Procedura doboru:</strong>
+<ol type="1">
+<li><strong>Eliminacja zmiennych nieistotnych:</strong> Usuwa się zmienne słabo skorelowane ze zmienną objaśnianą, czyli takie, dla których <strong><span class="math inline">\(|r_j| \le r^*\)</span></strong>.</li>
+<li><strong>Wybór nośnika informacji:</strong> Z pozostałych wybiera się zmienną <span class="math inline">\(X_h\)</span> najsilniej skorelowaną z <span class="math inline">\(Y\)</span>, spełniającą warunek <strong><span class="math inline">\(|r_h| = \max_j |r_j|\)</span></strong>.</li>
+<li><strong>Eliminacja duplikatów informacji:</strong> Odrzuca się wszystkie pozostałe zmienne, które są zbyt mocno skorelowane z wybraną zmienną <span class="math inline">\(X_h\)</span>, tzn. spełniają warunek <strong><span class="math inline">\(|r_{hi}| &gt; r^*\)</span></strong>.</li>
+</ol></li>
+</ul>
+</section>
+<section id="metoda-pojemności-informacji-metoda-hellwiga" class="level3">
+<h3 class="anchored" data-anchor-id="metoda-pojemności-informacji-metoda-hellwiga"><strong>1.2 Metoda pojemności informacji (metoda Hellwiga)</strong></h3>
+<ul>
+<li><strong>Wzory:</strong>
+<ul>
+<li><strong>Indywidualna pojemność informacji:</strong> <span class="math inline">\(h_{kj} = \frac{r_j^2}{1 + \sum_{i \in L_k, i \neq j} |r_{ij}|}\)</span>.</li>
+<li><strong>Pojemność integralna (dla kombinacji):</strong> <span class="math inline">\(H_k = \sum_{j \in L_k} h_{kj}\)</span>.</li>
+</ul></li>
+<li><strong>Procedura doboru:</strong> Tworzy się wszystkie <span class="math inline">\(2^m - 1\)</span> możliwych kombinacji zmiennych. Dla każdej kombinacji oblicza się indywidualne wskaźniki <span class="math inline">\(h_{kj}\)</span> dla wchodzących w jej skład zmiennych, a następnie sumuje się je do pojemności integralnej <span class="math inline">\(H_k\)</span>. Do modelu <strong>wybiera się tę kombinację, dla której wartość <span class="math inline">\(H_k\)</span> jest największa</strong>.</li>
+</ul>
+</section>
+<section id="metoda-grafowa" class="level3">
+<h3 class="anchored" data-anchor-id="metoda-grafowa"><strong>1.3 Metoda grafowa</strong></h3>
+<ul>
+<li><strong>Wzory na wartość krytyczną <span class="math inline">\(r^*\)</span>:</strong> Wzór z testu t-Studenta <span class="math inline">\(r^* = \sqrt{\frac{t^2}{t^2 + n - 2}}\)</span> lub reguła minimaksowa: <strong><span class="math inline">\(r^* = \min_i \max_{j \neq i} |r_{ij}|\)</span></strong>.</li>
+<li><strong>Procedura doboru:</strong> Współczynniki z macierzy korelacji <span class="math inline">\(R\)</span> porównuje się z <span class="math inline">\(r^*\)</span>. Jeśli <strong><span class="math inline">\(|r_{ij}| \le r^*\)</span></strong>, element ten zastępuje się zerem, tworząc nową macierz <span class="math inline">\(R'\)</span>. Na jej podstawie rysuje się graf. Do modelu <strong>wybiera się zmienne odosobnione</strong> oraz, z każdego powstałego podgrafu, <strong>zmienną o największej liczbie powiązań</strong> (w razie remisu – tę najsilniej skorelowaną z <span class="math inline">\(Y\)</span>).</li>
+</ul>
+</section>
+<section id="metoda-oparta-na-współczynniku-korelacji-wielorakiej" class="level3">
+<h3 class="anchored" data-anchor-id="metoda-oparta-na-współczynniku-korelacji-wielorakiej"><strong>1.4 Metoda oparta na współczynniku korelacji wielorakiej</strong></h3>
+<ul>
+<li><strong>Wzory:</strong>
+<ul>
+<li>Macierz rozszerzona zbudowana z wektora <span class="math inline">\(R_0\)</span> i macierzy <span class="math inline">\(R\)</span>: <span class="math inline">\(R^* = \begin{bmatrix} 1 &amp; R_0^T \\ R_0 &amp; R \end{bmatrix}\)</span>.</li>
+<li><strong>Współczynnik korelacji wielorakiej:</strong> <strong><span class="math inline">\(R_w = \sqrt{1 - \frac{\det R^*}{\det R}}\)</span></strong>.</li>
+</ul></li>
+<li><strong>Procedura doboru:</strong> Oblicza się wskaźnik <span class="math inline">\(R_w\)</span> dla poszczególnych zestawów zmiennych objaśniających. Do modelu <strong>wybiera się ten zestaw, dla którego wartość <span class="math inline">\(R_w\)</span> jest największa</strong>, jednak z zastrzeżeniem, że <strong>wolno porównywać ze sobą jedynie kombinacje o tej samej liczbie zmiennych</strong>.</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

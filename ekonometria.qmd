@@ -1,0 +1,38 @@
+---
+title: "Ekonometria"
+author: "Adam Kołodziejczak"
+date: "2025-07-01"
+format: 
+  html:
+    toc: true
+    toc-title: "Spis treści"
+    toc-location: right
+    theme: default
+    fontcolor: "#3c3c3c"
+    backgroundcolor: "#fdfdfd"
+---
+
+## **1 Metody doboru i usuwania zmiennych objaśniających** 
+
+### **1.1 Metoda analizy współczynników korelacji**
+*   **Wzór na wartość krytyczną:** $r^* = \sqrt{\frac{t^2}{t^2 + n - 2}}$.
+*   **Procedura doboru:**
+    1. **Eliminacja zmiennych nieistotnych:** Usuwa się zmienne słabo skorelowane ze zmienną objaśnianą, czyli takie, dla których **$|r_j| \le r^*$**.
+    2. **Wybór nośnika informacji:** Z pozostałych wybiera się zmienną $X_h$ najsilniej skorelowaną z $Y$, spełniającą warunek **$|r_h| = \max_j |r_j|$**.
+    3. **Eliminacja duplikatów informacji:** Odrzuca się wszystkie pozostałe zmienne, które są zbyt mocno skorelowane z wybraną zmienną $X_h$, tzn. spełniają warunek **$|r_{hi}| > r^*$**.
+
+### **1.2 Metoda pojemności informacji (metoda Hellwiga)**
+*   **Wzory:**
+    *   **Indywidualna pojemność informacji:** $h_{kj} = \frac{r_j^2}{1 + \sum_{i \in L_k, i \neq j} |r_{ij}|}$.
+    *   **Pojemność integralna (dla kombinacji):** $H_k = \sum_{j \in L_k} h_{kj}$.
+*   **Procedura doboru:** Tworzy się wszystkie $2^m - 1$ możliwych kombinacji zmiennych. Dla każdej kombinacji oblicza się indywidualne wskaźniki $h_{kj}$ dla wchodzących w jej skład zmiennych, a następnie sumuje się je do pojemności integralnej $H_k$. Do modelu **wybiera się tę kombinację, dla której wartość $H_k$ jest największa**.
+
+### **1.3 Metoda grafowa**
+*   **Wzory na wartość krytyczną $r^*$:** Wzór z testu t-Studenta $r^* = \sqrt{\frac{t^2}{t^2 + n - 2}}$ lub reguła minimaksowa: **$r^* = \min_i \max_{j \neq i} |r_{ij}|$**.
+*   **Procedura doboru:** Współczynniki z macierzy korelacji $R$ porównuje się z $r^*$. Jeśli **$|r_{ij}| \le r^*$**, element ten zastępuje się zerem, tworząc nową macierz $R'$. Na jej podstawie rysuje się graf. Do modelu **wybiera się zmienne odosobnione** oraz, z każdego powstałego podgrafu, **zmienną o największej liczbie powiązań** (w razie remisu – tę najsilniej skorelowaną z $Y$).
+
+### **1.4 Metoda oparta na współczynniku korelacji wielorakiej**
+*   **Wzory:**
+    *   Macierz rozszerzona zbudowana z wektora $R_0$ i macierzy $R$: $R^* = \begin{bmatrix} 1 & R_0^T \\ R_0 & R \end{bmatrix}$.
+    *   **Współczynnik korelacji wielorakiej:** **$R_w = \sqrt{1 - \frac{\det R^*}{\det R}}$**.
+*   **Procedura doboru:** Oblicza się wskaźnik $R_w$ dla poszczególnych zestawów zmiennych objaśniających. Do modelu **wybiera się ten zestaw, dla którego wartość $R_w$ jest największa**, jednak z zastrzeżeniem, że **wolno porównywać ze sobą jedynie kombinacje o tej samej liczbie zmiennych**.
